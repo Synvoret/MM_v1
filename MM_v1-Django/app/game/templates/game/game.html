@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Game{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'nav/styles/nav_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'board/styles/board_styles.css' %}">
+{% endblock styles %}  
+
+
+{% block content %}
+
+    {% include 'nav/nav.html' %}
+    {% include 'board/board.html' %}
+    <a href="{% url 'index:index' %}"><button class="back"><- BACK to INDEX</button></a>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'game/js/references.js' %}"></script>
+    
+    <script src="{% static 'game/js/newBoard.js' %}"></script>
+    
+    <script src="{% static 'game/js/testowy.js' %}"></script>
+{% endblock scripts %}

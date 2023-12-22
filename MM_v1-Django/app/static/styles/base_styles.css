@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    /* text-align: center; */
+    background-color: rgba(200, 200, 200, .5);
+    text-align: center;
+    display: inline-block;
+}
+
+button {
+    padding: 2px;
+    cursor: pointer;
+}
+
+button.back {
+    color: red;
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}History{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'history/styles/history_styles.css' %}">{% endblock styles %}
+
+{% block content %}
+
+<ul id="history">
+    <li>12.12.2023 - Start MM_1 Flask Project.</li>
+    <li>13.12.2023 - Setting up the application (docker, docker-compose, setup.py, flake8, black, index, about, history,
+        repository)</li>
+    <li>13.12.2023 - Two virtual environments were created, for Windows and Linux.</li>
+    <li>13.12.2023 - First tests with "fetch" function to connect Flask with JavaScript.</li>
+    <li>14.12.2023 - Code reorganization.</li>
+    <li>14.12.2023 - Familiarization with HTML Game Development and introduction to code.</li>
+    <li>14.12.2023 - Event trials between frontend and backend.</li>
+    <li>14.12.2023 - Continuation preperation the game board (svg shapes).</li>
+    <li>15.12.2023 - Made Django app MM_v1 parallel with Flask app MM_v1.</li>
+    <li>15.12.2023 - Start MM_1 Django Project.</li>
+    <li>15.12.2023 - Database - first idea. Starting with SQLite.</li>
+    <li>16.12.2023 - Made firsts models.</li>
+    <li>16.12.2023 - Started user application.</li>
+    <li>16.12.2023 - Register and login system for users implemented.</li>
+    <li>16.12.2023 - Started dataset application.</li>
+    <li>17.12.2023 - Break.</li>
+    <li>18.12.2023 - Implemented board view.</li>
+    <li>19.12.2023 - Code reorganization.</li>
+    <li>19.12.2023 - Continue working on dataset.</li>
+    <li>20.12.2023 - Prepare new game. First step - Demand Tokens.</li>
+    <li>21.12.2023 - Prepare new game. First step - Ship Modification Tokens.</li>
+    <li>21.12.2023 - Prepare new game. First step - Merchant Tokens.</li>
+    <li>21.12.2023 - Prepare new game. First step - Glory Points.</li>
+    <li>21.12.2023 - Prepare new game. First step - Enemy Hit Locations.</li>
+    <li>21.12.2023 - Prepare new game. First step - Locations Tokens.</li>
+    <li>21.12.2023 - Started nav application.</li>
+    <li>22.12.2023 - Prepare new game. First step - Flags Tokens.</li>
+    <li>2.12.2023 - First commit and push to GitHub.</li>
+</ul>
+<a href="{% url 'index:index' %}"><button class="back"><- BACK to INDEX</button></a>
+
+{% endblock content %}

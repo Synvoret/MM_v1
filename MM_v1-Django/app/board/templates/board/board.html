@@ -1,0 +1,361 @@
+{% load static %}
+
+<div id="board-container">
+<svg width="1248" height="1080">
+
+    <!-- MAPA -->
+    <image id="board-game" href="" x="0" y="0" width="1248" height="1080"/>
+
+    <!-- SEA ZONES -->
+    <polygon name="sea-zone-basse-terre" class="sea-zone inspect basse-terre-zone" points="5"/>
+    <polygon name="sea-zone-bridgetown" class="sea-zone inspect bridgetown-zone" points="1072,608 1198,609 1185,869 1064,756"/>
+    <polygon name="sea-zone-caracas" class="sea-zone inspect caracas-zone" points="834,683 947,754 936,888 885,913 798,911 765,871 761,727"/>
+    <polygon name="sea-zone-cartagena" class="sea-zone inspect cartagena-zone" points="391,648 470,657 496,703 494,890 376,963 304,898 299,692"/>
+    <polygon name="sea-zone-curacao" class="sea-zone inspect curacao-zone" points="761,727 765,871 594,897 494,890 496,703"/>
+    <polygon name="sea-zone-havana" class="sea-zone inspect havana-zone" points="382,307 375,460 36,447 49,215 252,205"/>
+    <polygon name="sea-zone-nassau" class="sea-zone inspect nassau-zone" points="304,82 531,94 608,213 382,307 252,205"/>
+    <polygon name="sea-zone-old-providence" class="sea-zone inspect old-providence-zone" points="299,692 304,898 193,937 27,846 32,659"/>
+    <polygon name="sea-zone-petite-goave" class="sea-zone inspect petite-goave-zone" points="591,520 588,606 470,657 391,648 416,500"/>
+    <polygon name="sea-zone-port-royal" class="sea-zone inspect port-royal-zone" points="416,500 391,648 299,692 32,659 36,447 375,460"/>
+    <polygon name="sea-zone-san-juan" class="sea-zone inspect san-juan-zone" points="782,333 910,319 896,558 835,643 769,605"/>
+    <polygon name="sea-zone-santo-domingo" class="sea-zone inspect santo-domingo-zone" points="676,316 782,333 769,605 588,606 591,520 614,522"/>
+    <polygon name="sea-zone-st-john" class="sea-zone inspect st-john-zone" points="1045,352 1210,335 1198,609 1072,608 1035,566"/>
+    <polygon name="sea-zone-st-maarten" class="sea-zone inspect st-maarten-zone" points="910,319 1045,352 1035,566 896,558"/>
+    <polygon name="sea-zone-the-caribbean-sea" class="sea-zone inspect the-caribbean-sea-zone" points="588,606 769,605 835,643 834,683 761,727 496,703 470,657"/>
+    <polygon name="sea-zone-trinidad" class="sea-zone inspect trinidad-zone" points="947,754 1064,756 1185,869 1175,1013 1044,931 986,914 936,888"/>
+    <polygon name="sea-zone-tortuga" class="sea-zone inspect tortuga-zone" points="608,213 676,316 614,522 416,500 375,460 382,307"/>
+
+    <!-- NAMES SEA ZONES -->
+    <ellipse name="name-basse-terre" cx="980" cy="674" rx="25" ry="5"/>
+    <ellipse name="name-bridgetown" cx="1134" cy="645" rx="30" ry="5"/>
+    <ellipse name="name-caracas" cx="843" cy="763" rx="20" ry="5"/>
+    <ellipse name="name-cartagena" cx="370" cy="730" rx="25" ry="5"/>
+    <ellipse name="name-curacao" cx="545" cy="731" rx="20" ry="5"/>
+    <ellipse name="name-havana" cx="157" cy="376" rx="20" ry="5"/>
+    <ellipse name="name-nassau" cx="430" cy="130" rx="17" ry="5"/>
+    <ellipse name="name-old-providence" cx="190" cy="797" rx="40" ry="5" transform="rotate(2 190 797)"/>
+    <ellipse name="name-petite-goave" cx="438" cy="590" rx="30" ry="5"/>
+    <ellipse name="name-port-royal" cx="220" cy="573" rx="35" ry="5"/>
+    <ellipse name="name-san-juan" cx="826" cy="364" rx="25" ry="5"/>
+    <ellipse name="name-santo-domingo" cx="665" cy="553" rx="40" ry="5"/>
+    <ellipse name="name-st-john" cx="1100" cy="391" rx="25" ry="5"/>
+    <ellipse name="name-st-maarten" cx="976" cy="404" rx="30" ry="5"/>
+    <ellipse name="name-the-caribbean-sea" cx="664" cy="660" rx="35" ry="5" transform="rotate(-6 664 660)"/>
+    <ellipse name="name-trinidad" cx="1118" cy="872" rx="25" ry="5" transform="rotate(3 1118 872)"/>
+    <ellipse name="name-tortuga" cx="442" cy="332" rx="20" ry="5"/>
+
+    <!-- FEATURES -->
+    <polygon name="feature-basse-terre" points="952,688 1002,691 993,710 950,708"/>
+    <polygon name="feature-bridgetown" points="1103,660 1161,661 1164,699 1103,704"/>
+    <polygon name="feature-caracas" points="822,779 880,781 882,787 824,786"/>
+    <polygon name="feature-cartagena" points="352,746 438,749 440,778 402,784 352,782"/>
+    <polygon name="feature-curacao" points="528,745 598,749 618,761 618,764 528,760"/>
+    <polygon name="feature-havana" points="141,390 275,391 274,414 141,412"/>
+    <polygon name="feature-nassau" points="419,143 539,145 540,152 531,159 507,165 419,163"/>
+    <polygon name="feature-old-providence" points="152,812 252,818 246,832 197,834 152,833"/>
+    <polygon name="feature-petite-goave" points="410,604 498,609 496,623 425,625 404,623"/>
+    <polygon name="feature-port-royal" points="199,587 279,589 299,598 296,610 285,617 199,615"/>
+    <polygon name="feature-san-juan" points="806,378 876,382 878,403 806,399"/>
+    <polygon name="feature-santo-domingo" points="630,567 743,570 742,577 728,583 630,582"/>
+    <polygon name="feature-st-john" points="1085,407 1170,410 1171,435 1083,435"/>
+    <polygon name="feature-st-maarten" points="949,421 1004,423 1006,442 982,450 949,449"/>
+    <polygon name="feature-trinidad" points="1096,886 1137,889 1137,916 1093,915"/>
+    <polygon name="feature-tortuga" points="425,345 563,350 554,372 425,369"/>
+
+    <!-- ENEMY HIT LOCATIONs -->
+    <defs>
+        <clipPath id="enemy-hit-location"><rect x="0" y="0" width="15" height="15" rx="2" ry="2"/></clipPath>
+        <image id="brown-cube-enemy-hit-location-image" width="15" height="15" xlink:href="" clip-path="url(#enemy-hit-location)"/>
+    </defs>
+    <use id="hull-1-enemy-hit-location" name="hull-1-hit-location" x="872" y="197" xlink:href="#brown-cube-enemy-hit-location-image"/>
+    <use id="cargo-1-enemy-hit-location" name="cargo-1-hit-location" x="870" y="217" xlink:href="#brown-cube-enemy-hit-location-image"/>
+    <use id="masts-1-enemy-hit-location" name="masts-1-hit-location" x="869" y="237" xlink:href="#brown-cube-enemy-hit-location-image"/>
+    <use id="crew-1-enemy-hit-location" name="crew-1-hit-location" x="866" y="257" xlink:href="#brown-cube-enemy-hit-location-image"/>
+    <use id="cannons-1-enemy-hit-location" name="cannons-1-hit-location" x="865" y="276" xlink:href="#brown-cube-enemy-hit-location-image"/>
+
+    <rect name="hull-2-enemy-hit-location" x="891" y="199" width="16" height="16" transform="rotate(5 891 199)"/>
+    <rect name="hull-3-enemy-hit-location" x="911" y="201" width="16" height="16" transform="rotate(5 911 201)"/>
+    <rect name="hull-4-enemy-hit-location" x="930" y="202" width="16" height="16" transform="rotate(5 930 202)"/>
+    <rect name="hull-5-enemy-hit-location" x="949" y="204" width="16" height="16" transform="rotate(5 949 204)"/>
+    <!-- <rect name="cargo-1-enemy-hit-location" x="870" y="217" width="16" height="16" transform="rotate(5 870 217)"/> -->
+    <rect name="cargo-2-enemy-hit-location" x="890" y="219" width="16" height="16" transform="rotate(5 890 219)"/>
+    <rect name="cargo-3-enemy-hit-location" x="909" y="220" width="16" height="16" transform="rotate(5 909 220)"/>
+    <rect name="cargo-4-enemy-hit-location" x="928" y="222" width="16" height="16" transform="rotate(5 928 222)"/>
+    <rect name="cargo-5-enemy-hit-location" x="948" y="224" width="16" height="16" transform="rotate(5 948 224)"/>
+    <!-- <rect name="masts-1-enemy-hit-location" x="869" y="237" width="16" height="16" transform="rotate(5 869 237)"/> -->
+    <rect name="masts-2-enemy-hit-location" x="888" y="238" width="16" height="16" transform="rotate(5 888 238)"/>
+    <rect name="masts-3-enemy-hit-location" x="907" y="240" width="16" height="16" transform="rotate(5 907 240)"/>
+    <rect name="masts-4-enemy-hit-location" x="927" y="242" width="16" height="16" transform="rotate(5 927 242)"/>
+    <rect name="masts-5-enemy-hit-location" x="946" y="244" width="16" height="16" transform="rotate(5 946 244)"/>
+    <!-- <rect name="crew-1-enemy-hit-location" x="866" y="257" width="16" height="16" transform="rotate(5 866 257)"/> -->
+    <rect name="crew-2-enemy-hit-location" x="886" y="258" width="16" height="16" transform="rotate(5 886 258)"/>
+    <rect name="crew-3-enemy-hit-location" x="905" y="260" width="16" height="16" transform="rotate(5 905 260)"/>
+    <rect name="crew-4-enemy-hit-location" x="925" y="262" width="16" height="16" transform="rotate(5 925 262)"/>
+    <rect name="crew-5-enemy-hit-location" x="944" y="264" width="16" height="16" transform="rotate(5 944 264)"/>
+    <!-- <rect name="cannons-1-enemy-hit-location" x="865" y="276" width="16" height="16" transform="rotate(5 865 276)"/> -->
+    <rect name="cannons-2-enemy-hit-location" x="885" y="278" width="16" height="16" transform="rotate(5 885 278)"/>
+    <rect name="cannons-3-enemy-hit-location" x="904" y="280" width="16" height="16" transform="rotate(5 904 280)"/>
+    <rect name="cannons-4-enemy-hit-location" x="923" y="282" width="16" height="16" transform="rotate(5 923 282)"/>
+    <rect name="cannons-5-enemy-hit-location" x="942" y="283" width="16" height="16" transform="rotate(5 942 283)"/>
+    
+    <!-- AT WAR SECTION -->
+    <use name="at-war-section-left" x="135" y="148" href="#port-national-flag-reverse" transform="rotate(-15 135 148)"/>
+    <use name="at-war-section-right" x="144" y="147" href="#port-national-flag" transform="rotate(-7 144 147)"/>
+
+
+
+
+
+
+
+
+    <!-- CARDS - NAVAL CAPTAIN'S, PIRATE CAPTAIN'S, EVENT, MISSIONS -->
+    
+    <defs>
+        <clipPath id="myClip"><rect x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
+        <image id="myImage" width="70" height="110" xlink:href="" clip-path="url(#myClip)"/>
+    </defs>
+    c
+
+    <rect name="spain-captain-card" x="579" y="46" width="67" height="107" rx="4" ry="4" transform="rotate(2 579 46)"/>
+    <rect name="england-captain-card" x="669" y="33" width="67" height="107" rx="4" ry="4" transform="rotate(7 669 33)"/>
+    <rect name="french-captain-card" x="745" y="56" width="67" height="107" rx="4" ry="4" transform="rotate(-1 745 56)"/>
+    <rect name="dutch-captain-card" x="823" y="50" width="67" height="107" rx="4" ry="4" transform="rotate(-9 823 50)"/>
+    <rect name="mission-1-card" x="1011" y="64" width="69" height="107" rx="4" ry="4" transform="rotate(-5 1011 64)"/>    
+    <!-- <defs><image id="myImage2" x="0" y="0" width="70" height="110" xlink:href="{{ my_context.rewers }}" clip-path="url(#myClip)"/></defs>
+    <use name="mission-1-card" x="1011" y="64" xlink:href="#myImage2" transform="rotate(-5 1011 64)"/> -->
+    <rect name="mission-2-card" x="1123" y="62" width="69" height="107" rx="4" ry="4" transform="rotate(6 1123 62)"/>
+    <rect name="pirate-sloop-card" x="657" y="163" width="67" height="107" rx="4" ry="4" transform="rotate(2 657 163)"/>
+    <rect name="pirate-frigate-card" x="741" y="180" width="67" height="107" rx="4" ry="4" transform="rotate(-3 741 180)"/>
+
+    <!-- MERCHANTS TOKENS -->
+    <!-- TRACK -->
+    <circle name="first-merchant-token-track" cx="1045" cy="213" r="14"/>
+    <circle name="second-merchant-token-track" cx="1076" cy="211" r="14"/>
+    <circle name="thrith-merchant-token-track" cx="1047" cy="245" r="14"/>
+    <circle name="fourth-merchant-token-track" cx="1078" cy="242" r="14"/>
+    <circle name="fivth-merchant-token-track" cx="1050" cy="276" r="14"/>
+    <circle name="sixth-merchant-token-track" cx="1080" cy="274" r="14"/>
+    <circle name="seventh-merchant-token-track" cx="1052" cy="308" r="14"/>
+    <circle name="eighth-merchant-token-track" cx="1083" cy="306" r="14"/>
+    <!-- MERCHANTS TOKENS SEA ZONES -->
+    <defs>
+        <clipPath id="merchant-token"><circle cx="15" cy="15" r="15"/></clipPath>
+        <image id="merchant-token-basse-terre-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-bridgetown-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-caracas-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-cartagena-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-curacao-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-nassau-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-havana-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-old-providence-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-petite-goave-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-port-royal-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-san-juan-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-santo-domingo-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-st-john-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-st-maarten-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-the-caribbean-sea-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-trinidad-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <image id="merchant-token-tortuga-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+    </defs>
+    <use id="merchant-token-basse-terre" name="basse-terre-merchant-token" x="880" y="656" xlink:href="#merchant-token-basse-terre-image"/>
+    <use id="merchant-token-bridgetown" name="bridgetown-merchant-token" x="1155" y="807" xlink:href="#merchant-token-bridgetown-image"/>
+    <use id="merchant-token-caracas" name="caracas-merchant-token" x="907" y="765" xlink:href="#merchant-token-caracas-image"/>
+    <use id="merchant-token-cartagena" name="cartagena-merchant-token" x="335" y="802" xlink:href="#merchant-token-cartagena-image"/>
+    <use id="merchant-token-curacao" name="curacao-merchant-token" x="730" y="750" xlink:href="#merchant-token-curacao-image"/>
+    <use id="merchant-token-havana" name="havana-merchant-token" x="89" y="382" xlink:href="#merchant-token-havana-image"/>
+    <use id="merchant-token-nassau" name="nassau-merchant-token" x="548" y="188" xlink:href="#merchant-token-nassau-image"/>
+    <use id="merchant-token-old-providence" name="old-providence-merchant-token" x="263" y="730" xlink:href="#merchant-token-old-providence-image"/>
+    <use id="merchant-token-petite-goave" name="petite-goave-merchant-token" x="517" y="595" xlink:href="#merchant-token-petite-goave-image"/>
+    <use id="merchant-token-port-royal" name="port-royal-merchant-token" x="260" y="500" xlink:href="#merchant-token-port-royal-image"/>
+    <use id="merchant-token-san-juan" name="san-juan-merchant-token" x="821" y="587" xlink:href="#merchant-token-san-juan-image"/>
+    <use id="merchant-token-santo-domingo" name="santo-domingo-merchant-token" x="747" y="449" xlink:href="#merchant-token-santo-domingo-image"/>
+    <use id="merchant-token-st-john" name="st-john-merchant-token" x="1062" y="476" xlink:href="#merchant-token-st-john-image"/>
+    <use id="merchant-token-st-maarten" name="st-maarten-merchant-token" x="1015" y="380" xlink:href="#merchant-token-st-maarten-image"/>
+    <use id="merchant-token-the-caribbean-sea" name="the-caribbean-sea-merchant-token" x="740" y="690" xlink:href="#merchant-token-the-caribbean-sea-image"/>
+    <use id="merchant-token-tortuga" name="tortuga-merchant-token" x="514" y="392" xlink:href="#merchant-token-tortuga-image"/>
+    <use id="merchant-token-trinidad" name="trinidad-merchant-token" x="1074" y="889" xlink:href="#merchant-token-trinidad-image"/>
+
+    <!-- LOCATION TOKENS -->
+    <defs>
+        <clipPath id="location-toke"><<path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/></clipPath>
+        <image id="location-token-basse-terre-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-bridgetown-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-caracas-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-cartagena-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-curacao-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-havana-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-nassau-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-old-providence-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-petite-goave-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-port-royal-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-san-juan-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-santo-domingo-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-st-john-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-st-maarten-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-trinidad-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <image id="location-token-tortuga-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+    </defs>
+    <use id="location-basse-terre" name="location-token-basse-terre" x="998" y="695" href="#location-token-basse-terre-image"/>
+    <use id="location-bridgetown" name="location-token-bridgetown" x="1147" y="710" href="#location-token-basse-terre-image"/>
+    <use id="location-caracas" name="location-token-caracas" x="769" y="790" href="#location-token-caracas-image"/>
+    <use id="location-cartagena" name="location-token-cartagena" x="325" y="880" href="#location-token-cartagena-image"/>
+    <use id="location-curacao" name="location-token-curacao" x="600" y="800" href="#location-token-curacao-image"/>
+    <use id="location-havana" name="location-token-havana" x="86" y="262" href="#location-token-havana-image"/>
+    <use id="location-nassau" name="location-token-nassau" x="338" y="90" href="#location-token-nassau-image"/>
+    <use id="location-old-providence" name="location-token-old-providence" x="120" y="839" href="#location-token-old-providence-image"/>
+    <use id="location-petite-goave" name="location-token-petite-goave" x="473" y="515" href="#location-token-petite-goave-image"/>
+    <use id="location-port-royal" name="location-token-port-royal" x="74" y="580" href="#location-token-port-royal-image"/>
+    <use id="location-san-juan" name="location-token-san-juan" x="773" y="480" href="#location-token-san-juan-image"/>
+    <use id="location-santo-domingo" name="location-token-santo-domingo" x="640" y="430" href="#location-token-santo-domingo-image"/>
+    <use id="location-st-john" name="location-token-st-john" x="1119" y="545" href="#location-token-st-john-image"/>
+    <use id="location-st-maarten" name="location-token-st-maarten" x="900" y="510" href="#location-token-st-maarten-image"/>
+    <use id="location-trinidad" name="location-token-trinidad" x="940" y="830" href="#location-token-trinidad-image"/>
+    <use id="location-tortuga" name="location-token-tortuga" x="390" y="420" href="#location-token-tortuga-image"/>
+
+    <!-- PORT NATIONAL FLAG -->
+    <!-- DEFS -->
+    <defs>
+        <path id="port-national-flag" d="M 0 0 L 4 -2 L 8 -2 L 18 3 L 24 5 L 27 5 L 29 4 L 32 2 L 31 24 L 28 26 L 24 27 L 18 25 L 11 22 L 5 20 L 3 20 L 1 21 L -1 23 Z"/>
+        <path id="port-national-flag-reverse" d="M 0 0 L 4 -2 L 8 -2 L 18 3 L 24 5 L 27 5 L 29 4 L 32 2 L 31 24 L 28 26 L 24 27 L 18 25 L 11 22 L 5 20 L 3 20 L 1 21 L -1 23 Z" transform="scale(-1, 1)"/>
+        <!-- <path id="card" d="M 0 0 L 67 0 L 67 107 L 0 107 Z" rx="4" ry="4" transform="rotate(0 0 0)"/> -->
+        <!-- <polygon id="card" points="0,0 67,0 67,107 0,107" rx="4" ry="4" transform="rotate(0 0 0)"/> -->
+        <!-- <rect id="card" x="0" y="0" width="67" height="107" rx="4" ry="4" transform="rotate(0 0 0)"/> -->
+        <path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/>
+    </defs>
+
+    <use name="basse-terre-port-national-flag" x="985" y="621" href="#port-national-flag" transform="rotate(0 985 621)"/>
+    <use name="bridgetown-port-national-flag" x="1132" y="762" href="#port-national-flag" transform="rotate(1 1132 762)"/>
+    <use name="cartagena-port-national-flag" x="398" y="835" href="#port-national-flag" transform="rotate(1 398 835)"/>
+    <use name="caracas-port-national-flag" x="803" y="835" href="#port-national-flag" transform="rotate(1 803 835)"/>
+    <use name="curacao-port-national-flag" x="704" y="784" href="#port-national-flag" transform="rotate(1 704 784)"/>
+    <use name="havana-port-national-flag" x="161" y="245" href="#port-national-flag" transform="rotate(0 161 245)"/>
+    <use name="nasau-port-national-flag" x="358" y="214" href="#port-national-flag" transform="rotate(0 358 214)"/>
+    <use name="old-providence-port-national-flag" x="201" y="717" href="#port-national-flag" transform="rotate(1 201 717)"/>
+    <use name="petite-goave-port-national-flag" x="545" y="524" href="#port-national-flag" transform="rotate(1 545 524)"/>
+    <use name="port-royal-port-national-flag" x="351" y="534" href="#port-national-flag" transform="rotate(1 351 534)"/>
+    <use name="san-juan-port-national-flag" x="834" y="490" href="#port-national-flag" transform="rotate(1 834 490)"/>
+    <use name="santo-domingo-port-national-flag" x="676" y="520" href="#port-national-flag" transform="rotate(1 676 520)"/>
+    <use name="st-john-port-national-flag" x="1065" y="550" href="#port-national-flag" transform="rotate(1 1065 550)"/>
+    <use name="st-maarten-port-national-flag" x="997" y="510" href="#port-national-flag" transform="rotate(0 997 510)"/>
+    <use name="tortuga-port-national-flag" x="562" y="411" href="#port-national-flag" transform="rotate(0 562 411)"/>
+    <use name="trinidad-port-national-flag" x="1010" y="843" href="#port-national-flag" transform="rotate(0 1010 843)"/>
+
+    <!-- DEMANDs TOKENs for PORTs -->
+    <defs>
+        <clipPath id="demand-token"><rect x="0" y="0" width="23" height="23" rx="2" ry="2"/></clipPath>
+        <image id="demand-basse-terre-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-bridgetown-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-caracas-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-cartagena-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-curacao-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-nassau-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-havana-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-old-providence-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-petite-goave-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-port-royal-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-san-juan-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-santo-domingo-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-st-john-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-st-maarten-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-trinidad-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+        <image id="demand-tortuga-image" width="23" height="23" xlink:href="" clip-path="url(#demand-token)"/>
+    </defs>
+    <use id="demand-basse-terre" name="basse-terre-demand" x="995" y="587" xlink:href="#demand-basse-terre-image" transform="rotate(4 995 587)"/>
+    <use id="demand-bridgetown" name="bridgetown-demand" x="1093" y="734" xlink:href="#demand-bridgetown-image" transform="rotate(4 1093 734)"/>
+    <use id="demand-caracas" name="caracas-demand" x="833" y="873" xlink:href="#demand-caracas-image" transform="rotate(3 833 873)"/>
+    <use id="demand-cartagena" name="cartagena-demand" x="397" y="902" xlink:href="#demand-cartagena-image" transform="rotate(3 397 902)"/>
+    <use id="demand-curacao" name="curacao-demand" x="682" y="813" xlink:href="#demand-curacao-image" transform="rotate(2 682 813)"/>
+    <use id="demand-nassau" name="nassau-demand" x="322" y="191" xlink:href="#demand-nassau-image" transform="rotate(3 322 191)"/>
+    <use id="demand-havana" name="havana-demand" x="186" y="277" xlink:href="#demand-havana-image" transform="rotate(2 186 277)"/>
+    <use id="demand-old-providence" name="old-providence-demand" x="144" y="720" xlink:href="#demand-old-providence-image" transform="rotate(3 144 720)"/>
+    <use id="demand-petite-goave" name="petite-goave-demand" x="525" y="557" xlink:href="#demand-petite-goave-image" transform="rotate(2 525 557)"/>
+    <use id="demand-port-royal" name="port-royal-demand" x="313" y="501" xlink:href="#demand-port-royal-image" transform="rotate(2 313 501)"/>
+    <use id="demand-san-juan" name="san-juan-demand" x="814" y="536" xlink:href="#demand-san-juan-image" transform="rotate(3 814 536)"/>
+    <use id="demand-santo-domingo" name="santo-domingo-demand" x="708" y="484" xlink:href="#demand-santo-domingo-image" transform="rotate(3 708 484)"/>
+    <use id="demand-st-john" name="st-john-demand" x="1075" y="515" xlink:href="#demand-st-john-image" transform="rotate(3 1075 515)"/>
+    <use id="demand-st-maarten" name="st-maarten-demand" x="954" y="484" xlink:href="#demand-st-maarten-image" transform="rotate(3 954 484)"/>
+    <use id="demand-trinidad" name="trinidad-demand" x="998" y="883" xlink:href="#demand-trinidad-image" transform="rotate(2 998 883)"/>
+    <use id="demand-tortuga" name="tortuga-demand" x="578" y="443" xlink:href="#demand-tortuga-image" transform="rotate(2 578 443)"/>
+
+    <!-- PORT SHIP MODIFICATIONS TOKENS -->
+    <defs>
+        <clipPath id="ship-modification-token"><rect x="0" y="0" width="23" height="23" rx="2" ry="2"/></clipPath>
+        <image id="ship-modification-basse-terre-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-bridgetown-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-caracas-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-cartagena-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-curacao-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-nassau-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-havana-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-old-providence-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-petite-goave-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-port-royal-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-san-juan-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-santo-domingo-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-st-john-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-st-maarten-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-trinidad-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+        <image id="ship-modification-tortuga-image" width="23" height="23" xlink:href="" clip-path="url(#ship-modification-token)"/>
+    </defs>
+    <use id="ship-modification-basse-terre" name="basse-terre-ship-modification" x="1021" y="601" xlink:href="#ship-modification-basse-terre-image" transform="rotate(3 1021 601)"/>
+    <use id="ship-modification-bridgetown" name="bridgetown-ship-modification" x="1120" y="721" xlink:href="#ship-modification-bridgetown-image" transform="rotate(3 1120 721)"/>
+    <use id="ship-modification-caracas" name="caracas-ship-modification" x="860" y="877" xlink:href="#ship-modification-caracas-image" transform="rotate(3 860 877)"/>
+    <use id="ship-modification-cartagena" name="cartagena-ship-modification" x="415" y="876" xlink:href="#ship-modification-cartagena-image" transform="rotate(3 415 876)"/>
+    <use id="ship-modification-curacao" name="curacao-ship-modification" x="709" y="816" xlink:href="#ship-modification-curacao-image" transform="rotate(3 709 816)"/>
+    <use id="ship-modification-nassau" name="nassau-ship-modification" x="349" y="183" xlink:href="#ship-modification-nassau-image" transform="rotate(3 349 183)"/>
+    <use id="ship-modification-havana" name="havana-ship-modification" x="213" y="273" xlink:href="#ship-modification-havana-image" transform="rotate(2 213 273)"/>
+    <use id="ship-modification-old-providence" name="old-providence-ship-modification" x="162" y="694" xlink:href="#ship-modification-old-providence-image" transform="rotate(3 162 694)"/>
+    <use id="ship-modification-petit-goave" name="petit-goave-ship-modification" x="550" y="577" xlink:href="#ship-modification-petit-goave-image" transform="rotate(2 550 577)"/>
+    <use id="ship-modification-port-royal" name="port-royal-ship-modification" x="342" y="490" xlink:href="#ship-modification-port-royal-image" transform="rotate(2 342 490)"/>
+    <use id="ship-modification-san-juan" name="san-juan-ship-modification" x="841" y="533" xlink:href="#ship-modification-san-juan-image" transform="rotate(3 841 533)"/>
+    <use id="ship-modification-santo-domingo" name="santo-domingo-ship-modification" x="733" y="495" xlink:href="#ship-modification-santo-domingo-image" transform="rotate(3 733 495)"/>
+    <use id="ship-modification-st-john" name="st-john-ship-modification" x="1101" y="531" xlink:href="#ship-modification-st-john-image" transform="rotate(3 1101 531)"/>
+    <use id="ship-modification-st-maarten" name="st-maarten-ship-modification" x="981" y="470" xlink:href="#ship-modification-st-maarten-image" transform="rotate(3 981 470)"/>
+    <use id="ship-modification-trinidad" name="trinidad-ship-modification" x="1026" y="879" xlink:href="#ship-modification-trinidad-image" transform="rotate(2 1026 879)"/>
+    <use id="ship-modification-tortuga" name="tortuga-ship-modification" x="604" y="433" xlink:href="#ship-modification-tortuga-image" transform="rotate(2 604 433)"/>
+
+    <!-- GLORY POINTS TRACK -->
+    <defs>
+        <clipPath id="glory-point"><rect x="0" y="0" width="15" height="15" rx="2" ry="2"/></clipPath>
+        <image id="blue-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
+        <image id="green-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
+        <image id="red-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
+        <image id="yellow-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
+    </defs>
+    <use id="blue-glory-point-cube" name="blue-cube-glory-point" x="485" y="955" xlink:href="#blue-cube-image"/>
+    <use id="green-glory-point-cube" name="green-cube-glory-point" x="470" y="955" xlink:href="#green-cube-image"/>
+    <use id="red-glory-point-cube" name="red-cube-glory-point" x="470" y="975" xlink:href="#red-cube-image"/>
+    <use id="yellow-glory-point-cube" name="yellow-cube-glory-point" x="485" y="975" xlink:href="#yellow-cube-image"/>
+
+    <circle name="one-glory-point-track" cx="513" cy="946" r="16"/>
+    <circle name="two-glory-point-track" cx="539" cy="973" r="16"/>
+    <circle name="three-glory-point-track" cx="566" cy="947" r="16"/>
+    <circle name="four-glory-point-track" cx="592" cy="973" r="16"/>
+    <circle name="five-glory-point-track" cx="620" cy="947" r="16"/>
+    <circle name="six-glory-point-track" cx="646" cy="973" r="16"/>
+    <circle name="seven-glory-point-track" cx="672" cy="947" r="16"/>
+    <circle name="eight-glory-point-track" cx="699" cy="973" r="16"/>
+    <circle name="nine-glory-point-track" cx="726" cy="947" r="16"/>
+    <circle name="ten-glory-point-track" cx="752" cy="973" r="16"/>
+    <circle name="eleven-glory-point-track" cx="779" cy="947" r="16"/>
+    <circle name="twelve-glory-point-track" cx="806" cy="973" r="16"/>
+    <circle name="thirteen-glory-point-track" cx="832" cy="947" r="16"/>
+    <circle name="fourteen-glory-point-track" cx="859" cy="973" r="16"/>
+    <circle name="fivteen-glory-point-track" cx="886" cy="947" r="16"/>
+    <circle name="sixteen-glory-point-track" cx="912" cy="973" r="16"/>
+    <circle name="seventeen-glory-point-track" cx="938" cy="947" r="16"/>
+    <circle name="eighteen-glory-point-track" cx="965" cy="973" r="16"/>
+    <circle name="nineteen-glory-point-track" cx="992" cy="947" r="16"/>
+    <circle name="twenty-glory-point-track" cx="1019" cy="973" r="16"/>
+
+    <circle name="move-tester" id="move-tester" cx="100" cy="100" r="14"/>
+    <text class="helper" text-anchor="start" alignment-baseline="middle">
+        <tspan>-</tspan>
+        <tspan>-</tspan>
+        <tspan>-</tspan>
+        <tspan>-</tspan>
+    </text>
+</svg><br>
+</div>
