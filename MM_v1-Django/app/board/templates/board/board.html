@@ -7,7 +7,7 @@
     <image id="board-game" href="" x="0" y="0" width="1248" height="1080"/>
 
     <!-- SEA ZONES -->
-    <polygon name="sea-zone-basse-terre" class="sea-zone inspect basse-terre-zone" points="5"/>
+    <polygon name="sea-zone-basse-terre" class="sea-zone inspect basse-terre-zone" points="1035,566 1072,608 1064,756 947,754 834,683 835,643 896,558"></polygon>
     <polygon name="sea-zone-bridgetown" class="sea-zone inspect bridgetown-zone" points="1072,608 1198,609 1185,869 1064,756"/>
     <polygon name="sea-zone-caracas" class="sea-zone inspect caracas-zone" points="834,683 947,754 936,888 885,913 798,911 765,871 761,727"/>
     <polygon name="sea-zone-cartagena" class="sea-zone inspect cartagena-zone" points="391,648 470,657 496,703 494,890 376,963 304,898 299,692"/>
@@ -62,41 +62,66 @@
     <polygon name="feature-trinidad" points="1096,886 1137,889 1137,916 1093,915"/>
     <polygon name="feature-tortuga" points="425,345 563,350 554,372 425,369"/>
 
+    <!-- MISSIONs SIGNs -->
+    <defs>
+        <clipPath id="mission-sign"><rect x="0" y="0" width="25" height="45" rx="2" ry="2"/></clipPath>
+        <image id="mission-1-sign-image" width="25" height="45" xlink:href="" clip-path="url(#mission-sign)"/>
+        <image id="mission-2-sign-image" width="25" height="45" xlink:href="" clip-path="url(#mission-sign)"/>
+        <image id="mission-3-sign-image" width="25" height="45" xlink:href="" clip-path="url(#mission-sign)"/>
+    </defs>
+    <use id="mission-sign-basse-terre" name="mission-sign-basse-terre" x="1023" y="650" xlink:href=""/>
+    <use id="mission-sign-bridgetown" name="mission-sign-bridgetown" x="1170" y="760" xlink:href=""/>
+    <use id="mission-sign-caracas" name="mission-sign-caracas" x="896" y="875" xlink:href=""/>
+    <use id="mission-sign-cartagena" name="mission-sign-cartagena" x="450" y="843" xlink:href=""/>
+    <use id="mission-sign-curacao" name="mission-sign-curacao" x="657" y="840" xlink:href=""/>
+    <use id="mission-sign-havana" name="mission-sign-havana" x="202" y="220" xlink:href=""/>
+    <use id="mission-sign-gulf-city" name="mission-sign-gulf-city" x="130" y="60" xlink:href=""/>
+    <use id="mission-sign-nassau" name="mission-sign-nassau" x="388" y="246" xlink:href=""/>
+    <use id="mission-sign-old-providence" name="mission-sign-old-providence" x="175" y="750" xlink:href=""/>
+    <use id="mission-sign-petite-goave" name="mission-sign-petite-goave" x="421" y="506" xlink:href=""/>
+    <use id="mission-sign-port-royal" name="mission-sign-port-royal" x="353" y="580" xlink:href=""/>
+    <use id="mission-sign-san-juan" name="mission-sign-san-juan" x="781" y="558" xlink:href=""/>
+    <use id="mission-sign-santo-domingo" name="mission-sign-santo-domingo" x="730" y="530" xlink:href=""/>
+    <use id="mission-sign-st-john" name="mission-sign-st-john" x="1099" y="571" xlink:href=""/>
+    <use id="mission-sign-st-maarten" name="mission-sign-st-maarten" x="954" y="516" xlink:href=""/>
+    <use id="mission-sign-tortuga" name="mission-sign-tortuga" x="543" y="465" xlink:href=""/>
+    <use id="mission-sign-trinidad" name="mission-sign-trinidad" x="955" y="880" xlink:href=""/>
+
     <!-- ENEMY HIT LOCATIONs -->
     <defs>
         <clipPath id="enemy-hit-location"><rect x="0" y="0" width="15" height="15" rx="2" ry="2"/></clipPath>
         <image id="brown-cube-enemy-hit-location-image" width="15" height="15" xlink:href="" clip-path="url(#enemy-hit-location)"/>
     </defs>
-    <use id="hull-1-enemy-hit-location" name="hull-1-hit-location" x="872" y="197" xlink:href="#brown-cube-enemy-hit-location-image"/>
-    <use id="cargo-1-enemy-hit-location" name="cargo-1-hit-location" x="870" y="217" xlink:href="#brown-cube-enemy-hit-location-image"/>
-    <use id="masts-1-enemy-hit-location" name="masts-1-hit-location" x="869" y="237" xlink:href="#brown-cube-enemy-hit-location-image"/>
-    <use id="crew-1-enemy-hit-location" name="crew-1-hit-location" x="866" y="257" xlink:href="#brown-cube-enemy-hit-location-image"/>
-    <use id="cannons-1-enemy-hit-location" name="cannons-1-hit-location" x="865" y="276" xlink:href="#brown-cube-enemy-hit-location-image"/>
 
-    <rect name="hull-2-enemy-hit-location" x="891" y="199" width="16" height="16" transform="rotate(5 891 199)"/>
-    <rect name="hull-3-enemy-hit-location" x="911" y="201" width="16" height="16" transform="rotate(5 911 201)"/>
-    <rect name="hull-4-enemy-hit-location" x="930" y="202" width="16" height="16" transform="rotate(5 930 202)"/>
-    <rect name="hull-5-enemy-hit-location" x="949" y="204" width="16" height="16" transform="rotate(5 949 204)"/>
-    <!-- <rect name="cargo-1-enemy-hit-location" x="870" y="217" width="16" height="16" transform="rotate(5 870 217)"/> -->
-    <rect name="cargo-2-enemy-hit-location" x="890" y="219" width="16" height="16" transform="rotate(5 890 219)"/>
-    <rect name="cargo-3-enemy-hit-location" x="909" y="220" width="16" height="16" transform="rotate(5 909 220)"/>
-    <rect name="cargo-4-enemy-hit-location" x="928" y="222" width="16" height="16" transform="rotate(5 928 222)"/>
-    <rect name="cargo-5-enemy-hit-location" x="948" y="224" width="16" height="16" transform="rotate(5 948 224)"/>
-    <!-- <rect name="masts-1-enemy-hit-location" x="869" y="237" width="16" height="16" transform="rotate(5 869 237)"/> -->
-    <rect name="masts-2-enemy-hit-location" x="888" y="238" width="16" height="16" transform="rotate(5 888 238)"/>
-    <rect name="masts-3-enemy-hit-location" x="907" y="240" width="16" height="16" transform="rotate(5 907 240)"/>
-    <rect name="masts-4-enemy-hit-location" x="927" y="242" width="16" height="16" transform="rotate(5 927 242)"/>
-    <rect name="masts-5-enemy-hit-location" x="946" y="244" width="16" height="16" transform="rotate(5 946 244)"/>
-    <!-- <rect name="crew-1-enemy-hit-location" x="866" y="257" width="16" height="16" transform="rotate(5 866 257)"/> -->
-    <rect name="crew-2-enemy-hit-location" x="886" y="258" width="16" height="16" transform="rotate(5 886 258)"/>
-    <rect name="crew-3-enemy-hit-location" x="905" y="260" width="16" height="16" transform="rotate(5 905 260)"/>
-    <rect name="crew-4-enemy-hit-location" x="925" y="262" width="16" height="16" transform="rotate(5 925 262)"/>
-    <rect name="crew-5-enemy-hit-location" x="944" y="264" width="16" height="16" transform="rotate(5 944 264)"/>
-    <!-- <rect name="cannons-1-enemy-hit-location" x="865" y="276" width="16" height="16" transform="rotate(5 865 276)"/> -->
-    <rect name="cannons-2-enemy-hit-location" x="885" y="278" width="16" height="16" transform="rotate(5 885 278)"/>
-    <rect name="cannons-3-enemy-hit-location" x="904" y="280" width="16" height="16" transform="rotate(5 904 280)"/>
-    <rect name="cannons-4-enemy-hit-location" x="923" y="282" width="16" height="16" transform="rotate(5 923 282)"/>
-    <rect name="cannons-5-enemy-hit-location" x="942" y="283" width="16" height="16" transform="rotate(5 942 283)"/>
+    <use id="hull-1-enemy-hit-location" name="hull-1-hit-location" x="872" y="197" xlink:href=""/>
+    <use id="hull-2-enemy-hit-location" name="hull-2-hit-location" x="891" y="199" xlink:href=""/>
+    <use id="hull-3-enemy-hit-location" name="hull-3-hit-location" x="911" y="201" xlink:href=""/>
+    <use id="hull-4-enemy-hit-location" name="hull-4-hit-location" x="930" y="202" xlink:href=""/>
+    <use id="hull-5-enemy-hit-location" name="hull-5-hit-location" x="949" y="204" xlink:href=""/>
+
+    <use id="cargo-1-enemy-hit-location" name="cargo-1-hit-location" x="870" y="217" xlink:href=""/>
+    <use id="cargo-2-enemy-hit-location" name="cargo-2-hit-location" x="890" y="219" xlink:href=""/>
+    <use id="cargo-3-enemy-hit-location" name="cargo-3-hit-location" x="909" y="220" xlink:href=""/>
+    <use id="cargo-4-enemy-hit-location" name="cargo-4-hit-location" x="928" y="222" xlink:href=""/>
+    <use id="cargo-5-enemy-hit-location" name="cargo-5-hit-location" x="948" y="224" xlink:href=""/>
+
+    <use id="masts-1-enemy-hit-location" name="masts-1-hit-location" x="869" y="237" xlink:href=""/>
+    <use id="masts-2-enemy-hit-location" name="masts-2-hit-location" x="888" y="238" xlink:href=""/>
+    <use id="masts-3-enemy-hit-location" name="masts-3-hit-location" x="907" y="240" xlink:href=""/>
+    <use id="masts-4-enemy-hit-location" name="masts-4-hit-location" x="927" y="242" xlink:href=""/>
+    <use id="masts-5-enemy-hit-location" name="masts-5-hit-location" x="946" y="244" xlink:href=""/>
+
+    <use id="crew-1-enemy-hit-location" name="crew-1-hit-location" x="866" y="257" xlink:href=""/>
+    <use id="crew-2-enemy-hit-location" name="crew-2-hit-location" x="886" y="258" xlink:href=""/>
+    <use id="crew-3-enemy-hit-location" name="crew-3-hit-location" x="905" y="260" xlink:href=""/>
+    <use id="crew-4-enemy-hit-location" name="crew-4-hit-location" x="925" y="262" xlink:href=""/>
+    <use id="crew-5-enemy-hit-location" name="crew-5-hit-location" x="944" y="264" xlink:href=""/>
+
+    <use id="cannons-1-enemy-hit-location" name="cannons-1-hit-location" x="865" y="276" xlink:href=""/>
+    <use id="cannons-2-enemy-hit-location" name="cannons-2-hit-location" x="885" y="278" xlink:href=""/>
+    <use id="cannons-3-enemy-hit-location" name="cannons-3-hit-location" x="904" y="280" xlink:href=""/>
+    <use id="cannons-4-enemy-hit-location" name="cannons-4-hit-location" x="923" y="282" xlink:href=""/>
+    <use id="cannons-5-enemy-hit-location" name="cannons-5-hit-location" x="942" y="283" xlink:href=""/>
     
     <!-- AT WAR SECTION -->
     <use name="at-war-section-left" x="135" y="148" href="#port-national-flag-reverse" transform="rotate(-15 135 148)"/>
@@ -112,21 +137,38 @@
     <!-- CARDS - NAVAL CAPTAIN'S, PIRATE CAPTAIN'S, EVENT, MISSIONS -->
     
     <defs>
-        <clipPath id="myClip"><rect x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
-        <image id="myImage" width="70" height="110" xlink:href="" clip-path="url(#myClip)"/>
+        <clipPath id="event-card-clipPath"><rect name="event-card-rect" x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
+        <image id="event-card-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
     </defs>
-    c
+    <use id="track-event-cards" name="track-event-cards" x="924" y="43" xlink:href="#event-card-image" transform="rotate(3 924 43)"/>
+
+    <defs>
+        <clipPath id="mission-card-clipPath"><rect x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
+        <image id="mission-1-card-image" width="70" height="110" xlink:href="" clip-path="url(#mission-card-clipPath)"/>
+        <image id="mission-2-card-image" width="70" height="110" xlink:href="" clip-path="url(#mission-card-clipPath)"/>
+    </defs>
+    <use id="mission-1-card" name="mission-1-card" x="1011" y="64" xlink:href="#mission-1-card-image" transform="rotate(-5 1011 64)"/>
+    <use id="mission-2-card" name="mission-2-card" x="1123" y="62" xlink:href="#mission-2-card-image" transform="rotate(6 1123 62)"/>
+
 
     <rect name="spain-captain-card" x="579" y="46" width="67" height="107" rx="4" ry="4" transform="rotate(2 579 46)"/>
     <rect name="england-captain-card" x="669" y="33" width="67" height="107" rx="4" ry="4" transform="rotate(7 669 33)"/>
     <rect name="french-captain-card" x="745" y="56" width="67" height="107" rx="4" ry="4" transform="rotate(-1 745 56)"/>
     <rect name="dutch-captain-card" x="823" y="50" width="67" height="107" rx="4" ry="4" transform="rotate(-9 823 50)"/>
-    <rect name="mission-1-card" x="1011" y="64" width="69" height="107" rx="4" ry="4" transform="rotate(-5 1011 64)"/>    
-    <!-- <defs><image id="myImage2" x="0" y="0" width="70" height="110" xlink:href="{{ my_context.rewers }}" clip-path="url(#myClip)"/></defs>
-    <use name="mission-1-card" x="1011" y="64" xlink:href="#myImage2" transform="rotate(-5 1011 64)"/> -->
-    <rect name="mission-2-card" x="1123" y="62" width="69" height="107" rx="4" ry="4" transform="rotate(6 1123 62)"/>
     <rect name="pirate-sloop-card" x="657" y="163" width="67" height="107" rx="4" ry="4" transform="rotate(2 657 163)"/>
     <rect name="pirate-frigate-card" x="741" y="180" width="67" height="107" rx="4" ry="4" transform="rotate(-3 741 180)"/>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- MERCHANTS TOKENS -->
     <!-- TRACK -->
@@ -140,24 +182,24 @@
     <circle name="eighth-merchant-token-track" cx="1083" cy="306" r="14"/>
     <!-- MERCHANTS TOKENS SEA ZONES -->
     <defs>
-        <clipPath id="merchant-token"><circle cx="15" cy="15" r="15"/></clipPath>
-        <image id="merchant-token-basse-terre-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-bridgetown-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-caracas-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-cartagena-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-curacao-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-nassau-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-havana-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-old-providence-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-petite-goave-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-port-royal-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-san-juan-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-santo-domingo-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-st-john-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-st-maarten-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-the-caribbean-sea-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-trinidad-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
-        <image id="merchant-token-tortuga-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token)"/>
+        <clipPath id="merchant-token-clipPath"><circle cx="15" cy="15" r="15"/></clipPath>
+        <image id="merchant-token-basse-terre-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-bridgetown-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-caracas-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-cartagena-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-curacao-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-nassau-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-havana-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-old-providence-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-petite-goave-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-port-royal-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-san-juan-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-santo-domingo-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-st-john-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-st-maarten-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-the-caribbean-sea-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-trinidad-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
+        <image id="merchant-token-tortuga-image" width="30" height="30" xlink:href="" clip-path="url(#merchant-token-clipPath)"/>
     </defs>
     <use id="merchant-token-basse-terre" name="basse-terre-merchant-token" x="880" y="656" xlink:href="#merchant-token-basse-terre-image"/>
     <use id="merchant-token-bridgetown" name="bridgetown-merchant-token" x="1155" y="807" xlink:href="#merchant-token-bridgetown-image"/>
@@ -175,27 +217,27 @@
     <use id="merchant-token-st-maarten" name="st-maarten-merchant-token" x="1015" y="380" xlink:href="#merchant-token-st-maarten-image"/>
     <use id="merchant-token-the-caribbean-sea" name="the-caribbean-sea-merchant-token" x="740" y="690" xlink:href="#merchant-token-the-caribbean-sea-image"/>
     <use id="merchant-token-tortuga" name="tortuga-merchant-token" x="514" y="392" xlink:href="#merchant-token-tortuga-image"/>
-    <use id="merchant-token-trinidad" name="trinidad-merchant-token" x="1074" y="889" xlink:href="#merchant-token-trinidad-image"/>
+    <use id="merchant-token-trinidad" name="trinidad-merchant-token" x="1134" y="930" xlink:href="#merchant-token-trinidad-image"/>
 
     <!-- LOCATION TOKENS -->
     <defs>
-        <clipPath id="location-toke"><<path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/></clipPath>
-        <image id="location-token-basse-terre-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-bridgetown-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-caracas-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-cartagena-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-curacao-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-havana-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-nassau-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-old-providence-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-petite-goave-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-port-royal-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-san-juan-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-santo-domingo-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-st-john-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-st-maarten-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-trinidad-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
-        <image id="location-token-tortuga-image" width="50" height="40" xlink:href="" clip-path="url(#location-toke)"/>
+        <clipPath id="location-token"><path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/></clipPath>
+        <image id="location-token-basse-terre-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-bridgetown-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-caracas-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-cartagena-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-curacao-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-havana-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-nassau-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-old-providence-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-petite-goave-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-port-royal-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-san-juan-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-santo-domingo-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-st-john-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-st-maarten-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-trinidad-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
+        <image id="location-token-tortuga-image" width="50" height="40" xlink:href="" clip-path="url(#location-token)"/>
     </defs>
     <use id="location-basse-terre" name="location-token-basse-terre" x="998" y="695" href="#location-token-basse-terre-image"/>
     <use id="location-bridgetown" name="location-token-bridgetown" x="1147" y="710" href="#location-token-basse-terre-image"/>
@@ -307,7 +349,7 @@
     <use id="ship-modification-nassau" name="nassau-ship-modification" x="349" y="183" xlink:href="#ship-modification-nassau-image" transform="rotate(3 349 183)"/>
     <use id="ship-modification-havana" name="havana-ship-modification" x="213" y="273" xlink:href="#ship-modification-havana-image" transform="rotate(2 213 273)"/>
     <use id="ship-modification-old-providence" name="old-providence-ship-modification" x="162" y="694" xlink:href="#ship-modification-old-providence-image" transform="rotate(3 162 694)"/>
-    <use id="ship-modification-petit-goave" name="petit-goave-ship-modification" x="550" y="577" xlink:href="#ship-modification-petit-goave-image" transform="rotate(2 550 577)"/>
+    <use id="ship-modification-petite-goave" name="petite-goave-ship-modification" x="550" y="577" xlink:href="#ship-modification-petite-goave-image" transform="rotate(2 550 577)"/>
     <use id="ship-modification-port-royal" name="port-royal-ship-modification" x="342" y="490" xlink:href="#ship-modification-port-royal-image" transform="rotate(2 342 490)"/>
     <use id="ship-modification-san-juan" name="san-juan-ship-modification" x="841" y="533" xlink:href="#ship-modification-san-juan-image" transform="rotate(3 841 533)"/>
     <use id="ship-modification-santo-domingo" name="santo-domingo-ship-modification" x="733" y="495" xlink:href="#ship-modification-santo-domingo-image" transform="rotate(3 733 495)"/>
@@ -318,44 +360,166 @@
 
     <!-- GLORY POINTS TRACK -->
     <defs>
-        <clipPath id="glory-point"><rect x="0" y="0" width="15" height="15" rx="2" ry="2"/></clipPath>
-        <image id="blue-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
-        <image id="green-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
-        <image id="red-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
-        <image id="yellow-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point)"/>
+        <clipPath id="glory-point-clipPath"><rect x="0" y="0" width="15" height="15" rx="2" ry="2"/></clipPath>
+        <image id="blue-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point-clipPath)"/>
+        <image id="green-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point-clipPath)"/>
+        <image id="red-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point-clipPath)"/>
+        <image id="yellow-cube-image" width="15" height="15" xlink:href="" clip-path="url(#glory-point-clipPath)"/>
     </defs>
-    <use id="blue-glory-point-cube" name="blue-cube-glory-point" x="485" y="955" xlink:href="#blue-cube-image"/>
-    <use id="green-glory-point-cube" name="green-cube-glory-point" x="470" y="955" xlink:href="#green-cube-image"/>
-    <use id="red-glory-point-cube" name="red-cube-glory-point" x="470" y="975" xlink:href="#red-cube-image"/>
-    <use id="yellow-glory-point-cube" name="yellow-cube-glory-point" x="485" y="975" xlink:href="#yellow-cube-image"/>
+    <use id="blue-0-glory-point-cube" name="blue-cube-0-glory-point" x="485" y="955" xlink:href=""/>
+    <use id="green-0-glory-point-cube" name="green-cube-0-glory-point" x="470" y="955" xlink:href=""/>
+    <use id="red-0-glory-point-cube" name="red-cube-0-glory-point" x="470" y="975" xlink:href=""/>
+    <use id="yellow-0-glory-point-cube" name="yellow-cube-0-glory-point" x="485" y="975" xlink:href=""/>
 
-    <circle name="one-glory-point-track" cx="513" cy="946" r="16"/>
-    <circle name="two-glory-point-track" cx="539" cy="973" r="16"/>
-    <circle name="three-glory-point-track" cx="566" cy="947" r="16"/>
-    <circle name="four-glory-point-track" cx="592" cy="973" r="16"/>
-    <circle name="five-glory-point-track" cx="620" cy="947" r="16"/>
-    <circle name="six-glory-point-track" cx="646" cy="973" r="16"/>
-    <circle name="seven-glory-point-track" cx="672" cy="947" r="16"/>
-    <circle name="eight-glory-point-track" cx="699" cy="973" r="16"/>
-    <circle name="nine-glory-point-track" cx="726" cy="947" r="16"/>
-    <circle name="ten-glory-point-track" cx="752" cy="973" r="16"/>
-    <circle name="eleven-glory-point-track" cx="779" cy="947" r="16"/>
-    <circle name="twelve-glory-point-track" cx="806" cy="973" r="16"/>
-    <circle name="thirteen-glory-point-track" cx="832" cy="947" r="16"/>
-    <circle name="fourteen-glory-point-track" cx="859" cy="973" r="16"/>
-    <circle name="fivteen-glory-point-track" cx="886" cy="947" r="16"/>
-    <circle name="sixteen-glory-point-track" cx="912" cy="973" r="16"/>
-    <circle name="seventeen-glory-point-track" cx="938" cy="947" r="16"/>
-    <circle name="eighteen-glory-point-track" cx="965" cy="973" r="16"/>
-    <circle name="nineteen-glory-point-track" cx="992" cy="947" r="16"/>
-    <circle name="twenty-glory-point-track" cx="1019" cy="973" r="16"/>
+    <use id="blue-1-glory-point-cube" name="blue-cube-1-glory-point" x="515" y="930" xlink:href=""/>
+    <use id="green-1-glory-point-cube" name="green-cube-1-glory-point" x="500" y="930" xlink:href=""/>
+    <use id="red-1-glory-point-cube" name="red-cube-1-glory-point" x="500" y="950" xlink:href=""/>
+    <use id="yellow-1-glory-point-cube" name="yellow-cube-1-glory-point" x="515" y="950" xlink:href=""/>
 
-    <circle name="move-tester" id="move-tester" cx="100" cy="100" r="14"/>
-    <text class="helper" text-anchor="start" alignment-baseline="middle">
-        <tspan>-</tspan>
-        <tspan>-</tspan>
-        <tspan>-</tspan>
-        <tspan>-</tspan>
+    <use id="blue-2-glory-point-cube" name="blue-cube-2-glory-point" x="540" y="955" xlink:href=""/>
+    <use id="green-2-glory-point-cube" name="green-cube-2-glory-point" x="525" y="955" xlink:href=""/>
+    <use id="red-2-glory-point-cube" name="red-cube-2-glory-point" x="525" y="975" xlink:href=""/>
+    <use id="yellow-2-glory-point-cube" name="yellow-cube-2-glory-point" x="540" y="975" xlink:href=""/>
+
+    <use id="blue-3-glory-point-cube" name="blue-cube-3-glory-point" x="565" y="930" xlink:href=""/>
+    <use id="green-3-glory-point-cube" name="green-cube-3-glory-point" x="550" y="930" xlink:href=""/>
+    <use id="red-3-glory-point-cube" name="red-cube-3-glory-point" x="550" y="950" xlink:href=""/>
+    <use id="yellow-3-glory-point-cube" name="yellow-cube-3-glory-point" x="565" y="950" xlink:href=""/>
+
+    <use id="blue-4-glory-point-cube" name="blue-cube-4-glory-point" x="590" y="955" xlink:href=""/>
+    <use id="green-4-glory-point-cube" name="green-cube-4-glory-point" x="575" y="955" xlink:href=""/>
+    <use id="red-4-glory-point-cube" name="red-cube-4-glory-point" x="575" y="975" xlink:href=""/>
+    <use id="yellow-4-glory-point-cube" name="yellow-cube-4-glory-point" x="590" y="975" xlink:href=""/>
+
+    <use id="blue-5-glory-point-cube" name="blue-cube-5-glory-point" x="615" y="930" xlink:href=""/>
+    <use id="green-5-glory-point-cube" name="green-cube-5-glory-point" x="600" y="930" xlink:href=""/>
+    <use id="red-5-glory-point-cube" name="red-cube-5-glory-point" x="600" y="950" xlink:href=""/>
+    <use id="yellow-5-glory-point-cube" name="yellow-cube-5-glory-point" x="615" y="950" xlink:href=""/>
+
+    <use id="blue-6-glory-point-cube" name="blue-cube-6-glory-point" x="645" y="955" xlink:href=""/>
+    <use id="green-6-glory-point-cube" name="green-cube-6-glory-point" x="630" y="955" xlink:href=""/>
+    <use id="red-6-glory-point-cube" name="red-cube-6-glory-point" x="630" y="975" xlink:href=""/>
+    <use id="yellow-6-glory-point-cube" name="yellow-cube-6-glory-point" x="645" y="975" xlink:href=""/>
+
+    <use id="blue-7-glory-point-cube" name="blue-cube-7-glory-point" x="670" y="930" xlink:href=""/>
+    <use id="green-7-glory-point-cube" name="green-cube-7-glory-point" x="655" y="930" xlink:href=""/>
+    <use id="red-7-glory-point-cube" name="red-cube-7-glory-point" x="655" y="950" xlink:href=""/>
+    <use id="yellow-7-glory-point-cube" name="yellow-cube-7-glory-point" x="670" y="950" xlink:href=""/>
+
+    <use id="blue-8-glory-point-cube" name="blue-cube-8-glory-point" x="700" y="955" xlink:href=""/>
+    <use id="green-8-glory-point-cube" name="green-cube-8-glory-point" x="685" y="955" xlink:href=""/>
+    <use id="red-8-glory-point-cube" name="red-cube-8-glory-point" x="685" y="975" xlink:href=""/>
+    <use id="yellow-8-glory-point-cube" name="yellow-cube-8-glory-point" x="700" y="975" xlink:href=""/>
+
+    <use id="blue-9-glory-point-cube" name="blue-cube-9-glory-point" x="725" y="930" xlink:href=""/>
+    <use id="green-9-glory-point-cube" name="green-cube-9-glory-point" x="710" y="930" xlink:href=""/>
+    <use id="red-9-glory-point-cube" name="red-cube-9-glory-point" x="710" y="950" xlink:href=""/>
+    <use id="yellow-9-glory-point-cube" name="yellow-cube-9-glory-point" x="725" y="950" xlink:href=""/>
+
+    <use id="blue-10-glory-point-cube" name="blue-cube-10-glory-point" x="750" y="955" xlink:href=""/>
+    <use id="green-10-glory-point-cube" name="green-cube-10-glory-point" x="735" y="955" xlink:href=""/>
+    <use id="red-10-glory-point-cube" name="red-cube-10-glory-point" x="735" y="975" xlink:href=""/>
+    <use id="yellow-10-glory-point-cube" name="yellow-cube-10-glory-point" x="750" y="975" xlink:href=""/>
+
+    <use id="blue-11-glory-point-cube" name="blue-cube-11-glory-point" x="780" y="930" xlink:href=""/>
+    <use id="green-11-glory-point-cube" name="green-cube-11-glory-point" x="765" y="930" xlink:href=""/>
+    <use id="red-11-glory-point-cube" name="red-cube-11-glory-point" x="765" y="950" xlink:href=""/>
+    <use id="yellow-11-glory-point-cube" name="yellow-cube-11-glory-point" x="780" y="950" xlink:href=""/>
+
+    <use id="blue-12-glory-point-cube" name="blue-cube-12-glory-point" x="805" y="955" xlink:href=""/>
+    <use id="green-12-glory-point-cube" name="green-cube-12-glory-point" x="790" y="955" xlink:href=""/>
+    <use id="red-12-glory-point-cube" name="red-cube-12-glory-point" x="790" y="975" xlink:href=""/>
+    <use id="yellow-12-glory-point-cube" name="yellow-cube-12-glory-point" x="805" y="975" xlink:href=""/>
+
+    <use id="blue-13-glory-point-cube" name="blue-cube-13-glory-point" x="830" y="930" xlink:href=""/>
+    <use id="green-13-glory-point-cube" name="green-cube-13-glory-point" x="815" y="930" xlink:href=""/>
+    <use id="red-13-glory-point-cube" name="red-cube-13-glory-point" x="815" y="950" xlink:href=""/>
+    <use id="yellow-13-glory-point-cube" name="yellow-cube-13-glory-point" x="830" y="950" xlink:href=""/>
+
+    <use id="blue-14-glory-point-cube" name="blue-cube-14-glory-point" x="860" y="955" xlink:href=""/>
+    <use id="green-14-glory-point-cube" name="green-cube-14-glory-point" x="845" y="955" xlink:href=""/>
+    <use id="red-14-glory-point-cube" name="red-cube-14-glory-point" x="845" y="975" xlink:href=""/>
+    <use id="yellow-14-glory-point-cube" name="yellow-cube-14-glory-point" x="860" y="975" xlink:href=""/>
+
+    <use id="blue-15-glory-point-cube" name="blue-cube-15-glory-point" x="885" y="930" xlink:href=""/>
+    <use id="green-15-glory-point-cube" name="green-cube-15-glory-point" x="870" y="930" xlink:href=""/>
+    <use id="red-15-glory-point-cube" name="red-cube-15-glory-point" x="870" y="950" xlink:href=""/>
+    <use id="yellow-15-glory-point-cube" name="yellow-cube-15-glory-point" x="885" y="950" xlink:href=""/>
+
+    <use id="blue-16-glory-point-cube" name="blue-cube-16-glory-point" x="910" y="955" xlink:href=""/>
+    <use id="green-16-glory-point-cube" name="green-cube-16-glory-point" x="895" y="955" xlink:href=""/>
+    <use id="red-16-glory-point-cube" name="red-cube-16-glory-point" x="895" y="975" xlink:href=""/>
+    <use id="yellow-16-glory-point-cube" name="yellow-cube-16-glory-point" x="910" y="975" xlink:href=""/>
+
+    <use id="blue-17-glory-point-cube" name="blue-cube-17-glory-point" x="940" y="930" xlink:href=""/>
+    <use id="green-17-glory-point-cube" name="green-cube-17-glory-point" x="925" y="930" xlink:href=""/>
+    <use id="red-17-glory-point-cube" name="red-cube-17-glory-point" x="925" y="950" xlink:href=""/>
+    <use id="yellow-17-glory-point-cube" name="yellow-cube-17-glory-point" x="940" y="950" xlink:href=""/>
+
+    <use id="blue-18-glory-point-cube" name="blue-cube-18-glory-point" x="965" y="955" xlink:href=""/>
+    <use id="green-18-glory-point-cube" name="green-cube-18-glory-point" x="950" y="955" xlink:href=""/>
+    <use id="red-18-glory-point-cube" name="red-cube-18-glory-point" x="950" y="975" xlink:href=""/>
+    <use id="yellow-18-glory-point-cube" name="yellow-cube-18-glory-point" x="965" y="975" xlink:href=""/>
+
+    <use id="blue-19-glory-point-cube" name="blue-cube-19-glory-point" x="990" y="930" xlink:href=""/>
+    <use id="green-19-glory-point-cube" name="green-cube-19-glory-point" x="975" y="930" xlink:href=""/>
+    <use id="red-19-glory-point-cube" name="red-cube-19-glory-point" x="975" y="950" xlink:href=""/>
+    <use id="yellow-19-glory-point-cube" name="yellow-cube-19-glory-point" x="990" y="950" xlink:href=""/>
+
+    <use id="blue-20-glory-point-cube" name="blue-cube-20-glory-point" x="1020" y="955" xlink:href=""/>
+    <use id="green-20-glory-point-cube" name="green-cube-20-glory-point" x="1005" y="955" xlink:href=""/>
+    <use id="red-20-glory-point-cube" name="red-cube-20-glory-point" x="1005" y="975" xlink:href=""/>
+    <use id="yellow-20-glory-point-cube" name="yellow-cube-20-glory-point" x="1020" y="975" xlink:href=""/>
+
+    <text class="helper-board" text-anchor="start" alignment-baseline="middle">
+        <tspan class="tspan-board"></tspan>
+        <tspan class="tspan-board"></tspan>
     </text>
+
+    <!-- SHIPs -->
+    <defs>
+        <clipPath id="sloop-ship-plastic-clipPath"><rect x="0" y="0" width="45" height="45" rx="2" ry="2"/></clipPath>
+        <clipPath id="flute-ship-plastic-clipPath"><rect x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
+        <clipPath id="brig-ship-plastic-clipPath"><rect x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
+        <clipPath id="frigate-ship-plastic-clipPath"><rect x="0" y="0" width="55" height="55" rx="2" ry="2"/></clipPath>
+        <clipPath id="galleon-ship-plastic-clipPath"><rect x="0" y="0" width="60" height="60" rx="2" ry="2"/></clipPath>
+
+        <image id="sloop-black-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-black-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-black-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-black-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-black-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-blue-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-blue-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-blue-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-blue-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-blue-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-green-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-green-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-green-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-green-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-green-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-red-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-red-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-red-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-red-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-red-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-yellow-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-yellow-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-yellow-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-yellow-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-yellow-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+    </defs>
+    <use id="ship-plastic-black" class="ship-plastic" name="ship-plastic-black" x="50" y="10" xlink:href=""/>
+    <use id="ship-plastic-blue" class="ship-plastic" name="ship-plastic-blue" x="150" y="10" xlink:href=""/>
+    <use id="ship-plastic-yellow" class="ship-plastic" name="ship-plastic-yellow" x="250" y="10" xlink:href=""/>
+    <use id="ship-plastic-red" class="ship-plastic" name="ship-plastic-red" x="350" y="10" xlink:href=""/>
+    <use id="ship-plastic-green" class="ship-plastic" name="ship-plastic-green" x="450" y="10" xlink:href=""/>
+
 </svg><br>
 </div>

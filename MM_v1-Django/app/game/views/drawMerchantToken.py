@@ -1,8 +1,6 @@
 import random
 from django.http import HttpResponse
 from dataset.models import MerchantTokens
-from PIL import Image
-import io
 
 def drawMerchantToken(request):
     """Function return new randomly ship modifocation token for port."""

@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('board.urls')),
     path('', include('player_board.urls')),
     path('', include('nav.urls')),
+    path('', include('game_setup.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

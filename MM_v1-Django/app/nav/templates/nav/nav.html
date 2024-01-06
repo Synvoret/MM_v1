@@ -2,4 +2,30 @@
 
 <div id="nav-container">
     <p>I'm NavBar.</p>
+
+    <div class="nav-buttons-container">
+
+        <!-- DRAW EVENT CARD -->
+        <button class="nav-button nav-button-draw-event-card" onclick="newEventCard('event-card-image')">Draw Event Card</button>
+
+        <!-- PLAYER ACTIONs -->
+        <button class="nav-button nav-button-move-ship">Move Ship</button>
+        <button class="nav-button nav-button-scout">Scout</button>
+        <button class="nav-button nav-button-port">Port</button>
+        <button class="nav-button nav-button-fishing">Fishing</button>
+        <button class="nav-button nav-button-end-turn">End Turn</button>
+
+        <button class="nav-button dice dice1" onclick="rollDice('.dice1-image')"><img class="dice1-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice2" onclick="rollDice('.dice2-image')"><img class="dice2-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice3" onclick="rollDice('.dice3-image')"><img class="dice3-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice4" onclick="rollDice('.dice4-image')"><img class="dice4-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice5" onclick="rollDice('.dice5-image')"><img class="dice5-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice6" onclick="rollDice('.dice6-image')"><img class="dice6-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice7" onclick="rollDice('.dice7-image')"><img class="dice7-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice8" onclick="rollDice('.dice8-image')"><img class="dice8-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice9" onclick="rollDice('.dice9-image')"><img class="dice9-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice10" onclick="rollDice('.dice10-image')" disabled><img class="dice10-image dice-image" src="/media/dices/dice_skull6.png"></button>
+    </div>
+
+    <p class="messages">Here will be messages for player.</p>
 </div>

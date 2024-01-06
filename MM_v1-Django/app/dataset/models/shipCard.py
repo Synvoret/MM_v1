@@ -11,16 +11,18 @@ class ShipCard(models.Model):
     ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
-    card = models.CharField(max_length=50, unique=True)
+    ship = models.CharField(max_length=50, blank=True, null=True)
     expansion = models.CharField(max_length=150, null=True, blank=True, choices=EXPANSION)
-    notes = models.CharField(max_length=1000, null=True, blank=True)
     awers = models.ImageField(upload_to='shipsCards/', blank=True, null=True) # card front
-    rewers = models.ImageField(blank=True, null=True) # card back
-    toughness = models.IntegerField()
-    cargo = models.IntegerField()
-    crew = models.IntegerField()
-    cannons = models.IntegerField()
-    maneuverability = models.IntegerField()
+    toughness = models.IntegerField(blank=True, null=True)
+    cargo = models.IntegerField(blank=True, null=True)
+    crew = models.IntegerField(blank=True, null=True)
+    cannons = models.IntegerField(blank=True, null=True)
+    maneuverability = models.IntegerField(blank=True, null=True)
+    speed = models.IntegerField(blank=True, null=True)
+    boats = models.IntegerField(blank=True, null=True)
+
+    notes = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
-        return f"Ship - {self.card}"
+        return f"Ship - {self.ship}"

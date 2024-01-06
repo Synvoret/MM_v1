@@ -1,6 +1,7 @@
 #board-container {
     margin-top: 80px;
-    margin-bottom: 80px;
+    /* margin-bottom: 360px; */
+    margin-bottom: -80px;
     background-color: gray;
     width: 1248px;
 }
@@ -31,7 +32,7 @@ use:hover,
     stroke-width: .1;
 }
 
-.helper {
+.helper-board {
     position: absolute;
     /* display: none; */
     width: 100px;
@@ -41,9 +42,4 @@ use:hover,
     font-size: 18px;
     fill: white;
     font-weight: bold;
-}
-
-#move-tester {
-    stroke: cyan;
-    stroke-width: 5px;
 }

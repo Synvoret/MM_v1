@@ -5,6 +5,7 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'nav/styles/nav_styles.css' %}">
     <link rel="stylesheet" href="{% static 'board/styles/board_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'player_board/styles/player_board_styles.css' %}">
 {% endblock styles %}  
 
 
@@ -12,14 +13,33 @@
 
     {% include 'nav/nav.html' %}
     {% include 'board/board.html' %}
+    {% include 'player_board/player_board.html' %}
     <a href="{% url 'index:index' %}"><button class="back"><- BACK to INDEX</button></a>
 
 {% endblock content %}
 
 {% block scripts %}
-    <script src="{% static 'game/js/references.js' %}"></script>
-    
-    <script src="{% static 'game/js/newBoard.js' %}"></script>
-    
+    <script src="{% static 'game/js/startGame/newBoard.js' %}"></script>
+    <script src="{% static 'game/js/startGame/newPlayerBoard.js' %}"></script>
+
+    <script src="{% static 'game/js/flowGame/drawDemandToken.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawEventCard.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawGloryCard.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawMissionCard.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawMerchantToken.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawPlayerCaptainCard.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawPlayerShipCard.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/drawShipModification.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/putLocationToken.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/putShipPlastic.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/rollDice.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/updateEnemyHitLocation.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/updateEnemyHitLocation.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/updateFavorsTrack.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/updateGloryTrack.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/updateLoyalityTrack.js' %}"></script>
+
+    <script src="{% static 'game/js/startGame/startGame.js' %}"></script>
+
     <script src="{% static 'game/js/testowy.js' %}"></script>
 {% endblock scripts %}

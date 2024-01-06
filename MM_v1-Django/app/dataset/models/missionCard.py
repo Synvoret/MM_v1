@@ -10,6 +10,7 @@ class MissionCard(models.Model):
         ('Caracas', 'Caracas'),
         ('Cartagena', 'Cartagena'),
         ('Curacao', 'Curacao'),
+        ('Gulf City', 'Gulf City'),
         ('Havana', 'Havana'),
         ('Nassau', 'Nassau'),
         ('Old Providence', 'Old Providence'),
@@ -29,14 +30,13 @@ class MissionCard(models.Model):
     ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
-    card = models.CharField(max_length=50, unique=True)
+    card = models.CharField(max_length=100, unique=True)
     expansion = models.CharField(max_length=150, null=True, blank=True, choices=EXPANSION)
-    notes = models.CharField(max_length=1000, null=True, blank=True)
     awers = models.ImageField(upload_to='missionsCards/', blank=True, null=True) # card front
-    rewers = models.ImageField(blank=True, null=True) # card back
     earn = models.CharField(max_length=100)
     requirements = models.CharField(max_length=100)
     port = models.CharField(max_length=100, choices=PORT)
+    notes = models.TextField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
         return f"Mission - {self.card}"

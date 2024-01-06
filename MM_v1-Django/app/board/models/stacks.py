@@ -1,15 +1,15 @@
-import random
-from django.db import models
-from .board import Board
+# import random
+# from django.db import models
+# from .board import Board
 
 
-class StackEventsCardsInBoard(models.Model):
-    """Board for all stacks in event stacks."""
+# class StackEventsCardsInBoard(models.Model):
+#     """Board for all stacks in event stacks."""
 
-    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+#     board = models.ForeignKey(Board, on_delete=models.CASCADE)
 
-    class Meta:
-        abstract = True
+#     class Meta:
+#         abstract = True
 
     # def random_event_card(self):
     #     """Choose randomly one event card for events stack."""

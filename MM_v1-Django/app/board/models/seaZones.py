@@ -20,6 +20,8 @@ class SeaZone(models.Model):
     demand_x = models.IntegerField()
     demand_y = models.IntegerField()
     demand_rotate = models.IntegerField()
+    mission_sign_x = models.IntegerField(null=True, blank=True)
+    mission_sign_y = models.IntegerField(null=True, blank=True)
     modification_x = models.IntegerField()
     modification_y = models.IntegerField()
     modification_rotate = models.IntegerField()

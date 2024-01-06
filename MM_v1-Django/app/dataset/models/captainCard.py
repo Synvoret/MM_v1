@@ -37,17 +37,16 @@ class CaptainCard(models.Model):
     ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
-    card = models.CharField(max_length=50, unique=True)
+    captain = models.CharField(max_length=50, unique=True)
     expansion = models.CharField(max_length=150, null=True, blank=True, choices=EXPANSION)
-    notes = models.CharField(max_length=1000, null=True, blank=True)
     awers = models.ImageField(upload_to='captainCards/', blank=True, null=True) # card front
-    rewers = models.ImageField(blank=True, null=True) # card back
-    home_port = models.CharField(max_length=30, choices=PORT)
+    home_port = models.CharField(max_length=30, choices=PORT, blank=True, null=True)
     nationality = models.CharField(max_length=30, choices=NATIONALITY)
-    seamanship = models.IntegerField()
-    scouting = models.IntegerField()
-    leadership = models.IntegerField()
-    influence = models.IntegerField()
+    seamanship = models.IntegerField(blank=True, null=True)
+    scouting = models.IntegerField(blank=True, null=True)
+    leadership = models.IntegerField(blank=True, null=True)
+    influence = models.IntegerField(blank=True, null=True)
+    notes = models.TextField(max_length=5000, null=True, blank=True)
 
     def __str__(self):
-        return f"Captain - {self.card}"
+        return f"Captain - {self.captain}"

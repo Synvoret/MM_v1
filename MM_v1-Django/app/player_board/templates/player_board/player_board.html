@@ -1,0 +1,193 @@
+{% load static %}
+
+<div id="player-board-container">
+    <svg id="player-board-svg">
+
+        <!-- PLAYER BOARD BLUE -->
+        <image id="player-board-blue" href="" x="0" y="0" width="600" height="350"/>
+
+        <!-- FAVORs TRACK -->
+        <defs>
+            <clipPath id="favors-track-clipPath"><rect x="0" y="0" width="20" height="20" rx="2" ry="2"/></clipPath>
+            <image id="cube-favor-image" width="20" height="20" xlink:href="" clip-path="url(#favors-track-clipPath)"/>
+        </defs>
+        <use id="0-favor-track" class="opacity-cube" name="0-favor-track" x="23" y="103" xlink:href=""/>
+        <use id="1-favor-track" class="opacity-cube" name="1-favor-track" x="23" y="84" xlink:href=""/>
+        <use id="2-favor-track" class="opacity-cube" name="2-favor-track" x="23" y="64" xlink:href=""/>
+        <use id="3-favor-track" class="opacity-cube" name="3-favor-track" x="23" y="44" xlink:href=""/>
+        <use id="4-favor-track" class="opacity-cube" name="4-favor-track" x="23" y="24" xlink:href=""/>
+        <use id="5-favor-track" class="opacity-cube" name="5-favor-track" x="23" y="4" xlink:href=""/>
+
+        <!-- LOYALITY TRACK -->
+        <defs>
+            <clipPath id="loyality-track-clipPath"><rect x="0" y="0" width="20" height="20" rx="2" ry="2"/></clipPath>
+            <image id="cube-loyality-image" width="20" height="20" xlink:href="" clip-path="url(#loyality-track-clipPath)"/>
+        </defs>
+        <use id="fierce-loyality-loyality-track" class="opacity-cube" name="fierce-loyality-loyality-track" x="67" y="37" xlink:href=""/>
+        <use id="happy-loyality-track" class="opacity-cube" name="happy-loyality-track" x="67" y="57" xlink:href=""/>
+        <use id="pleased-loyality-track" class="opacity-cube" name="pleased-loyality-track" x="67" y="77" xlink:href=""/>
+        <use id="content-loyality-track" class="opacity-cube" name="content-loyality-track" x="67" y="103" xlink:href=""/>
+        <use id="restless-loyality-track" class="opacity-cube" name="restless-loyality-track" x="67" y="129" xlink:href=""/>
+        <use id="unhappy-loyality-track" class="opacity-cube" name="unhappy-loyality-track" x="67" y="149" xlink:href=""/>
+        <use id="angry-loyality-track" class="opacity-cube" name="angry-loyality-track" x="67" y="169" xlink:href=""/>
+        <use id="mutiny-loyality-track" class="opacity-cube" name="mutiny-loyality-track" x="67" y="189" xlink:href=""/>
+
+        <!-- PLAYER CAPTAIN -->
+        <defs>
+            <clipPath id="player-captain-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
+            <image id="player-captain-card-image" width="88" height="58" xlink:href="" clip-path="url(#player-captain-card-clipPath)"/>
+        </defs>
+        <use id="player-captain-card" name="player-captain-card" x="160" y="25" xlink:href="#player-captain-card-image" transform="rotate(0.5 160 25)"/>
+
+        <!-- PLAYER GLORY CARDs -->
+        <defs>
+            <clipPath id="player-glory-card-clipPath"><rect x="0" y="0" width="58" height="88" rx="4" ry="4"/></clipPath>
+            <image id="player-glory-card-1-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+            <image id="player-glory-card-2-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+            <image id="player-glory-card-3-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+            <image id="player-glory-card-4-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+            <image id="player-glory-card-5-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+            <image id="player-glory-card-6-image" width="58" height="88" xlink:href="" clip-path="url(#player-glory-card-clipPath)"/>
+        </defs>
+        <use id="player-glory-card-1" name="player-glory-card-1" x="490" y="10" xlink:href="#player-glory-card-1-image"/>
+        <use id="player-glory-card-2" name="player-glory-card-2" x="505" y="10" xlink:href="#player-glory-card-2-image"/>
+        <use id="player-glory-card-3" name="player-glory-card-3" x="520" y="10" xlink:href="#player-glory-card-3-image"/>
+        <use id="player-glory-card-4" name="player-glory-card-4" x="535" y="10" xlink:href="#player-glory-card-4-image"/>
+        <use id="player-glory-card-5" name="player-glory-card-5" x="550" y="10" xlink:href="#player-glory-card-5-image"/>
+        <use id="player-glory-card-6" name="player-glory-card-6" x="565" y="10" xlink:href="#player-glory-card-6-image"/>
+
+        <!-- PLAYER SHIP -->
+        <defs>
+            <clipPath id="player-ship-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
+            <image id="player-ship-card-image" width="88" height="58" xlink:href="" clip-path="url(#player-ship-card-clipPath)"/>
+        </defs>
+        <use id="player-ship-card" name="player-ship-card" x="160" y="152" xlink:href="#player-ship-card-image" transform="rotate(0.5 161 153)"/>
+
+        <!-- PLAYER HIT LOCATIONs -->
+        <defs>
+            <clipPath id="player-hit-location-clipPath"><rect x="0" y="0" width="12" height="12" rx="2" ry="2"/></clipPath>
+            <image id="player-hit-location-image" width="12" height="12" xlink:href="" clip-path="url(#player-hit-location-clipPath)"/>
+        </defs>
+        <use id="hull-1-player-hit-location" name="hull-1-player-it-location" x="271" y="141" xlink:href=""/>
+        <use id="hull-2-player-hit-location" name="hull-2-player-it-location" x="284" y="141" xlink:href=""/>
+        <use id="hull-3-player-hit-location" name="hull-3-player-it-location" x="296" y="141" xlink:href=""/>
+        <use id="hull-4-player-hit-location" name="hull-4-player-it-location" x="309" y="141" xlink:href=""/>
+        <use id="hull-5-player-hit-location" name="hull-5-player-it-location" x="321" y="141" xlink:href=""/>
+        <use id="hull-6-player-hit-location" name="hull-6-player-it-location" x="334" y="141" xlink:href=""/>
+        <use id="hull-7-player-hit-location" name="hull-7-player-it-location" x="345" y="141" xlink:href=""/>
+
+        <use id="cargo-1-player-hit-location" name="cargo-1-player-hit-location" x="271" y="158" xlink:href=""/>
+        <use id="cargo-2-player-hit-location" name="cargo-2-player-hit-location" x="284" y="158" xlink:href=""/>
+        <use id="cargo-3-player-hit-location" name="cargo-3-player-hit-location" x="296" y="158" xlink:href=""/>
+        <use id="cargo-4-player-hit-location" name="cargo-4-player-hit-location" x="309" y="158" xlink:href=""/>
+        <use id="cargo-5-player-hit-location" name="cargo-5-player-hit-location" x="321" y="158" xlink:href=""/>
+        <use id="cargo-6-player-hit-location" name="cargo-6-player-hit-location" x="334" y="158" xlink:href=""/>
+        <use id="cargo-7-player-hit-location" name="cargo-7-player-hit-location" x="345" y="158" xlink:href=""/>
+
+        <use id="masts-1-player-hit-location" name="masts-1-player-hit-location" x="271" y="174" xlink:href=""/>
+        <use id="masts-2-player-hit-location" name="masts-2-player-hit-location" x="284" y="174" xlink:href=""/>
+        <use id="masts-3-player-hit-location" name="masts-3-player-hit-location" x="296" y="174" xlink:href=""/>
+        <use id="masts-4-player-hit-location" name="masts-4-player-hit-location" x="309" y="174" xlink:href=""/>
+        <use id="masts-5-player-hit-location" name="masts-5-player-hit-location" x="321" y="174" xlink:href=""/>
+        <use id="masts-6-player-hit-location" name="masts-6-player-hit-location" x="334" y="174" xlink:href=""/>
+        <use id="masts-7-player-hit-location" name="masts-7-player-hit-location" x="345" y="174" xlink:href=""/>
+
+        <use id="crew-1-player-hit-location" name="crew-1-player-it-location" x="271" y="190" xlink:href=""/>
+        <use id="crew-2-player-hit-location" name="crew-2-player-it-location" x="284" y="190" xlink:href=""/>
+        <use id="crew-3-player-hit-location" name="crew-3-player-it-location" x="296" y="190" xlink:href=""/>
+        <use id="crew-4-player-hit-location" name="crew-4-player-it-location" x="309" y="190" xlink:href=""/>
+        <use id="crew-5-player-hit-location" name="crew-5-player-it-location" x="321" y="190" xlink:href=""/>
+        <use id="crew-6-player-hit-location" name="crew-6-player-it-location" x="334" y="190" xlink:href=""/>
+        <use id="crew-7-player-hit-location" name="crew-7-player-it-location" x="345" y="190" xlink:href=""/>
+
+        <use id="cannons-1-player-hit-location" name="cannons-player-1-hit-location" x="271" y="207" xlink:href=""/>
+        <use id="cannons-2-player-hit-location" name="cannons-player-2-hit-location" x="284" y="207" xlink:href=""/>
+        <use id="cannons-3-player-hit-location" name="cannons-player-3-hit-location" x="296" y="207" xlink:href=""/>
+        <use id="cannons-4-player-hit-location" name="cannons-player-4-hit-location" x="309" y="207" xlink:href=""/>
+        <use id="cannons-5-player-hit-location" name="cannons-player-5-hit-location" x="321" y="207" xlink:href=""/>
+        <use id="cannons-6-player-hit-location" name="cannons-player-6-hit-location" x="334" y="207" xlink:href=""/>
+        <use id="cannons-7-player-hit-location" name="cannons-player-7-hit-location" x="345" y="207" xlink:href=""/>
+
+        <!-- PLAYER GOLDs -->
+        <defs>
+            <clipPath id="coin-clipPath"><circle cx="25" cy="25" r="25"/></clipPath>
+            <image id="coin-image" width="50" height="50" xlink:href="" clip-path="url(#coin-clipPath)"/>
+        </defs>
+        <use id="player-coins" name="player-coins" x="422" y="200" href="#coin-image"/>
+        <text id="player-coin-amount" x="445" y="228" font-weight="bold" font-size="24" fill="white" text-anchor="middle" dominant-baseline="middle"></text>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <text class="helper-player-board" text-anchor="start" alignment-baseline="middle">
+            <tspan class="tspan-player-board"></tspan>
+            <tspan class="tspan-player-board"></tspan>
+        </text>
+
+    </svg><br>
+</div>

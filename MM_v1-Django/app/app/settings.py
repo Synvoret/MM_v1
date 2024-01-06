@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'player_board',
     'user',
     'nav',
+    'game_setup',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'game/static',
     BASE_DIR / 'board/static',
     BASE_DIR / 'player_board/static',
-    BASE_DIR / 'nav/static'
+    BASE_DIR / 'nav/static',
+    BASE_DIR / 'game_setup/static',
 ]
 
 MEDIA_URL = '/media/'
