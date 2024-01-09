@@ -12,7 +12,7 @@ class MerchantTokens(models.Model):
         ('Dutch', 'Dutch'),
         ('French', 'French'),
         ('English', 'English'),
-        ('Spanish', 'Spanich'),
+        ('Spanish', 'Spanish'),
     ]
 
     name = models.CharField(max_length=50)

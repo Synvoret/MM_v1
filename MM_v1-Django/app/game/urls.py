@@ -17,8 +17,8 @@ urlpatterns = [
     path('playerCaptainCard', views.playerCaptainCard, name='playerCaptainCard'),
     path('playerShipCard', views.playerShipCard, name='playerShipCard'),
     path('playerHitLocation', views.playerHitLocation, name='playerHitLocation'),
-    path('playerGoldsTrack', views.playerGoldsTrack, name='playerGoldsTrack'),
-    path('gloryTrackCube', views.gloryTrackCube, name='gloryTrackCube'),
+    path('updatePlayerGolds', views.updatePlayerGolds, name='updatePlayerGolds'),
+    path('updateGloryTrack', views.updateGloryTrack, name='updateGloryTrack'),
     path('loyalityTrackCube', views.loyalityTrackCube, name='loyalityTrackCube'),
     path('favorsTrackCube', views.favorsTrackCube, name='favorsTrackCube'),
 

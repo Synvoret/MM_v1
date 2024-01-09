@@ -11,4 +11,4 @@ class DemandTokens(models.Model):
     awers = models.ImageField(upload_to='demandTokens/', blank=True, null=True)
 
     def __str__(self):
-        return f"Deman Token - {self.cargo}"
+        return f"Demand Token - {self.cargo}"

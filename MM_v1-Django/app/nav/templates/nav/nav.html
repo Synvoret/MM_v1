@@ -1,30 +1,55 @@
 {% load static %}
 
 <div id="nav-container">
-    <p>I'm NavBar.</p>
+    <p class="title">TURN SEQUENCE</p>
 
     <div class="nav-buttons-container">
 
         <!-- DRAW EVENT CARD -->
-        <button class="nav-button nav-button-draw-event-card" onclick="newEventCard('event-card-image')">Draw Event Card</button>
+        <span class="step">EVENT CARD</span>
+        <button class="nav-button nav-button-draw-event-card" onclick="drawEventCard()">Draw Event Card</button><br><hr>
 
         <!-- PLAYER ACTIONs -->
-        <button class="nav-button nav-button-move-ship">Move Ship</button>
+        <span class="step">PLAYER ACTIONs</span>
+        <button class="nav-button nav-button-move-ship">Move</button>
         <button class="nav-button nav-button-scout">Scout</button>
         <button class="nav-button nav-button-port">Port</button>
         <button class="nav-button nav-button-fishing">Fishing</button>
         <button class="nav-button nav-button-end-turn">End Turn</button>
+        <span class="amount-actions">Actions: 3</span><br>
+        <span class="step">Moves</span>
+        <button class="nav-button nav-button-fishing">to port</button>
+        <button class="nav-button nav-button-fishing">from port</button>
+        <button class="nav-button nav-button-fishing">to sea zone</button><br>
+        <span class="step">Scout</span>
+        <button class="nav-button nav-button-fishing">player captain</button>
+        <button class="nav-button nav-button-fishing">merchant</button>
+        <button class="nav-button nav-button-fishing">npc ship</button><br>
+        <span class="step">Port</span>
+        <button class="nav-button nav-button-fishing">sell goods</button>
+        <button class="nav-button nav-button-fishing">buy goods</button>
+        <button class="nav-button nav-button-fishing">visit shipyard</button>
+        <button class="nav-button nav-button-fishing">reqruit</button>
+        <button class="nav-button nav-button-fishing">acquire rumor</button>
+        <button class="nav-button nav-button-fishing">claim mission</button>
+        <button class="nav-button nav-button-fishing">stash gold</button><br>
+        <span class="step">Battle</span>
+        <button class="nav-button nav-button-fishing"></button>
+        <button class="nav-button nav-button-fishing"></button><br><hr>
 
+        <!-- DICEs -->
+        <span class="step">DICEs</span>
         <button class="nav-button dice dice1" onclick="rollDice('.dice1-image')"><img class="dice1-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice2" onclick="rollDice('.dice2-image')"><img class="dice2-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice3" onclick="rollDice('.dice3-image')"><img class="dice3-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice4" onclick="rollDice('.dice4-image')"><img class="dice4-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice5" onclick="rollDice('.dice5-image')"><img class="dice5-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice6" onclick="rollDice('.dice6-image')"><img class="dice6-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice7" onclick="rollDice('.dice7-image')"><img class="dice7-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice8" onclick="rollDice('.dice8-image')"><img class="dice8-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice9" onclick="rollDice('.dice9-image')"><img class="dice9-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice10" onclick="rollDice('.dice10-image')" disabled><img class="dice10-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice2" onclick="rollDice('.dice2-image')" disabled><img class="dice2-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice3" onclick="rollDice('.dice3-image')" disabled><img class="dice3-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice4" onclick="rollDice('.dice4-image')" disabled><img class="dice4-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice5" onclick="rollDice('.dice5-image')" disabled><img class="dice5-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice6" onclick="rollDice('.dice6-image')" disabled><img class="dice6-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice7" onclick="rollDice('.dice7-image')" disabled><img class="dice7-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice8" onclick="rollDice('.dice8-image')" disabled><img class="dice8-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice9" onclick="rollDice('.dice9-image')" disabled><img class="dice9-image dice-image" src="/media/dices/dice_skull6.png"></button>
+        <button class="nav-button dice dice10" onclick="rollDice('.dice10-image')" disabled><img class="dice10-image dice-image" src="/media/dices/dice_skull6.png"></button><br><hr>
+
     </div>
 
     <p class="messages">Here will be messages for player.</p>

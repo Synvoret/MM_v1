@@ -5,12 +5,12 @@ from .loyalityTrackCube import loyalityTrackCube
 from .favorsTrackCube import favorsTrackCube
 from .dice import dice
 from .ship import ship
-from .gloryTrackCubes import gloryTrackCube
+from .updateGloryTrack import updateGloryTrack
 from .enemyHitLocations import enemyHitLocation
 from .playerCaptainCard import playerCaptainCard
 from .playerShipCard import playerShipCard
 from .playerHitLocations import playerHitLocation
-from .playerGoldsTrack import playerGoldsTrack
+from .updatePlayerGolds import updatePlayerGolds
 from .drawEventCard import drawEventCard
 from .drawMissionCard import drawMissionCard
 from .drawGloryCard import drawGloryCard

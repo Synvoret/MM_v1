@@ -5,6 +5,10 @@ from django.db import models
 class Game(models.Model):
     """Game identifacator."""
 
+    def sea_zones_list():
+        sea_zones_list = {}
+        return sea_zones_list
+
     def random_number_game():
         """Generate randomly number for new game."""
 

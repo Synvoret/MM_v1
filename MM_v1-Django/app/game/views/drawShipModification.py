@@ -1,12 +1,25 @@
 import random
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from dataset.models import ShipModifications
+from game.models import GameShipModifications
 
 
+@csrf_exempt
 def drawShipModification(request):
     """Function return new randomly ship modifocation token for port."""
 
-    all_tokens = ShipModifications.objects.all()
-    random_token = random.choice(all_tokens)
+    port = request.GET.get("port")
 
-    return HttpResponse(random_token.awers.url)
+    all_modifications = ShipModifications.objects.all()
+    random_modifications = random.choice(all_modifications)
+
+    game_ship_modification = GameShipModifications.objects.get(game_number=1)
+    setattr(game_ship_modification, f"{str(port).replace('-', '_')}", random_modifications.name)
+    game_ship_modification.save()
+
+    data = {
+        "shipModificationImage": random_modifications.awers.url,
+    }
+
+    return JsonResponse(data)

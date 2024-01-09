@@ -1,6 +1,7 @@
 #player-board-container {
     /* position: fixed;
     bottom: 30px; */
+    /* right: 0; */
     background-color: gray;
     width: 600px;
 }

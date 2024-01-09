@@ -1,4 +1,6 @@
 from .game import Game
+from .gameDemandTokens import GameDemandTokens
+from .gameShipModifications import GameShipModifications
 from .stackEventsCards import StackEventsCards
 from .stackMissionsCards import StackMissionsCards
 from .trackEnemyHitLocations import TrackEnemyHitLocations

@@ -1,5 +1,5 @@
 import random
-from django.http import HttpResponse
+from django.http import JsonResponse
 from dataset.models import MerchantTokens
 
 def drawMerchantToken(request):
@@ -9,7 +9,10 @@ def drawMerchantToken(request):
     random_token = random.choice(all_tokens)
 
     awers_image = random_token.awers.url
-    rewers_image = random_token.rewers
+    rewers_image = str(random_token.rewers)
 
-    # return HttpResponse(awers_image)
-    return HttpResponse(rewers_image)
+    data = {
+        "merchantTokenAwersImage": awers_image,
+        "merchantTokenRewersImage": rewers_image,
+    }
+    return JsonResponse(data)
