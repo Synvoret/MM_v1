@@ -10,4 +10,5 @@ class StackEventsCardsAdmin(admin.ModelAdmin):
         'game_number',
         'game_round',
         'event_card',
+        'event_card_captain',
     ]

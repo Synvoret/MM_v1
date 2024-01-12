@@ -18,8 +18,8 @@ class CaptainCard(models.Model):
         ('Port Royal', 'Port Royal'),
         ('San Juan', 'San Juan'),
         ('Santo Domingo', 'Santo Domingo'),
-        ('St. John', 'St. John'),
-        ('St. Maarten', 'St. Maarten'),
+        ('st John', 'st John'),
+        ('st Maarten', 'st Maarten'),
         ('Tortuga', 'Tortuga'),
         ('Trinidad', 'Trinidad'),
     ]

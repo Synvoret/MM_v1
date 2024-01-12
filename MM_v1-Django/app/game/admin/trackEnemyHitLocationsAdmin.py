@@ -8,7 +8,6 @@ class TrackEnemyHitLocationsAdmin(admin.ModelAdmin):
 
     list_display = [
         'game_number',
-        'game_round',
 
         'hull',
         'cargo',

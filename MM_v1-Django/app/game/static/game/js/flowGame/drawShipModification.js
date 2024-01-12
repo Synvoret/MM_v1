@@ -38,7 +38,7 @@ async function drawShipModification(port) {
             });
 
             response = await fetchResponse.json();
-            document.getElementById(shipModificationImageID).setAttribute('href', response.shipModificationImage);
+            document.getElementById(shipModificationImageID).setAttribute('href', response.shipModificationAwersImage);
         }
     } catch (error) {
         console.error('An error occurred:', error);

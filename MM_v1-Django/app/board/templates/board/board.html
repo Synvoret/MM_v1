@@ -1,7 +1,7 @@
 {% load static %}
 
 <div id="board-container">
-<svg width="1248" height="1080">
+<svg id="board-svg" width="1248" height="1080">
 
     <!-- MAPA -->
     <image id="board-game" href="" x="0" y="0" width="1248" height="1080"/>
@@ -127,20 +127,25 @@
     <use name="at-war-section-left" x="135" y="148" href="#port-national-flag-reverse" transform="rotate(-15 135 148)"/>
     <use name="at-war-section-right" x="144" y="147" href="#port-national-flag" transform="rotate(-7 144 147)"/>
 
-
-
-
-
-
-
-
     <!-- CARDS - NAVAL CAPTAIN'S, PIRATE CAPTAIN'S, EVENT, MISSIONS -->
     
     <defs>
         <clipPath id="event-card-clipPath"><rect name="event-card-rect" x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
-        <image id="event-card-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-dutch-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-english-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-french-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-spanish-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-small-pirate-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
+        <image id="event-large-pirate-captain-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)"/>
     </defs>
-    <use id="track-event-cards" name="track-event-cards" x="924" y="43" xlink:href="#event-card-image" transform="rotate(3 924 43)"/>
+    <use id="track-event-cards" name="track-event-cards" x="924" y="43" xlink:href="#event-image" transform="rotate(3 924 43)"/>
+    <use id="track-event-dutch-captain-cards" name="track-event-dutch-captain-cards" x="820" y="50" xlink:href="#event-dutch-captain-image" transform="rotate(-9 823 50)"/>
+    <use id="track-event-english-captain-cards" name="track-event-english-captain-cards" x="669" y="33" xlink:href="#event-english-captain-image" transform="rotate(7 669 33)"/>
+    <use id="track-event-french-captain-cards" name="track-event-french-captain-cards" x="745" y="56" xlink:href="#event-french-captain-image" transform="rotate(-1 745 56)"/>
+    <use id="track-event-spanish-captain-cards" name="track-event-spanish-captain-cards" x="579" y="46" xlink:href="#event-spanish-captain-image" transform="rotate(2 579 46)"/>
+    <use id="track-event-small-pirate-captain-cards" name="track-event-small-pirate-cards" x="657" y="163" xlink:href="#event-small-pirate-captain-image" transform="rotate(2 657 163)"/>
+    <use id="track-event-large-pirate-captain-cards" name="track-event-large-pirate-cards" x="741" y="180" xlink:href="#event-large-pirate-captain-image" transform="rotate(-3 741 180)"/>
 
     <defs>
         <clipPath id="mission-card-clipPath"><rect x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
@@ -149,22 +154,6 @@
     </defs>
     <use id="mission-1-card" name="mission-1-card" x="1011" y="64" xlink:href="#mission-1-card-image" transform="rotate(-5 1011 64)"/>
     <use id="mission-2-card" name="mission-2-card" x="1123" y="62" xlink:href="#mission-2-card-image" transform="rotate(6 1123 62)"/>
-
-
-    <rect name="spain-captain-card" x="579" y="46" width="67" height="107" rx="4" ry="4" transform="rotate(2 579 46)"/>
-    <rect name="england-captain-card" x="669" y="33" width="67" height="107" rx="4" ry="4" transform="rotate(7 669 33)"/>
-    <rect name="french-captain-card" x="745" y="56" width="67" height="107" rx="4" ry="4" transform="rotate(-1 745 56)"/>
-    <rect name="dutch-captain-card" x="823" y="50" width="67" height="107" rx="4" ry="4" transform="rotate(-9 823 50)"/>
-    <rect name="pirate-sloop-card" x="657" y="163" width="67" height="107" rx="4" ry="4" transform="rotate(2 657 163)"/>
-    <rect name="pirate-frigate-card" x="741" y="180" width="67" height="107" rx="4" ry="4" transform="rotate(-3 741 180)"/>
-
-
-
-
-
-
-
-
 
 
 
@@ -212,9 +201,9 @@
     <use id="merchant-token-petite-goave" name="petite-goave-merchant-token" x="517" y="595" xlink:href="#merchant-token-petite-goave-image"/>
     <use id="merchant-token-port-royal" name="port-royal-merchant-token" x="260" y="500" xlink:href="#merchant-token-port-royal-image"/>
     <use id="merchant-token-san-juan" name="san-juan-merchant-token" x="821" y="587" xlink:href="#merchant-token-san-juan-image"/>
-    <use id="merchant-token-santo-domingo" name="santo-domingo-merchant-token" x="747" y="449" xlink:href="#merchant-token-santo-domingo-image"/>
+    <use id="merchant-token-santo-domingo" name="santo-domingo-merchant-token" x="740" y="449" xlink:href="#merchant-token-santo-domingo-image"/>
     <use id="merchant-token-st-john" name="st-john-merchant-token" x="1062" y="476" xlink:href="#merchant-token-st-john-image"/>
-    <use id="merchant-token-st-maarten" name="st-maarten-merchant-token" x="1015" y="380" xlink:href="#merchant-token-st-maarten-image"/>
+    <use id="merchant-token-st-maarten" name="st-maarten-merchant-token" x="1011" y="380" xlink:href="#merchant-token-st-maarten-image"/>
     <use id="merchant-token-the-caribbean-sea" name="the-caribbean-sea-merchant-token" x="740" y="690" xlink:href="#merchant-token-the-caribbean-sea-image"/>
     <use id="merchant-token-tortuga" name="tortuga-merchant-token" x="514" y="392" xlink:href="#merchant-token-tortuga-image"/>
     <use id="merchant-token-trinidad" name="trinidad-merchant-token" x="1134" y="930" xlink:href="#merchant-token-trinidad-image"/>
@@ -267,22 +256,22 @@
         <path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/>
     </defs>
 
-    <use name="basse-terre-port-national-flag" x="985" y="621" href="#port-national-flag" transform="rotate(0 985 621)"/>
-    <use name="bridgetown-port-national-flag" x="1132" y="762" href="#port-national-flag" transform="rotate(1 1132 762)"/>
-    <use name="cartagena-port-national-flag" x="398" y="835" href="#port-national-flag" transform="rotate(1 398 835)"/>
-    <use name="caracas-port-national-flag" x="803" y="835" href="#port-national-flag" transform="rotate(1 803 835)"/>
-    <use name="curacao-port-national-flag" x="704" y="784" href="#port-national-flag" transform="rotate(1 704 784)"/>
-    <use name="havana-port-national-flag" x="161" y="245" href="#port-national-flag" transform="rotate(0 161 245)"/>
-    <use name="nasau-port-national-flag" x="358" y="214" href="#port-national-flag" transform="rotate(0 358 214)"/>
-    <use name="old-providence-port-national-flag" x="201" y="717" href="#port-national-flag" transform="rotate(1 201 717)"/>
-    <use name="petite-goave-port-national-flag" x="545" y="524" href="#port-national-flag" transform="rotate(1 545 524)"/>
-    <use name="port-royal-port-national-flag" x="351" y="534" href="#port-national-flag" transform="rotate(1 351 534)"/>
-    <use name="san-juan-port-national-flag" x="834" y="490" href="#port-national-flag" transform="rotate(1 834 490)"/>
-    <use name="santo-domingo-port-national-flag" x="676" y="520" href="#port-national-flag" transform="rotate(1 676 520)"/>
-    <use name="st-john-port-national-flag" x="1065" y="550" href="#port-national-flag" transform="rotate(1 1065 550)"/>
-    <use name="st-maarten-port-national-flag" x="997" y="510" href="#port-national-flag" transform="rotate(0 997 510)"/>
-    <use name="tortuga-port-national-flag" x="562" y="411" href="#port-national-flag" transform="rotate(0 562 411)"/>
-    <use name="trinidad-port-national-flag" x="1010" y="843" href="#port-national-flag" transform="rotate(0 1010 843)"/>
+    <use id="basse-terre-port-zone" name="basse-terre-port-national-flag" x="985" y="621" href="#port-national-flag" transform="rotate(0 985 621)"/>
+    <use id="bridgetown-port-zone" name="bridgetown-port-national-flag" x="1132" y="762" href="#port-national-flag" transform="rotate(1 1132 762)"/>
+    <use id="cartagena-port-zone" name="cartagena-port-national-flag" x="398" y="835" href="#port-national-flag" transform="rotate(1 398 835)"/>
+    <use id="caracas-port-zone" name="caracas-port-national-flag" x="803" y="835" href="#port-national-flag" transform="rotate(1 803 835)"/>
+    <use id="curacao-port-zone" name="curacao-port-national-flag" x="704" y="784" href="#port-national-flag" transform="rotate(1 704 784)"/>
+    <use id="havana-port-zone" name="havana-port-national-flag" x="161" y="245" href="#port-national-flag" transform="rotate(0 161 245)"/>
+    <use id="nassau-port-zone" name="nassau-port-national-flag" x="358" y="214" href="#port-national-flag" transform="rotate(0 358 214)"/>
+    <use id="old-providence-port-zone" name="old-providence-port-national-flag" x="201" y="717" href="#port-national-flag" transform="rotate(1 201 717)"/>
+    <use id="petite-goave-port-zone" name="petite-goave-port-national-flag" x="545" y="524" href="#port-national-flag" transform="rotate(1 545 524)"/>
+    <use id="port-royal-port-zone" name="port-royal-port-national-flag" x="351" y="534" href="#port-national-flag" transform="rotate(1 351 534)"/>
+    <use id="san-juan-port-zone" name="san-juan-port-national-flag" x="834" y="490" href="#port-national-flag" transform="rotate(1 834 490)"/>
+    <use id="santo-domingo-port-zone" name="santo-domingo-port-national-flag" x="676" y="520" href="#port-national-flag" transform="rotate(1 676 520)"/>
+    <use id="st-john-port-zone" name="st-john-port-national-flag" x="1065" y="550" href="#port-national-flag" transform="rotate(1 1065 550)"/>
+    <use id="st-maarten-port-zone" name="st-maarten-port-national-flag" x="997" y="510" href="#port-national-flag" transform="rotate(0 997 510)"/>
+    <use id="tortuga-port-zone" name="tortuga-port-national-flag" x="562" y="411" href="#port-national-flag" transform="rotate(0 562 411)"/>
+    <use id="trinidad-port-zone" name="trinidad-port-national-flag" x="1010" y="843" href="#port-national-flag" transform="rotate(0 1010 843)"/>
 
     <!-- DEMANDs TOKENs for PORTs -->
     <defs>
@@ -478,17 +467,23 @@
 
     <!-- SHIPs PLASTIC -->
     <defs>
-        <clipPath id="sloop-ship-plastic-clipPath"><rect x="0" y="0" width="45" height="45" rx="2" ry="2"/></clipPath>
-        <clipPath id="flute-ship-plastic-clipPath"><rect x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
-        <clipPath id="brig-ship-plastic-clipPath"><rect x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
-        <clipPath id="frigate-ship-plastic-clipPath"><rect x="0" y="0" width="55" height="55" rx="2" ry="2"/></clipPath>
-        <clipPath id="galleon-ship-plastic-clipPath"><rect x="0" y="0" width="60" height="60" rx="2" ry="2"/></clipPath>
+        <clipPath id="sloop-ship-plastic-clipPath"><rect id="sloop-ship-plastic-rect" x="0" y="0" width="45" height="45" rx="2" ry="2"/></clipPath>
+        <clipPath id="flute-ship-plastic-clipPath"><rect id="flute-ship-plastic-rect" x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
+        <clipPath id="brig-ship-plastic-clipPath"><rect id="brig-ship-plastic-rect" x="0" y="0" width="50" height="50" rx="2" ry="2"/></clipPath>
+        <clipPath id="frigate-ship-plastic-clipPath"><rect id="frigate-ship-plastic-rect" x="0" y="0" width="55" height="55" rx="2" ry="2"/></clipPath>
+        <clipPath id="galleon-ship-plastic-clipPath"><rect id="galleon-ship-plastic-rect" x="0" y="0" width="60" height="60" rx="2" ry="2"/></clipPath>
 
-        <image id="sloop-black-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
-        <image id="flute-black-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
-        <image id="brig-black-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
-        <image id="frigate-black-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
-        <image id="galleon-black-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+        <image id="sloop-large-pirate-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-large-pirate-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-large-pirate-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-large-pirate-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-large-pirate-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-small-pirate-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-small-pirate-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-small-pirate-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-small-pirate-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-small-pirate-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
 
         <image id="sloop-blue-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
         <image id="flute-blue-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
@@ -514,12 +509,43 @@
         <image id="frigate-yellow-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
         <image id="galleon-yellow-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
 
+        <image id="sloop-dutch-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-dutch-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-dutch-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-dutch-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-dutch-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-english-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-english-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-english-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-english-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-english-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-french-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-french-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-french-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-french-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-french-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
+        <image id="sloop-spanish-ship-plastic-image" width="45" height="45" xlink:href="" clip-path="url(#sloop-ship-plastic-clipPath)"/>
+        <image id="flute-spanish-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#flute-ship-plastic-clipPath)"/>
+        <image id="brig-spanish-ship-plastic-image" width="50" height="50" xlink:href="" clip-path="url(#brig-ship-plastic-clipPath)"/>
+        <image id="frigate-spanish-ship-plastic-image" width="55" height="55" xlink:href="" clip-path="url(#frigate-ship-plastic-clipPath)"/>
+        <image id="galleon-spanish-ship-plastic-image" width="60" height="60" xlink:href="" clip-path="url(#galleon-ship-plastic-clipPath)"/>
+
     </defs>
-    <use id="ship-plastic-black" class="ship-plastic" name="ship-plastic-black" x="50" y="10" xlink:href=""/>
-    <use id="ship-plastic-blue" class="ship-plastic" name="ship-plastic-blue" x="" y="" xlink:href=""/>
-    <use id="ship-plastic-yellow" class="ship-plastic" name="ship-plastic-yellow" x="250" y="10" xlink:href=""/>
-    <use id="ship-plastic-red" class="ship-plastic" name="ship-plastic-red" x="350" y="10" xlink:href=""/>
-    <use id="ship-plastic-green" class="ship-plastic" name="ship-plastic-green" x="450" y="10" xlink:href=""/>
+    <use id="ship-plastic-large-pirate" class="ship-plastic" name="ship-plastic-large-pirate" x="50" y="10" xlink:href=""/>
+    <use id="ship-plastic-small-pirate" class="ship-plastic" name="ship-plastic-large-pirate" x="50" y="20" xlink:href=""/>
+
+    <use id="ship-plastic-dutch" class="ship-plastic" name="ship-plastic-dutch" x="100" y="20" xlink:href=""/>
+    <use id="ship-plastic-english" class="ship-plastic" name="ship-plastic-english" x="250" y="20" xlink:href=""/>
+    <use id="ship-plastic-french" class="ship-plastic" name="ship-plastic-french" x="350" y="30" xlink:href=""/>
+    <use id="ship-plastic-spanish" class="ship-plastic" name="ship-plastic-spanish" x="450" y="20" xlink:href=""/>
+
+    <use id="ship-plastic-blue" class="ship-plastic player-ship-plastic" name="ship-plastic-blue" x="100" y="10" xlink:href=""/>
+    <use id="ship-plastic-yellow" class="ship-plastic player-ship-plastic" name="ship-plastic-yellow" x="250" y="10" xlink:href=""/>
+    <use id="ship-plastic-red" class="ship-plastic player-ship-plastic" name="ship-plastic-red" x="350" y="10" xlink:href=""/>
+    <use id="ship-plastic-green" class="ship-plastic player-ship-plastic" name="ship-plastic-green" x="450" y="10" xlink:href=""/>
 
 </svg><br>
 </div>

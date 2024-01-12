@@ -4,11 +4,13 @@ from .gameShipModificationsAdmin import GameShipModificationsAdmin
 from .playerCaptainsCardsAdmin import PlayersCaptainsCardsAdmin
 from .playersGloryCardsAdmin import PlayersGloryCardsAdmin
 from .playersShipsCardsAdmin import PlayersShipsCardsAdmin
+from .shipsLocalisationsAdmin import ShipsLocalisationsAdmin
 from .stackEventsCardsAdmin import StackEventsCardsAdmin
+from .stackEventsNPCCaptainsAdmin import StackEventsNPCCaptainsAdmin
 from .stackMissionsCardsAdmin import StackMissionsCardsAdmin
-from .trackGloryPointAdmin import TrackGloryPointAdmin
 from .trackEnemyHitLocationsAdmin import TrackEnemyHitLocationsAdmin
 from .trackFavorsAdmin import TrackFavorsAdmin
+from .trackGloryPointAdmin import TrackGloryPointAdmin
 from .trackLoyalityAdmin import TrackLoyalityAdmin
 from .trackPlayerGoldsAdmin import TrackPlayerGoldsAdmin
 from .trackPlayerHitLocationAdmin import TrackPlayerHitLocationsAdmin

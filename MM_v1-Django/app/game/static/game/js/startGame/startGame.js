@@ -10,7 +10,7 @@ function prepareBoard() {
         "caracas",
         "cartagena",
         "curacao",
-        // 'gulf-city',
+        'gulf-city',
         "nassau",
         "havana",
         "old-providence",
@@ -25,35 +25,19 @@ function prepareBoard() {
         "tortuga",
     ];
 
-    const colours = [
-        'blue',
-        'green',
-        'red',
-        'yellow',
-    ]
-
-    // PREPARE ALL SEA ZONEs
-    for (const seaZone of seaZonesList) {
-        // PUT LOCATION TOKENs
-        const locationToken = `location-token-${seaZone}-image`;
-        if (seaZone === "the-caribbean-sea") {} 
-        else {putLocationToken(locationToken);}
-    };
-
-    // STARTING DRAW DEMAND TOKENs, STARTING DRAW SHIP 
+    // STARTING DRAW DEMAND TOKENs
+    putLocationToken(seaZone="all")
     drawMerchantToken(seaZone="all");
+    // STARTING DRAW SHIP MODIFICATIONs
     drawShipModification(port="all");
     drawDemandToken(port="all");
 
     // PUT CUBEs ON TRACK ENEMY HIT LOCATIONs
     updateEnemyHitLocation();
-
     // PUT CUBEs ON TRACK GLORY POINTs
-    for (const colour of colours) {
-        updateGloryTrack(colour);
-    };
+    updateGloryTrack()
 
-    // DRAW MISSION CARD
+    // DRAW MISSIONs CARD
     drawMissionCard(1);
     drawMissionCard(2);
 
@@ -73,4 +57,8 @@ updatePlayerHitLocation(col);
 updatePlayerGolds(col);
 drawGloryCard(col);
 // SHIP PLASTIC
-putShipPlastic('galleon', col);
+putShipPlastic('galleon', col, "st-maarten", true);
+
+
+// put random element to selected element
+// randomInsidePosition("frigate", "spanish", "cartagena", false);

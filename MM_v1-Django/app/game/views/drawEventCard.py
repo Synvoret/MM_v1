@@ -1,32 +1,83 @@
 import random
 from django.http import JsonResponse
+
 from dataset.models import EventCard
 from dataset.utils.dataset import events
-from game.models import StackEventsCards
+from dataset.utils.dataset import utilUtil
 from game.models import Game
+from game.models import ShipsLocalisations
+from game.models import StackEventsCards
+from game.models import StackEventsNPCCaptains
 
 
 def drawEventCard(request):
     """Endpoint return a draw new Event Card."""
 
-    # empty data dict for all events utils.
+    # EMPTY DATA DICT FOR ALL EVENTs UTILs.
     response_data = {}
 
-    # PRIMARY RANDOM CARD from EVENT DECK
+    game = Game.objects.get(pk=1)
+
+    # CHECK LAST EVENT CARD, IF CAPTAIN, THEN MOVE CARD TO CURRENT NATIONALITY STACK
+    try:
+        previous_turn_event_card = StackEventsCards.objects.get(game_round=game.round)
+        if previous_turn_event_card.event_card_captain == True:
+            captain_name = StackEventsNPCCaptains.objects.create(
+                game_number=game,
+                game_round=game.round,
+                captain=previous_turn_event_card.event_card,  # instance of EventCard
+                nationality=previous_turn_event_card.event_card.nationality
+            )
+            response_data["npcCaptainNationality"] = (captain_name.captain.nationality).lower().replace(" ", "-")
+            response_data["npcCaptainSeaZoneStart"] = captain_name.captain.sea_zone_start.lower().replace(" ", "-")
+            response_data["npcCaptainShip"] = captain_name.captain.ship
+            response_data["npcCaptainImage"] = captain_name.captain.awers.url
+            nat = f"{captain_name.captain.nationality}_ship".lower()
+            ShipsLocalisations.objects.update(**{nat: captain_name.captain.sea_zone_start})
+    except StackEventsCards.DoesNotExist:
+        pass
+
+    # DRAW NEW EVENT CARD
+    # x = ["Pirate Galleon", "Volatile Markets", "Spanish Naval Ship 01", "French Naval Ship 01", "English Naval Ship 01", "Dutch Naval Ship 01"]
+    x = ["Volatile Markets", "English Naval Ship 01"]
+    y = random.choice(x)
+    random_card = EventCard.objects.get(card=y)
     # cards = EventCard.objects.all()
     # random_card = random.choice(cards)
-    random_card = EventCard.objects.get(card="Volatile Markets")
+    # random_card = EventCard.objects.get(card="Volatile Markets")
+    # random_card = EventCard.objects.get(card="Dutch Naval Ship 01")
 
-    event_util = getattr(events, random_card.card.lower().replace(" ", "_") )()
-    response_data.update(event_util)
+    # MOVING NPC SHIPs
+    if random_card.moving:
+        ships_localisations_object = ShipsLocalisations.objects.get(game_number=game)
+        utilUtil.movement_directions(random_card, ships_localisations_object)
 
-    game = Game.objects.get(pk=1)
+    # UPDATE GAME ROUND
     game.round = game.round + 1
     game.save()
-
-    stack = StackEventsCards(game_number=game, game_round=game.round, event_card=random_card)
-    stack.save()
-
     response_data["eventCardImage"] = random_card.awers.url
+
+    # SPECIAL ACTIONs/FUNCTIONs FOR NEW EVENT CARD
+    try:
+        # trying all event utils, if exist, then run it
+        event_util = getattr(events, random_card.card.lower().replace(" ", "_"))(random_card)
+        response_data.update(event_util)
+        print('jestem event_util', "+++++++++++++++++++++++++++++++++++++++++++++++")
+    except:
+        # print(getattr(events, random_card.card.lower().replace(" ", "_"))())
+        print('nie ma mnie event_util', "+++++++++++++++++++++++++++++++++++++++++++++++")
+        # pass
+
+    # UPDATE ALL EVENTs CARDs STACKs
+    if random_card.npc_name is not None:
+        event_card_captain = True
+    else:
+        event_card_captain = False
+    StackEventsCards.objects.create(
+        game_number=game, 
+        game_round=game.round, 
+        event_card=random_card,
+        event_card_captain=event_card_captain,
+        )
 
     return JsonResponse(response_data)

@@ -8,7 +8,9 @@ class StackEventsCards(models.Model):
     
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
+
     event_card = models.ForeignKey(EventCard, on_delete=models.CASCADE, null=True, blank=True)
+    event_card_captain = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Stack events card."
@@ -74,13 +76,7 @@ class StackEventsCards(models.Model):
 #         return f"Stack NPC sloop pirate cards for board - {self.board}"
 
 
-# class StackNPCFrigatePirate(StackEventsCardsInBoard):
-#     """Presents a stack NPC Frigate Pirate cards on board."""
 
-#     npc_frigate_pirate = models.ForeignKey(EventCard, on_delete=models.CASCADE, null=True, blank=True)
-
-#     def __str__(self):
-#         return f"Stack NPC frigate pirate cards for board - {self.board}"
 
 
 

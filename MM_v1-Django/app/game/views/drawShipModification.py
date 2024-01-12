@@ -19,7 +19,8 @@ def drawShipModification(request):
     game_ship_modification.save()
 
     data = {
-        "shipModificationImage": random_modifications.awers.url,
+        "shipModificationAwersImage": random_modifications.awers.url,
+        "shipModificationRewersImage": str(random_modifications.rewers),
     }
 
     return JsonResponse(data)

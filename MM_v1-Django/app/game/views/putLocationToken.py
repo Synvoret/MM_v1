@@ -1,5 +1,5 @@
 import random
-from django.http import HttpResponse
+from django.http import JsonResponse
 from dataset.models import LocationTokens
 
 
@@ -9,4 +9,8 @@ def putLocationToken(request):
     all_tokens = LocationTokens.objects.all()
     random_token = random.choice(all_tokens)
 
-    return HttpResponse(random_token.awers.url)
+    data = {
+        "locationTokenImage": random_token.awers.url,
+    }
+
+    return JsonResponse(data)

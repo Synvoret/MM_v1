@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='captaincard',
             name='home_port',
-            field=models.CharField(blank=True, choices=[('Basse-Terre', 'Basse-Terre'), ('Bridgetown', 'Bridgetown'), ('Caracas', 'Caracas'), ('Cartagena', 'Cartagena'), ('Curacao', 'Curacao'), ('Havana', 'Havana'), ('Nassau', 'Nassau'), ('Old Providence', 'Old Providence'), ('Petite Goave', 'Petite Goave'), ('Port Royal', 'Port Royal'), ('San Juan', 'San Juan'), ('Santo Domingo', 'Santo Domingo'), ('St. John', 'St. John'), ('St. Maarten', 'St. Maarten'), ('Tortuga', 'Tortuga'), ('Trinidad', 'Trinidad')], max_length=30, null=True),
+            field=models.CharField(blank=True, choices=[('Basse-Terre', 'Basse-Terre'), ('Bridgetown', 'Bridgetown'), ('Caracas', 'Caracas'), ('Cartagena', 'Cartagena'), ('Curacao', 'Curacao'), ('Havana', 'Havana'), ('Nassau', 'Nassau'), ('Old Providence', 'Old Providence'), ('Petite Goave', 'Petite Goave'), ('Port Royal', 'Port Royal'), ('San Juan', 'San Juan'), ('Santo Domingo', 'Santo Domingo'), ('st John', 'st John'), ('st Maarten', 'st Maarten'), ('Tortuga', 'Tortuga'), ('Trinidad', 'Trinidad')], max_length=30, null=True),
         ),
         migrations.AlterField(
             model_name='captaincard',

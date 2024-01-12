@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from game.models import Game
+from game.models import ShipsLocalisations
 from game.models import StackEventsCards
+from game.models import StackEventsNPCCaptains
 from game.models import StackMissionsCards
 from game.models import TrackEnemyHitLocations
 
@@ -14,7 +16,9 @@ def game(request):
     Game.objects.update(round=0)
 
     # Reset STACKs
+    # ShipsLocalisations.objects.all().delete()
     StackEventsCards.objects.all().delete()
+    StackEventsNPCCaptains.objects.all().delete()
     StackMissionsCards.objects.all().delete()
 
     # Reset and create new track hit locations for Enemy.

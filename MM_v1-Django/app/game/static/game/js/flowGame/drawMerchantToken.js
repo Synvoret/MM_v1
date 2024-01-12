@@ -40,7 +40,7 @@ async function drawMerchantToken(seaZone) {
             });
 
             response = await fetchResponse.json();
-            document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenAwersImage);
+            document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenRewersImage);
         }
     } catch (error) {
         console.error('An error occurred:', error);

@@ -93,7 +93,7 @@ playerBoardContainer.addEventListener('mouseout', function () {
 
 
 
-
+// GRAB AND MOVE SHIPs
 function enableDrag(element) {
     let isDragging = false;
     let offset = { x: 0, y: 0 };
@@ -123,7 +123,6 @@ function enableDrag(element) {
     }
 
     // Get all SVG elements with 'use' tag
-    const svgElements = document.querySelectorAll(".ship-plastic");
-
+    const svgElements = document.querySelectorAll(".player-ship-plastic");
     // Enable drag for each SVG element
     svgElements.forEach(enableDrag);

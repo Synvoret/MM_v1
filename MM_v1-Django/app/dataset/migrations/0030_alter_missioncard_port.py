@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='missioncard',
             name='port',
-            field=models.CharField(choices=[('Basse-Terre', 'Basse-Terre'), ('Bridgetown', 'Bridgetown'), ('Caracas', 'Caracas'), ('Cartagena', 'Cartagena'), ('Curacao', 'Curacao'), ('Gulf City', 'Gulf City'), ('Havana', 'Havana'), ('Nassau', 'Nassau'), ('Old Providence', 'Old Providence'), ('Petite Goave', 'Petite Goave'), ('Port Royal', 'Port Royal'), ('San Juan', 'San Juan'), ('Santo Domingo', 'Santo Domingo'), ('St. John', 'St. John'), ('St. Maarten', 'St. Maarten'), ('Tortuga', 'Tortuga'), ('Trinidad', 'Trinidad')], max_length=100),
+            field=models.CharField(choices=[('Basse-Terre', 'Basse-Terre'), ('Bridgetown', 'Bridgetown'), ('Caracas', 'Caracas'), ('Cartagena', 'Cartagena'), ('Curacao', 'Curacao'), ('Gulf City', 'Gulf City'), ('Havana', 'Havana'), ('Nassau', 'Nassau'), ('Old Providence', 'Old Providence'), ('Petite Goave', 'Petite Goave'), ('Port Royal', 'Port Royal'), ('San Juan', 'San Juan'), ('Santo Domingo', 'Santo Domingo'), ('st John', 'st John'), ('st Maarten', 'st Maarten'), ('Tortuga', 'Tortuga'), ('Trinidad', 'Trinidad')], max_length=100),
         ),
     ]
