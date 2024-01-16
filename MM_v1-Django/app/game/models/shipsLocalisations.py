@@ -26,21 +26,34 @@ class ShipsLocalisations(models.Model):
         ('Trinidad', 'Trinidad'),
     ]
 
+    def set_default_values(self):
+        self.blue_ship =None
+        self.green_ship = None
+        self.red_ship = None
+        self.yellow_ship = None
+        self.dutch_ship = None
+        self.english_ship = None
+        self.french_ship = None
+        self.spanish_ship = None
+        self.small_pirate_ship = None
+        self.large_pirate_ship = None
+
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
 
-    blue_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    green_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    red_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    yellow_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
+    blue_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    green_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    red_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    yellow_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
 
-    dutch_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    english_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    french_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    spanish_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
+    dutch_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    english_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    french_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    spanish_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
 
-    small_pirate_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
-    large_pirate_ship = models.CharField(max_length=100, null=True, blank=True, choices=SEAZONES)
+    small_pirate_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
+    large_pirate_ship = models.CharField(max_length=100, default=None, null=True, blank=True, choices=SEAZONES)
 
     def __str__(self):
         return f"Ships Localisations."

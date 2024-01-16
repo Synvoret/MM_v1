@@ -15,8 +15,22 @@ def game(request):
     # Reset ROUNDs
     Game.objects.update(round=0)
 
+    ShipsLocalisations.objects.all().update(
+        blue_ship=None,
+        green_ship= None,
+        red_ship= None,
+        yellow_ship= None,
+
+        dutch_ship= None,
+        english_ship= None,
+        french_ship= None,
+        spanish_ship= None,
+
+        small_pirate_ship= None,
+        large_pirate_ship= None,
+    )
+
     # Reset STACKs
-    # ShipsLocalisations.objects.all().delete()
     StackEventsCards.objects.all().delete()
     StackEventsNPCCaptains.objects.all().delete()
     StackMissionsCards.objects.all().delete()

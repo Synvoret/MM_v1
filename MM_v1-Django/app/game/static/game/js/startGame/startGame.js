@@ -43,22 +43,28 @@ function prepareBoard() {
 
 };
 
+
+function preparePlayerBoard() {
+    // PLAYER BOARD
+    const col = 'red'
+
+    newPlayerBoard();
+    updateLoyalityTrack(col);
+    updateFavorsTrack(col);
+    // drawPlayerCaptainCard(col);
+    // drawPlayerShipCard(col);
+    updatePlayerHitLocation(col);
+    updatePlayerGolds(col);
+    drawGloryCard(col);
+    // SHIP PLASTIC
+    // putShipPlastic('galleon', col, "st-maarten", true);
+
+
+    // put random element to selected element
+    // randomInsidePosition("frigate", "spanish", "cartagena", false);
+
+};
+
+
 prepareBoard();
-
-// PLAYER BOARD
-const col = 'red'
-
-newPlayerBoard();
-updateLoyalityTrack(col);
-updateFavorsTrack(col);
-drawPlayerCaptainCard(col);
-drawPlayerShipCard(col);
-updatePlayerHitLocation(col);
-updatePlayerGolds(col);
-drawGloryCard(col);
-// SHIP PLASTIC
-putShipPlastic('galleon', col, "st-maarten", true);
-
-
-// put random element to selected element
-// randomInsidePosition("frigate", "spanish", "cartagena", false);
+// preparePlayerBoard();

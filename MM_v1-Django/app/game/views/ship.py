@@ -6,7 +6,7 @@ def ship(request):
     """Endpoint return a ship for player."""
 
     unit = request.GET.get('unit', None)
-    colour = (request.GET.get('colour', None)).replace("-", " ").title()
+    colour = ((request.GET.get('colour', None)).replace("-", " ").title()).replace('_', ' ')
 
     shipImage = Ship.objects.get(name=unit.title(), colour=colour)
 

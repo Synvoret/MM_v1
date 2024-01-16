@@ -24,6 +24,36 @@ function drawEventCard() {
             const eventCardIDImage = "event-image";
             document.getElementById(eventCardIDImage).setAttribute('href', response.eventCardImage);
 
+            if (response.moving !== undefined) {
+                // if event has a moving NPC ships
+
+                if (response.dutch_movement !== undefined) {
+                    // lok = 'old-providence'
+                    putShipPlastic(response.shipDutch, 'dutch', response.dutch_movement, false)
+                };
+                if (response.english_movement !== undefined) {
+                    // lok = 'old-providence'
+                    putShipPlastic(response.shipEnglish, 'english', response.english_movement, false)
+                };
+                if (response.french_movement !== undefined) {
+                    // lok = 'santo-domingo'
+                    putShipPlastic(response.shipFrench, 'french', response.french_movement, false)
+                };
+                if (response.spanish_movement !== undefined) {
+                    // lok = 'santo-domingo'
+                    putShipPlastic(response.shipSpanish, 'spanish', response.spanish_movement, false)
+                };
+                if (response.large_pirate_movement !== undefined) {
+                    // lok = 'santo-domingo'
+                    putShipPlastic(response.shipLargePirate, 'large-pirate', response.large_pirate_movement, false)
+                };
+                if (response.small_pirate_movement !== undefined) {
+                    // lok = 'santo-domingo'
+                    putShipPlastic(response.shipSmallPirate, 'small-pirate', response.small_pirate_movement, false)
+                };
+
+            };
+
             if (response.function1) {
                 window[response.function1](response.arg1)
 

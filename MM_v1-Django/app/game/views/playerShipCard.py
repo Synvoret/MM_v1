@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from game.models import Game
 from dataset.models import ShipCard
 from game.models import PlayersShipsCards

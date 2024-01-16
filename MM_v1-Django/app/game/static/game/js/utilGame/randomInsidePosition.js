@@ -8,7 +8,7 @@ function randomInsidePosition(unit, colour, localisation, port) {
         figureExternal = document.getElementById(`${localisation}-port-zone`);
     } else {
         figureExternal = document.querySelector(`.${localisation}-zone`);
-        console.log(document.querySelector(`.${localisation}-zone`))
+        // console.log(document.querySelector(`.${localisation}-zone`))
     };
 
     // GET SHIP PLASTIC FROM board.html(only frontend)

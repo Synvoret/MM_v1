@@ -12,4 +12,5 @@ class StackEventsNPCCaptainsAdmin(admin.ModelAdmin):
 
         "captain",
         'nationality',
+        'ship',
     ]
