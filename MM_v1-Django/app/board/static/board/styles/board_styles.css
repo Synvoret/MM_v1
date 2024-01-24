@@ -14,8 +14,8 @@ use {
     /* filter: drop-shadow(10px 10px 16px rgba(0, 0, 0, .9)); */
     /* filter: blur(10px); */
     fill: rgba(255, 255, 255, 0);
-    stroke: red;
-    stroke-width: 1;
+    /* stroke: red;
+    stroke-width: 1; */
     transition: fill 0.2s;
     top: 0;
     left: 0;
@@ -29,7 +29,6 @@ use:hover,
 #user:hover {
     fill: rgba(255, 255, 255, .4);
     cursor: pointer;
-    stroke-width: .1;
 }
 
 .helper-board {

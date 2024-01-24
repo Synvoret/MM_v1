@@ -1,6 +1,6 @@
 // SHIP PLASTIC
 function putShipPlastic(unit, colour, localisation, port) {
-    console.log(unit, colour, localisation, port)
+    // console.log(unit, colour, localisation, port)
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -9,10 +9,8 @@ function putShipPlastic(unit, colour, localisation, port) {
             let unitID = document.getElementById("ship-plastic-" + colour);
             unitID.setAttribute('href', '#' + unit + "-" + colour +'-ship-plastic-image');
 
-            randomInsidePosition(unit, colour, localisation, port)
+            randomInsidePosition(unit, colour, localisation, port);
 
-            // do zrobienia bardzo gruby temat
-            // lokalizacja statków w danej strefie
         }
     };
 

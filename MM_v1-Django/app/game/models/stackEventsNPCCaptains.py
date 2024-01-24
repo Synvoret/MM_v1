@@ -1,19 +1,11 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import SHIPS
 from .game import Game
 from dataset.models import EventCard
 
 
 class StackEventsNPCCaptains(models.Model):
     """Presents a stack for all Events NPC Captains cards on board."""
-
-    SHIPS = [
-        ('Brig', 'Brig'),
-        ('Flute', 'Flute'),
-        ('Frigate', 'Frigate'),
-        ('Galleon', 'Galleon'),
-        ('Man-o-War', 'Man-o-War'),
-        ('Sloop', 'Sloop'),
-    ]
 
     def captain_name(self):
         try:

@@ -1,64 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import DIRECTION, EXPANSION, NATIONALITY, SEAZONES, SHIPS
 from .deck import Deck
 
 
 class EventCard(models.Model):
     """Event Card."""
-
-    DIRECTION = [
-            ('N', 'North'),
-            ('NE', 'Northeast'),
-            ('E', 'East'),
-            ('SE', 'Southeast'),
-            ('S', 'South'),
-            ('SW', 'Southwest'),
-            ('W', 'West'),
-            ('NW', 'Northwest'),
-        ]
-
-    EXPANSION = [
-            ('Seas of Glory', 'Seas of Glory'),
-            ('Colors of War', 'Colors of War'),
-        ]
-
-    NATIONALITY = [
-            ('Dutch', 'Dutch'),
-            ('English', 'English'),
-            ('French', 'French'),
-            ('Spanish', 'Spanish'),
-            ('Small Pirate', 'Small Pirate'),
-            ('Large Pirate', 'Large Pirate'),
-        ]
-
-    SEAZONES = [
-            ('Basse-Terre', 'Basse-Terre'),
-            ('Bridgetown', 'Bridgetown'),
-            ('Caracas', 'Caracas'),
-            ('Cartagena', 'Cartagena'),
-            ('Curacao', 'Curacao'),
-            ('Gulf City', 'Gulf City'),
-            ('Havana', 'Havana'),
-            ('Nassau', 'Nassau'),
-            ('Old Providence', 'Old Providence'),
-            ('Petite Goave', 'Petite Goave'),
-            ('Port Royal', 'Port Royal'),
-            ('San Juan', 'San Juan'),
-            ('Santo Domingo', 'Santo Domingo'),
-            ('St John', 'St John'),
-            ('St Maarten', 'St Maarten'),
-            ('The Carribean Sea', 'The Carribean Sea'),
-            ('Tortuga', 'Tortuga'),
-            ('Trinidad', 'Trinidad'),
-        ]
-
-    SHIPS = [
-            ('Brig', 'Brig'),
-            ('Flute', 'Flute'),
-            ('Frigate', 'Frigate'),
-            ('Galleon', 'Galleon'),
-            ('Man-o-War', 'Man-o-War'),
-            ('Sloop', 'Sloop'),
-        ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     card = models.CharField(max_length=100, unique=True, null=True, blank=True)

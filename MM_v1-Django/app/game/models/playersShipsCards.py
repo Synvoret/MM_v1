@@ -5,7 +5,16 @@ from dataset.models import ShipCard
 
 class PlayersShipsCards(models.Model):
     """Presents a Players Ships Cards for game."""
-    
+
+    @classmethod
+    def set_default_values(cls):
+        """Setting defaults values for all fields in model "Player Captain"."""
+
+        cls.player_blue = None
+        cls.player_green = None
+        cls.player_red = None
+        cls.player_yellow = None
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
 

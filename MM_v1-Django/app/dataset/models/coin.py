@@ -13,7 +13,7 @@ class Coin(models.Model):
 
     coin = models.CharField(max_length=50, null=True, blank=True)
     image = models.ImageField(upload_to='coins/', blank=True, null=True)
-    value = models.IntegerField(choices=VALUE, null=True, blank=True)
+    value = models.IntegerField(null=True, blank=True, choices=VALUE)
 
     def __str__(self):
         return f"Coin - {self.coin}"

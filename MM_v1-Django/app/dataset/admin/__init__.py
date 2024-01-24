@@ -2,10 +2,12 @@ from .backAdmin import BackAdmin
 from .captainCardAdmin import CaptainCardAdmin
 from .coinAdmin import CoinAdmin
 from .cubeAdmin import CubeAdmin
+from .cargoCardAdmin import CargoCardAdmin
 from .deckAdmin import DeckAdmin
 from .demandTokensAdmin import DemandTokensAdmin
 from .diceAdmin import DiceAdmin
 from .eventCardAdmin import EventCardAdmin
+from .fishingCardAdmin import FishingCardAdmin
 from .flagAdmin import FlagAdmin
 from .gloryCardAdmin import GloryCardAdmin
 from .locationTokensAdmin import LocationTokensAdmin

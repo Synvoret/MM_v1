@@ -1,33 +1,9 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import EXPANSION, PORT
 from .deck import Deck
 
 class MissionCard(models.Model):
     """Description Mission Card."""
-
-    PORT = [
-        ('Basse-Terre', 'Basse-Terre'),
-        ('Bridgetown', 'Bridgetown'),
-        ('Caracas', 'Caracas'),
-        ('Cartagena', 'Cartagena'),
-        ('Curacao', 'Curacao'),
-        ('Gulf City', 'Gulf City'),
-        ('Havana', 'Havana'),
-        ('Nassau', 'Nassau'),
-        ('Old Providence', 'Old Providence'),
-        ('Petite Goave', 'Petite Goave'),
-        ('Port Royal', 'Port Royal'),
-        ('San Juan', 'San Juan'),
-        ('Santo Domingo', 'Santo Domingo'),
-        ('st John', 'st John'),
-        ('st Maarten', 'st Maarten'),
-        ('Tortuga', 'Tortuga'),
-        ('Trinidad', 'Trinidad'),
-    ]
-
-    EXPANSION = [
-        ('Seas of Glory', 'Seas of Glory'),
-        ('Colors of War', 'Colors of War'),
-    ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     card = models.CharField(max_length=100, unique=True)

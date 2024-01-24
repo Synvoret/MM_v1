@@ -1,20 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import LOYALITY
 from .game import Game
 
 
 class TrackLoyality(models.Model):
     """Presents a track for crew loyality."""
-
-    LOYALITY = [
-        ('Fierce Loyality', 'Fierce Loyality'),
-        ('Happy', 'Happy'),
-        ('Pleased', 'Pleased'),
-        ('Content', 'Content'),
-        ('Restless', 'Restless'),
-        ('Unhappy', 'Unhappy'),
-        ('Angry', 'Angry'),
-        ('Mutiny', 'Mutiny'),
-    ]
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)

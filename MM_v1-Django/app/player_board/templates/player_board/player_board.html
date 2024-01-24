@@ -3,8 +3,8 @@
 <div id="player-board-container">
     <svg id="player-board-svg">
 
-        <!-- PLAYER BOARD BLUE -->
-        <image id="player-board-blue" href="" x="0" y="0" width="600" height="350"/>
+        <!-- PLAYER BOARD -->
+        <image id="player-board" href="" x="0" y="0" width="600" height="350"/>
 
         <!-- FAVORs TRACK -->
         <defs>
@@ -35,7 +35,7 @@
         <!-- PLAYER CAPTAIN -->
         <defs>
             <clipPath id="player-captain-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
-            <image id="player-captain-card-image" width="88" height="58" xlink:href="" clip-path="url(#player-captain-card-clipPath)"/>
+            <image id="player-captain-card-image" width="88" height="58" xlink:href="" clip-path="url(#player-captain-card-clipPath)" onmouseover="enlagreIndicated('player-captain-card-image')"/>
         </defs>
         <use id="player-captain-card" name="player-captain-card" x="160" y="25" xlink:href="#player-captain-card-image" transform="rotate(0.5 160 25)"/>
 

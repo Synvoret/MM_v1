@@ -1,4 +1,3 @@
-from django.db.models import Max, F
 from board.models import SeaZone
 
 
@@ -11,8 +10,6 @@ def event_movement_ships(event: object = None, ships_localisations_object: objec
     ship_type: Stack Events NPC Captains.
     """
 
-    # GET MOVING DIRECTIONs for EACH SHIP
-
     moving_ships = {}
 
     event_directions = (
@@ -23,15 +20,6 @@ def event_movement_ships(event: object = None, ships_localisations_object: objec
         'large_pirate_direction',
         'small_pirate_direction',
         )
-
-    nationalities = [
-        'Dutch', 
-        'English', 
-        'French', 
-        'Spanish', 
-        'Large Pirate', 
-        'Small Pirate'
-        ]
 
     # get each direction from dict event_directions in event card
     for event_direction in event_directions:
@@ -51,7 +39,6 @@ def event_movement_ships(event: object = None, ships_localisations_object: objec
                     ships_localisations_object.save()
                     # update moving_ships
                     # check unit ship for ship from stack npc captains event cards
-                    # ships_type = ships_type.order_by('-game_round')
                     lasted_ship_for_nationality_captain = list(ships_type.filter(nationality=nationality).order_by('-game_round'))
                     unit = (lasted_ship_for_nationality_captain[0].ship).lower() # ship, ex. 'Frigate'
                     moving_ships["ship" + nationality.replace(" ", "")] = unit

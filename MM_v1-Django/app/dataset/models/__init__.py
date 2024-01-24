@@ -7,8 +7,10 @@ from .flags import Flag
 from .signs import Sign
 from .ships import Ship
 from .captainCard import CaptainCard
+from .cargoCard import CargoCard
 from .gloryCard import GloryCard
 from .eventCard import EventCard
+from .fishingCard import FishingCard
 from .missionCard import MissionCard
 from .rumorCard import RumorCard
 from .shipCard import ShipCard

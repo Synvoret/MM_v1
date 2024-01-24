@@ -1,30 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import SEAZONES
 from .board import Board
 
 
 class SeaZone(models.Model):
     """Base class model for sea zones and coordinates for all components on it."""
-
-    SEAZONES = [
-        ('Basse-Terre', 'Basse-Terre'),
-        ('Bridgetown', 'Bridgetown'),
-        ('Caracas', 'Caracas'),
-        ('Cartagena', 'Cartagena'),
-        ('Curacao', 'Curacao'),
-        ('Gulf City', 'Gulf City'),
-        ('Havana', 'Havana'),
-        ('Nassau', 'Nassau'),
-        ('Old Providence', 'Old Providence'),
-        ('Petite Goave', 'Petite Goave'),
-        ('Port Royal', 'Port Royal'),
-        ('San Juan', 'San Juan'),
-        ('Santo Domingo', 'Santo Domingo'),
-        ('St John', 'St John'),
-        ('St Maarten', 'St Maarten'),
-        ('The Carribean Sea', 'The Carribean Sea'),
-        ('Tortuga', 'Tortuga'),
-        ('Trinidad', 'Trinidad'),
-    ]
 
     class Meta:
         verbose_name = "Sea Zone"
@@ -46,6 +26,7 @@ class SeaZone(models.Model):
     name_ry = models.IntegerField(null=True, blank=True)
     name_rotate = models.IntegerField()
     feature_coordinates = models.CharField(max_length=500)
+    feature_image = models.ImageField(upload_to='featureImages/', null=True, blank=True)
     demand_x = models.IntegerField()
     demand_y = models.IntegerField()
     demand_rotate = models.IntegerField()

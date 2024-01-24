@@ -5,8 +5,9 @@ app_name = 'game'
 
 urlpatterns = [
     path('game', views.game, name='game'),
+    path('goGame', views.goGame, name="goGame"),
     path('board', views.board, name='board'),
-    path('player_board', views.player_board, name='player_board'),
+    path('playerBoard', views.playerBoard, name='playerBoard'),
     path('dice', views.dice, name='dice'),
     path('ship', views.ship, name='ship'),
 
@@ -14,13 +15,16 @@ urlpatterns = [
     path('drawMissionCard', views.drawMissionCard, name='drawMissionCard'),
     path('drawGloryCard', views.drawGloryCard, name='drawGloryCard'),
     path('enemyHitLocation', views.enemyHitLocation, name='enemyHitLocation'),
+    path('favorsTrackCube', views.favorsTrackCube, name='favorsTrackCube'),
+    path('featuresSeaZones', views.featuresSeaZones, name='featuresSeaZones'),
+    path('loyalityTrackCube', views.loyalityTrackCube, name='loyalityTrackCube'),
+    path('newPlayer', views.newPlayer, name="newPlayer"),
     path('playerCaptainCard', views.playerCaptainCard, name='playerCaptainCard'),
     path('playerShipCard', views.playerShipCard, name='playerShipCard'),
     path('playerHitLocation', views.playerHitLocation, name='playerHitLocation'),
+    path('saveToServerSelectedNewCaptainShip', views.saveToServerSelectedNewCaptainShip, name='saveToServerSelectedNewCaptainShip'),
     path('updatePlayerGolds', views.updatePlayerGolds, name='updatePlayerGolds'),
     path('updateGloryTrack', views.updateGloryTrack, name='updateGloryTrack'),
-    path('loyalityTrackCube', views.loyalityTrackCube, name='loyalityTrackCube'),
-    path('favorsTrackCube', views.favorsTrackCube, name='favorsTrackCube'),
 
     path('drawDemandToken', views.drawDemandToken, name='drawDemandToken'),
     path('drawMerchantToken', views.drawMerchantToken, name='drawMerchantToken'),

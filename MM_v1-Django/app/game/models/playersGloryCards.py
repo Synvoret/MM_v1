@@ -12,7 +12,20 @@ class PlayersGloryCards(models.Model):
         ('Red', 'Red'),
         ('Yellow', 'Yellow'),
     ]
-    
+
+    @classmethod
+    def set_values_default(cls):
+        fields = cls.objects.all()
+        for field in fields:
+            field.game_round = 0
+            field.glory_card_1 = None
+            field.glory_card_2 = None
+            field.glory_card_3 = None
+            field.glory_card_4 = None
+            field.glory_card_5 = None
+            field.glory_card_6 = None
+            field.save()
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=COLOURS)

@@ -1,40 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import EXPANSION, NATIONALITY, PORT
 from .deck import Deck
 
 
 class CaptainCard(models.Model):
     """Description Captain Card."""
-
-    PORT = [
-        ('Basse-Terre', 'Basse-Terre'),
-        ('Bridgetown', 'Bridgetown'),
-        ('Caracas', 'Caracas'),
-        ('Cartagena', 'Cartagena'),
-        ('Curacao', 'Curacao'),
-        ('Havana', 'Havana'),
-        ('Nassau', 'Nassau'),
-        ('Old Providence', 'Old Providence'),
-        ('Petite Goave', 'Petite Goave'),
-        ('Port Royal', 'Port Royal'),
-        ('San Juan', 'San Juan'),
-        ('Santo Domingo', 'Santo Domingo'),
-        ('st John', 'st John'),
-        ('st Maarten', 'st Maarten'),
-        ('Tortuga', 'Tortuga'),
-        ('Trinidad', 'Trinidad'),
-    ]
-
-    NATIONALITY = [
-        ('DU', 'Dutch'),
-        ('FR', 'French'),
-        ('EN', 'English'),
-        ('SP', 'Spanich'),
-    ]
-
-    EXPANSION = [
-        ('Seas of Glory', 'Seas of Glory'),
-        ('Colors of War', 'Colors of War'),
-    ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     captain = models.CharField(max_length=50, unique=True)

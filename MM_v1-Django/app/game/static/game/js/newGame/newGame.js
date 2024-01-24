@@ -1,3 +1,10 @@
+function prepareNav() {
+
+    // FIRST STEP - add players
+    document.getElementById('add-players-div').style.display = "block";
+    document.querySelector('.nav-button-player-start').setAttribute('disabled', true);
+};
+
 function prepareBoard() {
 
     // NEW BOARD
@@ -43,28 +50,5 @@ function prepareBoard() {
 
 };
 
-
-function preparePlayerBoard() {
-    // PLAYER BOARD
-    const col = 'red'
-
-    newPlayerBoard();
-    updateLoyalityTrack(col);
-    updateFavorsTrack(col);
-    // drawPlayerCaptainCard(col);
-    // drawPlayerShipCard(col);
-    updatePlayerHitLocation(col);
-    updatePlayerGolds(col);
-    drawGloryCard(col);
-    // SHIP PLASTIC
-    // putShipPlastic('galleon', col, "st-maarten", true);
-
-
-    // put random element to selected element
-    // randomInsidePosition("frigate", "spanish", "cartagena", false);
-
-};
-
-
+prepareNav();
 prepareBoard();
-// preparePlayerBoard();

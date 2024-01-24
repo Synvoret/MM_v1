@@ -1,19 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import EXPANSION, SKILL
 from .deck import Deck
 
 
 class RumorCard(models.Model):
     """Description Rumor Card."""
-
-    SKILL = [
-        ('Scouting', 'Scouting'),
-        ('Influence', 'Influence'),
-    ]
-
-    EXPANSION = [
-        ('Seas of Glory', 'Seas of Glory'),
-        ('Colors of War', 'Colors of War'),
-    ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     card = models.CharField(max_length=50, unique=True)

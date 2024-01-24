@@ -20,9 +20,11 @@
 
 {% block scripts %}
     <script src="{% static 'game/js/utilGame/randomInsidePosition.js' %}"></script>
+    <script src="{% static 'game/js/utilGame/enlargeClearIndicated.js' %}"></script>
 
-    <script src="{% static 'game/js/startGame/newBoard.js' %}"></script>
-    <script src="{% static 'game/js/startGame/newPlayerBoard.js' %}"></script>
+    <script src="{% static 'game/js/newGame/newBoard.js' %}"></script>
+    <script src="{% static 'game/js/newGame/newPlayer.js' %}"></script>
+    <script src="{% static 'game/js/newGame/goGame.js' %}"></script>
 
     <script src="{% static 'game/js/flowGame/drawDemandToken.js' %}"></script>
     <script src="{% static 'game/js/flowGame/drawEventCard.js' %}"></script>
@@ -32,6 +34,7 @@
     <script src="{% static 'game/js/flowGame/drawPlayerCaptainCard.js' %}"></script>
     <script src="{% static 'game/js/flowGame/drawPlayerShipCard.js' %}"></script>
     <script src="{% static 'game/js/flowGame/drawShipModification.js' %}"></script>
+    <script src="{% static 'game/js/flowGame/playerBoard.js' %}"></script>
     <script src="{% static 'game/js/flowGame/putLocationToken.js' %}"></script>
     <script src="{% static 'game/js/flowGame/putShipPlastic.js' %}"></script>
     <script src="{% static 'game/js/flowGame/rollDice.js' %}"></script>
@@ -42,7 +45,7 @@
     <script src="{% static 'game/js/flowGame/updateLoyalityTrack.js' %}"></script>
     <script src="{% static 'game/js/flowGame/updatePlayerGolds.js' %}"></script>
 
-    <script src="{% static 'game/js/startGame/startGame.js' %}"></script>
+    <script src="{% static 'game/js/newGame/newGame.js' %}"></script>
 
     <script src="{% static 'game/js/testowy.js' %}"></script>
 {% endblock scripts %}

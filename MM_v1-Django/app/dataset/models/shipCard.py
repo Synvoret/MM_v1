@@ -1,14 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import EXPANSION
 from .deck import Deck
 
 
 class ShipCard(models.Model):    
     """Description Ship Card."""
-
-    EXPANSION = [
-        ('Seas of Glory', 'Seas of Glory'),
-        ('Colors of War', 'Colors of War'),
-    ]
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
     ship = models.CharField(max_length=50, blank=True, null=True)

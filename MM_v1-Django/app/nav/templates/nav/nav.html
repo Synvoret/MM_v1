@@ -4,53 +4,70 @@
     <p class="title">TURN SEQUENCE</p>
 
     <div class="nav-buttons-container">
+        
+        <!-- PLAYERs -->
+        <div id="add-players-div" style="display: none;">
+            <span class="step">PLAYERs (choose colour, captain and ship)</span>
+            <button class="nav-button nav-button-player-blue" style="color: blue" onclick="newPlayer('blue')">BLUE <span class="player-blue-added" style="display: none; color: black">Added</span></button>
+            <button class="nav-button nav-button-player-green" style="color: green" onclick="newPlayer('green')">GREEN <span class="player-green-added" style="display: none; color: black">Added</span></button>
+            <button class="nav-button nav-button-player-red" style="color: red" onclick="newPlayer('red')">RED <span class="player-red-added" style="display: none; color: black">Added</span></button>
+            <button class="nav-button nav-button-player-yellow" style="color: yellow" onclick="newPlayer('yellow')">YELLOW <span class="player-yellow-added" style="display: none; color: black">Added</span></button>
+            <button class="nav-button nav-button-player-start"><span class="player-amount">0</span> choosen - START GAME</button><br><hr>
+        </div>
 
         <!-- DRAW EVENT CARD -->
-        <span class="step">EVENT CARD</span>
-        <button class="nav-button nav-button-draw-event-card" onclick="drawEventCard()">Draw Event Card</button><br><hr>
+        <div id="draw-event-card-div" style="display: none;">
+            <span class="step">EVENT CARD</span>
+            <button class="nav-button nav-button-draw-event-card" onclick="drawEventCard()">Draw Event Card</button><br><hr>
+        </div>
 
         <!-- PLAYER ACTIONs -->
-        <!-- <span class="step">PLAYER ACTIONs</span>
-        <button class="nav-button nav-button-move-ship">Move</button>
-        <button class="nav-button nav-button-scout">Scout</button>
-        <button class="nav-button nav-button-port">Port</button>
-        <button class="nav-button nav-button-fishing">Fishing</button>
-        <button class="nav-button nav-button-end-turn">End Turn</button>
-        <span class="amount-actions">Actions: 3</span><br>
-        <span class="step">Moves</span>
-        <button class="nav-button nav-button-fishing">to port</button>
-        <button class="nav-button nav-button-fishing">from port</button>
-        <button class="nav-button nav-button-fishing">to sea zone</button><br>
-        <span class="step">Scout</span>
-        <button class="nav-button nav-button-fishing">player captain</button>
-        <button class="nav-button nav-button-fishing">merchant</button>
-        <button class="nav-button nav-button-fishing">npc ship</button><br>
-        <span class="step">Port</span>
-        <button class="nav-button nav-button-fishing">sell goods</button>
-        <button class="nav-button nav-button-fishing">buy goods</button>
-        <button class="nav-button nav-button-fishing">visit shipyard</button>
-        <button class="nav-button nav-button-fishing">reqruit</button>
-        <button class="nav-button nav-button-fishing">acquire rumor</button>
-        <button class="nav-button nav-button-fishing">claim mission</button>
-        <button class="nav-button nav-button-fishing">stash gold</button><br>
-        <span class="step">Battle</span>
-        <button class="nav-button nav-button-fishing"></button>
-        <button class="nav-button nav-button-fishing"></button><br><hr> -->
+        <div id="player-action-div" style="display: none;">
+            <span class="step">PLAYER ACTIONs</span>
+            <button class="nav-button nav-button-move-ship">Move</button>
+            <button class="nav-button nav-button-scout">Scout</button>
+            <button class="nav-button nav-button-port">Port</button>
+            <button class="nav-button nav-button-fishing">Fishing</button>
+            <button class="nav-button nav-button-location">Visit Location</button>
+            <button class="nav-button nav-button-end-turn">End Turn</button>
+            <span class="amount-actions">Actions: 3</span><br>
+            <span class="step" style="display: none;">Moves</span>
+            <button class="nav-button nav-button-to-port" style="display: none;">to port</button>
+            <button class="nav-button nav-button-from-port" style="display: none;">from port</button>
+            <button class="nav-button nav-button-to-sea-zone" style="display: none;">to sea zone</button><br>
+            <span class="step" style="display: none;">Scout</span>
+            <button class="nav-button nav-button-player-captain" style="display: none;">player captain</button>
+            <button class="nav-button nav-button-merchant" style="display: none;">merchant</button>
+            <button class="nav-button nav-button-npc-ship" style="display: none;">npc ship</button><br>
+            <span class="step" style="display: none;">Port</span>
+            <button class="nav-button nav-button-sell-goods" style="display: none;">sell goods</button>
+            <button class="nav-button nav-button-but-goods" style="display: none;">buy goods</button>
+            <button class="nav-button nav-button-visit-shipyard" style="display: none;">visit shipyard</button>
+            <button class="nav-button nav-button-reqruit" style="display: none;">reqruit</button>
+            <button class="nav-button nav-button-acquire-rumor" style="display: none;">acquire rumor</button>
+            <button class="nav-button nav-button-claim-mission" style="display: none;">claim mission</button>
+            <button class="nav-button nav-button-stash-gold" style="display: none;">stash gold</button><br>
+            <span class="step" style="display: none;">Battle</span>
+            <button class="nav-button nav-button-" style="display: none;"></button>
+            <button class="nav-button nav-button-" style="display: none;"></button><br><hr>
+        </div>
 
         <!-- DICEs -->
-        <!-- <span class="step">DICEs</span>
-        <button class="nav-button dice dice1" onclick="rollDice('.dice1-image')"><img class="dice1-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice2" onclick="rollDice('.dice2-image')" disabled><img class="dice2-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice3" onclick="rollDice('.dice3-image')" disabled><img class="dice3-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice4" onclick="rollDice('.dice4-image')" disabled><img class="dice4-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice5" onclick="rollDice('.dice5-image')" disabled><img class="dice5-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice6" onclick="rollDice('.dice6-image')" disabled><img class="dice6-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice7" onclick="rollDice('.dice7-image')" disabled><img class="dice7-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice8" onclick="rollDice('.dice8-image')" disabled><img class="dice8-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice9" onclick="rollDice('.dice9-image')" disabled><img class="dice9-image dice-image" src="/media/dices/dice_skull6.png"></button>
-        <button class="nav-button dice dice10" onclick="rollDice('.dice10-image')" disabled><img class="dice10-image dice-image" src="/media/dices/dice_skull6.png"></button><br><hr> -->
-
+        <div style="display: none;">
+        <!-- <div> -->
+            <span class="step">DICEs</span>
+            <button class="nav-button dice dice1" onclick="rollDice('.dice1-image')"><img class="dice1-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice2" onclick="rollDice('.dice2-image')" disabled><img class="dice2-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice3" onclick="rollDice('.dice3-image')" disabled><img class="dice3-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice4" onclick="rollDice('.dice4-image')" disabled><img class="dice4-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice5" onclick="rollDice('.dice5-image')" disabled><img class="dice5-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice6" onclick="rollDice('.dice6-image')" disabled><img class="dice6-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice7" onclick="rollDice('.dice7-image')" disabled><img class="dice7-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice8" onclick="rollDice('.dice8-image')" disabled><img class="dice8-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice9" onclick="rollDice('.dice9-image')" disabled><img class="dice9-image dice-image" src="/media/dices/dice_skull6.png"></button>
+            <button class="nav-button dice dice10" onclick="rollDice('.dice10-image')" disabled><img class="dice10-image dice-image" src="/media/dices/dice_skull6.png"></button><br><hr>
+        </div>
     </div>
 
-    <p class="messages">Here will be messages for player.</p>
+    <p id="nav-messages" class="messages">Here will be messages for player.</p>
 </div>

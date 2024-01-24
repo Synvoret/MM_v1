@@ -12,6 +12,18 @@ class TrackPlayerHitLocations(models.Model):
         ('Yellow', 'Yellow'),
     ]
 
+    @classmethod
+    def set_values_default(cls):
+        fields = cls.objects.all()
+        for field in fields:
+            field.game_round = 0
+            field.hull = 1
+            field.cargo = 1
+            field.masts = 1
+            field.crew = 1
+            field.cannons = 1
+            field.save()
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=COLOURS)
@@ -23,4 +35,4 @@ class TrackPlayerHitLocations(models.Model):
     cannons = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"Track Player Hit Locations."
+        return f"Track Player {self.player_colour} Hit Locations."

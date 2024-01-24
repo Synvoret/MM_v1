@@ -1,4 +1,5 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import NATIONALITY
 from .backs import Back
 
 
@@ -7,13 +8,6 @@ class MerchantTokens(models.Model):
 
     class Meta:
         verbose_name = "Merchant Token"
-
-    NATIONALITY = [
-        ('Dutch', 'Dutch'),
-        ('French', 'French'),
-        ('English', 'English'),
-        ('Spanish', 'Spanish'),
-    ]
 
     name = models.CharField(max_length=50)
     awers = models.ImageField(upload_to='merchantTokens/', blank=True, null=True)

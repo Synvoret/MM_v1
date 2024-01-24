@@ -1,43 +1,24 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import SEAZONES
 from .game import Game
 
 
 class ShipsLocalisations(models.Model):
     """Presents a localisations ships on the board."""
 
-    SEAZONES = [
-        ('Basse-Terre', 'Basse-Terre'),
-        ('Bridgetown', 'Bridgetown'),
-        ('Caracas', 'Caracas'),
-        ('Cartagena', 'Cartagena'),
-        ('Curacao', 'Curacao'),
-        ('Gulf City', 'Gulf City'),
-        ('Havana', 'Havana'),
-        ('Nassau', 'Nassau'),
-        ('Old Providence', 'Old Providence'),
-        ('Petite Goave', 'Petite Goave'),
-        ('Port Royal', 'Port Royal'),
-        ('San Juan', 'San Juan'),
-        ('Santo Domingo', 'Santo Domingo'),
-        ('St John', 'St John'),
-        ('St Maarten', 'St Maarten'),
-        ('The Carribean Sea', 'The Carribean Sea'),
-        ('Tortuga', 'Tortuga'),
-        ('Trinidad', 'Trinidad'),
-    ]
+    @classmethod
+    def set_default_values(cls):
 
-    def set_default_values(self):
-        self.blue_ship =None
-        self.green_ship = None
-        self.red_ship = None
-        self.yellow_ship = None
-        self.dutch_ship = None
-        self.english_ship = None
-        self.french_ship = None
-        self.spanish_ship = None
-        self.small_pirate_ship = None
-        self.large_pirate_ship = None
-
+        cls.blue_ship =None
+        cls.green_ship = None
+        cls.red_ship = None
+        cls.yellow_ship = None
+        cls.dutch_ship = None
+        cls.english_ship = None
+        cls.french_ship = None
+        cls.spanish_ship = None
+        cls.small_pirate_ship = None
+        cls.large_pirate_ship = None
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     game_round = models.IntegerField(default=0)
