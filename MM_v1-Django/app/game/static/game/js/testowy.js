@@ -32,7 +32,7 @@ boardContainer.addEventListener('mouseout', function () {
 
 
 // PLAYER BOARD
-const playerBoardContainer = document.getElementById('player-board-container');
+const playerBoardContainer = document.getElementById('player-active-board-container');
 const helperElementPlayerBoard = playerBoardContainer.querySelector('.helper-player-board');
 const tspansPlayerBoard = helperElementPlayerBoard.querySelectorAll('.tspan-player-board');
 const allElementsPlayerBoard = playerBoardContainer.querySelectorAll('[name]');

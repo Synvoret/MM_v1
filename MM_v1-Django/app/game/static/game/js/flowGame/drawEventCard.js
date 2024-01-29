@@ -4,7 +4,7 @@ function drawEventCard() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            console.log(response);
+            // console.log(response);
             if (response.npcCaptainNationality !== undefined) {
                 // if event is a CAPTAIN
 

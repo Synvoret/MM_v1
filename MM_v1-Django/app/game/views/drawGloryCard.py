@@ -1,8 +1,7 @@
 import random
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from dataset.models import GloryCard
 from game.models import PlayersGloryCards
-from game.models import Game
 
 
 def drawGloryCard(request):

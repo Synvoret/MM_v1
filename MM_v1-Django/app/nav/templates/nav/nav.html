@@ -4,7 +4,7 @@
     <p class="title">TURN SEQUENCE</p>
 
     <div class="nav-buttons-container">
-        
+
         <!-- PLAYERs -->
         <div id="add-players-div" style="display: none;">
             <span class="step">PLAYERs (choose colour, captain and ship)</span>
@@ -24,13 +24,12 @@
         <!-- PLAYER ACTIONs -->
         <div id="player-action-div" style="display: none;">
             <span class="step">PLAYER ACTIONs</span>
-            <button class="nav-button nav-button-move-ship">Move</button>
+            <button class="nav-button nav-button-move-ship" Enabled>Move</button>
             <button class="nav-button nav-button-scout">Scout</button>
             <button class="nav-button nav-button-port">Port</button>
-            <button class="nav-button nav-button-fishing">Fishing</button>
+            <button class="nav-button nav-button-fishing" onclick="fishingAction('get')">Fishing</button>
             <button class="nav-button nav-button-location">Visit Location</button>
-            <button class="nav-button nav-button-end-turn">End Turn</button>
-            <span class="amount-actions">Actions: 3</span><br>
+            <button class="nav-button nav-button-end-turn">End Turn</button><br>
             <span class="step" style="display: none;">Moves</span>
             <button class="nav-button nav-button-to-port" style="display: none;">to port</button>
             <button class="nav-button nav-button-from-port" style="display: none;">from port</button>

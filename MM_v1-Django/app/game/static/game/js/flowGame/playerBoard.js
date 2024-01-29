@@ -7,19 +7,18 @@ function playerBoard() {
             document.getElementById('player-board').setAttribute('href', response.playerBoardImage);
 
             let colour = response.playerColour;
+            resetPlayerBoard();
             updateLoyalityTrack(colour);
             updateFavorsTrack(colour);
             updatePlayerHitLocation(colour);
             updatePlayerGolds(colour);
             drawPlayerCaptainCard(colour);
             drawPlayerShipCard(colour);
-
+            updateCaptainActions(colour);
             };
         };
     xhr.open('GET', 'playerBoard', true);
     xhr.send();
-
-    
 
 };
 

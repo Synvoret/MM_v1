@@ -25,6 +25,4 @@ def goGame(request):
             data[player_colour + 'CaptainHomePort'] = (captain.home_port).lower().replace(' ', '-')
             data[player_colour + 'Ship'] = (ship.ship).lower()
 
-    print(data)
-
     return JsonResponse(data)

@@ -8,6 +8,8 @@ function newPlayer(colour) {
             // console.log(response)
 
             document.getElementById('new-player-use').style.display = "block";
+            document.querySelector('.nav-button-player-start').disabled = true;
+            document.querySelector('.nav-button-player-start').removeAttribute('onclick');
 
             document.getElementById('new-player-main-rect').style.stroke = colour;
             document.getElementById('new-captain-1-frame').style.removeProperty('stroke');
@@ -15,7 +17,7 @@ function newPlayer(colour) {
             document.getElementById('new-ship-sloop-frame').style.removeProperty('stroke');
             document.getElementById('new-ship-flute-frame').style.removeProperty('stroke');
             document.getElementById('new-captain-ship-get-text').style.removeProperty('fill');
-            document.getElementById('new-captain-ship-get-text').removeAttribute('onclick');
+            // document.getElementById('new-captain-ship-get-text').removeAttribute('onclick');
 
             document.getElementById('new-captain-1-image').setAttribute('href', response.captain1Image);
             document.getElementById('new-captain-1-frame').setAttribute('name', response.captain1Name);

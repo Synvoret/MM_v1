@@ -23,6 +23,7 @@ urlpatterns = [
     path('playerShipCard', views.playerShipCard, name='playerShipCard'),
     path('playerHitLocation', views.playerHitLocation, name='playerHitLocation'),
     path('saveToServerSelectedNewCaptainShip', views.saveToServerSelectedNewCaptainShip, name='saveToServerSelectedNewCaptainShip'),
+    path('updateCaptainActions', views.updateCaptainActions, name='updateCaptainActions'),
     path('updatePlayerGolds', views.updatePlayerGolds, name='updatePlayerGolds'),
     path('updateGloryTrack', views.updateGloryTrack, name='updateGloryTrack'),
 
@@ -30,4 +31,8 @@ urlpatterns = [
     path('drawMerchantToken', views.drawMerchantToken, name='drawMerchantToken'),
     path('drawShipModification', views.drawShipModification, name='drawShipModification'),
     path('putLocationToken', views.putLocationToken, name='putLocationToken'),
+
+    # player actions paths
+    path('endCurrentAction', views.endCurrentAction, name='endCurrentAction'),
+    path('fishingAction', views.fishingAction, name='fishingAction'),
 ]

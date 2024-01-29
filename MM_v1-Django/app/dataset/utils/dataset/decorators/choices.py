@@ -88,6 +88,13 @@ NATIONALITY = [
     ('SP', 'Spanich'),
 ]
 
+PLAYER_COLOURS = [
+    ('blue', 'blue'),
+    ('green', 'green'),
+    ('red', 'red'),
+    ('yellow', 'yellow'),
+]
+
 PORT = [
     ('Basse-Terre', 'Basse-Terre'),
     ('Bridgetown', 'Bridgetown'),
@@ -166,10 +173,18 @@ SKILL = [
 
 def choices(cls):
     class NewModel(cls):
-        SKILL = [
-            ('Scouting', 'Scouting'),
-            ('Influence', 'Influence'),
-        ]
+        CARGO = CARGO
+        COLOUR = COLOUR
+        DESTINATION_PORT = DESTINATION_PORT
+        DIRECTION = DIRECTION
+        EXPANSION = EXPANSION
+        HITS = HITS
+        LOYALITY = LOYALITY
+        NATIONALITY = NATIONALITY
+        PLAYER_COLOURS = PLAYER_COLOURS
+        SEAZONES = SEAZONES
+        SHIPS = SHIPS
+        SKILL = SKILL
 
         class Meta:
             proxy = True

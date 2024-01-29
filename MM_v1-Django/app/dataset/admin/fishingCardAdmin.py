@@ -9,5 +9,7 @@ class FishingCardAdmin(admin.ModelAdmin):
         'card',
         'expansion',
         'awers',
+        'fishing_value',
+        'fishing_hits',
         'notes',
     ]

@@ -576,6 +576,30 @@
     </defs>
     <use id="new-player-use" x="550" y="250" xlink:href="#new-player" style="display: none;"/>
 
+    <!-- FISHING ACTION -->
+    <defs>
+        <g id="fishing-action">
+            <rect id="fishing-action-main-rect" width="210" height="320" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <clipPath id="fishing-card-clipPath"><rect x="15" y="15" width="180" height="270" rx="4" ry="4"/></clipPath>
+
+            <image id="fishing-card-image" name="" x="15" y="15" width="180" height="270" href="" clip-path="url(#fishing-card-clipPath)"/>
+
+            <text id="fishing-action-ok-text" x="90" y="310" fill="red" onclick="fishingAction('post'); endCurrentAction('fishing')">OK</text>
+        </g>
+    </defs>
+    <use id="fishing-action-use" x="550" y="250" xlink:href="#fishing-action" style="display: none;"/>
+
+
+
+
+
+
+
+
+
+
+
     <!-- ENLARGE INDICATED HELPER -->
     <defs id="board-enlarge-indicated">
         <clipPath id="board-enlarge-indicated-rect-clipPath"><rect id="board-enlarge-indicated-rect" x="0" y="0" width="300" height="200" rx="4" ry="4"/></clipPath>

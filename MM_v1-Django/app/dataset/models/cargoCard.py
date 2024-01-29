@@ -1,8 +1,10 @@
 from django.db import models
 from dataset.utils.dataset.decorators.choices import CARGO, DESTINATION_PORT, EXPANSION, HITS
+# from dataset.utils.dataset.decorators.choices import choices
 from .deck import Deck
 
 
+# @choices
 class CargoCard(models.Model):
     """Description Cargo Card."""
 

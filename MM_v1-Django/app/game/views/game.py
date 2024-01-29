@@ -7,6 +7,7 @@ from game.models import StackEventsCards
 from game.models import StackEventsNPCCaptains
 from game.models import StackMissionsCards
 from game.models import TrackEnemyHitLocations
+from game.models import TrackPlayerGolds
 
 from game.models import PlayersGloryCards
 from game.models import TrackPlayerHitLocations
@@ -16,6 +17,8 @@ def game(request):
 
     # Create random game
     # new_game = Game.objects.create()
+
+    request.session.clear()
 
     # RESET GAME
     Game.set_default_values()
@@ -28,6 +31,9 @@ def game(request):
 
     # RESET PLAYERs SHIPs CARDs
     PlayersShipsCards.set_default_values()
+
+    # RESET PLAYERs GOLDs
+    TrackPlayerGolds.set_default_values()
 
     # RESET SHIPS LOCALISATIONs
     ShipsLocalisations.set_default_values()

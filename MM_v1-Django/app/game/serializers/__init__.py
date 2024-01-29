@@ -1,0 +1,1 @@
+from .fishingCardSerializer import FishingCardSerializer
