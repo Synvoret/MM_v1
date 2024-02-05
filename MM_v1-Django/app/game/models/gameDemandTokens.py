@@ -6,7 +6,6 @@ class GameDemandTokens(models.Model):
     """Demands Tokens for Game."""
     
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
 
     basse_terre = models.CharField(max_length=20, null=True, blank=True)
     bridgetown = models.CharField(max_length=20, null=True, blank=True)

@@ -1,3 +1,24 @@
+ALLOWEDDESTINATIONS= [
+    'Basse-Terre',
+    'Bridgetown',
+    'Caracas',
+    'Cartagena',
+    'Curacao',
+    'Gulf City',
+    'Havana',
+    'Nassau',
+    'Old Providence',
+    'Petite Goave',
+    'Port Royal',
+    'San Juan',
+    'Santo Domingo',
+    'St John',
+    'St Maarten',
+    'The Carribean Sea',
+    'Tortuga',
+    'Trinidad',
+]
+
 CARGO = [
     ('Cacao', 'Cacao'),
     ('Food', 'Food'),
@@ -82,10 +103,10 @@ LOYALITY = [
 ]
 
 NATIONALITY = [
-    ('DU', 'Dutch'),
-    ('FR', 'French'),
-    ('EN', 'English'),
-    ('SP', 'Spanich'),
+    ('Dutch', 'Dutch'),
+    ('French', 'French'),
+    ('English', 'English'),
+    ('Spanish', 'Spanish'),
 ]
 
 PLAYER_COLOURS = [

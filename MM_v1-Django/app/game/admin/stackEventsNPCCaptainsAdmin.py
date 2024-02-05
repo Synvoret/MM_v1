@@ -8,7 +8,6 @@ class StackEventsNPCCaptainsAdmin(admin.ModelAdmin):
 
     list_display = [
         "game_number",
-        "game_round",
 
         "captain",
         'nationality',

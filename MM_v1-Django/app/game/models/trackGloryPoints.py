@@ -6,7 +6,6 @@ class TrackGloryPoint(models.Model):
     """Presents a track for glory points players values."""
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
 
     player_blue = models.IntegerField(default=0)
     player_green = models.IntegerField(default=0)

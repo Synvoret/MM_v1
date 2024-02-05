@@ -16,7 +16,6 @@ class PlayersShipsCards(models.Model):
         cls.player_yellow = None
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
 
     player_blue = models.ForeignKey(ShipCard, on_delete=models.CASCADE, null=True, blank=True, related_name='player_blue_ship_card')
     player_green = models.ForeignKey(ShipCard, on_delete=models.CASCADE, null=True, blank=True, related_name='player_green_ship_card')

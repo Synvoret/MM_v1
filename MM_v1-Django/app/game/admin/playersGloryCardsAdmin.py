@@ -6,7 +6,6 @@ from game.models import PlayersGloryCards
 class PlayersGloryCardsAdmin(admin.ModelAdmin):
     list_display = [
         'game_number',
-        'game_round',
 
         'player_colour',
         'glory_card_1',

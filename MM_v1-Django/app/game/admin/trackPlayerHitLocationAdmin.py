@@ -8,7 +8,6 @@ class TrackPlayerHitLocationsAdmin(admin.ModelAdmin):
 
     list_display = [
         'game_number',
-        'game_round',
         'player_colour',
 
         'hull',

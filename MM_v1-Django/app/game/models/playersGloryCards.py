@@ -17,7 +17,6 @@ class PlayersGloryCards(models.Model):
     def set_values_default(cls):
         fields = cls.objects.all()
         for field in fields:
-            field.game_round = 0
             field.glory_card_1 = None
             field.glory_card_2 = None
             field.glory_card_3 = None
@@ -27,7 +26,6 @@ class PlayersGloryCards(models.Model):
             field.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=COLOURS)
 
     glory_card_1 = models.ForeignKey(GloryCard, on_delete=models.CASCADE, null=True, blank=True, related_name='glory_card_1')

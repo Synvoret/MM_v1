@@ -6,7 +6,6 @@ from game.models import TrackGloryPoint
 class TrackGloryPointAdmin(admin.ModelAdmin):
     list_display = [
         'game_number',
-        'game_round',
 
         'player_blue',
         'player_green',

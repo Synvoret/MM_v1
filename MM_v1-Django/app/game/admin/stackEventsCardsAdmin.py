@@ -8,7 +8,6 @@ class StackEventsCardsAdmin(admin.ModelAdmin):
 
     list_display = [
         'game_number',
-        'game_round',
         'event_card',
         'event_card_captain',
     ]

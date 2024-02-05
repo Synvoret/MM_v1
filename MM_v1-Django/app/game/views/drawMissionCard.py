@@ -1,9 +1,9 @@
 import random
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from dataset.models import MissionCard
 from dataset.models import Sign
-from game.models import StackMissionsCards
 from game.models import Game
+from game.models import StackMissionsCards
 
 
 def drawMissionCard(request):
@@ -15,12 +15,11 @@ def drawMissionCard(request):
     cards = MissionCard.objects.all()
     random_card = random.choice(cards)
 
-    game = Game.objects.get(pk=1)
-    game_round = game.round
+    game = Game.objects.get(number=100)
+    game_rounds = game.rounds
 
     stack = StackMissionsCards(
         game_number=game,
-        game_round=game_round,
     )
 
     if int(mission_number) == 1:

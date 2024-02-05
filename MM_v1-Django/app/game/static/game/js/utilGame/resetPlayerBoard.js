@@ -22,11 +22,11 @@ function resetPlayerBoard() {
 
     // reset CAPTAIN ACTIONs
     document.getElementById("captain-actions-image").setAttribute('href', '');
-    document.getElementById("captain-actions-first").setAttribute('href', '');
-    document.getElementById("captain-actions-second").setAttribute('href', '');
-    document.getElementById("captain-actions-thirth").setAttribute('href', '');
-    document.getElementById("captain-actions-fourth").setAttribute('href', '');
-    document.getElementById("captain-actions-fiveth").setAttribute('href', '');
+    document.getElementById("captain-actions-1").setAttribute('href', '');
+    document.getElementById("captain-actions-2").setAttribute('href', '');
+    document.getElementById("captain-actions-3").setAttribute('href', '');
+    document.getElementById("captain-actions-4").setAttribute('href', '');
+    document.getElementById("captain-actions-5").setAttribute('href', '');
     document.getElementById("captain-actions-crew-mode").setAttribute('href', '');
 
     // reset PLAYER HIT POSITIONs

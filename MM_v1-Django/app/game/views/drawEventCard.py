@@ -3,7 +3,7 @@ from django.http import JsonResponse
 
 from dataset.models import EventCard
 from dataset.utils.dataset import events
-from dataset.utils.dataset import utilUtil
+from dataset.utils.dataset.utilUtil import event_movement_ships
 from game.models import Game
 from game.models import ShipsLocalisations
 from game.models import StackEventsCards
@@ -15,15 +15,15 @@ def drawEventCard(request):
 
     # EMPTY DATA DICT FOR ALL EVENTs UTILs.
     response_data = {}
-    game = Game.objects.get(pk=1)
+    game = Game.objects.get(number=100)
 
     # CHECK LAST EVENT CARD, IF CAPTAIN, THEN MOVE CARD TO CURRENT NATIONALITY STACK
     if StackEventsCards.objects.exists():
-        previous_turn_event_card = StackEventsCards.objects.get(game_round=game.round)
+        previous_turn_event_card = StackEventsCards.objects.get(game_round=game.rounds)
         if previous_turn_event_card.event_card_captain == True:
             captain_name = StackEventsNPCCaptains.objects.create(
                 game_number=game,
-                game_round=game.round,
+                game_round=game.rounds,
                 captain=previous_turn_event_card.event_card,  # instance of EventCard
                 nationality=previous_turn_event_card.event_card.nationality,
                 ship=previous_turn_event_card.event_card.ship
@@ -52,11 +52,11 @@ def drawEventCard(request):
             response_data['moving'] = True
             ships_localisations_object = ShipsLocalisations.objects.get(game_number=game)
             ships_type = StackEventsNPCCaptains.objects.all()
-            event_movement_ships = utilUtil.event_movement_ships(random_card, ships_localisations_object, ships_type)
-            response_data.update(event_movement_ships)
+            movement_ships = event_movement_ships(random_card, ships_localisations_object, ships_type)
+            response_data.update(movement_ships)
 
     # UPDATE GAME ROUND
-    game.round = game.round + 1
+    game.rounds = game.rounds + 1
     game.save()
     response_data["eventCardImage"] = random_card.awers.url
 
@@ -78,7 +78,7 @@ def drawEventCard(request):
         event_card_captain = False
     StackEventsCards.objects.create(
         game_number=game, 
-        game_round=game.round, 
+        game_round=game.rounds, 
         event_card=random_card,
         event_card_captain=event_card_captain,
         )

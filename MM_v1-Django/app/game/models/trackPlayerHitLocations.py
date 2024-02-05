@@ -16,7 +16,6 @@ class TrackPlayerHitLocations(models.Model):
     def set_values_default(cls):
         fields = cls.objects.all()
         for field in fields:
-            field.game_round = 0
             field.hull = 1
             field.cargo = 1
             field.masts = 1
@@ -25,7 +24,6 @@ class TrackPlayerHitLocations(models.Model):
             field.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=COLOURS)
 
     hull = models.IntegerField(default=1)

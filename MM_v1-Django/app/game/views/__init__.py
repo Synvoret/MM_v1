@@ -17,7 +17,6 @@ from .updatePlayerGolds import updatePlayerGolds
 from .drawEventCard import drawEventCard
 from .drawMissionCard import drawMissionCard
 from .drawGloryCard import drawGloryCard
-from .updateCaptainActions import updateCaptainActions
 
 from .saveToServerSelectedNewCaptainShip import saveToServerSelectedNewCaptainShip
 from .drawDemandToken import drawDemandToken
@@ -26,5 +25,8 @@ from .drawMerchantToken import drawMerchantToken
 from .putLocationToken import putLocationToken
 
 # player actions
-from .playerActions import fishingAction
+from .playerActions import startPlayerActions
 from .playerActions import endCurrentAction
+from .playerActions import fishingAction
+from .playerActions import moveAction
+from .playerActions import scoutAction

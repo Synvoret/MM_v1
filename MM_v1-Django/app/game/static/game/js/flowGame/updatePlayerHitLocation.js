@@ -10,11 +10,41 @@ function updatePlayerHitLocation(colour) {
             let masts = response.mastsHit;
             let crew = response.crewHit;
             let cannons = response.cannonsHit;
-            document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('cargo-' + cargo + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('masts-' + masts + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('crew-' + crew + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('cannons-' + cannons + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            if (hull > 0) {
+                document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+                hull += 1;
+                document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '');
+            } else {
+                document.getElementById('hull-1-player-hit-location').setAttribute('href', '');
+            };
+            if (cargo > 0) {
+                document.getElementById('cargo-' + cargo + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+                cargo += 1;
+                document.getElementById('cargo-' + cargo + '-player-hit-location').setAttribute('href', '');
+            } else {
+                document.getElementById('cargo-1-player-hit-location').setAttribute('href', '');
+            };
+            if (masts > 0) {
+                document.getElementById('masts-' + masts + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+                masts += 1;
+                document.getElementById('masts-' + masts + '-player-hit-location').setAttribute('href', '');
+            } else {
+                document.getElementById('masts-1-player-hit-location').setAttribute('href', '');
+            };
+            if (crew > 0) {
+                document.getElementById('crew-' + crew + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+                crew += 1;
+                document.getElementById('crew-' + crew + '-player-hit-location').setAttribute('href', '');
+            } else {
+                document.getElementById('crew-1-player-hit-location').setAttribute('href', '');
+            };
+            if (cannons > 0) {
+                document.getElementById('cannons-' + cannons + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+                cannons += 1;
+                document.getElementById('cannons-' + cannons + '-player-hit-location').setAttribute('href', '');
+            } else {
+                document.getElementById('cannons-1-player-hit-location').setAttribute('href', '');
+            };
         }
     };
     xhr.open('GET', 'playerHitLocation?colour=' + colour, true);

@@ -8,7 +8,6 @@ class GameDemandTokensAdmin(admin.ModelAdmin):
 
     list_display = [
         'game_number',
-        'game_round',
 
         'basse_terre',
         'bridgetown',

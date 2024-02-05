@@ -1,6 +1,5 @@
 from django.http import JsonResponse
 from dataset.models import Cube
-from game.models import Game
 from game.models import TrackPlayerHitLocations
 
 

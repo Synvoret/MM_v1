@@ -23,22 +23,45 @@
 
         <!-- PLAYER ACTIONs -->
         <div id="player-action-div" style="display: none;">
-            <span class="step">PLAYER ACTIONs</span>
-            <button class="nav-button nav-button-move-ship" Enabled>Move</button>
-            <button class="nav-button nav-button-scout">Scout</button>
-            <button class="nav-button nav-button-port">Port</button>
-            <button class="nav-button nav-button-fishing" onclick="fishingAction('get')">Fishing</button>
-            <button class="nav-button nav-button-location">Visit Location</button>
+            <span class="step player-actions">PLAYER ACTIONs</span>
+            <button class="nav-button nav-button-move-ship" onclick="moveAction('moves')">Move</button>
+            <button class="nav-button nav-button-scout" Disabled onclick="scoutAction('scout')">Scout</button>
+            <button class="nav-button nav-button-port" Disabled>Port</button>
+            <button class="nav-button nav-button-fishing" Disabled onclick="fishingAction('get')">Fishing</button>
+            <button class="nav-button nav-button-location" Disabled>Visit Location</button>
             <button class="nav-button nav-button-end-turn">End Turn</button><br>
-            <span class="step" style="display: none;">Moves</span>
-            <button class="nav-button nav-button-to-port" style="display: none;">to port</button>
-            <button class="nav-button nav-button-from-port" style="display: none;">from port</button>
-            <button class="nav-button nav-button-to-sea-zone" style="display: none;">to sea zone</button><br>
-            <span class="step" style="display: none;">Scout</span>
+            <span class="step moves scouting" style="display: none;">Select Destination</span>
+            <button class="nav-button nav-button-to-port" style="display: none;" onclick="moveAction('to port')">to port</button>
+            <button class="nav-button nav-button-from-port" style="display: none;" onclick="moveAction('from port')">from port</button>
+            <button class="nav-button nav-button-to-sea-zone" style="display: none;" onclick="moveAction('to sea zone')">to sea zone</button>
+
+            <button class="nav-button nav-button-n-direction" style="display: none;">N - </button>
+            <button class="nav-button nav-button-ne-direction" style="display: none;">NE - </button>
+            <button class="nav-button nav-button-e-direction" style="display: none;">E - </button>
+            <button class="nav-button nav-button-se-direction" style="display: none;">SE - </button>
+            <button class="nav-button nav-button-s-direction" style="display: none;">S - </button>
+            <button class="nav-button nav-button-sw-direction" style="display: none;">SW - </button>
+            <button class="nav-button nav-button-w-direction" style="display: none;">W - </button>
+            <button class="nav-button nav-button-nw-direction" style="display: none;">NW - </button>
+
+            <button class="nav-button nav-button-scout-merchant" style="display: none;" onclick="scoutAction('merchant')">Merchant</button>
+            <button class="nav-button nav-button-scout-dutch-ship" style="display: none;">Dutch Ship</button>
+            <button class="nav-button nav-button-scout-english-ship" style="display: none;">English Ship</button>
+            <button class="nav-button nav-button-scout-french-ship" style="display: none;">French Ship</button>
+            <button class="nav-button nav-button-scout-spanish-ship" style="display: none;">Spanish Ship</button>
+            <button class="nav-button nav-button-scout-small-pirate-ship" style="display: none;">Small Pirate Ship</button>
+            <button class="nav-button nav-button-scout-large-pirate-ship" style="display: none;">Large Pirate Ship</button>
+            <button class="nav-button nav-button-scout-blue-player-ship" style="display: none;">Blue Player Ship</button>
+            <button class="nav-button nav-button-scout-green-player-ship" style="display: none;">Green Player Ship</button>
+            <button class="nav-button nav-button-scout-red-player-ship" style="display: none;">Red Player Ship</button>
+            <button class="nav-button nav-button-scout-yellow-player-ship" style="display: none;">Yellow Player Ship</button>
+
+            <button class="nav-button nav-button-back" style="display: none;" onclick="moveAction('back')">BACK</button><br>
+            <span class="step scout" style="display: none;">Scout</span>
             <button class="nav-button nav-button-player-captain" style="display: none;">player captain</button>
             <button class="nav-button nav-button-merchant" style="display: none;">merchant</button>
             <button class="nav-button nav-button-npc-ship" style="display: none;">npc ship</button><br>
-            <span class="step" style="display: none;">Port</span>
+            <span class="step port" style="display: none;">Port</span>
             <button class="nav-button nav-button-sell-goods" style="display: none;">sell goods</button>
             <button class="nav-button nav-button-but-goods" style="display: none;">buy goods</button>
             <button class="nav-button nav-button-visit-shipyard" style="display: none;">visit shipyard</button>
@@ -46,7 +69,7 @@
             <button class="nav-button nav-button-acquire-rumor" style="display: none;">acquire rumor</button>
             <button class="nav-button nav-button-claim-mission" style="display: none;">claim mission</button>
             <button class="nav-button nav-button-stash-gold" style="display: none;">stash gold</button><br>
-            <span class="step" style="display: none;">Battle</span>
+            <span class="step battle" style="display: none;">Battle</span>
             <button class="nav-button nav-button-" style="display: none;"></button>
             <button class="nav-button nav-button-" style="display: none;"></button><br><hr>
         </div>

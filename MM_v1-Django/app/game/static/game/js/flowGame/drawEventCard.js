@@ -4,7 +4,6 @@ function drawEventCard() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            // console.log(response);
             if (response.npcCaptainNationality !== undefined) {
                 // if event is a CAPTAIN
 
@@ -61,15 +60,11 @@ function drawEventCard() {
 
         };
 
-        // ENDING DRAW EVENT CARD PHASE
-        document.getElementById('draw-event-card-div').style.display = 'none';
-        document.getElementById('player-action-div').style.display = 'block';
-
     };
     xhr.open('GET', 'drawEventCard', true);
     xhr.send();
 
-    // RANDOMLY first player in round
-    playerBoard();
+    // ENDING DRAW EVENT CARD PHASE
+    startPlayerActions();
 
 };

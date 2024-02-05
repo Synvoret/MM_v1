@@ -18,6 +18,7 @@ def game(request):
     # Create random game
     # new_game = Game.objects.create()
 
+    # RESET SESSION
     request.session.clear()
 
     # RESET GAME
@@ -44,7 +45,6 @@ def game(request):
     StackMissionsCards.objects.all().delete()
 
     # RESET and create new track hit locations for Enemy.
-    TrackEnemyHitLocations.objects.all().delete()
-    TrackEnemyHitLocations.objects.create(game_number=Game.objects.get(pk=1))
+    TrackEnemyHitLocations.set_default_values()
 
     return render(request, 'game/game.html')

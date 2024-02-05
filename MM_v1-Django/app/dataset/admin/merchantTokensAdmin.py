@@ -4,4 +4,4 @@ from dataset.models import MerchantTokens
 
 @admin.register(MerchantTokens)
 class MerchantTokensAdmin(admin.ModelAdmin):
-    list_display = ('name', 'awers', 'rewers')
+    list_display = ('name', 'awers', 'rewers', 'nationality')

@@ -7,7 +7,7 @@ class StackMissionsCards(models.Model):
     """Presents a stack for missions cards in board"""
     
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(null=True, blank=True)
+
     mission_1_card = models.ForeignKey(MissionCard, on_delete=models.CASCADE, related_name='mission_1', null=True, blank=True)
     mission_2_card = models.ForeignKey(MissionCard, on_delete=models.CASCADE, related_name='mission_2', null=True, blank=True)
     mission_3_card = models.ForeignKey(MissionCard, on_delete=models.CASCADE, related_name='mission_3', null=True, blank=True)

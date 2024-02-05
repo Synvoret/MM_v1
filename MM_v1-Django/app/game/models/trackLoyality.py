@@ -7,7 +7,6 @@ class TrackLoyality(models.Model):
     """Presents a track for crew loyality."""
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    game_round = models.IntegerField(default=0)
 
     player_blue = models.CharField(max_length=20, default='Content', choices=LOYALITY)
     player_green = models.CharField(max_length=20, default='Content', choices=LOYALITY)
