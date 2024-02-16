@@ -4,6 +4,9 @@ function drawEventCard() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
+
+            document.getElementById('id-amount-rounds').innerHTML = response.rounds;
+
             if (response.npcCaptainNationality !== undefined) {
                 // if event is a CAPTAIN
 
@@ -19,7 +22,7 @@ function drawEventCard() {
                 putShipPlastic(ship, colour, localisation, false)
 
             };
-            
+
             const eventCardIDImage = "event-image";
             document.getElementById(eventCardIDImage).setAttribute('href', response.eventCardImage);
 

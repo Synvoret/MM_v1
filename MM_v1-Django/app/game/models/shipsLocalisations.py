@@ -8,15 +8,10 @@ class ShipsLocalisations(models.Model):
 
     # @classmethod
     # def set_default_values(cls):
-    #     # Pobierz listę pól modelu
     #     fields = cls._meta.get_fields()
-
-    #     # Iteruj przez pola i ustaw wartości domyślne
     #     for field in fields:
     #         if isinstance(field, models.Field):
     #             setattr(cls, field.attname, field.default)
-
-    #     # Zapisz zmieniony obiekt modelu
     #     cls().save()
 
 
@@ -32,7 +27,7 @@ class ShipsLocalisations(models.Model):
             field.red_in_port = False
             field.yellow_ship = None
             field.yellow_in_port = False
-            field.merchants = None
+            field.merchants_ship = None
             field.dutch_ship = None
             field.english_ship = None
             field.french_ship = None

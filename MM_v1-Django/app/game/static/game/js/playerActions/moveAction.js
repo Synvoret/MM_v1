@@ -7,89 +7,34 @@ function moveAction(type_request) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
+                // console.log(response)
+                
+                document.querySelector(".step.player-actions").innerHTML = 'Select Destination'
 
-                document.querySelector(".step.player-actions").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-move-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-port").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-fishing").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-location").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-end-turn").style.display = 'none';
-                document.querySelector(".step.moves").style.display = '';
-                document.querySelector(".step.moves").innerHTML = 'Select Destination'
+                document.querySelector('.nav-actions-buttons').style.display = 'none';
+                document.querySelector('.nav-moves-buttons').style.display = '';
 
                 if (response.unitInPort) {
-                    document.querySelector(".nav-button.nav-button-to-port").style.display = '';
                     document.querySelector(".nav-button.nav-button-to-port").disabled = true;
-                    document.querySelector(".nav-button.nav-button-from-port").style.display = '';
-                    document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = '';
+                    document.querySelector(".nav-button.nav-button-from-port").disabled = false;
                     document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = true;
-                    document.querySelector(".nav-button.nav-button-back").style.display = '';
-                    document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "moveAction('back')")
                 } else {
-                    
-                    document.querySelector(".nav-button.nav-button-to-port").style.display = '';
-                    document.querySelector(".nav-button.nav-button-to-port").disabled = false;
-                    document.querySelector(".nav-button.nav-button-from-port").style.display = '';
+                    if (response.isInTheCaribbeanSea) {
+                        document.querySelector(".nav-button.nav-button-to-port").disabled = true;
+                    } else {
+                        document.querySelector(".nav-button.nav-button-to-port").disabled = false;
+                    };
                     document.querySelector(".nav-button.nav-button-from-port").disabled = true;
-                    document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = '';
                     document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = false;
-                    document.querySelector(".nav-button.nav-button-back").style.display = '';
-                    document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "moveAction('back')")
                 };
+
+                document.querySelector(".nav-button.nav-button-back").disabled = false;
+                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "moveAction('back')")
 
             };
         };
         xhr.open('GET', 'moveAction?type_request=' + type_request, true);
         xhr.send();
-    };
-
-
-    if (type_request === 'back') {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let response = JSON.parse(xhr.responseText);
-                let colour = response.playerColour
-                console.log(response)
-    
-                if (response.playerInPort) {
-                    document.querySelector('.nav-button.nav-button-scout').disabled = true;
-                    document.querySelector('.nav-button.nav-button-port').disabled = false;
-                    document.querySelector('.nav-button.nav-button-fishing').disabled = true;
-                    document.querySelector('.nav-button.nav-button-location').disabled = true;
-                } else {
-                    document.querySelector('.nav-button.nav-button-scout').disabled = false;
-                    document.querySelector('.nav-button.nav-button-port').disabled = true;
-                    document.querySelector('.nav-button.nav-button-fishing').disabled = false;
-                    document.querySelector('.nav-button.nav-button-location').disabled = false;
-                };
-            };
-            
-        };
-        xhr.open('GET', 'moveAction?type_request=' + type_request, true);
-        xhr.send();
-
-        document.querySelector(".step.player-actions").style.display = '';
-        document.querySelector(".nav-button.nav-button-move-ship").style.display = '';
-        document.querySelector(".nav-button.nav-button-scout").style.display = '';
-        document.querySelector(".nav-button.nav-button-port").style.display = '';
-        document.querySelector(".nav-button.nav-button-fishing").style.display = '';
-        document.querySelector(".nav-button.nav-button-location").style.display = '';
-        document.querySelector(".nav-button.nav-button-end-turn").style.display = '';
-        document.querySelector(".step.moves").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-to-port").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-from-port").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-n-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-ne-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-e-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-se-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-s-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-sw-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-w-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-nw-direction").style.display = 'none';
-        document.querySelector(".nav-button.nav-button-back").style.display = 'none';
     };
 
 
@@ -102,23 +47,20 @@ function moveAction(type_request) {
                 let colour = response.playerColour;
                 randomInsidePosition(response.playerShipUnit, colour, response.playerDestination, true)
 
-                document.querySelector(".step.moves").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-port").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-port").disabled = true;
                 document.querySelector(".nav-button.nav-button-from-port").style.display = '';
                 document.querySelector(".nav-button.nav-button-from-port").disabled = false;
                 document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").style.display = '';
+                document.querySelector(".nav-button.nav-button-back").disabled = false;
 
                 endCurrentAction(colour);
             };
         };
         xhr.open('POST', 'moveAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
         let data = 'type_request=' + encodeURIComponent(type_request);
-
         xhr.send(data);
     };
 
@@ -131,23 +73,20 @@ function moveAction(type_request) {
                 let colour = response.playerColour;
                 randomInsidePosition(response.playerShipUnit, colour, response.playerDestination, false)
 
-                document.querySelector(".step.moves").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-port").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-port").disabled = false;
                 document.querySelector(".nav-button.nav-button-from-port").style.display = '';
                 document.querySelector(".nav-button.nav-button-from-port").disabled = true;
                 document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = '';
                 document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = false;
-                document.querySelector(".nav-button.nav-button-back").style.display = '';
+                document.querySelector(".nav-button.nav-button-back").disabled = false;
 
                 endCurrentAction(colour);
             };
         };
         xhr.open('POST', 'moveAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
         let data = 'type_request=' + encodeURIComponent(type_request);
-
         xhr.send(data);
     };
 
@@ -158,15 +97,10 @@ function moveAction(type_request) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
-                console.log(response)
+                console.log(response, 'SEA ZONE yeT')
 
-                document.querySelector(".step.moves").style.display = '';
-                document.querySelector(".nav-button.nav-button-to-port").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-to-port").disabled = true;
-                document.querySelector(".nav-button.nav-button-from-port").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-from-port").disabled = true;
-                document.querySelector(".nav-button.nav-button-to-sea-zone").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = true;
+                document.querySelector(".nav-moves-buttons").style.display = 'none';
+                document.querySelector(".nav-directions-buttons").style.display = '';
 
                 if (response.n !== undefined) {
                     document.querySelector(".nav-button.nav-button-n-direction").style.display = '';
@@ -225,17 +159,14 @@ function moveAction(type_request) {
                     document.querySelector(".nav-button.nav-button-nw-direction").style.display = 'none';
                 };
 
-                document.querySelector(".nav-button.nav-button-back").style.display = '';
+                document.querySelector(".nav-button.nav-button-back").disabled = false;
 
             };
         };
         xhr.open('POST', 'moveAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
         let data = 'type_request=' + encodeURIComponent(type_request);
-
         xhr.send(data);
-
     };
 
 
@@ -255,34 +186,67 @@ function moveAction(type_request) {
         'Santo Domingo',
         'St John',
         'St Maarten',
-        'The Carribean Sea',
+        'The Caribbean Sea',
         'Tortuga',
         'Trinidad',
     ];
     if (allowedDestinations.includes(type_request)) {
-        console.log(`płynę do ${type_request}`);
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
+
                 randomInsidePosition(response.playerShipUnit, colour, response.playerDestination, false)
 
-                moveAction('to sea zone');
+                if (response.lastAction === undefined) {
+                    moveAction('to sea zone');
+                };
 
                 endCurrentAction(colour);
             };
         };
         xhr.open('POST', 'moveAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
         let data = 'type_request=' + encodeURIComponent(type_request);
-
         xhr.send(data);
-
-
-
-
-
     };
+
+
+    if (type_request === 'back') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                let colour = response.playerColour
+                // console.log(response)
+                document.querySelector('.nav-actions-buttons').style.display = '';
+                document.querySelector('.nav-moves-buttons').style.display = 'none';
+                document.querySelector(".step.player-actions").innerHTML = 'Player Actions'
+                document.querySelector('.nav-directions-buttons').style.display = 'none';
+                if (response.playerInPort) {
+                    document.querySelector('.nav-button.nav-button-scout').disabled = true;
+                    document.querySelector('.nav-button.nav-button-port').disabled = false;
+                    document.querySelector('.nav-button.nav-button-fishing').disabled = true;
+                    document.querySelector('.nav-button.nav-button-location').disabled = true;
+                } else {
+                    document.querySelector('.nav-button.nav-button-scout').disabled = false;
+                    document.querySelector('.nav-button.nav-button-port').disabled = true;
+                    document.querySelector('.nav-button.nav-button-fishing').disabled = false;
+                    if (response.isInTheCaribbeanSea) {
+                        document.querySelector('.nav-button.nav-button-location').disabled = true;
+                    } else {
+                        document.querySelector('.nav-button.nav-button-location').disabled = false;
+                    }
+                };
+
+                document.querySelector(".nav-button.nav-button-move-ship").disabled = false;
+                document.querySelector(".nav-button.nav-button-back").disabled = true;
+
+            };
+        };
+        xhr.open('GET', 'moveAction?type_request=' + type_request, true);
+        xhr.send();
+    };
+
 };

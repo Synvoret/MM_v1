@@ -14,18 +14,18 @@ ALLOWEDDESTINATIONS= [
     'Santo Domingo',
     'St John',
     'St Maarten',
-    'The Carribean Sea',
+    'The Caribbean Sea',
     'Tortuga',
     'Trinidad',
 ]
 
 CARGO = [
-    ('Cacao', 'Cacao'),
+    ('Cocoa', 'Cocoa'),
     ('Food', 'Food'),
     ('Rum', 'Rum'),
-    ('Spieces', 'Spieces'),
+    ('Spices', 'Spices'),
     ('Sugar', 'Sugar'),
-    ('Tabacco', 'Tabacco'),
+    ('Tobacco', 'Tobacco'),
     ('Textiles', 'Textiles'),
     ('Wood', 'Wood'),
 ]
@@ -62,7 +62,7 @@ DESTINATION_PORT = [
     ('Santo Domingo', 'Santo Domingo'),
     ('St John', 'St John'),
     ('St Maarten', 'St Maarten'),
-    ('The Carribean Sea', 'The Carribean Sea'),
+    ('The Caribbean Sea', 'The Caribbean Sea'),
     ('Tortuga', 'Tortuga'),
     ('Trinidad', 'Trinidad'),
 ]
@@ -84,6 +84,7 @@ HITS = [
     ('Masts', 'Masts'),
     ('Crew', 'Crew'),
     ('Cannons', 'Cannons'),
+    ('Escape', 'Escape'),
 ]
 
 EXPANSION = [
@@ -151,7 +152,7 @@ SEAZONES = [
     ('Santo Domingo', 'Santo Domingo'),
     ('St John', 'St John'),
     ('St Maarten', 'St Maarten'),
-    ('The Carribean Sea', 'The Carribean Sea'),
+    ('The Caribbean Sea', 'The Caribbean Sea'),
     ('Tortuga', 'Tortuga'),
     ('Trinidad', 'Trinidad'),
 ]

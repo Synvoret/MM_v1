@@ -6,19 +6,14 @@ function fishingAction(type_request) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-
                 document.querySelector('.nav-button.nav-button-move-ship').disabled = true;
                 document.querySelector('.nav-button.nav-button-move-ship').removeAttribute('onclick');
                 document.querySelector('.nav-button.nav-button-scout').disabled = true;
-                // document.querySelector('.nav-button.nav-button-scout').removeAttribute('onclick');
-                // document.querySelector('.nav-button.nav-button-port').disabled = true;
-                // document.querySelector('.nav-button.nav-button-port').removeAttribute('onclick');
                 document.querySelector('.nav-button.nav-button-fishing').disabled = true;
                 document.querySelector('.nav-button.nav-button-fishing').removeAttribute('onclick');
                 document.querySelector('.nav-button.nav-button-location').disabled = true;
                 document.querySelector('.nav-button.nav-button-location').removeAttribute('onclick');
                 document.querySelector('.nav-button.nav-button-end-turn').disabled = true;
-                document.querySelector('.nav-button.nav-button-end-turn').removeAttribute('onclick');
 
                 document.getElementById('fishing-action-main-rect').style.stroke = response.playerColour;
                 document.getElementById('fishing-action-ok-text').style.fill = response.playerColour;
@@ -35,30 +30,22 @@ function fishingAction(type_request) {
         document.querySelector('.nav-button.nav-button-move-ship').disabled = false;
         document.querySelector('.nav-button.nav-button-move-ship').setAttribute('onclick', "moveAction('moves')");
         document.querySelector('.nav-button.nav-button-scout').disabled = false;
-        // document.querySelector('.nav-button.nav-button-scout').removeAttribute('onclick');
-        // document.querySelector('.nav-button.nav-button-port').disabled = false;
-        // document.querySelector('.nav-button.nav-button-port').removeAttribute('onclick');
         document.querySelector('.nav-button.nav-button-fishing').disabled = false;
         document.querySelector('.nav-button.nav-button-fishing').setAttribute('onclick', "fishingAction('get')");
         document.querySelector('.nav-button.nav-button-location').disabled = false;
         document.querySelector('.nav-button.nav-button-location').removeAttribute('onclick');
         document.querySelector('.nav-button.nav-button-end-turn').disabled = false;
-        document.querySelector('.nav-button.nav-button-end-turn').removeAttribute('onclick');
-
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.colour;
-
                 if (response.fishingValue) {
                     updatePlayerGolds(colour);
                 };
-
                 if (response.fishingHits) {
                     updatePlayerHitLocation(colour);
                 };
-
                 document.getElementById('fishing-action-main-rect').style.removeProperty('stroke');
                 document.getElementById('fishing-action-ok-text').style.removeProperty('fill');
                 document.getElementById('fishing-card-image').setAttribute('href', '');
@@ -69,13 +56,6 @@ function fishingAction(type_request) {
         };
         xhr.open('POST', 'fishingAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        // let data = 'colour=' + encodeURIComponent('SHIT');
-                // '&selectedCaptain=' + encodeURIComponent(selectedCaptain) +
-                // '&selectedShip=' + encodeURIComponent(selectedShip);
-
-        // xhr.send(data);
         xhr.send();
-
     };
 };

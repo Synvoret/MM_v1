@@ -15,6 +15,7 @@ def goGame(request):
     data = {}
 
     game = Game.objects.get(number=100)
+
     players_captains = PlayersCaptainsCards.objects.get(game_number=game)
     players_ships = PlayersShipsCards.objects.get(game_number=game)
 

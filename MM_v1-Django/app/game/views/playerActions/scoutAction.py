@@ -1,40 +1,58 @@
-import random
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from board.models import SeaZone
-from dataset.utils.dataset.decorators.choices import ALLOWEDDESTINATIONS, DIRECTION
+from dataset.utils.dataset.decorators.choices import COLOUR, PLAYER_COLOURS
 from game.models import Game
-from game.models import PlayersShipsCards
 from game.models import ShipsLocalisations
 
 
 @csrf_exempt
 def scoutAction(request):
+    """Function is responsible for Scout Merchant."""
+
 
     data = {}
-
     game = Game.objects.get(number=100)
     ships_in_zone = ShipsLocalisations.objects.get(game_number=game)
     player_colour = request.session['playerColourActive']
     player_localisation = getattr(ships_in_zone, f"{player_colour}_ship")
+
 
     # GET ALL SHIPS IN SEA ZONE where the scouting will be (without actual player)
     if request.GET.get('type_request') == 'scout':
         ships = [field.name for field in ships_in_zone._meta.get_fields() if not field.is_relation and 'ship' in field.name.lower()]
         ships_values = {field_name: getattr(ships_in_zone, field_name) for field_name in ships}
         for ship in ships_values.keys():
-            if ships_values[ship]:
-                if ship == 'merchants_ship':
-                    print(ships_values['merchants_ship'][player_localisation], 'MERCHANT NATIONALITY')
-                else:
-                    print(ships_values[ship], f"{ship} ship")
+            if f"{player_colour}_ship" == ship: # actual player
+                continue
+            elif ships_values[ship] == player_localisation and any([colour[0].lower() in ship for colour in PLAYER_COLOURS]): # other player
+                if not getattr(ships_in_zone, ship.replace('_ship', '_in_port')):
+                    data[f"{ship.replace('_ship', 'PlayerShip')}"] = True
+            elif ships_values[ship] == player_localisation and any([colour[0].lower().replace(' ', '_') in ship for colour in COLOUR]): # other NPC
+                data[f"{ship.replace('_pirate', 'Pirate').replace('_ship', 'Ship')}"] = True
+            elif ship == 'merchants_ship': # merchants
+                if player_localisation in ships_values['merchants_ship']: # merchant is in sea zone with player
+                    data['merchantToken'] = True
+
+
+    # Merchant - Raid, Trade, Escort
+    if request.GET.get('type_request') == 'merchant':
+        print('MERCHANT OPTIONs')
 
 
     if request.method == 'POST':
-        if request.POST.get('type_request') == 'merchant':
-            print('BATTLE with MERFCHANT')
+
+        if request.POST.get('type_request') == 'merchant raid':
+            print(dict(request.session), 'KOLORRRRRRRRRRRRRRRRRRRRRRRR')
+            print('BĘDZIE NAPAD NA KUPCA')
+
+        if request.POST.get('type_request') == 'merchant trade':
+            print('BĘDZIE HANDEL Z KUPCEM')
+
+        if request.POST.get('type_request') == 'merchant escort':
+            print('BĘDZIE ESKORTA KUPCA')
 
 
+    data['playerColour'] = player_colour
     return JsonResponse(data)
 
 

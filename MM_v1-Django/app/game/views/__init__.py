@@ -25,8 +25,11 @@ from .drawMerchantToken import drawMerchantToken
 from .putLocationToken import putLocationToken
 
 # player actions
+from .playerActions import startRound
 from .playerActions import startPlayerActions
 from .playerActions import endCurrentAction
 from .playerActions import fishingAction
 from .playerActions import moveAction
+from .playerActions import portAction
 from .playerActions import scoutAction
+from .playerActions import endTurn

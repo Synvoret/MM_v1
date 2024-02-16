@@ -15,6 +15,7 @@ class StackEventsNPCCaptains(models.Model):
             return None
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
+    game_round = models.IntegerField(default=0)
 
     captain = models.ForeignKey(EventCard, on_delete=models.CASCADE, null=True, blank=True)
     nationality = models.CharField(max_length=50, null=True, blank=True)

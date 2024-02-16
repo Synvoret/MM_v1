@@ -33,9 +33,12 @@ urlpatterns = [
     path('putLocationToken', views.putLocationToken, name='putLocationToken'),
 
     # player ACTIONs paths
+    path('startRound', views.startRound, name='startRound'),
     path('startPlayerActions', views.startPlayerActions, name='startPlayerActions'),
     path('endCurrentAction', views.endCurrentAction, name='endCurrentAction'),
     path('fishingAction', views.fishingAction, name='fishingAction'),
     path('moveAction', views.moveAction, name='moveAction'),
+    path('portAction', views.portAction, name='portAction'),
     path('scoutAction', views.scoutAction, name='scoutAction'),
+    path('endTurn', views.endTurn, name='endTurn'),
 ]

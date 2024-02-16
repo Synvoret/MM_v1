@@ -9,18 +9,17 @@ from game.models import StackMissionsCards
 def drawMissionCard(request):
     """Endpoint return a draw new Mission Card depending from number."""
 
-    mission_number = request.GET.get('mission_number', None)
+    mission_number = request.GET.get('mission_number')
     mission_sign = Sign.objects.get(value=mission_number)
+    game = Game.objects.get(number=100)
 
     cards = MissionCard.objects.all()
     random_card = random.choice(cards)
 
-    game = Game.objects.get(number=100)
-    game_rounds = game.rounds
-
-    stack = StackMissionsCards(
-        game_number=game,
-    )
+    try:
+        stack = StackMissionsCards.objects.get(game_round=game.rounds)
+    except:
+        stack = StackMissionsCards(game_number=game, game_round=game.rounds)
 
     if int(mission_number) == 1:
         stack.mission_1_card = random_card

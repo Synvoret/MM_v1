@@ -8,6 +8,7 @@ class StackMissionsCardsAdmin(admin.ModelAdmin):
 
     list_display = [
         'game_number',
+        'game_round',
         'mission_1_card',
         'mission_2_card',
         'mission_3_card',

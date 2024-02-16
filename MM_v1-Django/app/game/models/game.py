@@ -1,5 +1,6 @@
 from random import randint
-from django.db import models
+from django.db import models, IntegrityError
+from django.core.exceptions import ValidationError
 
 
 class Game(models.Model):
@@ -7,7 +8,7 @@ class Game(models.Model):
 
     @classmethod
     def set_default_values(cls):
-        """Setting defaults values for all fields in model "Game". Before new game."""
+        """Setting defaults values for all fields in model "Game". Before NEW game."""
         fields = cls.objects.all()
         for field in fields:
             field.rounds = 0
@@ -22,6 +23,17 @@ class Game(models.Model):
             field.player_yellow_done = False
             field.save()
 
+    def increment_rounds(self):
+        """Increment value field rounds about 1."""
+        last_value = self.rounds
+        while True:
+            self.rounds += 1
+            try:
+                self.save()
+                break
+            except:
+                self.rounds = last_value
+
     def sea_zones_list():
         sea_zones_list = {}
         return sea_zones_list
@@ -35,7 +47,7 @@ class Game(models.Model):
                 return random_number
 
     number = models.IntegerField(default=random_number_game, unique=True)
-    rounds = models.IntegerField(default=0)
+    rounds = models.IntegerField(unique=True)
     amount_players = models.IntegerField(default=0)
     player_blue_play = models.BooleanField(default=False)
     player_blue_done = models.BooleanField(default=False)

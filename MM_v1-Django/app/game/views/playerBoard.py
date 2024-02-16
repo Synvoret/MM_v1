@@ -7,8 +7,6 @@ def playerBoard(request):
 
     player_board_image = PlayerBoard.objects.get(name="Player Board")
 
-    print(dict(request.session), 'PLAYER BOARD')
-
     data = {
         'playerBoardImage': player_board_image.player_board_image.url,
         'playerColour': request.session['playerColourActive'],

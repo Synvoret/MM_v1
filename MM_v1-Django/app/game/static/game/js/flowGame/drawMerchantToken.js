@@ -19,7 +19,7 @@ async function drawMerchantToken(seaZone) {
                 "san-juan",
                 "santo-domingo",
                 "st-john",
-                "st-maarten",
+                // "st-maarten",
                 "the-caribbean-sea",
                 "trinidad",
                 "tortuga",

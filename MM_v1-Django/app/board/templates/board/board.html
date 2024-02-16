@@ -3,8 +3,10 @@
 <div id="board-container">
 <svg id="board-svg" width="1248" height="1080">
 
+
     <!-- MAPA -->
     <image id="board-game" href="" x="0" y="0" width="1248" height="1080"/>
+
 
     <!-- SEA ZONES -->
     <polygon name="sea-zone-basse-terre" class="sea-zone inspect basse-terre-zone" points="1035,566 1072,608 1064,756 947,754 834,683 835,643 896,558"></polygon>
@@ -24,6 +26,7 @@
     <polygon name="sea-zone-the-caribbean-sea" class="sea-zone inspect the-caribbean-sea-zone" points="588,606 769,605 835,643 834,683 761,727 496,703 470,657"/>
     <polygon name="sea-zone-trinidad" class="sea-zone inspect trinidad-zone" points="947,754 1064,756 1185,869 1175,1013 1044,931 986,914 936,888"/>
     <polygon name="sea-zone-tortuga" class="sea-zone inspect tortuga-zone" points="608,213 676,316 614,522 416,500 375,460 382,307"/>
+
 
     <!-- NAMES SEA ZONES -->
     <ellipse id="id-name-basse-terre" name="name-basse-terre" cx="980" cy="674" rx="25" ry="5" onmouseover="enlagreIndicated('id-name-basse-terre')"/>
@@ -45,6 +48,7 @@
     <ellipse id="id-name-trinidad" name="name-trinidad" cx="1118" cy="872" rx="25" ry="5" transform="rotate(3 1118 872)" onmouseover="enlagreIndicated('id-name-trinidad')"/>
     <ellipse id="id-name-tortuga" name="name-tortuga" cx="442" cy="332" rx="20" ry="5" onmouseover="enlagreIndicated('id-name-tortuga')"/>
 
+
     <!-- FEATURES -->
     <polygon id="id-feature-basse-terre" name="feature-basse-terre" points="952,688 1002,691 993,710 950,708" onmouseover="enlagreIndicated('id-feature-basse-terre')"/>
     <polygon id="id-feature-bridgetown" name="feature-bridgetown" points="1103,660 1161,661 1164,699 1103,704" onmouseover="enlagreIndicated('id-feature-bridgetown')"/>
@@ -62,6 +66,7 @@
     <polygon id="id-feature-st-maarten" name="feature-st-maarten" points="949,421 1004,423 1006,442 982,450 949,449" onmouseover="enlagreIndicated('id-feature-st-maarten')"/>
     <polygon id="id-feature-trinidad" name="feature-trinidad" points="1096,886 1137,889 1137,916 1093,915" onmouseover="enlagreIndicated('id-feature-trinidad')"/>
     <polygon id="id-feature-tortuga" name="feature-tortuga" points="425,345 563,350 554,372 425,369" onmouseover="enlagreIndicated('id-feature-tortuga')"/>
+
 
     <!-- MISSIONs SIGNs -->
     <defs>
@@ -87,6 +92,7 @@
     <use id="mission-sign-st-maarten" name="mission-sign-st-maarten" x="954" y="516" xlink:href=""/>
     <use id="mission-sign-tortuga" name="mission-sign-tortuga" x="543" y="465" xlink:href=""/>
     <use id="mission-sign-trinidad" name="mission-sign-trinidad" x="955" y="880" xlink:href=""/>
+
 
     <!-- ENEMY HIT LOCATIONs -->
     <defs>
@@ -123,13 +129,14 @@
     <use id="cannons-3-enemy-hit-location" name="cannons-3-hit-location" x="904" y="280" xlink:href=""/>
     <use id="cannons-4-enemy-hit-location" name="cannons-4-hit-location" x="923" y="282" xlink:href=""/>
     <use id="cannons-5-enemy-hit-location" name="cannons-5-hit-location" x="942" y="283" xlink:href=""/>
-    
+
+
     <!-- AT WAR SECTION -->
     <use name="at-war-section-left" x="135" y="148" href="#port-national-flag-reverse" transform="rotate(-15 135 148)"/>
     <use name="at-war-section-right" x="144" y="147" href="#port-national-flag" transform="rotate(-7 144 147)"/>
 
+
     <!-- CARDS - NAVAL CAPTAIN'S, PIRATE CAPTAIN'S, EVENT, MISSIONS -->
-    
     <defs>
         <clipPath id="event-card-clipPath"><rect name="event-card-rect" x="0" y="0" width="70" height="110" rx="4" ry="4"/></clipPath>
         <image id="event-image" width="70" height="110" xlink:href="" clip-path="url(#event-card-clipPath)" onmouseover="enlagreIndicated('event-image')"/>
@@ -155,9 +162,6 @@
     </defs>
     <use id="mission-1-card" name="mission-1-card" x="1011" y="64" xlink:href="#mission-1-card-image" transform="rotate(-5 1011 64)"/>
     <use id="mission-2-card" name="mission-2-card" x="1123" y="62" xlink:href="#mission-2-card-image" transform="rotate(6 1123 62)"/>
-
-
-
 
 
     <!-- MERCHANTS TOKENS -->
@@ -209,6 +213,7 @@
     <use id="merchant-token-tortuga" name="tortuga-merchant-token" x="514" y="392" xlink:href="#merchant-token-tortuga-image"/>
     <use id="merchant-token-trinidad" name="trinidad-merchant-token" x="1134" y="930" xlink:href="#merchant-token-trinidad-image"/>
 
+
     <!-- LOCATION TOKENS -->
     <defs>
         <clipPath id="location-token"><path id="location-token" d="M 14 2 L 19 1 L 30 1 L 37 2 L 47 2 L 57 2 L 57 9 L 58 11 L 58 19 L 57 21 L 57 39 L 47 40 L 18 41 L 12 39 L 7 36 L 4 30 L 3 16 L 8 10 L 10 7 Z"/></clipPath>
@@ -246,6 +251,7 @@
     <use id="location-trinidad" name="location-token-trinidad" x="940" y="830" href="#location-token-trinidad-image"/>
     <use id="location-tortuga" name="location-token-tortuga" x="390" y="420" href="#location-token-tortuga-image"/>
 
+
     <!-- PORT NATIONAL FLAG -->
     <!-- DEFS -->
     <defs>
@@ -273,6 +279,7 @@
     <use id="st-maarten-port-zone" name="st-maarten-port-national-flag" x="997" y="510" href="#port-national-flag" transform="rotate(0 997 510)"/>
     <use id="tortuga-port-zone" name="tortuga-port-national-flag" x="562" y="411" href="#port-national-flag" transform="rotate(0 562 411)"/>
     <use id="trinidad-port-zone" name="trinidad-port-national-flag" x="1010" y="843" href="#port-national-flag" transform="rotate(0 1010 843)"/>
+
 
     <!-- DEMANDs TOKENs for PORTs -->
     <defs>
@@ -311,6 +318,7 @@
     <use id="demand-trinidad" name="trinidad-demand" x="998" y="883" xlink:href="#demand-trinidad-image" transform="rotate(2 998 883)"/>
     <use id="demand-tortuga" name="tortuga-demand" x="578" y="443" xlink:href="#demand-tortuga-image" transform="rotate(2 578 443)"/>
 
+
     <!-- PORT SHIP MODIFICATIONS TOKENS -->
     <defs>
         <clipPath id="ship-modification-token"><rect x="0" y="0" width="23" height="23" rx="2" ry="2"/></clipPath>
@@ -347,6 +355,7 @@
     <use id="ship-modification-st-maarten" name="st-maarten-ship-modification" x="981" y="470" xlink:href="#ship-modification-st-maarten-image" transform="rotate(3 981 470)"/>
     <use id="ship-modification-trinidad" name="trinidad-ship-modification" x="1026" y="879" xlink:href="#ship-modification-trinidad-image" transform="rotate(2 1026 879)"/>
     <use id="ship-modification-tortuga" name="tortuga-ship-modification" x="604" y="433" xlink:href="#ship-modification-tortuga-image" transform="rotate(2 604 433)"/>
+
 
     <!-- GLORY POINTS TRACK -->
     <defs>
@@ -466,6 +475,7 @@
         <tspan class="tspan-board"></tspan>
     </text>
 
+
     <!-- SHIPs PLASTIC -->
     <defs>
         <clipPath id="sloop-ship-plastic-clipPath"><rect id="sloop-ship-plastic-rect" x="0" y="0" width="45" height="45" rx="2" ry="2"/></clipPath>
@@ -548,6 +558,7 @@
     <use id="ship-plastic-red" class="ship-plastic player-ship-plastic" name="ship-plastic-red" x="350" y="10" xlink:href=""/>
     <use id="ship-plastic-green" class="ship-plastic player-ship-plastic" name="ship-plastic-green" x="450" y="10" xlink:href=""/>
 
+
     <!-- BEGIN GAME - CHOOSE COLOUR, CAPTAIN and SHIP -->
     <defs id="new-player-defs">
         <g id="new-player">
@@ -576,19 +587,33 @@
     </defs>
     <use id="new-player-use" x="550" y="250" xlink:href="#new-player" style="display: none;"/>
 
-    <!-- FISHING ACTION -->
+
+    <!-- FISHING ACTIONs -->
     <defs>
         <g id="fishing-action">
             <rect id="fishing-action-main-rect" width="210" height="320" rx="4" ry="4" style="stroke-width: 2;"/>
-
             <clipPath id="fishing-card-clipPath"><rect x="15" y="15" width="180" height="270" rx="4" ry="4"/></clipPath>
-
             <image id="fishing-card-image" name="" x="15" y="15" width="180" height="270" href="" clip-path="url(#fishing-card-clipPath)"/>
-
             <text id="fishing-action-ok-text" x="90" y="310" fill="red" onclick="fishingAction('post');">OK</text>
         </g>
     </defs>
     <use id="fishing-action-use" x="550" y="250" xlink:href="#fishing-action" style="display: none;"/>
+
+
+    <!-- SCOUT MERCHANTs ACTIONs -->
+    <defs>
+        <g id="merchant-raid-action">
+            <rect id="merchant-raid-action-main-rect" width="500" height="320" rx="4" ry="4" style="stroke: red; stroke-width: 2;"/>
+            <clipPath id="merchant-raid-card-clipPath"><rect x="15" y="15" width="180" height="270" rx="4" ry="4" style="stroke: red; stroke-width: 1;"/></clipPath>
+            <image id="merchant-raid-card-1-image" name="" x="15" y="15" width="180" height="270" href="" clip-path="url(#merchant-raid-card-clipPath)"/>
+            <image id="merchant-raid-card-2-image" name="" x="195" y="15" width="180" height="270" href="" clip-path="url(#merchant-raid-card-clipPath)"/>
+            <image id="merchant-raid-card-3-image" name="" x="290" y="15" width="180" height="270" href="" clip-path="url(#merchant-raid-card-clipPath)"/>
+            <image id="merchant-raid-card-4-image" name="" x="385" y="15" width="180" height="270" href="" clip-path="url(#merchant-raid-card-clipPath)"/>
+            <image id="merchant-raid-card-5-image" name="" x="490" y="15" width="180" height="270" href="" clip-path="url(#merchant-raid-card-clipPath)"/>
+            <text id="merchant-raid-action-ok-text" x="90" y="310" fill="red" onclick="scoutAction('back');">OK</text>
+        </g>
+    </defs>
+    <use id="merchant-raid-action-use" x="50" y="50" xlink:href="#merchant-raid-action" style="display: none;"/>
 
 
 
