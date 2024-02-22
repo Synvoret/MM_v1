@@ -11,6 +11,8 @@ from game.models import TrackPlayerGolds
 
 from game.models import PlayersGloryCards
 from game.models import TrackPlayerHitLocations
+from game.models import TrackPlayerSpecialWeapons
+from game.models import TrackMerchantTokens
 
 
 def game(request):
@@ -26,6 +28,8 @@ def game(request):
     # RESET PLAYERS BOARDs
     PlayersGloryCards.set_values_default()
     TrackPlayerHitLocations.set_values_default()
+    TrackPlayerSpecialWeapons.set_default_values()
+    TrackMerchantTokens.set_default_values()
 
     # RESET PLAYERs CAPTAINs CARDs
     PlayersCaptainsCards.set_default_values()

@@ -14,9 +14,11 @@ from .playerCaptainCard import playerCaptainCard
 from .playerShipCard import playerShipCard
 from .playerHitLocations import playerHitLocation
 from .updatePlayerGolds import updatePlayerGolds
+from .updatePlayerSpecialWeapons import updatePlayerSpecialWeapons
 from .drawEventCard import drawEventCard
 from .drawMissionCard import drawMissionCard
 from .drawGloryCard import drawGloryCard
+from .maxValues import maxValues
 
 from .saveToServerSelectedNewCaptainShip import saveToServerSelectedNewCaptainShip
 from .drawDemandToken import drawDemandToken

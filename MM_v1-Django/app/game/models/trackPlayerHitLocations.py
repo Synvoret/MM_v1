@@ -1,16 +1,10 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import PLAYER_COLOURS
 from .game import Game
 
 
 class TrackPlayerHitLocations(models.Model):
     """Presents a track for player hit locations values."""
-
-    COLOURS = [
-        ('Blue', 'Blue'),
-        ('Green', 'Green'),
-        ('Red', 'Red'),
-        ('Yellow', 'Yellow'),
-    ]
 
     @classmethod
     def set_values_default(cls):
@@ -24,7 +18,7 @@ class TrackPlayerHitLocations(models.Model):
             field.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
-    player_colour = models.CharField(max_length=20, null=True, blank=True, choices=COLOURS)
+    player_colour = models.CharField(max_length=20, null=True, blank=True, choices=PLAYER_COLOURS)
 
     hull = models.IntegerField(default=1)
     cargo = models.IntegerField(default=1)

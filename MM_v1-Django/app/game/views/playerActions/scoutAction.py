@@ -1,8 +1,14 @@
+import random
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from dataset.utils.dataset.decorators.choices import COLOUR, PLAYER_COLOURS
+from dataset.utils.dataset.decorators.choices import COLOUR, PLAYER_COLOURS, HITS
+from dataset.models import CargoCard
+from dataset.models import MerchantTokens
 from game.models import Game
 from game.models import ShipsLocalisations
+from game.models import PlayersCaptainsCards
+from game.models import TrackMerchantTokens
+from game.models import TrackPlayerSpecialWeapons
 
 
 @csrf_exempt
@@ -15,6 +21,8 @@ def scoutAction(request):
     ships_in_zone = ShipsLocalisations.objects.get(game_number=game)
     player_colour = request.session['playerColourActive']
     player_localisation = getattr(ships_in_zone, f"{player_colour}_ship")
+    merchants_track = TrackMerchantTokens.objects.get(game_number=game)
+    player_special_weapons_instance = TrackPlayerSpecialWeapons.objects.get(game_number=game)
 
 
     # GET ALL SHIPS IN SEA ZONE where the scouting will be (without actual player)
@@ -39,153 +47,107 @@ def scoutAction(request):
         print('MERCHANT OPTIONs')
 
 
-    if request.method == 'POST':
+    if request.POST.get('type_request') == 'merchant raid':
+        # MOVE MERCHANT TOKEN to MERCHANTs TRACK on BOARD, if 9 then reset tokens
+        for field in merchants_track._meta.fields:
+            field_name = field.name
+            if field_name == 'id' or field_name == 'game_number':
+                continue
+            elif getattr(merchants_track, field_name) == None:
+                setattr(merchants_track, field_name, ships_in_zone.merchants_ship[player_localisation])
+                merchants_track.save()
+                data['merchantTrack'] = field_name
+                token = MerchantTokens.objects.get(nationality=ships_in_zone.merchants_ship[player_localisation])
+                data['merchantToken'] = token.awers.url # put metchant token on merchant track
+                data['removeMerchantToken'] = player_localisation.lower().replace(' ','-') # remove merchant token from board, Sea Zone name
+                del ships_in_zone.merchants_ship[player_localisation] # remove merchant token from sea zone db
+                ships_in_zone.save()
+                break
+        else: # when on merchant track is 8 merchant tokens
+            data['newDistributeMerchantTokens'] = True
+            print('MAM JUZ 8 KUPCÓW NA TRAKU, TEN JEST 9')
 
-        if request.POST.get('type_request') == 'merchant raid':
-            print(dict(request.session), 'KOLORRRRRRRRRRRRRRRRRRRRRRRR')
-            print('BĘDZIE NAPAD NA KUPCA')
+        cargo_cards = CargoCard.objects.all() # drawing 3 cards
+        cargo_card_1 = random.choice(cargo_cards)
+        cargo_card_2 = random.choice(cargo_cards)
+        cargo_card_3 = random.choice(cargo_cards)
+        cargo_card_1_value = cargo_card_1.plunder_value
+        cargo_card_2_value = cargo_card_2.plunder_value
+        cargo_card_3_value = cargo_card_3.plunder_value
 
-        if request.POST.get('type_request') == 'merchant trade':
-            print('BĘDZIE HANDEL Z KUPCEM')
+        hits_result = {} # hits result for merchant raid
+        for location_hit in HITS:
+            hits_result[location_hit[0]] = 0
+        cargo_card_1_hits = cargo_card_1.hits
+        cargo_card_2_hits = cargo_card_2.hits
+        cargo_card_3_hits = cargo_card_3.hits
+        hits_result[cargo_card_1_hits] += 1
+        hits_result[cargo_card_2_hits] += 1
+        hits_result[cargo_card_3_hits] += 1
+        data['hullHits'] = hits_result['Hull']
+        data['cargoHits'] = hits_result['Cargo']
+        data['mastsHits'] = hits_result['Masts']
+        data['crewHits'] = hits_result['Crew']
+        data['cannonsHits'] = hits_result['Cannons']
+        data['escapeResult'] = hits_result['Escape']
 
-        if request.POST.get('type_request') == 'merchant escort':
-            print('BĘDZIE ESKORTA KUPCA')
+        cargo_cards_value_summary = cargo_card_1_value + cargo_card_2_value + cargo_card_3_value # golds for merchant raid
+        data['cargoCardValue'] = cargo_cards_value_summary
+        data['cargoCard1ImageUrl'] = cargo_card_1.awers.url
+        data['cargoCard2ImageUrl'] = cargo_card_2.awers.url
+        data['cargoCard3ImageUrl'] = cargo_card_3.awers.url
+
+        # get Seamanship Captain
+        player_captain_seamanship_value = getattr(PlayersCaptainsCards, f"player_{player_colour}") # .seamanship: get SEAMANSHIP Captain parameter as int
+
+        # player special weapons
+        player_special_weapons = getattr(player_special_weapons_instance, f"player_{player_colour}")
+        data['playerSpecialWeapons'] = []
+        for special_weapon in player_special_weapons:
+            data['playerSpecialWeapons'].append(special_weapon.lower().replace(' ', '-'))
+
+        # discard card
+
+        # exchange choosen card
+
+        print('BĘDZIE NAPAD NA KUPCA')
+
+
+    # spend special weapon -> "scoutAction('spend special weapon chain-shot')"
+    if 'spend special weapon' in str(request.POST.get('type_request')):
+        spend_special_weapon = (request.POST.get('type_request')[21:]).replace('-', ' ').title()
+        player_special_weapons = [item for item in getattr(player_special_weapons_instance, f"player_{player_colour}") if item != spend_special_weapon]
+        setattr(player_special_weapons_instance, f"player_{player_colour}", player_special_weapons)
+        player_special_weapons_instance.save()
+        player_special_weapons = getattr(player_special_weapons_instance, f"player_{player_colour}")
+        data['playerSpecialWeapons'] = []
+        for special_weapon in player_special_weapons:
+            data['playerSpecialWeapons'].append(special_weapon.lower().replace(' ', '-'))
+
+
+    # draw card
+    if request.POST.get('type_request') == 'merchant raid draw card': # for MERCHANT RAID
+        amount_success = int(request.POST.get('amountSuccess'))
+        if amount_success > 0:
+            cargo_cards = CargoCard.objects.all() # drawing 3 cards
+            cargo_card = random.choice(cargo_cards)
+            data['cargoCardPlunderValue'] = cargo_card.plunder_value
+            data['cargoCardHits'] = cargo_card.hits
+            data['cargoCardDrawImageUrl'] = cargo_card.awers.url
+        print('DOBIERAM KARTĘCARGO W MERCHANT RAID')
+
+
+    if request.POST.get('type_request') == 'merchant raid accept': # for MERCHANT RAID
+        print('ZAPISUJE WYNIK MERCHANT RAID')
+
+
+    if request.POST.get('type_request') == 'merchant trade':
+        print('BĘDZIE HANDEL Z KUPCEM')
+
+
+    if request.POST.get('type_request') == 'merchant escort':
+        print('BĘDZIE ESKORTA KUPCA')
 
 
     data['playerColour'] = player_colour
     return JsonResponse(data)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# @csrf_exempt
-# def moveAction(request):
-
-#     print(dict(request.session))
-
-#     player_colour = request.session['playerColourActive']
-#     game = Game.objects.get(number=100)
-#     player_ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
-
-#     data = {}
-
-
-#     # WHEN CLICK "MOVES" BUTTON, CHECKING LOCALISATION for SHIP SEA ZONE or PORT
-#     if request.GET.get('type_request', None) == 'moves':
-
-#         if getattr(player_ship_localisation_instance, f"{player_colour}_in_port"):
-#             data['unitInPort'] = True
-
-
-#     if request.GET.get('type_request', None) == 'back':
-#         data['playerInPort'] = getattr(player_ship_localisation_instance, f"{player_colour}_in_port")
-
-
-#     # WHEN PLAYER move TO PORT or FROM PORT or TO SEA ZONE
-#     if request.method == 'POST':
-#         player_ship_unit_instance = getattr(PlayersShipsCards.objects.get(game_number=game), f"player_{player_colour}")
-#         player_ship_unit = player_ship_unit_instance.ship
-#         player_ship_position = getattr(player_ship_localisation_instance, player_colour + '_ship')
-
-#         if request.POST.get('type_request') == 'to port':
-#             setattr(player_ship_localisation_instance, f"{player_colour}_in_port", True)
-
-#         if request.POST.get('type_request') == 'from port':
-#             setattr(player_ship_localisation_instance, f"{player_colour}_in_port", False)
-#             request.session['playerInPort'] = False
-
-#         if request.POST.get('type_request') == 'to sea zone':
-#             actual_sea_zone = SeaZone.objects.get(sea_zone_name=player_ship_position)
-#             for direction in DIRECTION:
-#                 destination = getattr(actual_sea_zone, f"{direction[0].lower()}_direction")
-#                 if destination:
-#                     data[direction[0].lower()] = destination
-
-#         if request.POST.get('type_request') in ALLOWEDDESTINATIONS:
-#             setattr(player_ship_localisation_instance, player_colour + '_ship', request.POST.get('type_request'))
-#             player_ship_position = getattr(player_ship_localisation_instance, player_colour + '_ship')
-#             print(f"PŁYNĘ DO {request.POST.get('type_request')}")
-
-#         player_ship_localisation_instance.save()
-#         data['playerShipUnit'] = player_ship_unit.lower()
-#         data['playerDestination'] = player_ship_position.lower().replace(' ', '-')
-#         data['playerColour'] = player_colour
-
-#     return JsonResponse(data)
-
-
-
-
-
-
-
-
-
-
-    # """Endpoint return a randomly fishing card."""
-
-    # player_colour = request.session['playerColourActive']
-
-    # # SERIALIZER
-    # if 'fishingCard' not in request.session:
-    #     # if does not exist, generate new randomly card and save in session
-    #     fishing_cards = FishingCard.objects.all()
-    #     random_fishing_card = random.choice(fishing_cards)
-    #     # Serialize object to JSON and save in session
-    #     serializer = FishingCardSerializer(random_fishing_card)
-    #     serialized_fishing_card = serializer.data
-    #     request.session['fishingCard'] = serialized_fishing_card
-    #     print(dict(request.session))
-    # else:
-    #     # if exist in session
-    #     serialized_fishing_card = request.session['fishingCard']
-    #     serializer = FishingCardSerializer(data=serialized_fishing_card)
-    #     serializer.is_valid()
-    #     random_fishing_card = serializer.validated_data
-
-
-    # # REQUEST METHOD GET
-    # if request.method == 'GET':
-    #     data = {
-    #         'fishingCardImage': request.session['fishingCard']['awers'],
-    #         'playerColour': player_colour,
-    #     }
-    #     return JsonResponse(data)
-
-
-    # # REQUEST METHOD POST
-    # if request.method == 'POST':
-    #     data = {}
-    #     fishing_card = request.session['fishingCard']
-    #     game = Game.objects.get(number=100)
-    #     if fishing_card['fishing_value']:
-    #         player_golds = TrackPlayerGolds.objects.get(game_number=game)
-    #         setattr(player_golds, 'player_' + player_colour, getattr(player_golds, 'player_' + player_colour) + fishing_card['fishing_value'])
-    #         player_golds.save()
-    #         data['fishingValue'] = True
-    #     if fishing_card['fishing_hits']: 
-    #         player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour.title())
-    #         hit_location = fishing_card['fishing_hits']
-    #         setattr(player_hits_locations, hit_location.lower(), getattr(player_hits_locations, hit_location.lower()) - 1)
-    #         player_hits_locations.save()
-    #         data['fishingHits'] = True
-    #     del request.session['fishingCard']
-    #     data['colour'] = player_colour
-    #     return JsonResponse(data)

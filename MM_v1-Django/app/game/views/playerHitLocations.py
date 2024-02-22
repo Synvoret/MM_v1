@@ -6,6 +6,8 @@ from game.models import TrackPlayerHitLocations
 def playerHitLocation(request):
     """Endpoint put all cubes on track Player Hit Locations."""
 
+    data = {}
+
     colour = request.GET.get('colour', None)
 
     colour_cube = Cube.objects.get(name=colour.capitalize() + ' Cube')
@@ -13,13 +15,11 @@ def playerHitLocation(request):
 
     hits = TrackPlayerHitLocations.objects.get(player_colour=colour.capitalize())
 
-    data = {
-        "cubeImage": colour_cube_image,
-        "hullHit": hits.hull,
-        "cargoHit": hits.cargo,
-        "mastsHit": hits.masts,
-        "crewHit": hits.crew,
-        "cannonsHit": hits.cannons,
-    }
+    data["cubeImage"] = colour_cube_image
+    data["hullHit"] = hits.hull
+    data["cargoHit"] = hits.cargo
+    data["mastsHit"] = hits.masts
+    data["crewHit"] = hits.crew
+    data["cannonsHit"] = hits.cannons
 
     return JsonResponse(data)

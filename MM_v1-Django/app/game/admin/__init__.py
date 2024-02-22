@@ -12,5 +12,7 @@ from .trackEnemyHitLocationsAdmin import TrackEnemyHitLocationsAdmin
 from .trackFavorsAdmin import TrackFavorsAdmin
 from .trackGloryPointAdmin import TrackGloryPointAdmin
 from .trackLoyalityAdmin import TrackLoyalityAdmin
+from .trackMerchantTokensAdmin import TrackMerchantTokensAdmin
 from .trackPlayerGoldsAdmin import TrackPlayerGoldsAdmin
 from .trackPlayerHitLocationAdmin import TrackPlayerHitLocationsAdmin
+from .trackPlayerSpecialWeaponsAdmin import TrackPlayerSpecialWeaponsAdmin

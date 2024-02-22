@@ -40,8 +40,9 @@ async function drawMerchantToken(seaZone) {
             });
 
             response = await fetchResponse.json();
-            // document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenRewersImage);
-            document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenAwersImage);
+            document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenRewersImage);
+            // document.getElementById(merchantTokenIDImage).setAttribute('href', response.merchantTokenAwersImage);
+            document.getElementById(`merchant-token-${seaZone}`).setAttribute('href', `#merchant-token-${seaZone}-image`);
         }
     } catch (error) {
         console.error('An error occurred:', error);

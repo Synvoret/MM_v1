@@ -26,6 +26,8 @@ urlpatterns = [
     path('endCurrentAction', views.playerActions.endCurrentAction, name='endCurrentAction'),
     path('updatePlayerGolds', views.updatePlayerGolds, name='updatePlayerGolds'),
     path('updateGloryTrack', views.updateGloryTrack, name='updateGloryTrack'),
+    path('updatePlayerSpecialWeapons', views.updatePlayerSpecialWeapons, name='updatePlayerSpecialWeapons'),
+    path('maxValues', views.maxValues, name='maxValues'),
 
     path('drawDemandToken', views.drawDemandToken, name='drawDemandToken'),
     path('drawMerchantToken', views.drawMerchantToken, name='drawMerchantToken'),

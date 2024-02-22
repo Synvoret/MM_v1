@@ -14,8 +14,10 @@ function playerBoard(colour) {
             updateFavorsTrack(colour);
             updatePlayerHitLocation(colour);
             updatePlayerGolds(colour);
+            updatePlayerSpecialWeapons(colour);
             drawPlayerCaptainCard(colour);
             drawPlayerShipCard(colour);
+            maxValues(colour)
             endCurrentAction(colour);
             };
         };

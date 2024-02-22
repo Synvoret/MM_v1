@@ -10,11 +10,11 @@ function updateEnemyHitLocation() {
             let masts = response.mastsHit;
             let crew = response.crewHit;
             let cannons = response.cannonsHit;
-            document.getElementById('hull-' + hull + '-enemy-hit-location').setAttribute('xlink:href', '#brown-cube-enemy-hit-location-image');
-            document.getElementById('cargo-' + cargo + '-enemy-hit-location').setAttribute('xlink:href', '#brown-cube-enemy-hit-location-image');
-            document.getElementById('masts-' + masts + '-enemy-hit-location').setAttribute('xlink:href', '#brown-cube-enemy-hit-location-image');
-            document.getElementById('crew-' + crew + '-enemy-hit-location').setAttribute('xlink:href', '#brown-cube-enemy-hit-location-image');
-            document.getElementById('cannons-' + cannons + '-enemy-hit-location').setAttribute('xlink:href', '#brown-cube-enemy-hit-location-image');
+            document.getElementById('hull-' + hull + '-enemy-hit-location').setAttribute('href', '#brown-cube-enemy-hit-location-image');
+            document.getElementById('cargo-' + cargo + '-enemy-hit-location').setAttribute('href', '#brown-cube-enemy-hit-location-image');
+            document.getElementById('masts-' + masts + '-enemy-hit-location').setAttribute('href', '#brown-cube-enemy-hit-location-image');
+            document.getElementById('crew-' + crew + '-enemy-hit-location').setAttribute('href', '#brown-cube-enemy-hit-location-image');
+            document.getElementById('cannons-' + cannons + '-enemy-hit-location').setAttribute('href', '#brown-cube-enemy-hit-location-image');
         }
     };
     xhr.open('GET', "enemyHitLocation", true);

@@ -10,6 +10,9 @@ function updatePlayerHitLocation(colour) {
             let masts = response.mastsHit;
             let crew = response.crewHit;
             let cannons = response.cannonsHit;
+
+            maxValues(colour);
+
             if (hull > 0) {
                 document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
                 hull += 1;

@@ -1,11 +1,9 @@
 // NEW PLAYER
-// colour - player colour
 function newPlayer(colour) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            // console.log(response)
 
             document.getElementById('new-player-use').style.display = "block";
             document.querySelector('.nav-button-player-start').disabled = true;
@@ -17,7 +15,6 @@ function newPlayer(colour) {
             document.getElementById('new-ship-sloop-frame').style.removeProperty('stroke');
             document.getElementById('new-ship-flute-frame').style.removeProperty('stroke');
             document.getElementById('new-captain-ship-get-text').style.removeProperty('fill');
-            // document.getElementById('new-captain-ship-get-text').removeAttribute('onclick');
 
             document.getElementById('new-captain-1-image').setAttribute('href', response.captain1Image);
             document.getElementById('new-captain-1-frame').setAttribute('name', response.captain1Name);

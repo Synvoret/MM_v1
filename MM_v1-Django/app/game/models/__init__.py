@@ -12,5 +12,7 @@ from .stackEventsNPCCaptains import StackEventsNPCCaptains
 from .trackGloryPoints import TrackGloryPoint
 from .trackFavors import TrackFavors
 from .trackLoyality import TrackLoyality
+from .trackMerchantTokens import TrackMerchantTokens
 from .trackPlayerGolds import TrackPlayerGolds
 from .trackPlayerHitLocations import TrackPlayerHitLocations
+from .trackPlayerSpecialWeapons import TrackPlayerSpecialWeapons
