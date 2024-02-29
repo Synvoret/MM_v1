@@ -12,8 +12,11 @@ function playerBoard(colour) {
 
             updateLoyalityTrack(colour);
             updateFavorsTrack(colour);
+            updatePlayerBounties(colour);
+            updatePlayerCargoCards(colour);
             updatePlayerHitLocation(colour);
             updatePlayerGolds(colour);
+            updatePlayerShipModifications(colour);
             updatePlayerSpecialWeapons(colour);
             drawPlayerCaptainCard(colour);
             drawPlayerShipCard(colour);

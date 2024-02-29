@@ -8,7 +8,7 @@ urlpatterns = [
     path('goGame', views.goGame, name="goGame"),
     path('board', views.board, name='board'),
     path('playerBoard', views.playerBoard, name='playerBoard'),
-    path('dice', views.dice, name='dice'),
+    path('rollDices', views.rollDices, name='rollDices'),
     path('ship', views.ship, name='ship'),
 
     path('drawEventCard', views.drawEventCard, name='drawEventCard'),
@@ -24,8 +24,11 @@ urlpatterns = [
     path('playerHitLocation', views.playerHitLocation, name='playerHitLocation'),
     path('saveToServerSelectedNewCaptainShip', views.saveToServerSelectedNewCaptainShip, name='saveToServerSelectedNewCaptainShip'),
     path('endCurrentAction', views.playerActions.endCurrentAction, name='endCurrentAction'),
+    path('updatePlayerBounties', views.updatePlayerBounties, name="updatePlayerBounties"),
+    path('updatePlayerCargoCards', views.updatePlayerCargoCards, name='updatePlayerCargoCards'),
     path('updatePlayerGolds', views.updatePlayerGolds, name='updatePlayerGolds'),
     path('updateGloryTrack', views.updateGloryTrack, name='updateGloryTrack'),
+    path('updatePlayerShipModifications', views.updatePlayerShipModifications, name='updatePlayerShipModifications'),
     path('updatePlayerSpecialWeapons', views.updatePlayerSpecialWeapons, name='updatePlayerSpecialWeapons'),
     path('maxValues', views.maxValues, name='maxValues'),
 

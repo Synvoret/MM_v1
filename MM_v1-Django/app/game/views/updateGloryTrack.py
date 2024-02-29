@@ -7,8 +7,7 @@ def updateGloryTrack(request):
     """Endpoint back cubes to track Glory Points."""
 
     values = TrackGloryPoint.objects.get(game_number=1)
-    print(values.player_blue)
-    
+
     blue_cube = Cube.objects.get(name='Blue Cube')
     blue_cube_image = blue_cube.image.url
     player_blue_amount = values.player_blue

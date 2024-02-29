@@ -13,7 +13,7 @@ def playerHitLocation(request):
     colour_cube = Cube.objects.get(name=colour.capitalize() + ' Cube')
     colour_cube_image = colour_cube.image.url
 
-    hits = TrackPlayerHitLocations.objects.get(player_colour=colour.capitalize())
+    hits = TrackPlayerHitLocations.objects.get(player_colour=colour)
 
     data["cubeImage"] = colour_cube_image
     data["hullHit"] = hits.hull

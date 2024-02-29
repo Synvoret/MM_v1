@@ -26,7 +26,7 @@ def saveToServerSelectedNewCaptainShip(request):
         home_port = (captain_card.home_port).title()
         starting_location = ShipsLocalisations.objects.get(game_number=game)
         # update player hit locations track in db
-        player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour.title())
+        player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
 
         if player_colour == 'blue':
             PlayersCaptainsCards.player_blue = captain_card

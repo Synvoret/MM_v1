@@ -9,8 +9,12 @@ function updateGloryTrack(colour) {
             for (const colour of colours) {
                 const cubeImageID = colour + "-cube-image"
                 document.getElementById(cubeImageID).setAttribute('href', response[colour + 'CubeImage']);
-                const gloryPointID = colour + "-" + response[colour + 'GloryPoint'] + '-glory-point-cube'
-                document.getElementById(gloryPointID).setAttribute('href', "#" + cubeImageID);
+                const gloryPointID = `${colour}-${response[colour + 'GloryPoint']}-glory-point-cube`;
+                document.getElementById(gloryPointID).setAttribute('href', `#${cubeImageID}`);
+                if (parseInt(response[colour + 'GloryPoint']) > 0) {
+                    let lastGloryPointID = `${colour}-${parseInt(response[colour + 'GloryPoint']) - 1}-glory-point-cube`;
+                    document.getElementById(lastGloryPointID).setAttribute('href', ``);
+                }
             }
             
         }

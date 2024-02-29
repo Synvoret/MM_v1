@@ -4,7 +4,6 @@ function updatePlayerSpecialWeapons(colour) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            console.log('SPECIAL WEAPONS', response, colour)
 
             if (response.ChainShotImage !== undefined) {
                 document.getElementById('player-special-weapon-chain-shot-image').setAttribute('href', response.ChainShotImage);

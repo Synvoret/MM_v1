@@ -6,11 +6,15 @@ from game.models import ShipsLocalisations
 from game.models import StackEventsCards
 from game.models import StackEventsNPCCaptains
 from game.models import StackMissionsCards
+from game.models import StackPlayerCargoCards
+from game.models import TrackGloryPoint
 from game.models import TrackEnemyHitLocations
 from game.models import TrackPlayerGolds
 
 from game.models import PlayersGloryCards
+from game.models import TrackPlayerBounties
 from game.models import TrackPlayerHitLocations
+from game.models import TrackPlayersShipModifications
 from game.models import TrackPlayerSpecialWeapons
 from game.models import TrackMerchantTokens
 
@@ -26,8 +30,12 @@ def game(request):
     # RESET GAME
     Game.set_default_values()
     # RESET PLAYERS BOARDs
+    TrackGloryPoint.set_values_default()
     PlayersGloryCards.set_values_default()
+    StackPlayerCargoCards.set_default_values()
+    TrackPlayerBounties.set_default_values()
     TrackPlayerHitLocations.set_values_default()
+    TrackPlayersShipModifications.set_default_values()
     TrackPlayerSpecialWeapons.set_default_values()
     TrackMerchantTokens.set_default_values()
 

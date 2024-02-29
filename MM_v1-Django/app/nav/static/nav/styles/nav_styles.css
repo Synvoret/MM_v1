@@ -34,16 +34,6 @@
 	top:1px;
 }
 
-.dice-image {
-	width: 20px;
-	height: 20px;
-}
-
-.dice:disabled {
-	cursor: not-allowed;
-	border: 2px solid black;
-}
-
 span.step,
 span.amount-actions,
 p.title,

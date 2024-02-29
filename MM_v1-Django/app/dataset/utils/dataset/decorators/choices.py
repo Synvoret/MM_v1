@@ -19,6 +19,15 @@ ALLOWEDDESTINATIONS= [
     'Trinidad',
 ]
 
+BOUNTIES = [
+    'Dutch',
+    'English',
+    'French',
+    'Spanish',
+    'Small Pirate',
+    'Large Pirate',
+]
+
 CARGO = [
     ('Cocoa', 'Cocoa'),
     ('Food', 'Food'),
@@ -85,6 +94,14 @@ HITS = [
     ('Crew', 'Crew'),
     ('Cannons', 'Cannons'),
     ('Escape', 'Escape'),
+]
+
+HIT_LOCATIONS = [
+    'hull', 
+    'cargo', 
+    'masts', 
+    'crew',
+    'cannons',
 ]
 
 EXPANSION = [

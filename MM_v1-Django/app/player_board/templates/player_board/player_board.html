@@ -36,7 +36,7 @@
         <use id="mutiny-loyality-track" class="opacity-cube" name="mutiny-loyality-track" x="67" y="189" href=""/>
 
 
-        <!-- PLAYER CAPTAIN -->
+        <!-- CAPTAIN -->
         <defs>
             <clipPath id="player-captain-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
             <image id="player-captain-card-image" width="88" height="58" href="" clip-path="url(#player-captain-card-clipPath)" onmouseover="enlagreIndicated('player-captain-card-image')"/>
@@ -44,7 +44,7 @@
         <use id="player-captain-card" name="player-captain-card" x="160" y="25" href="#player-captain-card-image" transform="rotate(0.5 160 25)"/>
 
 
-        <!-- PLAYER GLORY CARDs -->
+        <!-- GLORY CARDs -->
         <defs>
             <clipPath id="player-glory-card-clipPath"><rect x="0" y="0" width="58" height="88" rx="4" ry="4"/></clipPath>
             <image id="player-glory-card-1-image" width="58" height="88" href="" clip-path="url(#player-glory-card-clipPath)"/>
@@ -62,7 +62,7 @@
         <use id="player-glory-card-6" name="player-glory-card-6" x="565" y="10" href="#player-glory-card-6-image"/>
 
 
-        <!-- PLAYER SHIP -->
+        <!-- SHIP -->
         <defs>
             <clipPath id="player-ship-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
             <image id="player-ship-card-image" width="88" height="58" href="" clip-path="url(#player-ship-card-clipPath)"/>
@@ -70,7 +70,96 @@
         <use id="player-ship-card" name="player-ship-card" x="160" y="152" href="#player-ship-card-image" transform="rotate(0.5 161 153)"/>
 
 
-        <!-- PLAYER HIT LOCATIONs -->
+        <!-- BOUNTIES -->
+        <defs>
+            <image id="player-bounty-dutch-image" x="0" y="0" width="30" height="20" href="">
+            <image id="player-bounty-english-image" x="0" y="0" width="30" height="20" href="">
+            <image id="player-bounty-french-image" x="0" y="0" width="30" height="20" href="">
+            <image id="player-bounty-spanish-image" x="0" y="0" width="30" height="20" href="">
+            <image id="player-bounty-small-pirate-image" x="0" y="0" width="30" height="20" href="">
+            <image id="player-bounty-large-pirate-image" x="0" y="0" width="30" height="20" href="">
+        </defs>
+        <use id="player-bounty-1-2" x="253" y="79" href=""/> 
+        <use id="player-bounty-1-3" x="253" y="79" href=""/> 
+        <use id="player-bounty-1-4" x="253" y="79" href=""/> 
+        <use id="player-bounty-1-5" x="253" y="79" href=""/>
+        <use id="player-bounty-1-6" x="253" y="79" href=""/>
+        <use id="player-bounty-1-1" x="253" y="79" href="" transform="rotate(2 253 79)" onmouseover="showBounties('show', 1)" onmouseout="showBounties('hide', 1)"/> 
+        <use id="player-bounty-2-2" x="253" y="62" href=""/>
+        <use id="player-bounty-2-3" x="253" y="62" href=""/>
+        <use id="player-bounty-2-4" x="253" y="62" href=""/>
+        <use id="player-bounty-2-5" x="253" y="62" href=""/>
+        <use id="player-bounty-2-6" x="253" y="62" href=""/>
+        <use id="player-bounty-2-1" x="253" y="62" href="" transform="rotate(2 253 62)" onmouseover="showBounties('show', 2)" onmouseout="showBounties('hide', 2)"/>
+        <use id="player-bounty-3-2" x="253" y="44" href=""/>
+        <use id="player-bounty-3-3" x="253" y="44" href=""/>
+        <use id="player-bounty-3-4" x="253" y="44" href=""/>
+        <use id="player-bounty-3-5" x="253" y="44" href=""/>
+        <use id="player-bounty-3-6" x="253" y="44" href=""/>
+        <use id="player-bounty-3-1" x="253" y="44" href="" transform="rotate(2 253 44)" onmouseover="showBounties('show', 3)" onmouseout="showBounties('hide', 3)"/>
+        <use id="player-bounty-4-2" x="253" y="27" href=""/>
+        <use id="player-bounty-4-3" x="253" y="27" href=""/>
+        <use id="player-bounty-4-4" x="253" y="27" href=""/>
+        <use id="player-bounty-4-5" x="253" y="27" href=""/>
+        <use id="player-bounty-4-6" x="253" y="27" href=""/>
+        <use id="player-bounty-4-1" x="253" y="27" href="" transform="rotate(2 253 27)" onmouseover="showBounties('show', 4)" onmouseout="showBounties('hide', 4)"/>
+        <use id="player-bounty-5-2" x="253" y="9"  href=""/>
+        <use id="player-bounty-5-3" x="253" y="9"  href=""/>
+        <use id="player-bounty-5-4" x="253" y="9"  href=""/>
+        <use id="player-bounty-5-5" x="253" y="9"  href=""/>
+        <use id="player-bounty-5-6" x="253" y="9"  href=""/>
+        <use id="player-bounty-5-1" x="253" y="9"  href="" transform="rotate(2 253 9)" onmouseover="showBounties('show', 5)" onmouseout="showBounties('hide', 5)"/>
+
+
+        <!-- SHIP MODIFICATIONs -->
+        <defs>
+            <clipPath id="player-ship-modification-clipPath"><rect x="0" y="0" width="20" height="20" rx="1" ry="1"/></clipPath>            
+            <image id="player-ship-modification-advanced-rigs-&-sails-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-carved-hull-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-chasers-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-crows-nest-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-extended-cargo-hold-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-extra-cannon-port-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-extra-hammocs-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-long-guns-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-plank-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-reinforced-hull-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-smugglers-hold-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-swivel-guns-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+
+            <image id="player-ship-modification-extended-keel-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-extra-boat-stow-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-extra-mast-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-fast-davits-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-galley-refit-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-grand-figurehead-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-mortar-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+            <image id="player-ship-modification-stunsails-image" width="20" height="20" href="" clip-path="url(#player-ship-modification-clipPath)"/>
+        </defs>
+        <use id="player-ship-modification-advanced-rigs-&-sails" x="206" y="103" href="#player-ship-modification-advanced-rigs-&-sails-image"/>
+        <use id="player-ship-modification-carved-hull" x="527" y="104" href="#player-ship-modification-carved-hull-image"/>
+        <use id="player-ship-modification-chasers" x="287" y="103" href="#player-ship-modification-chasers-image"/>
+        <use id="player-ship-modification-crows-nest" x="493" y="104" href="#player-ship-modification-crows-nest-image"/>
+        <use id="player-ship-modification-extended-cargo-hold" x="449" y="104" href="#player-ship-modification-extended-cargo-hold-image"/>
+        <use id="player-ship-modification-extra-cannon-port" x="368" y="104" href="#player-ship-modification-extra-cannon-port-image"/>
+        <use id="player-ship-modification-extra-hammocs" x="166" y="103" href="#player-ship-modification-extra-hammocs-image"/>
+        <use id="player-ship-modification-long-guns" x="408" y="103" href="#player-ship-modification-long-guns-image"/>
+        <use id="player-ship-modification-plank" x="124" y="103" href="#player-ship-modification-plank-image"/>
+        <use id="player-ship-modification-reinforced-hull" x="247" y="103" href="#player-ship-modification-reinforced-hull-image"/>
+        <use id="player-ship-modification-smugglers-hold" x="566" y="104" href="#player-ship-modification-smugglers-hold-image"/>
+        <use id="player-ship-modification-swivel-guns" x="327" y="103" href="#player-ship-modification-swivel-guns-image"/>
+
+        <use id="player-ship-modification-extended-keel" x="528" y="239" href="#player-ship-modification-extended-keel-image"/>
+        <use id="player-ship-modification-extra-boat-stow" x="203" y="239" href="#player-ship-modification-extra-boat-stow-image"/>
+        <use id="player-ship-modification-extra-mast" x="393" y="238" href="#player-ship-modification-extra-mast-image"/>
+        <use id="player-ship-modification-fast-davits" x="244" y="239" href="#player-ship-modification-fast-davits-image"/>
+        <use id="player-ship-modification-galley-refit" x="483" y="238" href="#player-ship-modification-galley-refit-image"/>
+        <use id="player-ship-modification-grand-figurehead" x="572" y="238" href="#player-ship-modification-grand-figurehead-image"/>
+        <use id="player-ship-modification-mortar" x="415" y="278" href="#player-ship-modification-mortar-image"/>
+        <use id="player-ship-modification-stunsails" x="438" y="239" href="#player-ship-modification-stunsails-image"/>
+
+
+        <!-- HIT LOCATIONs -->
         <defs>
             <clipPath id="player-hit-location-clipPath"><rect x="0" y="0" width="12" height="12" rx="2" ry="2"/></clipPath>
             <image id="player-hit-location-image" width="12" height="12" href="" clip-path="url(#player-hit-location-clipPath)"/>
@@ -139,6 +228,26 @@
         <use id="player-special-weapon-premium-rum" x="460" y="277" href="#player-special-weapon-premium-rum-image"/>
         <use id="player-special-weapon-grenade" x="505" y="277" href="#player-special-weapon-grenade-image"/>
         <use id="player-special-weapon-explosive-shell" x="550" y="277" href="#player-special-weapon-explosive-shell-image"/>
+
+        <!-- CARGO CARDs -->
+        <defs>
+            <image id="player-cargo-card-1-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-2-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-3-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-4-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-5-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-6-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-7-image" x="0" y="0" width="58" height="88" href="">
+            <image id="player-cargo-card-8-image" x="0" y="0" width="58" height="88" href="">
+        </defs>
+        <use id="player-cargo-card-use-2" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-3" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-4" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-5" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-6" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-7" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-8" x="417" y="139" href=""/>
+        <use id="player-cargo-card-use-1" x="417" y="139" href="" onmouseover="showCargoCards('show')" onmouseout="showCargoCards('hide')"/>
 
 
         <!-- PLAYER GOLDs -->
@@ -230,7 +339,7 @@
 
 
 
-        <text class="helper-player-board" text-anchor="start" alignment-baseline="middle">
+        <text class="helper-player-board" text-anchor="start" alignment-baseline="middle" style="font-size: 8px">
             <tspan class="tspan-player-board"></tspan>
             <tspan class="tspan-player-board"></tspan>
         </text>

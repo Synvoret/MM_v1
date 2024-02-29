@@ -8,11 +8,14 @@ from .shipsLocalisationsAdmin import ShipsLocalisationsAdmin
 from .stackEventsCardsAdmin import StackEventsCardsAdmin
 from .stackEventsNPCCaptainsAdmin import StackEventsNPCCaptainsAdmin
 from .stackMissionsCardsAdmin import StackMissionsCardsAdmin
+from .stackPlayerCargoCardsAdmin import StackPlayerCargoCardsAdmin
 from .trackEnemyHitLocationsAdmin import TrackEnemyHitLocationsAdmin
 from .trackFavorsAdmin import TrackFavorsAdmin
 from .trackGloryPointAdmin import TrackGloryPointAdmin
 from .trackLoyalityAdmin import TrackLoyalityAdmin
 from .trackMerchantTokensAdmin import TrackMerchantTokensAdmin
+from .trackPlayerBountiesAdmin import TrackPlayerBountiesAdmin
 from .trackPlayerGoldsAdmin import TrackPlayerGoldsAdmin
 from .trackPlayerHitLocationAdmin import TrackPlayerHitLocationsAdmin
+from .trackPlayersShipModificationsAdmin import TrackPlayersShipModificationsAdmin
 from .trackPlayerSpecialWeaponsAdmin import TrackPlayerSpecialWeaponsAdmin

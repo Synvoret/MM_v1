@@ -611,13 +611,14 @@
     <use id="fishing-action-use" x="550" y="250" href="#fishing-action" style="display: none;"/>
 
 
-    <!-- SCOUT MERCHANTs RAID-->
+    <!-- RAID - SCOUT MERCHANTs-->
     <defs>
         <g id="merchant-raid-action">
             <rect id="merchant-raid-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
             <rect id="merchant-raid-card-1-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-raid-card-1-image" x="15" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-1-frame')" style="pointer-events: none;"/>
-            
+
             <rect id="merchant-raid-card-2-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-raid-card-2-image" x="128" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-2-frame')" style="pointer-events: none;"/>
 
@@ -642,20 +643,34 @@
             <rect id="merchant-raid-card-9-frame" x="239" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-raid-card-9-image" x="241" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-9-frame')" style="pointer-events: none;"/>
 
-            <text id="merchant-raid-action-result-text" x="20" y="510">RESULT:</text>
-            <text id="merchant-raid-action-gold-text" x="100" y="510">Gold: <tspan id="merchant-raid-value-result">0</tspan></text>
-            <text id="merchant-raid-action-hits-text" x="170" y="510">Hits:</text>
-            <text id="merchant-raid-hull" x="210" y="510">Hull: <tspan id="merchant-raid-hull-span">0</tspan></text>
-            <text id="merchant-raid-cargo" x="210" y="525">Cargo: <tspan id="merchant-raid-cargo-span">0</tspan></text>
-            <text id="merchant-raid-masts" x="210" y="540">Masts: <tspan id="merchant-raid-masts-span">0</tspan></text>
-            <text id="merchant-raid-crew" x="210" y="555">Crew: <tspan id="merchant-raid-crew-span">0</tspan></text>
-            <text id="merchant-raid-cannons" x="210" y="570">Cannons: <tspan id="merchant-raid-cannons-span">0</tspan></text>
-            <text id="merchant-raid-escape" x="210" y="585">Escape: <tspan id="merchant-raid-escape-span">0</tspan></text>
-            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">Accept Raid Result?</text>
+            <rect id="merchant-raid-card-10-frame" x="352" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-raid-card-10-image" x="354" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-10-frame')" style="pointer-events: none;"/>
+    
+            <rect id="merchant-raid-card-11-frame" x="465" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-raid-card-11-image" x="467" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-11-frame')" style="pointer-events: none;"/>
+    
+            <rect id="merchant-raid-card-12-frame" x="578" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-raid-card-12-image" x="580" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-raid-card-12-frame')" style="pointer-events: none;"/>
 
-            <text id="merchant-raid-action-draw-roll-text" x="20" y="650">Roll Seamanship -> <tspan id="merchant-raid-amount-success">0</tspan> success.</text>
-            <text id="merchant-raid-action-draw-spend-weapon-text" x="20" y="670">Spend Special Weapon</text>
+            <text id="merchant-raid-action-result-text" x="120" y="510">RESULT:</text>
+            <text id="merchant-raid-action-gold-text" x="20" y="510">Gold: <tspan id="merchant-raid-value-result">0</tspan></text>
+            <text id="merchant-raid-action-hits-text" x="20" y="530">Hits:</text>
+            <text id="merchant-raid-hull" x="20" y="545">Hull: <tspan id="merchant-raid-hull-span">0</tspan></text>
+            <text id="merchant-raid-cargo" x="20" y="560">Cargo: <tspan id="merchant-raid-cargo-span">0</tspan></text>
+            <text id="merchant-raid-masts" x="20" y="575">Masts: <tspan id="merchant-raid-masts-span">0</tspan></text>
+            <text id="merchant-raid-crew" x="20" y="590">Crew: <tspan id="merchant-raid-crew-span">0</tspan></text>
+            <text id="merchant-raid-cannons" x="20" y="605">Cannons: <tspan id="merchant-raid-cannons-span">0</tspan></text>
+            <text id="merchant-raid-escape" x="20" y="620">Escape: <tspan id="merchant-raid-escape-span">0</tspan> (<tspan id="merchant-raid-ship-maneuverability">0</tspan> - Ship Maneuverability)</text>
+            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">Accept RAID Result?</text>
+
+            <text id="merchant-raid-action-draw-roll-text" x="20" y="650">Seamanship ->
+                <tspan id="merchant-raid-amount-success">0</tspan>
+                 success.
+            </text>
+            <!-- dices -->
+            <!-- <text id="merchant-raid-roll-dices" x="310" y="650" style="display: none;"> ROLL</text> -->
             <!-- special weapons images -->
+            <text id="merchant-raid-action-draw-spend-weapon-text" x="20" y="670">Spend Special Weapon</text>
             <image id="merchant-raid-chain-shot-image" x="200" y="655" width="20" height="20" href="" onclick="scoutAction('spend special weapon chain-shot')" style="pointer-events: none;" />
             <image id="merchant-raid-grapeshot-image" x="220" y="655" width="20" height="20" href="" onclick="scoutAction('spend special weapon grapeshot')" style="pointer-events: none;" />
             <image id="merchant-raid-grappling-hooks-image" x="240" y="655" width="20" height="20" href="" onclick="scoutAction('spend special weapon grappling-hooks')" style="pointer-events: none;" />
@@ -668,14 +683,64 @@
             <!-- draw cargo card -->
             <text id="merchant-raid-action-draw-card-text" x="20" y="690" onclick="scoutAction('merchant raid draw card');">Draw Card</text>
             <!-- discard cargo card -->
-            <text id="merchant-raid-action-discard-card-text" x="20" y="710">Discard Card</text>
+            <text id="merchant-raid-action-discard-card-text" x="20" y="710" onclick="scoutAction('merchant raid discard card');">Discard Card</text>
             <!-- exchange cargo card -->
-            <text id="merchant-raid-action-exchange-card-text" x="20" y="730">Exchange Card(s)</text>
+            <text id="merchant-raid-action-exchange-card-text" x="20" y="730" onclick="scoutAction('merchant raid exchange card');">Exchange Card</text>
         </g>
     </defs>
     <use id="merchant-raid-action-use" x="50" y="10" href="#merchant-raid-action" style="display: none;"/>
 
 
+    <!-- TRADE - SCOUT MERCHANTs-->
+    <defs>
+        <g id="merchant-trade-action">
+            <rect id="merchant-trade-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <!-- merchant cargo cards -->
+            <rect id="merchant-trade-card-1-frame" name="merchant-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-1-image" x="15" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-1-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-2-frame" name="merchant-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-2-image" x="128" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-2-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-3-frame" name="merchant-frame" x="239" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-3-image" x="241" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-3-frame')" style="pointer-events: none;"/>
+
+            <!-- player cargo cards -->
+
+            <rect id="merchant-trade-card-4-frame" x="13" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-4-image" x="15" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-4-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-5-frame" x="126" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-5-image" x="128" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-5-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-6-frame" x="239" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-6-image" x="241" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-6-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-7-frame" x="352" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-7-image" x="354" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-7-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-trade-card-8-frame" x="465" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-8-image" x="467" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-8-frame')" style="pointer-events: none;"/>
+            
+            <rect id="merchant-trade-card-9-frame" x="578" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-9-image" x="580" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-9-frame')" style="pointer-events: none;"/>
+            
+            <rect id="merchant-trade-card-10-frame" x="13" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-trade-card-10-image" x="15" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-10-frame')" style="pointer-events: none;"/>
+
+            <text id="merchant-trade-action-result-text" x="120" y="510">RESULT:</text>
+            <text id="merchant-trade-action-ok-text" x="400" y="510" onclick="scoutAction('merchant trade accept'); scoutAction('back');">Accept TRADE Result?</text>
+
+            <text id="merchant-trade-action-draw-roll-text" x="20" y="650">Influence ->
+                <tspan id="merchant-trade-amount-success">5</tspan>
+                 success.
+            </text>
+            <!-- exchange cargo cards -->
+            <text id="merchant-trade-action-exchange-card-text" x="20" y="730" onclick="scoutAction('merchant trade exchange cards');">Exchange Cards</text>
+        </g>
+    </defs>
+    <use id="merchant-trade-action-use" x="50" y="10" href="#merchant-trade-action" style="display: none;"/>
 
 
 

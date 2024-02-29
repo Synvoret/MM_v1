@@ -7,8 +7,6 @@ function maxValues(colour) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
             // let colour = response.playerColour
-            console.log(response, colour, 'MAX VALUES')
-            console.log(`captain-actions-${response.playerMaxAmountActions}`)
 
             document.getElementById('player-hit-location-max-value-image').setAttribute('href', response.playerCubeMaxImage);
 
@@ -39,7 +37,9 @@ function maxValues(colour) {
 
             // max actions
             document.getElementById('captain-max-value-actions-image').setAttribute('href', response.playerCubeMaxImage);
-            document.getElementById(`captain-actions-${response.playerMaxAmountActions}`).setAttribute('href', '#captain-max-value-actions-image');
+            if ( document.getElementById(`captain-actions-${response.playerMaxAmountActions}`).getAttribute('href') === "") {
+                document.getElementById(`captain-actions-${response.playerMaxAmountActions}`).setAttribute('href', '#captain-max-value-actions-image');
+            };
         };
         
     };

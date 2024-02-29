@@ -5,7 +5,7 @@ from .playerBoard import playerBoard
 from .loyalityTrackCube import loyalityTrackCube
 from .favorsTrackCube import favorsTrackCube
 from .featuresSeaZones import featuresSeaZones
-from .dice import dice
+from .rollDices import rollDices
 from .ship import ship
 from .updateGloryTrack import updateGloryTrack
 from .enemyHitLocations import enemyHitLocation
@@ -13,7 +13,10 @@ from .newPlayer import newPlayer
 from .playerCaptainCard import playerCaptainCard
 from .playerShipCard import playerShipCard
 from .playerHitLocations import playerHitLocation
+from .updatePlayerBounties import updatePlayerBounties
+from .updatePlayerCargoCards import updatePlayerCargoCards
 from .updatePlayerGolds import updatePlayerGolds
+from .updatePlayerShipModifications import updatePlayerShipModifications
 from .updatePlayerSpecialWeapons import updatePlayerSpecialWeapons
 from .drawEventCard import drawEventCard
 from .drawMissionCard import drawMissionCard

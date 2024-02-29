@@ -73,5 +73,6 @@ def endCurrentAction(request):
 
         data["cubeImage"] = colour_cube_image
         data["amountActions"] = request.session['amountActions']
+        print(dict(request.session))
 
         return JsonResponse(data)

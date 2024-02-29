@@ -12,6 +12,7 @@ from game.serializers import FishingCardSerializer
 def fishingAction(request):
     """Endpoint return a randomly fishing card."""
 
+    data = {}
     player_colour = request.session['playerColourActive']
 
     # SERIALIZER
@@ -33,16 +34,15 @@ def fishingAction(request):
 
     # REQUEST METHOD GET
     if request.method == 'GET':
-        data = {
-            'fishingCardImage': request.session['fishingCard']['awers'],
-            'playerColour': player_colour,
-        }
+
+        data['fishingCardImage'] = request.session['fishingCard']['awers']
+        data['playerColour'] = player_colour
+
         return JsonResponse(data)
 
 
     # REQUEST METHOD POST
     if request.method == 'POST':
-        data = {}
         fishing_card = request.session['fishingCard']
         game = Game.objects.get(number=100)
         if fishing_card['fishing_value']:
@@ -51,11 +51,13 @@ def fishingAction(request):
             player_golds.save()
             data['fishingValue'] = True
         if fishing_card['fishing_hits']: 
-            player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour.title())
+            player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
             hit_location = fishing_card['fishing_hits']
-            setattr(player_hits_locations, hit_location.lower(), getattr(player_hits_locations, hit_location.lower()) - 1)
-            player_hits_locations.save()
+            if getattr(player_hits_locations, hit_location.lower()) > 0:
+                setattr(player_hits_locations, hit_location.lower(), getattr(player_hits_locations, hit_location.lower()) - 1)
+                player_hits_locations.save()
             data['fishingHits'] = True
         del request.session['fishingCard']
         data['colour'] = player_colour
+
         return JsonResponse(data)

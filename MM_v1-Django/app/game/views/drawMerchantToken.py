@@ -11,7 +11,11 @@ def drawMerchantToken(request):
     all_tokens = MerchantTokens.objects.all()
     random_token = random.choice(all_tokens)
 
-    new_merchant_localisation = str(request.GET.get('seaZone')).replace('-', ' ').title()
+    if str(request.GET.get('seaZone')).title() != 'Basse-Terre':
+        new_merchant_localisation = str(request.GET.get('seaZone')).replace('-', ' ').title()
+    else:
+        new_merchant_localisation = str(request.GET.get('seaZone')).title()
+
 
     game = Game.objects.get(number=100)
     merchant_localisation = ShipsLocalisations.objects.get(game_number=game)

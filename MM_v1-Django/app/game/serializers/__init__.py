@@ -1,1 +1,2 @@
+from .cargoCardSerializer import CargoCardSerializer
 from .fishingCardSerializer import FishingCardSerializer
