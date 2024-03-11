@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from dataset.utils.dataset.decorators.choices import BOUNTIES
+# from dataset.utils.dataset.decorators.choices import BOUNTIES
 from game.models import Game
 from game.models import StackPlayerCargoCards
 
@@ -18,9 +18,6 @@ def updatePlayerCargoCards(request):
         for cargo_card_number in range(1, 9):
             cargo_card = getattr(stack_player_cargo_cards_instance, f"cargo_card_{cargo_card_number}")
             if cargo_card:
-                # data[f"cargoCard{cargo_card_number}"] = cargo_card.cargo
                 data[f"cargoCard{cargo_card_number}Image"] = cargo_card.awers.url
-
-    print(data)
 
     return JsonResponse(data)

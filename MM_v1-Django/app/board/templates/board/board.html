@@ -661,7 +661,7 @@
             <text id="merchant-raid-crew" x="20" y="590">Crew: <tspan id="merchant-raid-crew-span">0</tspan></text>
             <text id="merchant-raid-cannons" x="20" y="605">Cannons: <tspan id="merchant-raid-cannons-span">0</tspan></text>
             <text id="merchant-raid-escape" x="20" y="620">Escape: <tspan id="merchant-raid-escape-span">0</tspan> (<tspan id="merchant-raid-ship-maneuverability">0</tspan> - Ship Maneuverability)</text>
-            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">Accept RAID Result?</text>
+            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">RAID Done?</text>
 
             <text id="merchant-raid-action-draw-roll-text" x="20" y="650">Seamanship ->
                 <tspan id="merchant-raid-amount-success">0</tspan>
@@ -697,13 +697,13 @@
             <rect id="merchant-trade-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
 
             <!-- merchant cargo cards -->
-            <rect id="merchant-trade-card-1-frame" name="merchant-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <rect id="merchant-trade-card-1-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-trade-card-1-image" x="15" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-1-frame')" style="pointer-events: none;"/>
 
-            <rect id="merchant-trade-card-2-frame" name="merchant-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <rect id="merchant-trade-card-2-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-trade-card-2-image" x="128" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-2-frame')" style="pointer-events: none;"/>
 
-            <rect id="merchant-trade-card-3-frame" name="merchant-frame" x="239" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <rect id="merchant-trade-card-3-frame" x="239" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-trade-card-3-image" x="241" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-3-frame')" style="pointer-events: none;"/>
 
             <!-- player cargo cards -->
@@ -730,10 +730,10 @@
             <image id="merchant-trade-card-10-image" x="15" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-10-frame')" style="pointer-events: none;"/>
 
             <text id="merchant-trade-action-result-text" x="120" y="510">RESULT:</text>
-            <text id="merchant-trade-action-ok-text" x="400" y="510" onclick="scoutAction('merchant trade accept'); scoutAction('back');">Accept TRADE Result?</text>
+            <text id="merchant-trade-action-ok-text" x="400" y="510" onclick="scoutAction('merchant trade accept'); scoutAction('back');">TRADE Done?</text>
 
             <text id="merchant-trade-action-draw-roll-text" x="20" y="650">Influence ->
-                <tspan id="merchant-trade-amount-success">5</tspan>
+                <tspan id="merchant-trade-amount-success">0</tspan>
                  success.
             </text>
             <!-- exchange cargo cards -->
@@ -743,8 +743,116 @@
     <use id="merchant-trade-action-use" x="50" y="10" href="#merchant-trade-action" style="display: none;"/>
 
 
+    <!-- ESCORT - SCOUT MERCHANTs-->
+    <defs>
+        <g id="merchant-escort-action">
+            <rect id="merchant-escort-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <rect id="merchant-escort-card-0-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-0-image" x="15" y="15" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-0-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-1-frame" x="13" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-1-image" x="15" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-1-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-2-frame" x="126" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-2-image" x="128" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-2-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-3-frame" x="239" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-3-image" x="241" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-3-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-4-frame" x="352" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-4-image" x="354" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-4-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-5-frame" x="465" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-5-image" x="467" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-5-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-6-frame" x="578" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-6-image" x="580" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-6-frame')" style="pointer-events: none;"/>
+<!--  -->
+            <rect id="merchant-escort-card-7-frame" x="13" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-7-image" x="15" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-7-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-8-frame" x="126" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-8-image" x="128" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-8-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-9-frame" x="239" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-9-image" x="241" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-9-frame')" style="pointer-events: none;"/>
+
+            <rect id="merchant-escort-card-10-frame" x="352" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-10-image" x="354" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-10-frame')" style="pointer-events: none;"/>
+    
+            <rect id="merchant-escort-card-11-frame" x="465" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-11-image" x="467" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-11-frame')" style="pointer-events: none;"/>
+    
+            <rect id="merchant-escort-card-12-frame" x="578" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="merchant-escort-card-12-image" x="580" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-12-frame')" style="pointer-events: none;"/>
+
+            <text id="merchant-escort-action-result-text" x="120" y="510">RESULT: <tspan id="merchant-escort-value-result-text"></tspan></text>
+            <text id="merchant-escort-action-gold-text" x="20" y="510">Gold: <tspan id="merchant-escort-value-result">0</tspan></text>
+            <text id="merchant-escort-action-hits-text" x="20" y="530">Hits:</text>
+            <text id="merchant-escort-hull" x="20" y="545">Hull: <tspan id="merchant-escort-hull-span">0</tspan></text>
+            <text id="merchant-escort-cargo" x="20" y="560">Cargo: <tspan id="merchant-escort-cargo-span">0</tspan></text>
+            <text id="merchant-escort-masts" x="20" y="575">Masts: <tspan id="merchant-escort-masts-span">0</tspan></text>
+            <text id="merchant-escort-crew" x="20" y="590">Crew: <tspan id="merchant-escort-crew-span">0</tspan></text>
+            <text id="merchant-escort-cannons" x="20" y="605">Cannons: <tspan id="merchant-escort-cannons-span">0</tspan></text>
+            <!-- <text id="merchant-escort-escape" x="20" y="620">Escape: <tspan id="merchant-escort-escape-span">0</tspan> (<tspan id="merchant-escort-ship-maneuverability">0</tspan> - Ship Maneuverability)</text> -->
+            <text id="merchant-escort-action-ok-text" x="400" y="510" onclick="scoutAction('merchant escort accept'); scoutAction('back');">ESCORT Done?</text>
+
+            <text id="merchant-escort-action-draw-roll-text" x="20" y="650">Seamanship ->
+                <tspan id="merchant-escort-amount-success">0</tspan>
+                 success.
+            </text>
+            <!-- draw cargo card -->
+            <text id="merchant-escort-action-draw-card-text" x="20" y="690" onclick="scoutAction('merchant escort draw card');">Draw Card</text>
+            <!-- discard cargo card -->
+            <text id="merchant-escort-action-discard-card-text" x="20" y="710" onclick="scoutAction('merchant escort discard card');">Discard Card</text>
+            <!-- exchange cargo card -->
+            <text id="merchant-escort-action-exchange-card-text" x="20" y="730" onclick="scoutAction('merchant escort exchange card');">Exchange Card</text>
+        </g>
+    </defs>
+    <use id="merchant-escort-action-use" x="50" y="10" href="#merchant-escort-action" style="display: none;"/>
 
 
+    <!-- PORT - sell goods -->
+    <defs>
+        <g id="port-sell-goods-action">
+            <rect id="port-sell-goods-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <rect id="port-sell-goods-card-1-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-1-image" x="15" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-1-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-2-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-2-image" x="128" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-2-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-3-frame" x="239" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-3-image" x="241" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-3-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-4-frame" x="352" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-4-image" x="354" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-4-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-5-frame" x="465" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-5-image" x="467" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-5-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-6-frame" x="578" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-6-image" x="580" y="15" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-6-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-7-frame" x="13" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-7-image" x="15" y="172" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-7-frame')" style="pointer-events: none;"/>
+
+            <rect id="port-sell-goods-card-8-frame" x="126" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-sell-goods-card-8-image" x="128" y="172" width="96" height="149" href="" onclick="portAction('port-sell-goods-card-8-frame')" style="pointer-events: none;"/>
+
+            <image id="port-sell-goods-demand-token-in-port" x="13" y="327" width="96" height="96" href=""/>
+            <text id="port-sell-goods-demand-token-in-port-text" x="120" y="380" fill="darkorange">Goods in Demand</text>
+
+            <text id="port-sell-goods-action-result-text" x="200" y="510">RESULT: <tspan id="port-sell-goods-value-result-text"></tspan></text>
+            <text id="port-sell-goods-action-gold-text" x="20" y="510">Gold: <tspan id="port-sell-goods-value-result">0</tspan></text>
+            <text id="port-sell-goods-action-glory-text" x="120" y="510">Glory: <tspan id="port-sell-goods-glory-result">0</tspan></text>
+            <text id="port-sell-goods-action-ok-text" x="400" y="510" onclick="portAction('sell goods accept'); portAction('back to port');">SELL GOODS Done?</text>
+            <text id="port-sell-goods-action-sell-marked-goods-text" x="20" y="550" onclick="portAction('sell marked goods');">Sell Marked Goods</text>
+        </g>
+    </defs>
+    <use id="port-sell-goods-action-use" x="50" y="10" href="#port-sell-goods-action" style="display: none;"/>
 
 
 

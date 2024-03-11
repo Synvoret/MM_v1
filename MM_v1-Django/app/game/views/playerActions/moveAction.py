@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from board.models import SeaZone
 from dataset.utils.dataset.decorators.choices import ALLOWEDDESTINATIONS, DIRECTION
 from game.models import Game
+from game.models import PlayersCaptainsCards
 from game.models import PlayersShipsCards
 from game.models import ShipsLocalisations
 
@@ -14,6 +15,7 @@ def moveAction(request):
     player_colour = request.session['playerColourActive']
     game = Game.objects.get(number=100)
     player_ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
 
     data = {}
 

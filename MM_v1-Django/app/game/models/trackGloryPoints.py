@@ -16,14 +16,15 @@ class TrackGloryPoint(models.Model):
             field.save()
 
     def increase_glory_point(self, player: str):
-        """Increase glory point by 1 point."""
-
-        setattr(self, player, getattr(self, player) + 1)
-        self.save()
+        """Increase glory point by 1 point (max. 20)."""
+        if getattr(self, player) == 20: 
+            return
+        else:
+            setattr(self, player, getattr(self, player) + 1)
+            self.save()
 
     def decrease_glory_point(self, player: str):
-        """Decrease glory point by 1 point."""
-
+        """Decrease glory point by 1 point (min. 0)."""
         if getattr(self, player) == 0:
             return
         else:

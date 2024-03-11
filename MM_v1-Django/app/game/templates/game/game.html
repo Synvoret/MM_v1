@@ -19,6 +19,7 @@
 {% endblock content %}
 
 {% block scripts %}
+    {% include 'nav/navFlow.html' %}
     <script src="{% static 'game/js/utilGame/rollDices.js' %}"></script>
     <script src="{% static 'game/js/utilGame/maxValues.js' %}"></script>
     <script src="{% static 'game/js/utilGame/randomInsidePosition.js' %}"></script>

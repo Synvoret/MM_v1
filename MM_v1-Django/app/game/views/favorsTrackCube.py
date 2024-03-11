@@ -23,7 +23,7 @@ def favorsTrackCube(request):
 
     data = {
         "cubeImage": colour_cube_image,
-        "favorValue": favor_value,
+        "favourValue": favor_value,
     }
 
     return JsonResponse(data)

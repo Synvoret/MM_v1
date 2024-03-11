@@ -5,9 +5,7 @@ function endTurn() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             
             let response = JSON.parse(xhr.responseText);
-
-            console.log(response, ' PO ZAKOŃCZENIU TURY PRZEZ GRACZA')
-            // let colour = response.playerColour;
+            let colour = response.playerColour;
             resetNav('during actions');
 
             // start player actions only player want or players used all actions
@@ -17,14 +15,12 @@ function endTurn() {
                 document.querySelector(`.title-value-player-${response.playerColourEndingTurn}`).innerHTML = 'DONE';
                 startPlayerActions();
             };
-            
 
+            localStorage.clear();
         };
     };
     xhr.open('POST', 'endTurn', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // let data = 'colour=' + encodeURIComponent(colour);
-    // xhr.send(data);
     xhr.send();
 
 

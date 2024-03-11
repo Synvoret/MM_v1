@@ -12,6 +12,8 @@ from game.models import TrackEnemyHitLocations
 from game.models import TrackPlayerGolds
 
 from game.models import PlayersGloryCards
+from game.models import TrackFavors
+from game.models import TrackLoyality
 from game.models import TrackPlayerBounties
 from game.models import TrackPlayerHitLocations
 from game.models import TrackPlayersShipModifications
@@ -30,6 +32,8 @@ def game(request):
     # RESET GAME
     Game.set_default_values()
     # RESET PLAYERS BOARDs
+    TrackLoyality.set_values_default()
+    TrackFavors.set_values_default()
     TrackGloryPoint.set_values_default()
     PlayersGloryCards.set_values_default()
     StackPlayerCargoCards.set_default_values()

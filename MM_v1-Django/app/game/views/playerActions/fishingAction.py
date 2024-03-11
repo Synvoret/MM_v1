@@ -1,6 +1,7 @@
 import random
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from dataset.utils.dataset.decorators.choices import HIT_LOCATIONS
 from dataset.models import FishingCard
 from game.models import Game
 from game.models import TrackPlayerGolds
@@ -14,6 +15,13 @@ def fishingAction(request):
 
     data = {}
     player_colour = request.session['playerColourActive']
+    player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
+
+    # if any location is destroyed you cannot interact with merchant
+    for hit_localisation in HIT_LOCATIONS:
+        if getattr(player_hits_locations_instance, hit_localisation) == 0:
+            data['playerHaveDestroyedHitLocation'] = True
+            break
 
     # SERIALIZER
     if 'fishingCard' not in request.session:
@@ -46,9 +54,8 @@ def fishingAction(request):
         fishing_card = request.session['fishingCard']
         game = Game.objects.get(number=100)
         if fishing_card['fishing_value']:
-            player_golds = TrackPlayerGolds.objects.get(game_number=game)
-            setattr(player_golds, 'player_' + player_colour, getattr(player_golds, 'player_' + player_colour) + fishing_card['fishing_value'])
-            player_golds.save()
+            golds_instance = TrackPlayerGolds.objects.get(game_number=game)
+            golds_instance.increase_golds(f"player_{player_colour}", fishing_card['fishing_value'])
             data['fishingValue'] = True
         if fishing_card['fishing_hits']: 
             player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)

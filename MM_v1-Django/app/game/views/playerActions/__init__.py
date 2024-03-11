@@ -4,5 +4,6 @@ from .endCurrentAction import endCurrentAction
 from .fishingAction import fishingAction
 from .moveAction import moveAction
 from .portAction import portAction
+from .resetNav import resetNav
 from .scoutAction import scoutAction
 from .endTurn import endTurn

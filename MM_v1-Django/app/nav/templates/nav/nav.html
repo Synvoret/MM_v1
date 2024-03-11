@@ -82,15 +82,15 @@
             </div>
             
             <div class="nav-port-buttons" style="display: none;">
-                <button class="nav-button nav-button-sell-goods">Sell Goods</button>
+                <button class="nav-button nav-button-sell-goods" onclick="portAction('sell goods')">Sell Goods</button>
                 <button class="nav-button nav-button-buy-goods">Buy Goods</button>
                 <button class="nav-button nav-button-visit-shipyard" onclick="portAction('visit shipyard')">Visit Shipyard</button>
                 <button class="nav-button nav-button-reqruit">Reqruit</button>
                 <button class="nav-button nav-button-acquire-rumor">Acquire a Rumor</button>
                 <button class="nav-button nav-button-claim-mission">Claim a Mission</button>
-                <button class="nav-button nav-button-stash-gold">Stash Gold</button>
-                <button class="nav-button nav-button-gain-loyality">Gain Loyality</button>
-                <button class="nav-button nav-button-get-favour">Get Favour</button>
+                <button class="nav-button nav-button-stash-gold" Disabled onclick="portAction('stash gold'); portAction('back to port');">Stash Gold</button>
+                <button class="nav-button nav-button-gain-loyality" disabled onclick="portAction('gain loyality'); portAction('back to port');">Gain Loyality</button>
+                <button class="nav-button nav-button-get-favour" onclick="portAction('get favour'); portAction('back');">Get Favour</button>
             </div>
             <div class="nav-shipyard-buttons" style="display: none;">
                 <button class="nav-button nav-button-buy-sell-ship">Buy/Sell Ship</button>
@@ -104,7 +104,7 @@
             <button class="nav-button nav-button-" style="display: none;"></button><br> -->
 
             <div class="nav-back-endturn-buttons">
-                <button class="nav-button nav-button-back" Disabled>Back</button>
+                <button class="nav-button nav-button-back" Disabled>&cularr; Back</button>
                 <button class="nav-button nav-button-end-turn" onclick="endTurn()">END TURN</button>
             </div>
 

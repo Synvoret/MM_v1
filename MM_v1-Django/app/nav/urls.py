@@ -3,4 +3,6 @@ from . import views
 
 app_name = 'nav'
 
-urlpatterns = []
+urlpatterns = [
+    path('navFlow', views.navFlow, name='navFlow'),
+]

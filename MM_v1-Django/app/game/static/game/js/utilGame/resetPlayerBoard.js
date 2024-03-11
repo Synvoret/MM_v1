@@ -1,13 +1,13 @@
 function resetPlayerBoard() {
 
     // reste FAVORs TRACK
-    document.getElementById("cube-favor-image").setAttribute('href', '');
-    document.getElementById("0-favor-track").setAttribute('href', '');
-    document.getElementById("1-favor-track").setAttribute('href', '');
-    document.getElementById("2-favor-track").setAttribute('href', '');
-    document.getElementById("3-favor-track").setAttribute('href', '');
-    document.getElementById("4-favor-track").setAttribute('href', '');
-    document.getElementById("5-favor-track").setAttribute('href', '');
+    document.getElementById("cube-favour-image").setAttribute('href', '');
+    document.getElementById("0-favour-track").setAttribute('href', '');
+    document.getElementById("1-favour-track").setAttribute('href', '');
+    document.getElementById("2-favour-track").setAttribute('href', '');
+    document.getElementById("3-favour-track").setAttribute('href', '');
+    document.getElementById("4-favour-track").setAttribute('href', '');
+    document.getElementById("5-favour-track").setAttribute('href', '');
 
     // reste LOYALITY TRACK
     document.getElementById("cube-loyality-image").setAttribute('href', '');

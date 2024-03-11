@@ -14,7 +14,6 @@ function fishingAction(type_request) {
                 document.querySelector('.nav-button.nav-button-location').disabled = true;
                 document.querySelector('.nav-button.nav-button-location').removeAttribute('onclick');
                 document.querySelector('.nav-button.nav-button-end-turn').disabled = true;
-
                 document.getElementById('fishing-action-main-rect').style.stroke = response.playerColour;
                 document.getElementById('fishing-action-ok-text').style.fill = response.playerColour;
                 document.getElementById('fishing-card-image').setAttribute('href', response.fishingCardImage);

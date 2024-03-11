@@ -18,7 +18,11 @@ function startPlayerActions() {
                 document.querySelector('.nav-button.nav-button-move-ship').disabled = false;
                 document.querySelector('.nav-button.nav-button-scout').disabled = false;
                 document.querySelector('.nav-button.nav-button-port').disabled = true;
-                document.querySelector('.nav-button.nav-button-fishing').disabled = false;
+                if (response.playerHaveDestroyedHitLocation) {
+                    document.querySelector('.nav-button.nav-button-fishing').disabled = true;
+                } else {
+                    document.querySelector('.nav-button.nav-button-fishing').disabled = false;
+                };
                 if (response.isInTheCaribbeanSea){
                     document.querySelector('.nav-button.nav-button-location').disabled = true;
                 } else {

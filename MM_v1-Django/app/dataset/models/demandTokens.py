@@ -1,4 +1,5 @@
 from django.db import models
+from dataset.utils.dataset.decorators.choices import CARGO
 
 
 class DemandTokens(models.Model):
@@ -7,7 +8,7 @@ class DemandTokens(models.Model):
     class Meta:
         verbose_name = "Demand Token"
 
-    cargo = models.CharField(max_length=20)
+    cargo = models.CharField(max_length=20, null=True, blank=True, choices=CARGO)
     awers = models.ImageField(upload_to='demandTokens/', blank=True, null=True)
 
     def __str__(self):

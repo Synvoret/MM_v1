@@ -28,12 +28,12 @@ class StackPlayerCargoCards(models.Model):
             if field.player_colour == 'yellow':
                 field.cargo_card_1 = random.choice(cargo_cards)
                 field.cargo_card_2 = random.choice(cargo_cards)
-                # field.cargo_card_3 = random.choice(cargo_cards)
-                # field.cargo_card_4 = random.choice(cargo_cards)
-                # field.cargo_card_5 = random.choice(cargo_cards)
-                # field.cargo_card_6 = random.choice(cargo_cards)
-                # field.cargo_card_7 = random.choice(cargo_cards)
-                # field.cargo_card_8 = random.choice(cargo_cards)
+                field.cargo_card_3 = random.choice(cargo_cards)
+                field.cargo_card_4 = random.choice(cargo_cards)
+                field.cargo_card_5 = random.choice(cargo_cards)
+                field.cargo_card_6 = random.choice(cargo_cards)
+                field.cargo_card_7 = random.choice(cargo_cards)
+                field.cargo_card_8 = random.choice(cargo_cards)
             field.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)

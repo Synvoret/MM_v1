@@ -4,12 +4,13 @@ function endCurrentAction(colour) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            // console.log(response, response.amountActions, 'ILOSC AKCJI')
+            console.log(response, 'END CURRENT ACTION')
 
-
+            // reset DURING ACTIONS (between player actions)
             document.getElementById('captain-actions-image').setAttribute('href', response.cubeImage);
             if (response.currentAction !== undefined) {
                 document.getElementById(`captain-actions-${response.currentAction}`).setAttribute('href', '#captain-actions-image');
+                resetNav('during actions');
             };
 
             // NEXT PLAYER AFTER END TURN CLICK

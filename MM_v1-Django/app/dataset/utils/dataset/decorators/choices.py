@@ -120,6 +120,17 @@ LOYALITY = [
     ('Mutiny', 'Mutiny'),
 ]
 
+LOYALITIES = [
+    'Fierce Loyality',
+    'Happy',
+    'Pleased',
+    'Content',
+    'Restless',
+    'Unhappy',
+    'Angry',
+    'Mutiny',
+]
+
 NATIONALITY = [
     ('Dutch', 'Dutch'),
     ('French', 'French'),
@@ -147,8 +158,8 @@ PORT = [
     ('Port Royal', 'Port Royal'),
     ('San Juan', 'San Juan'),
     ('Santo Domingo', 'Santo Domingo'),
-    ('st John', 'st John'),
-    ('st Maarten', 'st Maarten'),
+    ('St John', 'St John'),
+    ('St Maarten', 'St Maarten'),
     ('Tortuga', 'Tortuga'),
     ('Trinidad', 'Trinidad'),
 ]

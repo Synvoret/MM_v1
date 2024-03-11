@@ -4,10 +4,12 @@ from django.http import JsonResponse
 from dataset.models import EventCard
 from dataset.utils.dataset import events
 from dataset.utils.dataset.utilUtil import event_movement_ships
+from dataset.utils.dataset.decorators.choices import PLAYER_COLOURS
 from game.models import Game
 from game.models import ShipsLocalisations
 from game.models import StackEventsCards
 from game.models import StackEventsNPCCaptains
+from game.models import TrackLoyality
 
 
 def drawEventCard(request):
@@ -39,6 +41,9 @@ def drawEventCard(request):
     cards = EventCard.objects.all()
     random_card = random.choice(cards)
 
+    # IF NEW EVENT CARD IS NPC CAPTAIN, EACH PLAYER LOSES LOYALITY
+    
+
     # MOVING NPC SHIPs if EXIST
     if random_card.moving:
         if StackEventsNPCCaptains.objects.exists():
@@ -63,8 +68,7 @@ def drawEventCard(request):
         # trying all event utils, if exist, then run it
         event_util = getattr(events, random_card.card.lower().replace(" ", "_"))(random_card)
         data.update(event_util)
-    except:
-        pass
+    except: pass
 
     # UPDATE ALL EVENTs STACKs CARDs
     if random_card.npc_name is not None:

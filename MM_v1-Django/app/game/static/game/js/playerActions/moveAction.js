@@ -39,7 +39,6 @@ function moveAction(type_request) {
 
 
     if (type_request === 'to port') {
-        console.log('WPŁYWAM DO PORTU');
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -238,6 +237,7 @@ function moveAction(type_request) {
                     } else {
                         document.querySelector('.nav-button.nav-button-location').disabled = false;
                     }
+                    document.querySelector('.nav-button.nav-button-stash-gold').disabled = true;
                 };
 
                 document.querySelector(".nav-button.nav-button-move-ship").disabled = false;

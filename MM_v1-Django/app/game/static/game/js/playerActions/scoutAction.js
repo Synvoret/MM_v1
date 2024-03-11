@@ -100,22 +100,27 @@ function scoutAction(type_request) {
                 document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
 
                 document.querySelector(".nav-button.nav-button-scout-merchant-raid").style.display = '';
+                document.querySelector(".nav-button.nav-button-scout-merchant-trade").style.display = '';
+                document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = '';
+                // raid
                 if (response.playerHaveDestroyedHitLocation) {
                     document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
                 } else {
                     document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = false;
                 };
-
-                document.querySelector(".nav-button.nav-button-scout-merchant-trade").style.display = '';
+                // trade 
                 if (response.playerIsPirate) {
                     document.querySelector(".nav-button.nav-button-scout-merchant-trade").disabled = true;
                 } else {
                     document.querySelector(".nav-button.nav-button-scout-merchant-trade").disabled = false;
                 };
+                // escort 
+                if (response.playerHaveDestroyedHitLocation || response.playerIsPirate) {
+                    document.querySelector(".nav-button.nav-button-scout-merchant-escort").disabled = true;
+                } else {
+                    document.querySelector(".nav-button.nav-button-scout-merchant-escort").disabled = false;
+                }
 
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-escort").disabled = false;
-
-                document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = '';
                 document.querySelector(".nav-button.nav-button-scout-dutch-ship").style.display = 'none';
                 document.querySelector(".nav-button.nav-button-scout-english-ship").style.display = 'none';
                 document.querySelector(".nav-button.nav-button-scout-french-ship").style.display = 'none';
@@ -133,7 +138,7 @@ function scoutAction(type_request) {
         xhr.send();
     };
 
-
+    // RAID RAID RAID RAID RAID RAID 
     // RAID RAID RAID RAID RAID RAID 
     if (type_request === 'merchant raid') {
         let xhr = new XMLHttpRequest();
@@ -251,6 +256,8 @@ function scoutAction(type_request) {
             mainRect = window.getComputedStyle(document.getElementById('merchant-raid-action-main-rect'));
         } else if (type_request.includes('trade')) {
             mainRect = window.getComputedStyle(document.getElementById('merchant-trade-action-main-rect'));
+        } else if (type_request.includes('escort')) {
+            mainRect = window.getComputedStyle(document.getElementById('merchant-escort-action-main-rect'));
         };
 
         let playerColour = mainRect.stroke;
@@ -490,7 +497,7 @@ function scoutAction(type_request) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
-                console.log(response.resultMerchantRaid, 'RESULT MERCHANT RAID')
+
                 updateGloryTrack(colour)
                 updatePlayerGolds(colour);
                 updatePlayerHitLocation(colour);
@@ -529,7 +536,7 @@ function scoutAction(type_request) {
 
     };
 
-
+    // TRADE TRADE TRADE TRADE TRADE TRADE 
     // TRADE TRADE TRADE TRADE TRADE TRADE 
     if (type_request === 'merchant trade') {
         console.log('TRADE with MERCHANT');
@@ -553,8 +560,9 @@ function scoutAction(type_request) {
                 document.getElementById("merchant-trade-card-1-image").style.pointerEvents = 'auto';
                 document.getElementById("merchant-trade-card-2-image").style.pointerEvents = 'auto';
                 document.getElementById("merchant-trade-card-3-image").style.pointerEvents = 'auto';
-                for (let i = 1; i <= 7; i++) {
-                    let playerCargoCardImageID = `merchant-trade-card-${i + 3}-image`;
+                document.getElementById('merchant-trade-amount-success').innerHTML = 0;
+                for (let i = 4; i <= 10; i++) {
+                    let playerCargoCardImageID = `merchant-trade-card-${i}-image`;
                     if (response[`playerCargoCard${i}ImageUrl`]) {
                         document.getElementById(playerCargoCardImageID).setAttribute('href', response[`playerCargoCard${i}ImageUrl`]);
                         document.getElementById(playerCargoCardImageID).style.pointerEvents = 'auto';
@@ -594,53 +602,89 @@ function scoutAction(type_request) {
         if (amountSuccess === 0) {
             return;
         }
-        // check marked cards
-        let i = 1;
-        let amountStroke = 0;
 
-        let merchantCardsMarked = 0;
-        console.log(localStorage);
+        // merchant
+        let i = 1;
+        let amountStrokeForMerchant = 0;
         while (i <= 3) {
             let frameID = document.getElementById(`merchant-trade-card-${i}-frame`);
             if (window.getComputedStyle(frameID).getPropertyValue('stroke') !== 'none') {
-                merchantCardsMarked++;
+                amountStrokeForMerchant++;
             };
             i++;
         };
 
-        let playerCardsMarked = 0;
+        // player
+        i = 4;
+        let amountStrokeForPlayer = 0;
         while (i <= 10) {
             let frameID = document.getElementById(`merchant-trade-card-${i}-frame`);
             if (window.getComputedStyle(frameID).getPropertyValue('stroke') !== 'none') {
-                amountStroke++;
-                // cardToDiscard = i
+                amountStrokeForPlayer++;
             };
             i++;
         };
-        // if (amountStroke > 1) {
-        //     return;
-        // } else if (amountStroke === 1) {
-        //     document.getElementById(`merchant-trade-card-${cardToDiscard}-frame`).style.removeProperty('stroke');
-        //     document.getElementById(`merchant-trade-card-${cardToDiscard}-image`).style.pointerEvents = 'none';
-        //     document.getElementById(`merchant-trade-card-${cardToDiscard}-image`).setAttribute('href', '');
-        // } else {
-        //     return;
-        // };
-        // exchange marked cards
+
+        // check marked cards on Merchant and Player
+        if (amountStrokeForMerchant === 0 && amountStrokeForPlayer === 0) {
+            return;
+        } else if (amountStrokeForMerchant === amountStrokeForPlayer) {
+            if (amountStrokeForMerchant > amountSuccess) {
+                return;
+            }
+        } else {
+            return;
+        }
+
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                let colour = response.colour;
+                let colour = response.playerColour;
 
-                amountSuccess--;
+                for (let key in response) {
+                    if (key === 'playerColour') {
+                        continue;
+                    };
+                    if (key.includes('merchant')) { // getting f"merchantCargoCard{i}"
+                        let matching = key.match(/[123]/);
+                        if (matching) {
+                            let foundNumber = parseInt(matching[0], 10);
+                            document.getElementById(`merchant-trade-card-${foundNumber}-image`).setAttribute('href', response[key]['awers']);
+                            document.getElementById(`merchant-trade-card-${foundNumber}-frame`).style.removeProperty('stroke');
+                        }
+                    };
+                    if (key.includes('player')) { // getting f"playerCargoCard{i}"
+                        let matching = key.match(/[4-9]|10/);
+                        if (matching) {
+                            let foundNumber = parseInt(matching[0], 10);
+                            document.getElementById(`merchant-trade-card-${foundNumber}-image`).setAttribute('href', response[key]['awers']);
+                            document.getElementById(`merchant-trade-card-${foundNumber}-frame`).style.removeProperty('stroke');
+                        }
+                    };
+                };
+
+                amountSuccess -= amountStrokeForMerchant;
                 document.getElementById('merchant-trade-amount-success').innerHTML = amountSuccess;
             };
         };
+
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
         data += '&amountSuccess=' + encodeURIComponent(amountSuccess);
+
+        i = 1;
+        let numbers = [];
+        while (i <= 10) {
+            let frameID = document.getElementById(`merchant-trade-card-${i}-frame`);
+            if (window.getComputedStyle(frameID).getPropertyValue('stroke') !== 'none') {
+                numbers.push(i);
+            };
+            i++;
+        };
+        data += '&numbers=' + encodeURIComponent(JSON.stringify(numbers));
+
         xhr.send(data);
     }
 
@@ -651,58 +695,325 @@ function scoutAction(type_request) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
-                console.log(response.resultMerchantRaid, 'RESULT MERCHANT TRADE')
+
                 updatePlayerCargoCards(colour);
                 endCurrentAction(colour);
             };
         };
-        // let getGold = parseInt(document.getElementById('merchant-raid-value-result').textContent);
-        // let getHullHit = parseInt(document.getElementById('merchant-raid-hull-span').textContent);
-        // let getCargoHit = parseInt(document.getElementById('merchant-raid-cargo-span').textContent);
-        // let getMastsHit = parseInt(document.getElementById('merchant-raid-masts-span').textContent);
-        // let getCrewHit = parseInt(document.getElementById('merchant-raid-crew-span').textContent);
-        // let getCannonsHit = parseInt(document.getElementById('merchant-raid-cannons-span').textContent);
-        // let getEscapeHit = parseInt(document.getElementById('merchant-raid-escape-span').textContent);
-        // let getManeuverability = parseInt(document.getElementById('merchant-raid-ship-maneuverability').textContent);
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
-        // data += '&getGold=' + encodeURIComponent(getGold);
-        // data += '&getHullHit=' + encodeURIComponent(getHullHit);
-        // data += '&getCargoHit=' + encodeURIComponent(getCargoHit);
-        // data += '&getMastsHit=' + encodeURIComponent(getMastsHit);
-        // data += '&getCrewHit=' + encodeURIComponent(getCrewHit);
-        // data += '&getCannonsHit=' + encodeURIComponent(getCannonsHit);
-        // if (getEscapeHit >= getManeuverability) {
-        //     data += '&getEscapeHit=' + encodeURIComponent(true);
-        // } else {
-        //     data += '&getEscapeHit=' + encodeURIComponent(false);
-        // };
         xhr.send(data);
-        // for (let i = 1; i <= 12; i++) {
-        //     localStorage.removeItem(`cargoCard${i}Value`);
-        //     localStorage.removeItem(`cargoCard${i}Hit`);
-        // };
 
         rollDices('destroy');
 
     };
 
-
-    // ESCORT ESCORT ESCORT ESCORT ESCORT
+    // ESCORT ESCORT ESCORT ESCORT ESCORT 
+    // ESCORT ESCORT ESCORT ESCORT ESCORT 
     if (type_request === 'merchant escort') {
-        console.log('ESCORT MERCHANT');
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                let colour = response.colour;
+                let colour = response.playerColour;
+                console.log(response)
+                document.getElementById('merchant-escort-action-use').style.display = '';
+                // turn off buttons
+                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
+                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-trade").disabled = true;
+                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-escort").disabled = true;
+                document.querySelector(".nav-button.nav-button-back").disabled = true;
+                document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+                // restart amount success
+                document.getElementById('merchant-escort-amount-success').innerHTML = 0;
+                if (response.cargoCard0Hit === 'escape') {
+                    document.getElementById('merchant-escort-value-result-text').innerHTML = "Pirate Flee!!!";
+                    document.getElementById('merchant-escort-action-ok-text').setAttribute("onclick", "scoutAction('merchant escort accept pirate flee'); scoutAction('back');");
+                } else {
+                    document.getElementById('merchant-escort-value-result-text').innerHTML = "Pirate Attack!!!";
+                    document.getElementById('merchant-escort-action-ok-text').setAttribute("onclick", "scoutAction('merchant escort accept'); scoutAction('back');");
+                };
+                // DICES
+                rollDices(
+                    type ='create', 
+                    amountDices = response.playerCaptainSeamanshipValue, 
+                    storageValuesID = 'merchant-escort-amount-success',
+                    parentID = "merchant-escort-action", 
+                    x = 210, 
+                    y = 635, 
+                    colour = colour, 
+                    );
+                // always
+                document.getElementById("merchant-escort-card-0-image").setAttribute('href', response.cargoCard0ImageUrl);
+                document.getElementById("merchant-escort-value-result").innerHTML = response.cargoCardValue;
+                // document.getElementById('merchant-escort-ship-maneuverability').innerHTML = response.shipManeuverability;
+                document.getElementById("merchant-escort-action-main-rect").style.stroke = colour;
+                document.getElementById("merchant-escort-action-result-text").style.stroke = colour;
+                document.getElementById("merchant-escort-action-gold-text").style.stroke = colour;
+                document.getElementById("merchant-escort-action-ok-text").style.fill = colour;
+                // only when cargo_card_0_hits was not "Escape"
+                // cargo Cards Images (local storage in browser)
+                if (response.cargoCard0Hit !== "escape") {
+                    localStorage.setItem('cargoCard1Value', parseInt(response.cargoCard1Value));
+                    localStorage.setItem('cargoCard2Value', parseInt(response.cargoCard2Value));
+                    localStorage.setItem('cargoCard3Value', parseInt(response.cargoCard3Value));
+                    localStorage.setItem('cargoCard1Hit', response.cargoCard1Hit);
+                    localStorage.setItem('cargoCard2Hit', response.cargoCard2Hit);
+                    localStorage.setItem('cargoCard3Hit', response.cargoCard3Hit);
+                    document.getElementById("merchant-escort-card-1-image").setAttribute('href', response.cargoCard1ImageUrl);
+                    document.getElementById("merchant-escort-card-2-image").setAttribute('href', response.cargoCard2ImageUrl);
+                    document.getElementById("merchant-escort-card-3-image").setAttribute('href', response.cargoCard3ImageUrl);
+                    document.getElementById("merchant-escort-card-1-image").style.pointerEvents = 'auto';
+                    document.getElementById("merchant-escort-card-2-image").style.pointerEvents = 'auto';
+                    document.getElementById("merchant-escort-card-3-image").style.pointerEvents = 'auto';
+                    document.getElementById("merchant-escort-hull-span").innerHTML = response.hullHits;
+                    document.getElementById("merchant-escort-cargo-span").innerHTML = response.cargoHits;
+                    document.getElementById("merchant-escort-masts-span").innerHTML = response.mastsHits;
+                    document.getElementById("merchant-escort-crew-span").innerHTML = response.crewHits;
+                    document.getElementById("merchant-escort-cannons-span").innerHTML = response.cannonsHits;
+                    // document.getElementById("merchant-escort-escape-span").innerHTML = response.escapeResult;
+                    // stroke colour
+                    document.getElementById("merchant-escort-action-hits-text").style.stroke = colour;
+                    document.getElementById("merchant-escort-hull").style.stroke = colour;
+                    document.getElementById("merchant-escort-cargo").style.stroke = colour;
+                    document.getElementById("merchant-escort-masts").style.stroke = colour;
+                    document.getElementById("merchant-escort-crew").style.stroke = colour;
+                    document.getElementById("merchant-escort-cannons").style.stroke = colour;
+                    // document.getElementById("merchant-escort-escape").style.stroke = colour;
+                    document.getElementById("merchant-escort-action-draw-roll-text").style.stroke = colour;
+                    document.getElementById("merchant-escort-action-draw-card-text").style.stroke = colour;
+                    document.getElementById("merchant-escort-action-discard-card-text").style.stroke = colour;
+                    document.getElementById("merchant-escort-action-exchange-card-text").style.stroke = colour;
+                };
+            };
+        };
+        for (let i = 0; i <= 12; i++) {
+            localStorage.removeItem(`cargoCard${i}Value`);
+            localStorage.removeItem(`cargoCard${i}Hit`);
+        }
+        // const keys = Object.keys(localStorage);
+        // const patternValue = /^cargoCard\d+Value$/;
+        // const patternHit = /^cargoCard\d+Hit$/;
+        // keys.forEach(key => {
+        //     if (patternValue.test(key)) {
+        //         localStorage.removeItem(key);
+        //     }
+        //     if (patternHit.test(key)) {
+        //         localStorage.removeItem(key);
+        //     }
+        // });
+        xhr.open('POST', 'scoutAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        xhr.send(data);
+    };
+
+
+    if (type_request === 'merchant escort draw card') {
+        let xhr = new XMLHttpRequest();
+        let amountSuccess = parseInt(document.getElementById('merchant-escort-amount-success').textContent);
+        if (amountSuccess === 0) {
+            return;
+        }
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                if (document.getElementById(`merchant-escort-card-12-image`).getAttribute('href') !== "") {
+                    return;
+                }
+                let i = 1;
+                while (i <= 12) {
+                    let imageID = `merchant-escort-card-${i}-image`;
+                    if (document.getElementById(imageID).getAttribute('href') === "") {
+                        document.getElementById(imageID).setAttribute('href', response.cargoCardDrawImageUrl);
+                        document.getElementById(imageID).style.pointerEvents = 'auto';
+                        localStorage.setItem(`cargoCard${i}Value`, parseInt(response.cargoCardPlunderValue));
+                        localStorage.setItem(`cargoCard${i}Hit`, response.cargoCardHits);
+                        break;
+                    };
+                    i++;
+                };
+
+                let gold = parseInt(document.getElementById('merchant-escort-value-result').textContent);
+                gold += parseInt(response.cargoCardPlunderValue);
+                document.getElementById('merchant-escort-value-result').innerHTML = gold;
+
+                let hitLocationValue = parseInt(document.getElementById(`merchant-escort-${response.cargoCardHits}-span`).textContent);
+                hitLocationValue += 1;
+                document.getElementById(`merchant-escort-${response.cargoCardHits}-span`).innerHTML = hitLocationValue;
+
+                amountSuccess--;
+                document.getElementById('merchant-escort-amount-success').innerHTML = amountSuccess;
+                
             };
         };
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
+        data += '&amountSuccess=' + encodeURIComponent(amountSuccess);
         xhr.send(data);
+    };
+
+
+    if (type_request === 'merchant escort discard card') {
+        
+        let amountSuccess = parseInt(document.getElementById('merchant-escort-amount-success').textContent);
+        if (amountSuccess === 0) {
+            return;
+        }
+
+        let i = 1;
+        let amountStroke = 0;
+        let cardToDiscard = 0;
+
+        while (i <= 12) {
+            let frameID = document.getElementById(`merchant-escort-card-${i}-frame`);
+            if (window.getComputedStyle(frameID).getPropertyValue('stroke') !== 'none') {
+                amountStroke++;
+                cardToDiscard = i
+            };
+            i++;
+        };
+
+        if (amountStroke > 1) {
+            return;
+        } else if (amountStroke === 1) {
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-frame`).style.removeProperty('stroke');
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-image`).style.pointerEvents = 'none';
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-image`).setAttribute('href', '');
+            let valueResult = parseInt(document.getElementById('merchant-escort-value-result').textContent);
+            valueResult -= parseInt(localStorage.getItem(`cargoCard${cardToDiscard}Value`))
+            document.getElementById('merchant-escort-value-result').innerHTML = valueResult;
+            let hitLocation = localStorage.getItem(`cargoCard${cardToDiscard}Hit`);
+            let hitResult = parseInt(document.getElementById(`merchant-escort-${hitLocation}-span`).textContent);
+            hitResult--;
+            document.getElementById(`merchant-escort-${hitLocation}-span`).innerHTML = hitResult;
+            // // local storage
+            // localStorage.removeItem(`cargoCard${cardToDiscard}Value`);
+            // localStorage.removeItem(`cargoCard${cardToDiscard}Hit`);
+
+            amountSuccess--;
+            document.getElementById('merchant-escort-amount-success').innerHTML = amountSuccess;
+        } else {
+            return;
+        }
+    };
+
+
+    if (type_request === 'merchant escort exchange card') {
+        // check posibility
+        let amountSuccess = parseInt(document.getElementById('merchant-escort-amount-success').textContent);
+        if (amountSuccess === 0) {
+            return;
+        }
+        // remove marked card
+        let i = 1;
+        let amountStroke = 0;
+        let cardToDiscard = 0;
+        while (i <= 12) {
+            let frameID = document.getElementById(`merchant-escort-card-${i}-frame`);
+            if (window.getComputedStyle(frameID).getPropertyValue('stroke') !== 'none') {
+                amountStroke++;
+                cardToDiscard = i
+            };
+            i++;
+        };
+        if (amountStroke > 1) {
+            return;
+        } else if (amountStroke === 1) {
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-frame`).style.removeProperty('stroke');
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-image`).style.pointerEvents = 'none';
+            document.getElementById(`merchant-escort-card-${cardToDiscard}-image`).setAttribute('href', '');
+            let valueResult = parseInt(document.getElementById('merchant-escort-value-result').textContent);
+            valueResult -= parseInt(localStorage.getItem(`cargoCard${cardToDiscard}Value`))
+            document.getElementById('merchant-escort-value-result').innerHTML = valueResult;
+            let hitLocation = localStorage.getItem(`cargoCard${cardToDiscard}Hit`);
+            let hitResult = parseInt(document.getElementById(`merchant-escort-${hitLocation}-span`).textContent);
+            hitResult--;
+            document.getElementById(`merchant-escort-${hitLocation}-span`).innerHTML = hitResult;
+            // local storage
+            localStorage.removeItem(`cargoCard${cardToDiscard}Value`);
+            localStorage.removeItem(`cargoCard${cardToDiscard}Hit`);
+
+            // amountSuccess--;
+            // document.getElementById('merchant-raid-amount-success').innerHTML = amountSuccess;
+        } else {
+            return;
+        }
+        // draw new card in this same place from where removed
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+
+                let i = 1;
+                while (i <= 12) {
+                    let imageID = `merchant-escort-card-${i}-image`;
+                    if (document.getElementById(imageID).getAttribute('href') === "") {
+                        document.getElementById(imageID).setAttribute('href', response.cargoCardDrawImageUrl);
+                        document.getElementById(imageID).style.pointerEvents = 'auto';
+                        localStorage.setItem(`cargoCard${i}Value`, parseInt(response.cargoCardPlunderValue));
+                        localStorage.setItem(`cargoCard${i}Hit`, response.cargoCardHits);
+                        break;
+                    };
+                    i++;
+                };
+
+                let gold = parseInt(document.getElementById('merchant-escort-value-result').textContent);
+                gold += parseInt(response.cargoCardPlunderValue);
+                document.getElementById('merchant-escort-value-result').innerHTML = gold;
+
+                let hitLocationValue = parseInt(document.getElementById(`merchant-escort-${response.cargoCardHits}-span`).textContent);
+                hitLocationValue += 1;
+                document.getElementById(`merchant-escort-${response.cargoCardHits}-span`).innerHTML = hitLocationValue;
+
+                amountSuccess--;
+                document.getElementById('merchant-escort-amount-success').innerHTML = amountSuccess;
+                
+            };
+        };
+        xhr.open('POST', 'scoutAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        data += '&amountSuccess=' + encodeURIComponent(amountSuccess);
+        xhr.send(data);
+    };
+
+
+    if (type_request === 'merchant escort accept pirate flee' || type_request === 'merchant escort accept') {
+
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                let colour = response.playerColour;
+
+                updateGloryTrack(colour)
+                updatePlayerGolds(colour);
+                updatePlayerHitLocation(colour);
+                endCurrentAction(colour);
+            };
+        };
+        let getGold = parseInt(document.getElementById('merchant-escort-value-result').textContent);
+        let getHullHit = parseInt(document.getElementById('merchant-escort-hull-span').textContent);
+        let getCargoHit = parseInt(document.getElementById('merchant-escort-cargo-span').textContent);
+        let getMastsHit = parseInt(document.getElementById('merchant-escort-masts-span').textContent);
+        let getCrewHit = parseInt(document.getElementById('merchant-escort-crew-span').textContent);
+        let getCannonsHit = parseInt(document.getElementById('merchant-escort-cannons-span').textContent);
+        xhr.open('POST', 'scoutAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        data += '&getGold=' + encodeURIComponent(getGold);
+        data += '&getHullHit=' + encodeURIComponent(getHullHit);
+        data += '&getCargoHit=' + encodeURIComponent(getCargoHit);
+        data += '&getMastsHit=' + encodeURIComponent(getMastsHit);
+        data += '&getCrewHit=' + encodeURIComponent(getCrewHit);
+        data += '&getCannonsHit=' + encodeURIComponent(getCannonsHit);
+        xhr.send(data);
+
+        rollDices('destroy');
+
     };
 
 
@@ -710,6 +1021,7 @@ function scoutAction(type_request) {
 
         document.getElementById('merchant-raid-action-use').style.display = 'none';
         document.getElementById('merchant-trade-action-use').style.display = 'none';
+        document.getElementById('merchant-escort-action-use').style.display = 'none';
 
         document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
 
@@ -768,7 +1080,18 @@ function scoutAction(type_request) {
             document.getElementById(image).style.pointerEvents = 'none';
             i++;
         };
-    };
 
+        // ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT ESCORT
+        // ESCORT cleaning cargo cards
+        i = 0;
+        while (i <= 12) {
+            let frame = `merchant-escort-card-${i}-frame`;
+            document.getElementById(frame).style.removeProperty('stroke');
+            let image = `merchant-escort-card-${i}-image`;
+            document.getElementById(image).setAttribute('href', "");
+            document.getElementById(image).style.pointerEvents = 'none';
+            i++;
+        };
+    };
 
 };
