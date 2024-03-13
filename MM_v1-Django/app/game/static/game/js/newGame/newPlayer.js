@@ -6,8 +6,8 @@ function newPlayer(colour) {
             let response = JSON.parse(xhr.responseText);
 
             document.getElementById('new-player-use').style.display = "block";
-            document.querySelector('.nav-button-player-start').disabled = true;
-            document.querySelector('.nav-button-player-start').removeAttribute('onclick');
+
+            navNewPlayer();
 
             document.getElementById('new-player-main-rect').style.stroke = colour;
             document.getElementById('new-captain-1-frame').style.removeProperty('stroke');
@@ -103,8 +103,9 @@ function sendToServerSelectedNewCaptainShip() {
             let response = JSON.parse(xhr.responseText);
             document.querySelector('.player-amount').innerHTML = response.amountPlayers;
             if (response.amountPlayers > 0) {
-                document.querySelector('.nav-button-player-start').removeAttribute('disabled');
-                document.querySelector('.nav-button-player-start').setAttribute('onclick', 'goGame()');
+                navSendToServerSelectedNewCaptainShip();
+                // document.querySelector('.nav-button-player-start').removeAttribute('disabled');
+                // document.querySelector('.nav-button-player-start').setAttribute('onclick', 'goGame()');
             };
         };
     };

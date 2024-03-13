@@ -5,7 +5,7 @@ function drawEventCard() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
 
-            document.getElementById('id-amount-rounds').innerHTML = response.rounds;
+            document.getElementById('nav-id-amount-rounds').innerHTML = response.rounds;
 
             if (response.npcCaptainNationality !== undefined) {
                 // if event is a CAPTAIN

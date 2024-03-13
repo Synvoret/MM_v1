@@ -9,7 +9,7 @@ from game.models import PlayersShipsCards
 from game.models import TrackPlayerHitLocations
 
 def resetNav(request):
-    """Start Player Actions."""
+    """Reset navigation."""
 
     data = {}
 
@@ -22,6 +22,12 @@ def resetNav(request):
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
 
     if request.GET.get('when') == 'during actions':
+
+        # MOVE
+        # SCOUT
+        # PORT
+        # FISHING
+        # LOCATION
 
         # if any location is destroyed you cannot interact with merchant
         for hit_localisation in HIT_LOCATIONS:

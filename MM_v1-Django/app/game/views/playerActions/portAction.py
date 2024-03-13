@@ -35,17 +35,7 @@ def portAction(request):
     # GET method
     if request.method == 'GET':
 
-        # port 
-        if request.GET.get('type_request') == 'port':        
-            for mission_card in ['mission_1_card', 'mission_2_card', 'mission_3_card']:
-                if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisation_instance, f"{player_colour}_ship"):
-                    data['missionInPort'] = True
-            if player_captain_instance.home_port == getattr(ship_localisation_instance, f"{player_colour}_ship"): 
-                data['playerHomePort'] = True
-            if getattr(player_golds, f"player_{player_colour}") < 2 or getattr(favours, f"player_{player_colour}") == 5:
-                data['cantGetFavour'] = True
-            if getattr(player_golds, f"player_{player_colour}") < 2 or getattr(loyality, f"player_{player_colour}") == 'Fierce Loyality':  # this is max at loyality track
-                data['cantChangeLoyality'] = True
+        # port
 
         # sell goods (always as first, onlu one time in turn)
         if request.GET.get('type_request') == 'sell goods':
@@ -61,8 +51,7 @@ def portAction(request):
             data['demanTokenInPort'] = demand_token_in_port.cargo
             data['demanTokenInPortImageUrl'] = demand_token_in_port.awers.url
 
-        if request.GET.get('type_request') == 'visit shipyard':
-            pass
+        # visit shipyard
 
 
     # POST method
@@ -105,8 +94,8 @@ def portAction(request):
                 loyality.decrease_loyality(f"player_{player_colour}")
 
 
-        # gain loyality
-        if request.POST.get('type_request') == 'gain loyality':
+        # raise loyality
+        if request.POST.get('type_request') == 'raise loyality':
 
             player_loyality = getattr(loyality, f"player_{player_colour}")
 
@@ -144,8 +133,6 @@ def portAction(request):
             else:
                 player_golds.decrease_golds(f"player_{player_colour}", 2)
                 favours.increase_favour_point(f"player_{player_colour}")
-
-
 
     data['playerColour'] = player_colour
     return JsonResponse(data)

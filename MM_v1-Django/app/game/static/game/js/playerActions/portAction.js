@@ -1,63 +1,7 @@
 function portAction(type_request) {
 
     if (type_request === 'port') {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let response = JSON.parse(xhr.responseText);
-                localStorage.setItem('colourPlayerActive', response.playerColour);
-                console.log(response);
-                // navFlow(type_request);
-
-                document.querySelector(".step.player-actions").innerHTML = 'Port Actions';
-                document.querySelector(".nav-actions-buttons").style.display = 'none';
-                document.querySelector(".nav-port-buttons").style.display = '';
-
-                document.querySelector(".nav-button.nav-button-sell-goods").style.display = '';
-                document.querySelector(".nav-button.nav-button-sell-goods").disabled = false;
-                document.querySelector(".nav-button.nav-button-buy-goods").style.display = '';
-                document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
-                document.querySelector(".nav-button.nav-button-visit-shipyard").style.display = '';
-                document.querySelector(".nav-button.nav-button-visit-shipyard").disabled = false;
-                document.querySelector(".nav-button.nav-button-reqruit").style.display = '';
-                document.querySelector(".nav-button.nav-button-reqruit").disabled = false;
-                document.querySelector(".nav-button.nav-button-acquire-rumor").style.display = '';
-                document.querySelector(".nav-button.nav-button-acquire-rumor").disabled = false;
-                document.querySelector(".nav-button.nav-button-claim-mission").style.display = '';
-                if (response.missionInPort) {
-                    document.querySelector(".nav-button.nav-button-claim-mission").disabled = false;
-                    localStorage.setItem('missionInPort', 'inPort');
-                } else {
-                    document.querySelector(".nav-button.nav-button-claim-mission").disabled = true;
-                };
-                document.querySelector('.nav-button.nav-button-stash-gold').style.display = '';
-                if (response.playerHomePort) {
-                    document.querySelector('.nav-button.nav-button-stash-gold').disabled = false;
-                    localStorage.setItem('playerHomePort', 'inHome');
-                } else {
-                    document.querySelector('.nav-button.nav-button-stash-gold').disabled = true;
-                };
-                document.querySelector(".nav-button.nav-button-gain-loyality").style.display = '';
-                if (response.cantChangeLoyality) {
-                    document.querySelector(".nav-button.nav-button-gain-loyality").disabled = true;
-                    localStorage.setItem('loyalityUpdated', 'changed');
-                } else {
-                    document.querySelector(".nav-button.nav-button-gain-loyality").disabled = false;
-                };
-                document.querySelector(".nav-button.nav-button-get-favour").style.display = '';
-                if (response.cantGetFavour) {
-                    document.querySelector('.nav-button.nav-button-get-favour').disabled = true;
-                    localStorage.setItem('cantGetFavour', true);
-                } else {
-                    document.querySelector('.nav-button.nav-button-get-favour').disabled = false;
-                };
-
-                document.querySelector(".nav-button.nav-button-back").disabled = false;
-                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "portAction('back')");
-            };
-        };
-        xhr.open('GET', 'portAction?type_request=' + type_request, true);
-        xhr.send();
+        navPortActions(type_request);
     };
 
 
@@ -68,23 +12,12 @@ function portAction(type_request) {
 
         if (type_request.includes('sell')) {
             mainRect = window.getComputedStyle(document.getElementById('port-sell-goods-action-main-rect'));
-        // } else if (type_request.includes('trade')) {
-        //     mainRect = window.getComputedStyle(document.getElementById('merchant-trade-action-main-rect'));
-        // } else if (type_request.includes('escort')) {
-        //     mainRect = window.getComputedStyle(document.getElementById('merchant-escort-action-main-rect'));
         };
 
         let playerColour = mainRect.stroke;
 
         if (frameStyles.stroke === 'none') {
-            document.getElementById(type_request).style.stroke = playerColour; 
-            // for (let i = 1; i <= 3; i++) {
-            //     if (type_request.includes(`merchant-trade-card-${i}-frame`)) {
-            //         document.getElementById(type_request).style.stroke = 'darkorange';
-            //         return;
-            //     } else {
-            //     }
-            // }
+            document.getElementById(type_request).style.stroke = playerColour;
         } else {
             document.getElementById(type_request).style.removeProperty('stroke'); 
         };
@@ -99,19 +32,8 @@ function portAction(type_request) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
 
-                // disabled buttons
-                document.querySelector(".nav-button.nav-button-sell-goods").disabled = true;
-                document.querySelector(".nav-button.nav-button-buy-goods").disabled = true;
-                document.querySelector(".nav-button.nav-button-visit-shipyard").disabled = true;
-                document.querySelector(".nav-button.nav-button-reqruit").disabled = true;
-                document.querySelector(".nav-button.nav-button-acquire-rumor").disabled = true;
-                document.querySelector(".nav-button.nav-button-claim-mission").disabled = true;
-                document.querySelector(".nav-button.nav-button-stash-gold").disabled = true;
-                document.querySelector(".nav-button.nav-button-gain-loyality").disabled = true;
-                document.querySelector(".nav-button.nav-button-get-favour").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "portAction('back to port')");
-                document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+                // disabled buttons (nav)
+                navPortActions(type_request);
 
                 document.getElementById('port-sell-goods-action-use').style.display = '';
                 // stroke colour
@@ -199,7 +121,7 @@ function portAction(type_request) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
 
-                document.querySelector('.nav-button.nav-button-sell-goods').disabled = true;
+                navPortActions(type_request);
 
                 updatePlayerCargoCards(colour);
                 updatePlayerGolds(colour);
@@ -229,27 +151,12 @@ function portAction(type_request) {
 
         let glory = parseInt(document.getElementById('port-sell-goods-glory-result').textContent);
         data += '&glory=' + encodeURIComponent(glory);
-
         xhr.send(data);
     };
 
 
     if (type_request === 'visit shipyard') {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let response = JSON.parse(xhr.responseText);
-                
-                document.querySelector(".step.player-actions").innerHTML = 'Port Shipyard';
-                document.querySelector(".nav-port-buttons").style.display = 'none';
-                document.querySelector(".nav-shipyard-buttons").style.display = '';
-
-                document.querySelector(".nav-button.nav-button-back").disabled = false;
-                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "portAction('back to port')");
-            };
-        };
-        xhr.open('GET', 'portAction?type_request=' + type_request, true);
-        xhr.send();
+        navPortActions(type_request);
     };
 
 
@@ -271,7 +178,7 @@ function portAction(type_request) {
     };
 
 
-    if (type_request ===  'gain loyality') {
+    if (type_request ===  'raise loyality') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -284,7 +191,6 @@ function portAction(type_request) {
                     updatePlayerGolds(response.playerColour);
                     localStorage.setItem('loyalityUpdated', 'changed');
                 };
-
 
             };
         };
@@ -319,60 +225,18 @@ function portAction(type_request) {
 
 
     if (type_request === 'back to port') {
-        document.querySelector(".nav-actions-buttons").style.display = 'none';
-        document.querySelector(".nav-port-buttons").style.display = '';
-        document.querySelector(".nav-shipyard-buttons").style.display = 'none';
-        document.querySelector(".step.player-actions").innerHTML = 'Player Actions';
-
         // back after sell goods
         document.getElementById('port-sell-goods-action-use').style.display = 'none';
 
-        // restoring buttons
-        document.querySelector(".nav-button.nav-button-sell-goods").disabled = true; // always TRUE after port action
-        document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
-        document.querySelector(".nav-button.nav-button-visit-shipyard").disabled = false;
-        document.querySelector(".nav-button.nav-button-reqruit").disabled = false;
-        document.querySelector(".nav-button.nav-button-acquire-rumor").disabled = false;
-        if (localStorage.getItem('missionInPort') === 'inPort') {
-            document.querySelector(".nav-button.nav-button-claim-mission").disabled = false;
-        } else {
-            document.querySelector(".nav-button.nav-button-claim-mission").disabled = true;
-        };
-        if (localStorage.getItem('playerHomePort') === 'inHome') {
-            document.querySelector('.nav-button.nav-button-stash-gold').disabled = false;
-        } else {
-            document.querySelector('.nav-button.nav-button-stash-gold').disabled = true;
-        };
-        if (localStorage.getItem('loyalityUpdated') === 'changed') {
-            document.querySelector(".nav-button.nav-button-gain-loyality").disabled = true;
-        } else {
-            document.querySelector(".nav-button.nav-button-gain-loyality").disabled = false;
-        };
-        if (localStorage.getItem('cantGetFavour')) {
-            document.querySelector(".nav-button.nav-button-get-favour").disabled = true;
-        } else {
-            document.querySelector(".nav-button.nav-button-get-favour").disabled = false;
-        };
-
-        document.querySelector(".nav-button.nav-button-back").disabled = false;
-        document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "portAction('back')");
-        document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
+        navPortActions('back to port');
     };
 
 
     if (type_request === 'back') {
-        document.querySelector(".nav-actions-buttons").style.display = '';
-        document.querySelector(".nav-port-buttons").style.display = 'none';
-        document.querySelector(".nav-shipyard-buttons").style.display = 'none';
-        document.querySelector(".step.player-actions").innerHTML = 'Player Actions';
-
-        document.querySelector(".nav-button.nav-button-back").disabled = true;
-        document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
-
+        navPortActions('back');
         endCurrentAction(localStorage.getItem('colourPlayerActive'));
         localStorage.removeItem('colourPlayerActive');
     };
-
 
     console.log(localStorage);
 

@@ -44,7 +44,6 @@ urlpatterns = [
     path('fishingAction', views.fishingAction, name='fishingAction'),
     path('moveAction', views.moveAction, name='moveAction'),
     path('portAction', views.portAction, name='portAction'),
-    path('resetNav', views.resetNav, name="resetNav"),
     path('scoutAction', views.scoutAction, name='scoutAction'),
     path('endTurn', views.endTurn, name='endTurn'),
 ]

@@ -3,139 +3,12 @@ function scoutAction(type_request) {
 
 
     if (type_request === 'scout') {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let response = JSON.parse(xhr.responseText);
-
-                document.querySelector('.nav-actions-buttons').style.display = 'none';
-                document.querySelector(".nav-scouting-buttons").style.display = '';
-                document.querySelector(".nav-button.nav-button-scout-merchant-raid").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-merchant-trade").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = 'none';
-                document.querySelector(".step.player-actions").innerHTML = 'Scouting';
-                document.querySelector(".nav-button.nav-button-back").disabled = false;
-                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "scoutAction('back')")
-
-                if (response.merchantToken) {
-                    document.querySelector(".nav-button.nav-button-scout-merchant").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
-                };
-
-                if (response.dutchShip) {
-                    document.querySelector(".nav-button.nav-button-scout-dutch-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-dutch-ship").style.display = 'none';
-                };
-
-                if (response.englishShip) {
-                    document.querySelector(".nav-button.nav-button-scout-english-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-english-ship").style.display = 'none';
-                };
-
-                if (response.frenchShip) {
-                    document.querySelector(".nav-button.nav-button-scout-french-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-french-ship").style.display = 'none';
-                };
-
-                if (response.spanishShip) {
-                    document.querySelector(".nav-button.nav-button-scout-spanish-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-spanish-ship").style.display = 'none';
-                };
-
-                if (response.smallPirateShip) {
-                    document.querySelector(".nav-button.nav-button-scout-small-pirate-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-small-pirate-ship").style.display = 'none';
-                };
-
-                if (response.largePirateShip) {
-                    document.querySelector(".nav-button.nav-button-scout-large-pirate-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-large-pirate-ship").style.display = 'none';
-                };
-
-                if (response.bluePlayerShip) {
-                    document.querySelector(".nav-button.nav-button-scout-blue-player-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-blue-player-ship").style.display = 'none';
-                };
-
-                if (response.greenPlayerShip) {
-                    document.querySelector(".nav-button.nav-button-scout-green-player-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-green-player-ship").style.display = 'none';
-                };
-
-                if (response.redPlayerShip) {
-                    document.querySelector(".nav-button.nav-button-scout-red-player-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-red-player-ship").style.display = 'none';
-                };
-
-                if (response.yellowPlayerShip) {
-                    document.querySelector(".nav-button.nav-button-scout-yellow-player-ship").style.display = '';
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-yellow-player-ship").style.display = 'none';
-                };
-
-            };
-        };
-        xhr.open('GET', 'scoutAction?type_request=' + type_request, true);
-        xhr.send();
+        navScoutActions(type_request);
     };
 
 
     if (type_request === 'merchant') {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                let response = JSON.parse(xhr.responseText);
-                response.playerHaveDestroyedHitLocation
-
-                document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
-
-                document.querySelector(".nav-button.nav-button-scout-merchant-raid").style.display = '';
-                document.querySelector(".nav-button.nav-button-scout-merchant-trade").style.display = '';
-                document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = '';
-                // raid
-                if (response.playerHaveDestroyedHitLocation) {
-                    document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
-                } else {
-                    document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = false;
-                };
-                // trade 
-                if (response.playerIsPirate) {
-                    document.querySelector(".nav-button.nav-button-scout-merchant-trade").disabled = true;
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-merchant-trade").disabled = false;
-                };
-                // escort 
-                if (response.playerHaveDestroyedHitLocation || response.playerIsPirate) {
-                    document.querySelector(".nav-button.nav-button-scout-merchant-escort").disabled = true;
-                } else {
-                    document.querySelector(".nav-button.nav-button-scout-merchant-escort").disabled = false;
-                }
-
-                document.querySelector(".nav-button.nav-button-scout-dutch-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-english-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-french-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-spanish-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-small-pirate-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-large-pirate-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-blue-player-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-green-player-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-red-player-ship").style.display = 'none';
-                document.querySelector(".nav-button.nav-button-scout-yellow-player-ship").style.display = 'none';
-
-            };
-        };
-        xhr.open('GET', 'scoutAction?type_request=' + type_request, true);
-        xhr.send();
+        navScoutActions(type_request);
     };
 
     // RAID RAID RAID RAID RAID RAID 
@@ -163,12 +36,8 @@ function scoutAction(type_request) {
                     document.getElementById('merchant-token-track-seventh-image').setAttribute('href', '');
                     document.getElementById('merchant-token-track-eighth-image').setAttribute('href', '');
                 }
-                // turn off buttons
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-trade").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-escort").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").disabled = true;
-                document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+                // turn off buttons (nav)
+                navScoutActions(type_request);
                 // restart amount success
                 document.getElementById('merchant-raid-amount-success').innerHTML = 0;
                 // DICES
@@ -226,21 +95,12 @@ function scoutAction(type_request) {
                 document.getElementById("merchant-raid-action-ok-text").style.fill = colour;
             };
         };
+
         for (let i = 1; i <= 9; i++) {
             localStorage.removeItem(`cargoCard${i}Value`);
             localStorage.removeItem(`cargoCard${i}Hit`);
-        }
-        // const keys = Object.keys(localStorage);
-        // const patternValue = /^cargoCard\d+Value$/;
-        // const patternHit = /^cargoCard\d+Hit$/;
-        // keys.forEach(key => {
-        //     if (patternValue.test(key)) {
-        //         localStorage.removeItem(key);
-        //     }
-        //     if (patternHit.test(key)) {
-        //         localStorage.removeItem(key);
-        //     }
-        // });
+        };
+
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
@@ -274,7 +134,6 @@ function scoutAction(type_request) {
         } else {
             document.getElementById(type_request).style.removeProperty('stroke'); // merchant-raid-card-X-frame
         };
-
     };
 
 
@@ -315,7 +174,6 @@ function scoutAction(type_request) {
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
-        // data += '&amountSuccess=' + encodeURIComponent(amountSuccess);
         xhr.send(data);
     };
 
@@ -544,15 +402,10 @@ function scoutAction(type_request) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                console.log(response, 'TRADE MERCHANT')
                 let colour = response.playerColour;
                 document.getElementById('merchant-trade-action-use').style.display = '';
-                // turn off buttons
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-trade").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-escort").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").disabled = true;
-                document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+                // turn off buttons (nav)
+                navScoutActions(type_request);
                 // cargo Cards Images (local storage in browser)
                 document.getElementById("merchant-trade-card-1-image").setAttribute('href', response.merchantCargoCard1ImageUrl);
                 document.getElementById("merchant-trade-card-2-image").setAttribute('href', response.merchantCargoCard2ImageUrl);
@@ -719,12 +572,8 @@ function scoutAction(type_request) {
                 let colour = response.playerColour;
                 console.log(response)
                 document.getElementById('merchant-escort-action-use').style.display = '';
-                // turn off buttons
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-raid").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-trade").disabled = true;
-                document.querySelector(".nav-button.nav-button-scouting.nav-button-scout-merchant-escort").disabled = true;
-                document.querySelector(".nav-button.nav-button-back").disabled = true;
-                document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+                // turn off buttons (nav)
+                navScoutActions(type_request);
                 // restart amount success
                 document.getElementById('merchant-escort-amount-success').innerHTML = 0;
                 if (response.cargoCard0Hit === 'escape') {
@@ -788,21 +637,12 @@ function scoutAction(type_request) {
                 };
             };
         };
+
         for (let i = 0; i <= 12; i++) {
             localStorage.removeItem(`cargoCard${i}Value`);
             localStorage.removeItem(`cargoCard${i}Hit`);
-        }
-        // const keys = Object.keys(localStorage);
-        // const patternValue = /^cargoCard\d+Value$/;
-        // const patternHit = /^cargoCard\d+Hit$/;
-        // keys.forEach(key => {
-        //     if (patternValue.test(key)) {
-        //         localStorage.removeItem(key);
-        //     }
-        //     if (patternHit.test(key)) {
-        //         localStorage.removeItem(key);
-        //     }
-        // });
+        };
+
         xhr.open('POST', 'scoutAction', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         let data = 'type_request=' + encodeURIComponent(type_request);
@@ -1018,25 +858,12 @@ function scoutAction(type_request) {
 
 
     if (type_request === 'back') {
-
         document.getElementById('merchant-raid-action-use').style.display = 'none';
         document.getElementById('merchant-trade-action-use').style.display = 'none';
         document.getElementById('merchant-escort-action-use').style.display = 'none';
 
-        document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
-
-        document.querySelector(".nav-button.nav-button-scout-merchant-raid").style.display = 'none';
-
-        document.querySelector(".nav-button.nav-button-scout-merchant-trade").style.display = 'none';
-
-        document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = 'none';
-
-
-        document.querySelector(".nav-actions-buttons").style.display = '';
-        document.querySelector(".nav-scouting-buttons").style.display = 'none';
-        document.querySelector(".step.player-actions").innerHTML = 'Player Actions'
-        document.querySelector(".nav-button.nav-button-back").disabled = true;
-        document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
+        // restore nav (nav)
+        navScoutActions(type_request);
 
         // RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID RAID 
         // RAID cleaning cargo cards

@@ -2,23 +2,23 @@
 
 <div id="nav-container">
 
-    <div class="title-nav-div">
-        <p class="title">ROUNDs: <span id="id-amount-rounds">0</span>.<br></p>
+    <div class="nav-title-div">
+        <p class="title">ROUNDs: <span id="nav-id-amount-rounds">0</span>.<br></p>
         <hr>
     </div>
 
-    <!-- <div class="title-players-div" style="display: none;"> -->
-    <div class="title-players-div">
-        <span class="title-player-blue" style="display: none; color: blue;">Player Blue: <span class="title-value-player-blue" style="color: black; font-weight: bold;"></span></span>
-        <span class="title-player-green" style="display: none; color: green;">Player Green: <span class="title-value-player-green" style="color: black; font-weight: bold;"></span></span>
-        <span class="title-player-red" style="display: none; color: red;">Player Red: <span class="title-value-player-red" style="color: black; font-weight: bold;"></span></span>
-        <span class="title-player-yellow" style="display: none; color: yellow;">Player Yellow: <span class="title-value-player-yellow" style="color: black; font-weight: bold;"></span></span><br>
+    <!-- <div class="nav-title-players-div" style="display: none;"> -->
+    <div class="nav-title-players-div">
+        <span class="nav-title-player-blue" style="display: none; color: blue;">Player Blue: <span class="nav-title-value-player-blue" style="color: black; font-weight: bold;"></span></span>
+        <span class="nav-title-player-green" style="display: none; color: green;">Player Green: <span class="nav-title-value-player-green" style="color: black; font-weight: bold;"></span></span>
+        <span class="nav-title-player-red" style="display: none; color: red;">Player Red: <span class="nav-title-value-player-red" style="color: black; font-weight: bold;"></span></span>
+        <span class="nav-title-player-yellow" style="display: none; color: yellow;">Player Yellow: <span class="nav-title-value-player-yellow" style="color: black; font-weight: bold;"></span></span><br>
     </div>
 
-    <div class="buttons-container-nav-div">
+    <div class="nav-buttons-container-div">
 
         <!-- PLAYERs -->
-        <div id="add-players-div" style="display: none;">
+        <div id="nav-add-players-div" style="display: none;">
             <span class="step">PLAYERs (choose colour, captain and ship)</span>
             <button class="nav-button nav-button-player-blue" style="color: blue" onclick="newPlayer('blue')">BLUE <span class="player-blue-added" style="display: none; color: black">Added</span></button>
             <button class="nav-button nav-button-player-green" style="color: green" onclick="newPlayer('green')">GREEN <span class="player-green-added" style="display: none; color: black">Added</span></button>
@@ -28,21 +28,21 @@
         </div>
 
         <!-- DRAW EVENT CARD -->
-        <div id="draw-event-card-div" style="display: none;">
+        <div id="nav-draw-event-card-div" style="display: none;">
             <span class="step">EVENT CARD</span>
             <button class="nav-button nav-button-draw-event-card" onclick="drawEventCard()">Draw Event Card</button><br><hr>
         </div>
 
         <!-- PLAYER ACTIONs -->
-        <div id="player-action-div" style="display: none;">
+        <div id="nav-player-action-div" style="display: none;">
 
-            <span class="step player-actions">Player Actions</span>
+            <span class="step nav-player-actions">Player Actions</span>
             <div class="nav-actions-buttons" style="display: none;">
                 <button class="nav-button nav-button-move-ship" onclick="moveAction('moves')">Move</button>
                 <button class="nav-button nav-button-scout" Disabled onclick="scoutAction('scout')">Scout</button>
                 <button class="nav-button nav-button-port" Disabled onclick="portAction('port')">Port</button>
                 <button class="nav-button nav-button-fishing" Disabled onclick="fishingAction('get')">Fishing</button>
-                <button class="nav-button nav-button-location" Disabled>Visit Location</button>
+                <button class="nav-button nav-button-location" Disabled onclick="locationAction('location')">Location</button>
             </div>
 
             <div class="nav-moves-buttons" style="display: none;">
@@ -85,11 +85,11 @@
                 <button class="nav-button nav-button-sell-goods" onclick="portAction('sell goods')">Sell Goods</button>
                 <button class="nav-button nav-button-buy-goods">Buy Goods</button>
                 <button class="nav-button nav-button-visit-shipyard" onclick="portAction('visit shipyard')">Visit Shipyard</button>
-                <button class="nav-button nav-button-reqruit">Reqruit</button>
+                <button class="nav-button nav-button-recruit">Recruit</button>
                 <button class="nav-button nav-button-acquire-rumor">Acquire a Rumor</button>
                 <button class="nav-button nav-button-claim-mission">Claim a Mission</button>
                 <button class="nav-button nav-button-stash-gold" Disabled onclick="portAction('stash gold'); portAction('back to port');">Stash Gold</button>
-                <button class="nav-button nav-button-gain-loyality" disabled onclick="portAction('gain loyality'); portAction('back to port');">Gain Loyality</button>
+                <button class="nav-button nav-button-raise-loyality" disabled onclick="portAction('raise loyality'); portAction('back to port');">Raise Loyality</button>
                 <button class="nav-button nav-button-get-favour" onclick="portAction('get favour'); portAction('back');">Get Favour</button>
             </div>
             <div class="nav-shipyard-buttons" style="display: none;">
@@ -97,6 +97,11 @@
                 <button class="nav-button nav-button-buy-special-weapon">Buy Special Weapon</button>
                 <button class="nav-button nav-button-repair">Repair</button>
                 <button class="nav-button nav-button-buy-ship-modification">Buy Ship Modification</button>
+            </div>
+
+            <div class="nav-location-buttons" style="display: none;">
+                <button class="nav-button nav-button-location-visit">Visit</button>
+                <button class="nav-button nav-button-location-raid">Raid</button>
             </div>
 
             <!-- <span class="step battle" style="display: none;">Battle</span>

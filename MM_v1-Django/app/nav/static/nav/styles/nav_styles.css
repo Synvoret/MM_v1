@@ -4,7 +4,7 @@
     width: 1248px;
 }
 
-/* .buttons-container-nav-div {
+/* .nav-buttons-container-div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -42,6 +42,6 @@ p.messages {
 	color: white;
 }
 
-.title-players-div {
+.nav-title-players-div {
 	font-size: 12px;
 }

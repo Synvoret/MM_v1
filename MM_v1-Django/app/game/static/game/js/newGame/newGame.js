@@ -1,7 +1,7 @@
 function prepareNav() {
 
     // FIRST STEP - add players
-    document.getElementById('add-players-div').style.display = "block";
+    document.getElementById('nav-add-players-div').style.display = "block";
     document.querySelector('.nav-button-player-start').setAttribute('disabled', true);
 };
 

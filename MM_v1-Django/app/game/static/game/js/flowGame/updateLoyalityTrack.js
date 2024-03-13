@@ -5,6 +5,7 @@ function updateLoyalityTrack(colour) {
         if (xhr.readyState == 4 && xhr.status == 200) {
 
             let loyalitiesClass = document.getElementsByClassName('loyality');
+
             for (let i = 0; i < loyalitiesClass.length; i++) {
                 loyalitiesClass[i].setAttribute('href', '');
             };

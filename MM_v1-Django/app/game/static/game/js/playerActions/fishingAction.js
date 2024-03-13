@@ -6,14 +6,9 @@ function fishingAction(type_request) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                document.querySelector('.nav-button.nav-button-move-ship').disabled = true;
-                document.querySelector('.nav-button.nav-button-move-ship').removeAttribute('onclick');
-                document.querySelector('.nav-button.nav-button-scout').disabled = true;
-                document.querySelector('.nav-button.nav-button-fishing').disabled = true;
-                document.querySelector('.nav-button.nav-button-fishing').removeAttribute('onclick');
-                document.querySelector('.nav-button.nav-button-location').disabled = true;
-                document.querySelector('.nav-button.nav-button-location').removeAttribute('onclick');
-                document.querySelector('.nav-button.nav-button-end-turn').disabled = true;
+
+                navFishingAction(type_request);
+
                 document.getElementById('fishing-action-main-rect').style.stroke = response.playerColour;
                 document.getElementById('fishing-action-ok-text').style.fill = response.playerColour;
                 document.getElementById('fishing-card-image').setAttribute('href', response.fishingCardImage);
@@ -26,14 +21,9 @@ function fishingAction(type_request) {
 
 
     if (type_request === 'post') {
-        document.querySelector('.nav-button.nav-button-move-ship').disabled = false;
-        document.querySelector('.nav-button.nav-button-move-ship').setAttribute('onclick', "moveAction('moves')");
-        document.querySelector('.nav-button.nav-button-scout').disabled = false;
-        document.querySelector('.nav-button.nav-button-fishing').disabled = false;
-        document.querySelector('.nav-button.nav-button-fishing').setAttribute('onclick', "fishingAction('get')");
-        document.querySelector('.nav-button.nav-button-location').disabled = false;
-        document.querySelector('.nav-button.nav-button-location').removeAttribute('onclick');
-        document.querySelector('.nav-button.nav-button-end-turn').disabled = false;
+
+        navFishingAction(type_request);
+
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {

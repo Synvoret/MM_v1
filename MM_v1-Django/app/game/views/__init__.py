@@ -38,4 +38,3 @@ from .playerActions import moveAction
 from .playerActions import portAction
 from .playerActions import scoutAction
 from .playerActions import endTurn
-from .playerActions import resetNav

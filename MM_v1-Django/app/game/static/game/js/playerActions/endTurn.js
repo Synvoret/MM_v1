@@ -12,7 +12,7 @@ function endTurn() {
             if (response.endRound) {
                 startRound();
             } else {
-                document.querySelector(`.title-value-player-${response.playerColourEndingTurn}`).innerHTML = 'DONE';
+                navEndTurn(response.playerColourEndingTurn)
                 startPlayerActions();
             };
 

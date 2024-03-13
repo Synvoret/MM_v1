@@ -8,7 +8,7 @@ function resetNav(when) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
 
-                document.querySelector(".step.player-actions").innerHTML = 'Player Actions';
+                document.querySelector(".step.nav-player-actions").innerHTML = 'Player Actions';
                 document.querySelector(".nav-actions-buttons").style.display = '';
                 document.querySelector(".nav-moves-buttons").style.display = 'none';
                 document.querySelector(".nav-directions-buttons").style.display = 'none';
@@ -39,7 +39,7 @@ function resetNav(when) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
 
-                document.querySelector(".step.player-actions").innerHTML = 'Player Actions';
+                document.querySelector(".step.nav-player-actions").innerHTML = 'Player Actions';
                 document.querySelector(".nav-actions-buttons").style.display = '';
                 document.querySelector(".nav-moves-buttons").style.display = 'none';
                 document.querySelector(".nav-directions-buttons").style.display = 'none';
