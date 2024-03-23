@@ -28,7 +28,7 @@ function fishingAction(type_request) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                let colour = response.colour;
+                let colour = response.playerColour;
                 if (response.fishingValue) {
                     updatePlayerGolds(colour);
                 };

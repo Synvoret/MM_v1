@@ -83,20 +83,20 @@
             
             <div class="nav-port-buttons" style="display: none;">
                 <button class="nav-button nav-button-sell-goods" onclick="portAction('sell goods')">Sell Goods</button>
-                <button class="nav-button nav-button-buy-goods">Buy Goods</button>
+                <button class="nav-button nav-button-buy-goods" onclick="portAction('buy goods')">Buy Goods</button>
                 <button class="nav-button nav-button-visit-shipyard" onclick="portAction('visit shipyard')">Visit Shipyard</button>
                 <button class="nav-button nav-button-recruit">Recruit</button>
                 <button class="nav-button nav-button-acquire-rumor">Acquire a Rumor</button>
                 <button class="nav-button nav-button-claim-mission">Claim a Mission</button>
                 <button class="nav-button nav-button-stash-gold" Disabled onclick="portAction('stash gold'); portAction('back to port');">Stash Gold</button>
-                <button class="nav-button nav-button-raise-loyality" disabled onclick="portAction('raise loyality'); portAction('back to port');">Raise Loyality</button>
+                <button class="nav-button nav-button-raise-loyality" disabled onclick="portAction('raise loyality');">Raise Loyality</button>
                 <button class="nav-button nav-button-get-favour" onclick="portAction('get favour'); portAction('back');">Get Favour</button>
             </div>
             <div class="nav-shipyard-buttons" style="display: none;">
-                <button class="nav-button nav-button-buy-sell-ship">Buy/Sell Ship</button>
-                <button class="nav-button nav-button-buy-special-weapon">Buy Special Weapon</button>
-                <button class="nav-button nav-button-repair">Repair</button>
-                <button class="nav-button nav-button-buy-ship-modification">Buy Ship Modification</button>
+                <button class="nav-button nav-button-buy-sell-ship">Ship</button>
+                <button class="nav-button nav-button-buy-sell-special-weapon" onclick="portAction('special weapon')">Special Weapons</button>
+                <button class="nav-button nav-button-repair" onclick="portAction('repair')">Repair</button>
+                <button class="nav-button nav-button-buy-sell-ship-modification" onclick="portAction('modifications')">Modifications</button>
             </div>
 
             <div class="nav-location-buttons" style="display: none;">

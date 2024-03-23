@@ -4,6 +4,8 @@ from dataset.models import CargoCard
 
 @admin.register(CargoCard)
 class CargoCardAdmin(admin.ModelAdmin):
+    
+    # list_display = [field.name for field in CargoCard._meta.get_fields()]
     list_display = [
         'deck',
         'card',
@@ -17,5 +19,4 @@ class CargoCardAdmin(admin.ModelAdmin):
         'hits',
 
         'notes',
-
         ]

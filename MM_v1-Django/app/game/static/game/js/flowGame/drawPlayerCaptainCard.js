@@ -4,7 +4,7 @@ function drawPlayerCaptainCard(colour) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            document.getElementById('player-captain-card-image').setAttribute('href', response.captainCardImage);
+            document.getElementById('player-board-captain-card-image').setAttribute('href', response.captainCardImage);
         }
     };
     xhr.open('GET', 'playerCaptainCard?colour=' + colour, true);

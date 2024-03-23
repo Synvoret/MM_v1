@@ -68,6 +68,6 @@ function drawEventCard() {
     xhr.send();
 
     // ENDING DRAW EVENT CARD PHASE
-    startPlayerActions();
+    startPlayerTurn();
 
 };

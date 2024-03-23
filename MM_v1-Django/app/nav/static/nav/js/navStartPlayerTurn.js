@@ -1,7 +1,7 @@
-// navStartPlayerActions function
+// navStartPlayerTurn function
 
 // WHEN: after click DrawEventCard
-function navStartPlayerActions() {
+function navStartPlayerTurn() {
 
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -39,7 +39,7 @@ function navStartPlayerActions() {
         };
         
     };
-    xhr.open('GET', 'navStartPlayerActions', true);
+    xhr.open('GET', 'navStartPlayerTurn', true);
     xhr.send();
 
 };

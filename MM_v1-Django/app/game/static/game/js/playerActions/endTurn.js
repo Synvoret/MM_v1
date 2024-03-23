@@ -12,10 +12,11 @@ function endTurn() {
             if (response.endRound) {
                 startRound();
             } else {
-                navEndTurn(response.playerColourEndingTurn)
-                startPlayerActions();
+                navEndTurn(response.playerColourEndingTurn);
+                startPlayerTurn();
             };
 
+            
             localStorage.clear();
         };
     };

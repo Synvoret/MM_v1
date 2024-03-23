@@ -87,6 +87,13 @@ DIRECTION = [
     ('NW', 'Northwest'),
 ]
 
+DISPOSABLE_ACTIONS = [
+    'sellGoods', # after sell goods in port, always as first action in port
+    'buyGoods', # after buy goods in port
+    'raiseLoyality', # after raise loyality track
+    'getFavour', # after get favour in port, always as last action in port
+]
+
 HITS = [
     ('Hull', 'Hull'),
     ('Cargo', 'Cargo'),
@@ -215,6 +222,18 @@ SHIPSLOCALIZATIONS = [
 SKILL = [
     ('Scouting', 'Scouting'),
     ('Influence', 'Influence'),
+]
+
+SPECIALWEAPONS = [
+    'Chain Shot',
+    'Grapeshot',
+    'Grappling Hooks',
+    'Double Shot',
+    'Caltrops',
+    'Heated Shot',
+    'Grenade',
+    'Premium Rum',
+    'Explosive Shell',
 ]
 
 # def choices(cls):

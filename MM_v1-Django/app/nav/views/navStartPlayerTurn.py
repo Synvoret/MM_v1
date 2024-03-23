@@ -7,7 +7,7 @@ from game.models import ShipsLocalisations
 from game.models import StackMissionsCards
 
 
-def navStartPlayerActions(request):
+def navStartPlayerTurn(request):
 
     data = {}
     game = Game.objects.get(number=100)
@@ -17,8 +17,8 @@ def navStartPlayerActions(request):
     player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
     ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
 
-    # startPlayerActions
-    if request.GET.get('when') == 'startPlayerActions':
+    # startPlayerTurn
+    if request.GET.get('when') == 'startPlayerTurn':
         # if any location is destroyed you cannot interact with merchant
         for hit_localisation in HIT_LOCATIONS:
             if getattr(player_hits_locations_instance, hit_localisation) == 0:

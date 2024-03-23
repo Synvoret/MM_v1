@@ -7,7 +7,7 @@ function startRound() {
 
             navStartRound();
 
-            document.getElementById("player-active-board-container").style.display = 'none';
+            document.getElementById("player-board-active-container").style.display = 'none';
 
         };
     };

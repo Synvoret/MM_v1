@@ -661,7 +661,7 @@
             <text id="merchant-raid-crew" x="20" y="590">Crew: <tspan id="merchant-raid-crew-span">0</tspan></text>
             <text id="merchant-raid-cannons" x="20" y="605">Cannons: <tspan id="merchant-raid-cannons-span">0</tspan></text>
             <text id="merchant-raid-escape" x="20" y="620">Escape: <tspan id="merchant-raid-escape-span">0</tspan> (<tspan id="merchant-raid-ship-maneuverability">0</tspan> - Ship Maneuverability)</text>
-            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">RAID Done?</text>
+            <text id="merchant-raid-action-ok-text" x="400" y="510" onclick="scoutAction('merchant raid accept'); scoutAction('back');">RAID Accept?</text>
 
             <text id="merchant-raid-action-draw-roll-text" x="20" y="650">Seamanship ->
                 <tspan id="merchant-raid-amount-success">0</tspan>
@@ -730,7 +730,7 @@
             <image id="merchant-trade-card-10-image" x="15" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-trade-card-10-frame')" style="pointer-events: none;"/>
 
             <text id="merchant-trade-action-result-text" x="120" y="510">RESULT:</text>
-            <text id="merchant-trade-action-ok-text" x="400" y="510" onclick="scoutAction('merchant trade accept'); scoutAction('back');">TRADE Done?</text>
+            <text id="merchant-trade-action-ok-text" x="400" y="510" onclick="scoutAction('merchant trade accept'); scoutAction('back');">TRADE Accept?</text>
 
             <text id="merchant-trade-action-draw-roll-text" x="20" y="650">Influence ->
                 <tspan id="merchant-trade-amount-success">0</tspan>
@@ -768,7 +768,7 @@
 
             <rect id="merchant-escort-card-6-frame" x="578" y="170" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-escort-card-6-image" x="580" y="172" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-6-frame')" style="pointer-events: none;"/>
-<!--  -->
+
             <rect id="merchant-escort-card-7-frame" x="13" y="327" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
             <image id="merchant-escort-card-7-image" x="15" y="329" width="96" height="149" href="" onclick="scoutAction('merchant-escort-card-7-frame')" style="pointer-events: none;"/>
 
@@ -796,7 +796,7 @@
             <text id="merchant-escort-crew" x="20" y="590">Crew: <tspan id="merchant-escort-crew-span">0</tspan></text>
             <text id="merchant-escort-cannons" x="20" y="605">Cannons: <tspan id="merchant-escort-cannons-span">0</tspan></text>
             <!-- <text id="merchant-escort-escape" x="20" y="620">Escape: <tspan id="merchant-escort-escape-span">0</tspan> (<tspan id="merchant-escort-ship-maneuverability">0</tspan> - Ship Maneuverability)</text> -->
-            <text id="merchant-escort-action-ok-text" x="400" y="510" onclick="scoutAction('merchant escort accept'); scoutAction('back');">ESCORT Done?</text>
+            <text id="merchant-escort-action-ok-text" x="400" y="510" onclick="scoutAction('merchant escort accept'); scoutAction('back');">ESCORT Accept?</text>
 
             <text id="merchant-escort-action-draw-roll-text" x="20" y="650">Seamanship ->
                 <tspan id="merchant-escort-amount-success">0</tspan>
@@ -848,24 +848,212 @@
             <text id="port-sell-goods-action-result-text" x="200" y="510">RESULT: <tspan id="port-sell-goods-value-result-text"></tspan></text>
             <text id="port-sell-goods-action-gold-text" x="20" y="510">Gold: <tspan id="port-sell-goods-value-result">0</tspan></text>
             <text id="port-sell-goods-action-glory-text" x="120" y="510">Glory: <tspan id="port-sell-goods-glory-result">0</tspan></text>
-            <text id="port-sell-goods-action-ok-text" x="400" y="510" onclick="portAction('sell goods accept'); portAction('back to port');">SELL GOODS Done?</text>
+            <text id="port-sell-goods-action-ok-text" x="400" y="510" onclick="portAction('sell goods accept'); portAction('back to port');">SELL GOODS Accept?</text>
             <text id="port-sell-goods-action-sell-marked-goods-text" x="20" y="550" onclick="portAction('sell marked goods');">Sell Marked Goods</text>
         </g>
     </defs>
     <use id="port-sell-goods-action-use" x="50" y="10" href="#port-sell-goods-action" style="display: none;"/>
 
 
+    <!-- PORT - buy goods -->
+    <defs>
+        <g id="port-buy-goods-action">
+            <rect id="port-buy-goods-action-main-rect" width="1141" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <rect id="port-buy-goods-card-1-frame" x="13" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-1-image" x="15" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-1-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-1-cost-text" x="35" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-1-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-2-frame" x="126" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-2-image" x="128" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-2-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-2-cost-text" x="148" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-2-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-3-frame" x="239" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-3-image" x="241" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-3-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-3-cost-text" x="261" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-3-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-4-frame" x="352" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-4-image" x="354" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-4-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-4-cost-text" x="374" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-4-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-5-frame" x="465" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-5-image" x="467" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-5-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-5-cost-text" x="487" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-5-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-6-frame" x="578" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-6-image" x="580" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-6-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-6-cost-text" x="600" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-6-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-7-frame" x="691" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-7-image" x="693" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-7-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-7-cost-text" x="713" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-7-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-8-frame" x="804" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-8-image" x="806" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-8-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-8-cost-text" x="826" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-8-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-9-frame" x="917" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-9-image" x="919" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-9-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-9-cost-text" x="939" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-9-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-card-10-frame" x="1030" y="13" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-card-10-image" x="1032" y="15" width="96" height="149" href="" onclick="portAction('port-buy-goods-card-10-frame')" style="pointer-events: none;"/>
+            <text id="port-buy-goods-cargo-card-10-cost-text" x="1052" y="185" style="display: none;">COST: <tspan id="port-buy-goods-cargo-card-10-cost-text-value">0</tspan></text>
+
+            <rect id="port-buy-goods-player-card-1-frame" x="13" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-1-image" x="15" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-2-frame" x="126" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-2-image" x="128" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-3-frame" x="239" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-3-image" x="241" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-4-frame" x="352" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-4-image" x="354" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-5-frame" x="465" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-5-image" x="467" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-6-frame" x="578" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-6-image" x="580" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-7-frame" x="691" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-7-image" x="693" y="200" width="96" height="149" href=""/>
+            <rect id="port-buy-goods-player-card-8-frame" x="804" y="198" width="98" height="151" rx="4" ry="4" style="stroke-width: 3;"/>
+            <image id="port-buy-goods-player-card-8-image" x="806" y="200" width="96" height="149" href=""/>
+
+            <text id="port-buy-goods-action-result-text" x="200" y="510">RESULT: <tspan id="port-buy-goods-value-result-text"></tspan></text>
+            <text id="port-buy-goods-action-gold-text" x="20" y="510">Gold: <tspan id="port-buy-goods-value-result">0</tspan></text>
+            <text id="port-buy-goods-action-ok-text" x="400" y="510" onclick="portAction('buy goods accept'); portAction('back to port');">BUY GOODS Accept?</text>
+            <text id="port-buy-goods-action-buy-marked-goods-text" x="20" y="550" onclick="portAction('buy marked goods');">Buy Marked Goods</text>
+        </g>
+    </defs>
+    <use id="port-buy-goods-action-use" x="50" y="10" href="#port-buy-goods-action" style="display: none;"/>
 
 
+    <!-- VISIT SHIPYARD - special weapons -->
+    <defs>
+        <g id="port-visit-shipyard-special-weapons-action">
+            <rect id="port-visit-shipyard-special-weapons-action-main-rect" width="950" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
 
-    <!-- ENLARGE INDICATED HELPER -->
+            <use id="repair-coins" x="20" y="50" href="#coin" transform="scale(2)"/>
+
+            <!-- special weapond to BUY -->
+            <text class="special-weapons-text" x="40" y="240" style="font-size: 24px">to BUY for 3 Golds</text>
+            <image id="port-visit-shipyard-special-weapons-chain-shot" name="chain-shot" class="port-visit-shipyard-special-weapon buy-special-weapon" x="20" y="262" width="100" href="media/specialWeapons/chain-shot.png"/>
+            <image id="port-visit-shipyard-special-weapons-grapeshot" name="grapeshot" class="port-visit-shipyard-special-weapon buy-special-weapon" x="120" y="262" width="100" href="media/specialWeapons/grapeshot.png"/>
+            <image id="port-visit-shipyard-special-weapons-grappling-hooks" name="grappling-hooks" class="port-visit-shipyard-special-weapon buy-special-weapon" x="220" y="262" width="100" href="media/specialWeapons/grappling-hooks.png"/>
+            <image id="port-visit-shipyard-special-weapons-double-shot" name="double-shot" class="port-visit-shipyard-special-weapon buy-special-weapon" x="320" y="262" width="100" href="media/specialWeapons/double-shot.png"/>
+            <image id="port-visit-shipyard-special-weapons-caltrops" name="caltrops" class="port-visit-shipyard-special-weapon buy-special-weapon" x="420" y="262" width="100" href="media/specialWeapons/caltrops.png"/>
+            <image id="port-visit-shipyard-special-weapons-heated-shot" name="heated-shot" class="port-visit-shipyard-special-weapon buy-special-weapon" x="520" y="262" width="100" href="media/specialWeapons/heated-shot.png"/>
+            <image id="port-visit-shipyard-special-weapons-grenade" name="grenade" class="port-visit-shipyard-special-weapon buy-special-weapon" x="620" y="262" width="100" href="media/specialWeapons/grenade.png"/>
+            <image id="port-visit-shipyard-special-weapons-premium-rum" name="premium-rum" class="port-visit-shipyard-special-weapon buy-special-weapon" x="720" y="262" width="100" href="media/specialWeapons/premium-rum.png"/>
+            <image id="port-visit-shipyard-special-weapons-explosive-shell" name="explosive-shell" class="port-visit-shipyard-special-weapon buy-special-weapon" x="820" y="262" width="100" href="media/specialWeapons/explosive-shell.png"/>
+            <!-- special weapond to SELL (player special weapons on ship) -->
+            <text class="special-weapons-text" x="40" y="430" style="font-size: 24px">to SELL for 1 Gold</text>
+            <image id="port-visit-shipyard-player-special-weapons-chain-shot" name="chain-shot" class="port-visit-shipyard-special-weapon sell-special-weapon" x="20" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-grapeshot" name="grapeshot" class="port-visit-shipyard-special-weapon sell-special-weapon" x="120" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-grappling-hooks" name="grappling-hooks" class="port-visit-shipyard-special-weapon sell-special-weapon" x="220" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-double-shot" name="double-shot" class="port-visit-shipyard-special-weapon sell-special-weapon" x="320" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-caltrops" name="caltrops" class="port-visit-shipyard-special-weapon sell-special-weapon" x="420" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-heated-shot" name="heated-shot" class="port-visit-shipyard-special-weapon sell-special-weapon" x="520" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-grenade" name="grenade" class="port-visit-shipyard-special-weapon sell-special-weapon" x="620" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-premium-rum" name="premium-rum" class="port-visit-shipyard-special-weapon sell-special-weapon" x="720" y="462" width="100" href=""/>
+            <image id="port-visit-shipyard-player-special-weapons-explosive-shell" name="explosive-shell" class="port-visit-shipyard-special-weapon sell-special-weapon" x="820" y="462" width="100" href=""/>
+
+            <text id="port-visit-shipyard-special-weapons-action-ok-text" class="special-weapons-text" x="400" y="600" onclick="portAction('back to shipyard');">BUY/SELL SPECIAL WEAPONs Done?</text>
+        </g>
+    </defs>
+    <use id="port-visit-shipyard-special-weapons-action-use" x="50" y="10" href="#port-visit-shipyard-special-weapons-action" style="display: none;"/>
+
+
+    <!-- VISIT SHIPYARD - repair -->
+    <defs>
+        <g id="port-visit-shipyard-repair-action">
+            <rect id="port-visit-shipyard-repair-action-main-rect" width="700" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <use id="repair-coins" x="20" y="50" href="#coin" transform="scale(2)"/>
+
+            <image id="port-visit-shipyard-repair-hit-locatioins-image" x="20" y="200" width="400" height="400" href="media\tiles\hit_locations.png"/>
+            <image id="port-visit-shipyard-repair-hull-1" class="opacity-cube repair-location" x="93" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-2" class="opacity-cube repair-location" x="133" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-3" class="opacity-cube repair-location" x="173" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-4" class="opacity-cube repair-location" x="213" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-5" class="opacity-cube repair-location" x="253" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-6" class="opacity-cube repair-location" x="293" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-hull-7" class="opacity-cube repair-location" x="333" y="262" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-1" class="opacity-cube repair-location" x="93" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-2" class="opacity-cube repair-location" x="133" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-3" class="opacity-cube repair-location" x="173" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-4" class="opacity-cube repair-location" x="213" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-5" class="opacity-cube repair-location" x="253" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-6" class="opacity-cube repair-location" x="293" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cargo-7" class="opacity-cube repair-location" x="333" y="316" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-1" class="opacity-cube repair-location" x="93" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-2" class="opacity-cube repair-location" x="133" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-3" class="opacity-cube repair-location" x="173" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-4" class="opacity-cube repair-location" x="213" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-5" class="opacity-cube repair-location" x="253" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-6" class="opacity-cube repair-location" x="293" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-masts-7" class="opacity-cube repair-location" x="333" y="370" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-1" class="opacity-cube repair-location" x="93" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-2" class="opacity-cube repair-location" x="133" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-3" class="opacity-cube repair-location" x="173" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-4" class="opacity-cube repair-location" x="213" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-5" class="opacity-cube repair-location" x="253" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-6" class="opacity-cube repair-location" x="293" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-crew-7" class="opacity-cube repair-location" x="333" y="420" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-1" class="opacity-cube repair-location" x="93" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-2" class="opacity-cube repair-location" x="133" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-3" class="opacity-cube repair-location" x="173" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-4" class="opacity-cube repair-location" x="213" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-5" class="opacity-cube repair-location" x="253" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-6" class="opacity-cube repair-location" x="293" y="470" width="30" height="30" href=""/>
+            <image id="port-visit-shipyard-repair-cannons-7" class="opacity-cube repair-location" x="333" y="470" width="30" height="30" href=""/>
+
+            <text class="repair-text" x="450" y="285" onclick="portAction('repair location hull'); portAction('repair')">Repair Hull: cost 2</text>
+            <text class="repair-text" x="450" y="335" onclick="portAction('repair location cargo'); portAction('repair')">Repair Cargo: cost 2</text>
+            <text class="repair-text" x="450" y="390" onclick="portAction('repair location masts'); portAction('repair')">Repair Masts: cost 2</text>
+            <text class="repair-text" x="450" y="440">Need Recruit!!!</text>
+            <text class="repair-text" x="450" y="490" onclick="portAction('repair location cannons'); portAction('repair')">Repair Cannons: cost 2</text>
+
+            <text id="port-visit-shipyard-repair-action-ok-text" class="repair-text" x="400" y="600" onclick="portAction('back to shipyard');">REPAIR Done?</text>
+        </g>
+    </defs>
+    <use id="port-visit-shipyard-repair-action-use" x="50" y="10" href="#port-visit-shipyard-repair-action" style="display: none;"/>
+
+
+    <!-- VISIT SHIPYARD - modifications -->
+    <defs>
+        <g id="port-visit-shipyard-modifications-action">
+            <rect id="port-visit-shipyard-modifications-action-main-rect" width="950" height="750" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <use id="repair-coins" x="20" y="50" href="#coin" transform="scale(2)"/>
+
+            <!-- modification to BUY -->
+            <text class="modifications-text" x="40" y="240" style="font-size: 24px">to BUY for 3 Golds</text>
+            <image id="port-visit-shipyard-modifications-chain-shot" name="chain-shot" class="port-visit-shipyard-modifications buy-modifications" x="20" y="262" width="100" href="media/shipModifications/longGuns.png"/>
+            <!-- modifications to SELL (player modifications on ship) -->
+            <text class="modifications-text" x="40" y="430" style="font-size: 24px">to SELL for 1 Gold</text>
+            <g id="player-modifications-for-sale"></g>
+            <!-- <image id="port-visit-shipyard-player-modifications-chain-shot" name="chain-shot" class="port-visit-shipyard-modifications sell-modifications" x="20" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-grapeshot" name="grapeshot" class="port-visit-shipyard-modifications sell-modifications" x="120" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-grappling-hooks" name="grappling-hooks" class="port-visit-shipyard-modifications sell-modifications" x="220" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-double-shot" name="double-shot" class="port-visit-shipyard-modifications sell-modifications" x="320" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-caltrops" name="caltrops" class="port-visit-shipyard-modifications sell-modifications" x="420" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-heated-shot" name="heated-shot" class="port-visit-shipyard-modifications sell-modifications" x="520" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-grenade" name="grenade" class="port-visit-shipyard-modifications sell-modifications" x="620" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-premium-rum" name="premium-rum" class="port-visit-shipyard-modifications sell-modifications" x="720" y="462" width="100" href="media/shipModifications/longGuns.png"/>
+            <image id="port-visit-shipyard-player-modifications-explosive-shell" name="explosive-shell" class="port-visit-shipyard-modifications sell-modifications" x="820" y="462" width="100" href="media/shipModifications/longGuns.png"/> -->
+
+            <text id="port-visit-shipyard-modifications-action-ok-text" class="modifications-text" x="400" y="600" onclick="portAction('back to shipyard');">BUY/SELL MODIFICATIONs Done?</text>
+        </g>
+    </defs>
+<use id="port-visit-shipyard-modifications-action-use" x="50" y="10" href="#port-visit-shipyard-modifications-action" style="display: none;"/>
+
+
+    <!-- ENLARGE on board INDICATED HELPER -->
     <defs id="board-enlarge-indicated">
-        <clipPath id="board-enlarge-indicated-rect-clipPath"><rect id="board-enlarge-indicated-rect" x="0" y="0" width="300" height="200" rx="4" ry="4"/></clipPath>
         <textPath id="board-enlarge-indicated-textPath"></textPath>
-        <image id="board-enlarge-indicated-image" width="300" height="200" href="" clip-path="url(#board-enlarge-indicated-rect-clipPath)"/>
+        <image id="board-enlarge-indicated-image" width="300" height="200" href=""/>
         <text id="board-enlarge-indicated-text" clip-path="url(#board-enlarge-indicated-textPath)" fill="white" style="font: bold 20px cursive;"></text>
     </defs>
-    <use id="board-enlarge-indicated-use" name="board-enlarge-indicated-use" x="500" y="500" style="display: none;"/>
+    <use id="board-enlarge-indicated-use" x="500" y="500" style="display: none;"/>
 
 </svg><br>
 </div>

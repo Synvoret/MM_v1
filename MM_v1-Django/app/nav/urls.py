@@ -4,7 +4,7 @@ from . import views
 app_name = 'nav'
 
 urlpatterns = [
-    path('navStartPlayerActions', views.navStartPlayerActions, name='navStartPlayerActions'),
+    path('navStartPlayerTurn', views.navStartPlayerTurn, name='navStartPlayerTurn'),
     path('navMoveActions', views.navMoveActions, name='navMoveActions'),
     path('navScoutActions', views.navScoutActions, name='navScoutActions'),
     path('navPortActions', views.navPortActions, name='navPortActions'),

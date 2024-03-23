@@ -1,7 +1,11 @@
+import random
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from dataset.utils.dataset.decorators.choices import COLOUR, LOYALITY, PLAYER_COLOURS
+from dataset.utils.dataset.decorators.choices import COLOUR, HIT_LOCATIONS, LOYALITY, PLAYER_COLOURS, SPECIALWEAPONS
+from dataset.models import CargoCard
+from dataset.models import Cube
+from dataset.models import SpecialWeapon
 from game.models import Game
 from game.models import GameDemandTokens
 from game.models import PlayersCaptainsCards
@@ -12,7 +16,10 @@ from game.models import TrackFavors
 from game.models import TrackGloryPoint
 from game.models import TrackLoyality
 from game.models import TrackPlayerGolds
+from game.models import TrackPlayerHitLocations
+from game.models import TrackPlayerSpecialWeapons
 from game.serializers import CargoCardSerializer
+from nav.models import NavBarGame
 
 
 @csrf_exempt
@@ -27,9 +34,13 @@ def portAction(request):
     player_golds = TrackPlayerGolds.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
     player_cargo_cards_instance = StackPlayerCargoCards.objects.get(player_colour=player_colour)
+    player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
     ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    player_special_weapons = TrackPlayerSpecialWeapons.objects.get(game_number=game)
     favours = TrackFavors.objects.get(game_number=game)
     loyality = TrackLoyality.objects.get(game_number=game)
+    nav_bar = NavBarGame.objects.get(game_number=game)
+    player_nav_bar = getattr(nav_bar, f"player_{player_colour}")
 
 
     # GET method
@@ -37,22 +48,73 @@ def portAction(request):
 
         # port
 
-        # sell goods (always as first, onlu one time in turn)
+        # sell goods (always as first, only one time in turn)
         if request.GET.get('type_request') == 'sell goods':
             for i in range(1, 9):
                 if getattr(player_cargo_cards_instance, f"cargo_card_{i}"):
                     card = getattr(player_cargo_cards_instance, f"cargo_card_{i}")
-                    # request.session[f"playerCargoCard{i}"] = CargoCardSerializer(card).data
                     data[f"playerCargo{i}"] = card.cargo
                     data[f"playerCargoCard{i}ImageUrl"] = card.awers.url
-                else: break
+                else: 
+                    break
             port_name = str(getattr(ship_localisation_instance, f"{player_colour}_ship")).lower().replace(' ', '_')
             demand_token_in_port = getattr(demand_tokens, port_name)
             data['demanTokenInPort'] = demand_token_in_port.cargo
             data['demanTokenInPortImageUrl'] = demand_token_in_port.awers.url
 
-        # visit shipyard
+        if request.GET.get('type_request') == 'buy goods':
+            cargo_cards = CargoCard.objects.all() # drawing 6 cards in standard
+            port_name = str(getattr(ship_localisation_instance, f"{player_colour}_ship")).lower().replace(' ', '_')
+            demand_token_in_port = getattr(demand_tokens, port_name)
+            data['playerGolds'] = getattr(player_golds, f"player_{player_colour}")
+            amount_cargo = 6
+            # cargo for buy
+            for i in range(1, amount_cargo + 1):
+                while True: # randomly card, other as demand token in port
+                    cargo_card = random.choice(cargo_cards)
+                    if cargo_card.cargo == demand_token_in_port.cargo:
+                        continue
+                    else:
+                        serializer = CargoCardSerializer(cargo_card)
+                        request.session[f"cargoCard{i}ToBuy"] = serializer.data
+                        data[f"cargoCard{i}ToBuy"] = request.session[f"cargoCard{i}ToBuy"]
+                        break
+            # player cargo cards and free space in ship cargo
+            ship_hold = player_hit_locations.cargo
+            for i in range(1, 9): # player cargo cads
+                if getattr(player_cargo_cards_instance, f"cargo_card_{i}"):
+                    serializer = CargoCardSerializer(getattr(player_cargo_cards_instance, f"cargo_card_{i}"))
+                    request.session[f"playerCargoCard{i}"] = serializer.data
+                    data[f"playerCargoCard{i}"] = request.session[f"playerCargoCard{i}"]
+                    ship_hold -= 1
+                else:
+                    break
+            data['freeSpaceInShipHold'] = ship_hold
 
+        # visit shipyard special weapon
+        if request.GET.get('type_request') == 'special weapon':
+            data['playerGolds'] = player_golds.golds_amount(player_colour)
+            # weapons for sell and for buy
+            player_weapons = getattr(player_special_weapons, f"player_{player_colour}")
+            for special_weapon in SPECIALWEAPONS:
+                if special_weapon in player_weapons:
+                    data[f"forSell{special_weapon.replace(' ', '')}"] = (SpecialWeapon.objects.get(name=special_weapon)).image.url
+                    continue
+                else:
+                    data[f"forBuy{special_weapon.replace(' ', '')}"] = (SpecialWeapon.objects.get(name=special_weapon)).image.url
+
+        # visit shipyard Repair ship's locations
+        if request.GET.get('type_request') == 'repair':
+            data['playerGolds'] = player_golds.golds_amount(player_colour)
+            for hit_location in HIT_LOCATIONS:
+                data[f"player{hit_location.capitalize()}Value"] = player_hit_locations.value_location(hit_location)
+                data[f"player{hit_location.capitalize()}MaxValue"] = player_hit_locations.max_value_location(f"player_{player_colour}", hit_location)
+
+            data['playerCubeImageUrl'] = Cube.player_cube(player_colour)
+            data['playerCubeMaxImageUrl'] = Cube.player_cube_max(player_colour)
+
+        if request.GET.get('type_request') == 'modifications':
+            data['playerGolds'] = player_golds.golds_amount(player_colour)
 
     # POST method
     if request.method == 'POST':
@@ -87,6 +149,51 @@ def portAction(request):
                 glory_points_track_instance = TrackGloryPoint.objects.get(game_number=game)
                 glory_points_track_instance.increase_glory_point(f"player_{player_colour}")
 
+            # update navBarGame
+            nav_bar.player_nav(player_colour, 'sellGoods')
+
+
+        # accept bought goods
+        if request.POST.get('type_request') == 'buy goods accept':
+
+            list_numbers = list(json.loads(request.POST.get('numbers'))) # bought goods
+
+            # update cargo cards
+            for number in list_numbers: # id for cargo cards
+                player_cargo_cards_instance.add_cargo_card(number)
+
+            # cleaning request.session
+            keys_to_remove = []
+            for key in request.session.keys():
+                if "Card" in key:
+                    keys_to_remove.append(key)
+            for key in keys_to_remove:
+                del request.session[key]
+
+            # update golds
+            if int(request.POST.get('golds')) != 0:
+                player_golds.change_golds(f"player_{player_colour}", int(request.POST.get('golds')))
+
+            # update navBarGame
+            nav_bar.player_nav(player_colour, 'buyGoods')
+            print(dict(request.session))
+
+
+        if request.POST.get('type_request') == 'special weapon buy' or request.POST.get('type_request') == 'special weapon sell':
+            selected_weapon = str(request.POST.get('weapon')).replace('-', ' ').title()
+            if request.POST.get('type_request') == 'special weapon sell':
+                player_special_weapons.remove_weapon(f"player_{player_colour}", selected_weapon)
+                player_golds.increase_golds(f"player_{player_colour}", 1)
+            if request.POST.get('type_request') == 'special weapon buy' and player_golds.decrease_golds(f"player_{player_colour}", 3):
+                player_special_weapons.add_weapon(f"player_{player_colour}", selected_weapon)
+
+
+        # repair location hull, cargo, masts, cannons
+        if 'repair location' in request.POST.get('type_request'):
+            if player_golds.golds_amount(player_colour) >= 2:
+                loaction = (str(request.POST.get('type_request')).split(' '))[-1]
+                if player_hit_locations.repair_location(f"player_{player_colour}", loaction):
+                    player_golds.decrease_golds(f"player_{player_colour}", 2)
 
         # stash gold
         if request.POST.get('type_request') == 'stash gold':
@@ -99,31 +206,31 @@ def portAction(request):
 
             player_loyality = getattr(loyality, f"player_{player_colour}")
 
-            if player_loyality == 'Fierce Loyality': # this is max at loyality track
+            if 'raiseLoyality' in player_nav_bar or player_loyality == 'Fierce Loyality':
                 data['cantChangeLoyality'] = True
-
-            if getattr(player_golds, f"player_{player_colour}") >= 3:
-                if player_loyality == 'Happy':
-                    player_golds.decrease_golds(f"player_{player_colour}", 3)
-                elif player_loyality == 'Pleased':
-                    player_golds.decrease_golds(f"player_{player_colour}", 3)
-                elif player_loyality == 'Content':
-                    player_golds.decrease_golds(f"player_{player_colour}", 3)
-                elif player_loyality == 'Restless':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-                elif player_loyality == 'Unhappy':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-                elif player_loyality == 'Angry':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-            elif getattr(player_golds, f"player_{player_colour}") == 2:
-                if player_loyality == 'Restless':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-                elif player_loyality == 'Unhappy':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-                elif player_loyality == 'Angry':
-                    player_golds.decrease_golds(f"player_{player_colour}", 2)
-
-            loyality.increase_loyality(f"player_{player_colour}")
+            else:
+                nav_bar.player_nav(player_colour, 'raiseLoyality')
+                if getattr(player_golds, f"player_{player_colour}") >= 3:
+                    if player_loyality == 'Happy':
+                        player_golds.decrease_golds(f"player_{player_colour}", 3)
+                    elif player_loyality == 'Pleased':
+                        player_golds.decrease_golds(f"player_{player_colour}", 3)
+                    elif player_loyality == 'Content':
+                        player_golds.decrease_golds(f"player_{player_colour}", 3)
+                    elif player_loyality == 'Restless':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                    elif player_loyality == 'Unhappy':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                    elif player_loyality == 'Angry':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                elif getattr(player_golds, f"player_{player_colour}") == 2:
+                    if player_loyality == 'Restless':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                    elif player_loyality == 'Unhappy':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                    elif player_loyality == 'Angry':
+                        player_golds.decrease_golds(f"player_{player_colour}", 2)
+                loyality.increase_loyality(f"player_{player_colour}")
 
 
         # gain favour
@@ -131,6 +238,7 @@ def portAction(request):
             if getattr(player_golds, f"player_{player_colour}") < 2:
                 data['cantGetFavour'] = True
             else:
+                nav_bar.player_nav(player_colour, 'getFavour')
                 player_golds.decrease_golds(f"player_{player_colour}", 2)
                 favours.increase_favour_point(f"player_{player_colour}")
 

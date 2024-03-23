@@ -7,3 +7,4 @@ class CargoCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = CargoCard
         fields = '__all__'
+        # exclude = ['id']

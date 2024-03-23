@@ -31,7 +31,7 @@ from .putLocationToken import putLocationToken
 
 # player actions
 from .playerActions import startRound
-from .playerActions import startPlayerActions
+from .playerActions import startPlayerTurn
 from .playerActions import endCurrentAction
 from .playerActions import fishingAction
 from .playerActions import moveAction

@@ -17,19 +17,27 @@ class TrackPlayerGolds(models.Model):
             field.save()
 
     def increase_golds(self, player: str, amount: int):
-        """Increase Golds."""
+        """Increase Golds by amount."""
         setattr(self, player, getattr(self, player) + amount)
         self.save()
 
     def decrease_golds(self, player: str, amount: int):
-        """Decrease Golds."""
-        if getattr(self, player) <= amount:
-            setattr(self, player, 0)
-            self.save()
+        """Decrease Golds by amount, return True if possible"""
+        if getattr(self, player) < amount:
+            return False
         else:
             setattr(self, player, getattr(self, player) - amount)
-            self.save()
+        self.save()
+        return True
 
+    def change_golds(self, player: str, amount: int):
+        """Change golds by amount."""
+        setattr(self, player, amount)
+        self.save()
+
+    def golds_amount(self, player: str) -> int:
+        golds_amount = getattr(self, f"player_{player}")
+        return golds_amount
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
 

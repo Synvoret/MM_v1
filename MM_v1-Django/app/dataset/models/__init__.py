@@ -19,3 +19,4 @@ from .shipModifications import ShipModifications
 from .specialWeapons import SpecialWeapon
 from .merchantTokens import MerchantTokens
 from .locationTokens import LocationTokens
+from .tiles import Tile

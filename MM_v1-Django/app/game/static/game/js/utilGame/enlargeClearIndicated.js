@@ -37,7 +37,6 @@ function enlagreIndicated(id) {
         let featuresImage = '';
         let enlargeIndicatedImageId = document.getElementById('board-enlarge-indicated-image');
         enlargeIndicatedImageId.removeAttribute('href');
-        let enlargeIndicatedRectId = document.getElementById('board-enlarge-indicated-rect');
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -46,8 +45,6 @@ function enlagreIndicated(id) {
                 enlargeIndicatedImageId.setAttribute('href', featuresImage);
                 enlargeIndicatedImageId.setAttribute('width', widthIndicated * zoom);
                 enlargeIndicatedImageId.setAttribute('height', heightIndicated * zoom);
-                enlargeIndicatedRectId.setAttribute('width', widthIndicated * zoom);
-                enlargeIndicatedRectId.setAttribute('height', heightIndicated * zoom);
             }
         };
         xhr.open('GET', 'featuresSeaZones?sea_zone=' + seaZone, true);
@@ -64,8 +61,6 @@ function enlagreIndicated(id) {
             };
             enlargeIndicatedImageId.setAttribute('width', widthIndicated * zoom);
             enlargeIndicatedImageId.setAttribute('height', heightIndicated * zoom);
-            enlargeIndicatedRectId.setAttribute('width', widthIndicated * zoom);
-            enlargeIndicatedRectId.setAttribute('height', heightIndicated * zoom);
         });
     };
 
@@ -76,18 +71,26 @@ function enlagreIndicated(id) {
         let image = elementToEnlarge.getAttribute('href');
         let widthIndicated = elementToEnlarge.getAttribute('width');
         let heightIndicated = elementToEnlarge.getAttribute('height');
-        // image, rect, zoom
-        let enlargeIndicatedImageId = document.getElementById('board-enlarge-indicated-image');
-        let enlargeIndicatedRectId = document.getElementById('board-enlarge-indicated-rect');
+        let enlargeIndicatedImageId = '';
+        if (elementToEnlarge.getAttribute('id').startsWith('player-board-')) {
+            // image, rect, zoom ON PLAYER BOARD
+            enlargeIndicatedImageId = document.getElementById('player-board-enlarge-indicated-image');
+        } else {
+            // image, rect, zoom ON BOARD
+            enlargeIndicatedImageId = document.getElementById('board-enlarge-indicated-image');
+        };
         // setting parametrs if image href exist
         if (image) {
             enlargeIndicatedImageId.setAttribute('href', image);
             enlargeIndicatedImageId.setAttribute('width', widthIndicated * zoom);
             enlargeIndicatedImageId.setAttribute('height', heightIndicated * zoom);
-            enlargeIndicatedRectId.setAttribute('width', widthIndicated * zoom);
-            enlargeIndicatedRectId.setAttribute('height', heightIndicated * zoom);
-            document.getElementById('board-enlarge-indicated-use').setAttribute('href', '#board-enlarge-indicated-image');
-            document.getElementById('board-enlarge-indicated-use').style.display = 'block';
+            if (elementToEnlarge.getAttribute('id').startsWith('player-board-')) {
+                document.getElementById('player-board-enlarge-indicated-use').setAttribute('href', '#player-board-enlarge-indicated-image');
+                document.getElementById('player-board-enlarge-indicated-use').style.display = 'block';
+            } else {
+                document.getElementById('board-enlarge-indicated-use').setAttribute('href', '#board-enlarge-indicated-image');
+                document.getElementById('board-enlarge-indicated-use').style.display = 'block';
+            };
             // zoom in/out
             elementToEnlarge.addEventListener("wheel", function(event) {
                 event.preventDefault();
@@ -98,24 +101,37 @@ function enlagreIndicated(id) {
                 };
                 enlargeIndicatedImageId.setAttribute('width', widthIndicated * zoom);
                 enlargeIndicatedImageId.setAttribute('height', heightIndicated * zoom);
-                enlargeIndicatedRectId.setAttribute('width', widthIndicated * zoom);
-                enlargeIndicatedRectId.setAttribute('height', heightIndicated * zoom);
             });
         };
     };
 
+
     // position indicated on BOARD
-    let boardSvg = document.getElementById('board-svg');
+    let boardSvg = ''
+    if (elementToEnlarge.getAttribute('id').startsWith('player-board-')) {
+        boardSvg = document.getElementById('player-board-active-svg');
+    } else {
+        boardSvg = document.getElementById('board-svg');
+    };
     boardSvg.addEventListener('mousemove', function(event) {
         let boardSvgRect = boardSvg.getBoundingClientRect();
         let mouseX = event.clientX - boardSvgRect.left;
         let mouseY = event.clientY - boardSvgRect.top;
-        let positionShift = 25;
-        document.getElementById('board-enlarge-indicated-use').setAttribute('x', mouseX + positionShift);
-        document.getElementById('board-enlarge-indicated-use').setAttribute('y', mouseY + positionShift);
+        let positionShift = 5;
+        if (elementToEnlarge.getAttribute('id').startsWith('player-board-')) {
+            document.getElementById('player-board-enlarge-indicated-use').setAttribute('x', mouseX + positionShift);
+            document.getElementById('player-board-enlarge-indicated-use').setAttribute('y', mouseY + positionShift - 30);
+        } else {
+            document.getElementById('board-enlarge-indicated-use').setAttribute('x', mouseX + positionShift);
+            document.getElementById('board-enlarge-indicated-use').setAttribute('y', mouseY + positionShift);
+        };
     });
     // mouse leave id-name element
     elementToEnlarge.addEventListener("mouseleave", function() {
-        document.getElementById('board-enlarge-indicated-use').style.display = 'none';
+        if (elementToEnlarge.getAttribute('id').startsWith('player-board-')) {
+            document.getElementById('player-board-enlarge-indicated-use').style.display = 'none';
+        } else {
+            document.getElementById('board-enlarge-indicated-use').style.display = 'none';
+        };
     });
 };

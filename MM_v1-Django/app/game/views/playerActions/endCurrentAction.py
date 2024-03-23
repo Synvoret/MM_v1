@@ -1,14 +1,18 @@
 from django.http import JsonResponse
 from dataset.models import Cube
+from game.models import Game
 from game.models import PlayersShipsCards
+from nav.models import NavBarGame
 
 def endCurrentAction(request):
     """Update Captain Actions Track."""
 
-    data = {}
-
     colour = request.GET.get('colour', None)
-    data['activePlayerColour'] = colour
+
+    data = {}
+    game = Game.objects.get(number=100)
+    nav_bar = NavBarGame.objects.get(game_number=game)
+    nav_bar.player_nav(colour)
 
     colour_cube = Cube.objects.get(name=colour.capitalize() + ' Cube')
     colour_cube_image = colour_cube.image.url
@@ -28,6 +32,7 @@ def endCurrentAction(request):
             del request.session['amountActions']
             return JsonResponse(data)
 
+    data['activePlayerColour'] = colour
     data["cubeImage"] = colour_cube_image
     data["amountActions"] = request.session['amountActions']
 

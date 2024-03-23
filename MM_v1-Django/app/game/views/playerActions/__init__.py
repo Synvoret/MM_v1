@@ -1,5 +1,5 @@
 from .startRound import startRound
-from .startPlayerActions import startPlayerActions
+from .startPlayerTurn import startPlayerTurn
 from .endCurrentAction import endCurrentAction
 from .fishingAction import fishingAction
 from .moveAction import moveAction

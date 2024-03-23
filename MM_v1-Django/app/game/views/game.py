@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from nav.models import NavBarGame
 from game.models import Game
 from game.models import PlayersCaptainsCards
 from game.models import PlayersShipsCards
@@ -31,6 +32,8 @@ def game(request):
 
     # RESET GAME
     Game.set_default_values()
+    # RESET NAVBAR
+    NavBarGame.set_default_values()
     # RESET PLAYERS BOARDs
     TrackLoyality.set_values_default()
     TrackFavors.set_values_default()

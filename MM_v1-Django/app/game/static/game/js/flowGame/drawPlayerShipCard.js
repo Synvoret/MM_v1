@@ -4,7 +4,7 @@ function drawPlayerShipCard(colour) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
-            document.getElementById('player-ship-card-image').setAttribute('href', response.shipCardImage);
+            document.getElementById('player-board-ship-card-image').setAttribute('href', response.shipCardImage);
         }
     };
     xhr.open('GET', 'playerShipCard?colour=' + colour, true);

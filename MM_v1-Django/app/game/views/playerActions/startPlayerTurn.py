@@ -8,9 +8,10 @@ from game.models import PlayersCaptainsCards
 from game.models import PlayersShipsCards
 from game.models import TrackPlayerHitLocations
 from game.utils.game.utilUtil import next_player
+from nav.models import NavBarGame
 
-def startPlayerActions(request):
-    """Start Player Actions."""
+def startPlayerTurn(request):
+    """Start Player Turn."""
 
     data = {}
 
@@ -43,8 +44,6 @@ def startPlayerActions(request):
 
     if getattr(ship_localisation_instance, f"{player_colour}_ship") == 'The Caribbean Sea':
         data['isInTheCaribbeanSea'] = True
-
-
 
     data['playerInPort'] = request.session['playerInPort']
     data['playerColour'] = player_colour

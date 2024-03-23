@@ -15,8 +15,8 @@ class TrackPlayersShipModifications(models.Model):
             field.player_yellow = list()
             # field.player_yellow.append("Extended Cargo Hold")
             # field.player_yellow.append("Advanced Rigs & Sails")
-            # field.player_yellow.append("Plank")
-            # field.player_yellow.append("Galley Refit")
+            field.player_yellow.append("Plank")
+            field.player_yellow.append("Galley Refit")
             # field.player_yellow.append("Carved Hull")
             field.save()
 

@@ -19,3 +19,4 @@ from .shipCardAdmin import ShipCardAdmin
 from .shipModificationsAdmin import ShipModificationsAdmin
 from .signAdmin import SignAdmin
 from .specialWeaponAdmin import SpecialWeaponAdmin
+from .tilesAdmin import TileAdmin

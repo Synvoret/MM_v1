@@ -1,5 +1,5 @@
 import random
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from board.models import SeaZone
 from dataset.utils.dataset.decorators.choices import DIRECTION
@@ -7,6 +7,7 @@ from game.models import Game
 from game.models import PlayersCaptainsCards
 from game.models import PlayersShipsCards
 from game.models import ShipsLocalisations
+from nav.models import NavBarGame
 
 
 @csrf_exempt
@@ -16,20 +17,23 @@ def navMoveActions(request):
     game = Game.objects.get(number=100)
     player_ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
+    nav_bar = NavBarGame.objects.get(game_number=game)
+    player_nav_bar = getattr(nav_bar, f"player_{player_colour}")
 
     data = {}
 
     # WHEN CLICK "MOVES" BUTTON, CHECKING LOCALISATION for SHIP SEA ZONE or PORT
     if request.GET.get('when', None) == 'moves':
-        if getattr(player_ship_localisation_instance, f"{player_colour}_in_port"):
-            data['unitInPort'] = True
-        if getattr(player_ship_localisation_instance, f"{player_colour}_ship") == 'The Caribbean Sea':
+        if 'playerInPort' in player_nav_bar:
+            data['playerInPort'] = True
+        if 'isInTheCaribbeanSea' in player_nav_bar:
             data['isInTheCaribbeanSea'] = True
 
 
-    if request.GET.get('type_request', None) == 'back':
-        data['playerInPort'] = getattr(player_ship_localisation_instance, f"{player_colour}_in_port")
-        if getattr(player_ship_localisation_instance, f"{player_colour}_ship") == 'The Caribbean Sea':
+    if request.GET.get('when', None) == 'back':
+        if 'playerInPort' in player_nav_bar:
+            data['playerInPort'] = True
+        if 'isInTheCaribbeanSea' in player_nav_bar:
             data['isInTheCaribbeanSea'] = True
 
 

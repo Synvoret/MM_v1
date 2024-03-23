@@ -14,14 +14,13 @@ def fishingAction(request):
     """Endpoint return a randomly fishing card."""
 
     data = {}
+
     player_colour = request.session['playerColourActive']
-    player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
+    player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
 
     # if any location is destroyed you cannot interact with merchant
-    for hit_localisation in HIT_LOCATIONS:
-        if getattr(player_hits_locations_instance, hit_localisation) == 0:
-            data['playerHaveDestroyedHitLocation'] = True
-            break
+    if player_hits_locations.destroyed_location():
+        data['playerHaveDestroyedHitLocation'] = True
 
     # SERIALIZER
     if 'fishingCard' not in request.session:
@@ -42,11 +41,7 @@ def fishingAction(request):
 
     # REQUEST METHOD GET
     if request.method == 'GET':
-
         data['fishingCardImage'] = request.session['fishingCard']['awers']
-        data['playerColour'] = player_colour
-
-        return JsonResponse(data)
 
 
     # REQUEST METHOD POST
@@ -57,14 +52,11 @@ def fishingAction(request):
             golds_instance = TrackPlayerGolds.objects.get(game_number=game)
             golds_instance.increase_golds(f"player_{player_colour}", fishing_card['fishing_value'])
             data['fishingValue'] = True
-        if fishing_card['fishing_hits']: 
-            player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
-            hit_location = fishing_card['fishing_hits']
-            if getattr(player_hits_locations, hit_location.lower()) > 0:
-                setattr(player_hits_locations, hit_location.lower(), getattr(player_hits_locations, hit_location.lower()) - 1)
-                player_hits_locations.save()
+        if fishing_card['fishing_hits']:
+            player_hits_locations.damage_location(fishing_card['fishing_hits'])
             data['fishingHits'] = True
         del request.session['fishingCard']
-        data['colour'] = player_colour
 
-        return JsonResponse(data)
+
+    data['playerColour'] = player_colour
+    return JsonResponse(data)

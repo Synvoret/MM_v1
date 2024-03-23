@@ -145,7 +145,6 @@ def scoutAction(request):
             data['cargoCardPlunderValue'] = cargo_card.plunder_value
             data['cargoCardHits'] = (cargo_card.hits).lower()
             data['cargoCardDrawImageUrl'] = cargo_card.awers.url
-        print('JEDZIEMY Z WYMIANĄKARTY CARGO')
 
 
     if request.POST.get('type_request') == 'merchant raid accept': # for MERCHANT RAID

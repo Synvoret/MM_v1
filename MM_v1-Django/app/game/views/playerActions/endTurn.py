@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from game.models import Game
+from nav.models import NavBarGame
 
 
 @csrf_exempt
@@ -20,6 +21,9 @@ def endTurn(request):
     data['playerColourEndingTurn'] = player_colour
 
     # When PLAYER CLICK END TURN BUTTON
+    nav_bar = NavBarGame.objects.get(game_number=game)
+    nav_bar.player_nav(player_colour)
+    nav_bar.player_nav(player_colour, start=True)
     if request.method == 'POST':
 
         setattr(game, f'player_{player_colour}_done', True)

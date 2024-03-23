@@ -11,6 +11,7 @@ _ROBOCZE/
 **/venv_windows/
 **/venv_linux/
 licznik_kodu.py
+gameFlow.py
 MM_v1-Flask/
 .flake8
 docker-compose.yml

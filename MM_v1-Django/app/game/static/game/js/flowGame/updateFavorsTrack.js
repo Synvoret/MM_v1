@@ -12,8 +12,8 @@ function updateFavorsTrack(colour) {
             };
 
             let favour = parseInt(response.favourValue)
-            document.getElementById('cube-favour-image').setAttribute('href', response.cubeImage);
-            document.getElementById(`${favour}-favour-track`).setAttribute('href', '#cube-favour-image');
+            document.getElementById('player-board-cube-favour-image').setAttribute('href', response.cubeImage);
+            document.getElementById(`${favour}-favour-track`).setAttribute('href', '#player-board-cube-favour-image');
 
         }
     };

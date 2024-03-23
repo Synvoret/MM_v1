@@ -10,7 +10,7 @@ function navMoveActions(when) {
                 document.querySelector(".step.nav-player-actions").innerHTML = 'Select Destination'
                 document.querySelector('.nav-actions-buttons').style.display = 'none';
                 document.querySelector('.nav-moves-buttons').style.display = '';
-                if (response.unitInPort) {
+                if (response.playerInPort) {
                     document.querySelector(".nav-button.nav-button-to-port").disabled = true;
                     document.querySelector(".nav-button.nav-button-from-port").disabled = false;
                     document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = true;

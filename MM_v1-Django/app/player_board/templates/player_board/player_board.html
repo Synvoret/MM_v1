@@ -1,7 +1,7 @@
 {% load static %}
 
-<div id="player-active-board-container" style="display: none;">
-    <svg id="player-active-board-svg">
+<div id="player-board-active-container" style="display: none;">
+    <svg id="player-board-active-svg">
 
 
         <!-- PLAYER BOARD -->
@@ -10,7 +10,7 @@
 
         <!-- FAVORs TRACK -->
         <defs>
-            <image id="cube-favour-image" width="20" height="20" href=""/>
+            <image id="player-board-cube-favour-image" width="20" height="20" href=""/>
         </defs>
         <use id="0-favour-track" class="opacity-cube" name="0-favour-track" x="23" y="103" href=""/>
         <use id="1-favour-track" class="opacity-cube" name="1-favour-track" x="23" y="85" href=""/>
@@ -36,10 +36,9 @@
 
         <!-- CAPTAIN -->
         <defs>
-            <clipPath id="player-captain-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
-            <image id="player-captain-card-image" width="88" height="58" href="" clip-path="url(#player-captain-card-clipPath)" onmouseover="enlagreIndicated('player-captain-card-image')"/>
+            <image id="player-board-captain-card-image" width="88" height="58" href="" onmouseover="enlagreIndicated('player-board-captain-card-image')"/>
         </defs>
-        <use id="player-captain-card" name="player-captain-card" x="160" y="25" href="#player-captain-card-image" transform="rotate(0.5 160 25)"/>
+        <use id="player-captain-card" name="player-captain-card" x="160" y="25" href="#player-board-captain-card-image" transform="rotate(0.5 160 25)"/>
 
 
         <!-- GLORY CARDs -->
@@ -62,10 +61,9 @@
 
         <!-- SHIP -->
         <defs>
-            <clipPath id="player-ship-card-clipPath"><rect x="0" y="0" width="88" height="58" rx="4" ry="4"/></clipPath>
-            <image id="player-ship-card-image" width="88" height="58" href="" clip-path="url(#player-ship-card-clipPath)"/>
+            <image id="player-board-ship-card-image" width="88" height="58" href="" onmouseover="enlagreIndicated('player-board-ship-card-image')"/>
         </defs>
-        <use id="player-ship-card" name="player-ship-card" x="160" y="152" href="#player-ship-card-image" transform="rotate(0.5 161 153)"/>
+        <use id="player-board-ship-card" x="160" y="152" href="#player-board-ship-card-image" transform="rotate(0.5 161 153)"/>
 
 
         <!-- BOUNTIES -->
@@ -159,49 +157,48 @@
 
         <!-- HIT LOCATIONs -->
         <defs>
-            <clipPath id="player-hit-location-clipPath"><rect x="0" y="0" width="12" height="12" rx="2" ry="2"/></clipPath>
-            <image id="player-hit-location-image" width="12" height="12" href="" clip-path="url(#player-hit-location-clipPath)"/>
-            <image id="player-hit-location-max-value-image" width="12" height="12" href="" clip-path="url(#player-hit-location-clipPath)"/>
+            <image id="player-hit-location-image" width="12" height="12" href=""/>
+            <image id="player-hit-location-max-value-image" width="12" height="12" href=""/>
         </defs>
-        <use id="hull-1-player-hit-location" class="opacity-cube" name="hull-1-player-it-location" x="271" y="141" href=""/>
-        <use id="hull-2-player-hit-location" class="opacity-cube" name="hull-2-player-it-location" x="284" y="141" href=""/>
-        <use id="hull-3-player-hit-location" class="opacity-cube" name="hull-3-player-it-location" x="296" y="141" href=""/>
-        <use id="hull-4-player-hit-location" class="opacity-cube" name="hull-4-player-it-location" x="309" y="141" href=""/>
-        <use id="hull-5-player-hit-location" class="opacity-cube" name="hull-5-player-it-location" x="321" y="141" href=""/>
-        <use id="hull-6-player-hit-location" class="opacity-cube" name="hull-6-player-it-location" x="334" y="141" href=""/>
-        <use id="hull-7-player-hit-location" class="opacity-cube" name="hull-7-player-it-location" x="345" y="141" href=""/>
+        <use id="hull-1-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-1-player-it-location" x="271" y="141" href=""/>
+        <use id="hull-2-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-2-player-it-location" x="284" y="141" href=""/>
+        <use id="hull-3-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-3-player-it-location" x="296" y="141" href=""/>
+        <use id="hull-4-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-4-player-it-location" x="309" y="141" href=""/>
+        <use id="hull-5-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-5-player-it-location" x="321" y="141" href=""/>
+        <use id="hull-6-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-6-player-it-location" x="334" y="141" href=""/>
+        <use id="hull-7-player-hit-location" class="opacity-cube player-board-hit-location" name="hull-7-player-it-location" x="345" y="141" href=""/>
 
-        <use id="cargo-1-player-hit-location" class="opacity-cube" name="cargo-1-player-hit-location" x="271" y="158" href=""/>
-        <use id="cargo-2-player-hit-location" class="opacity-cube" name="cargo-2-player-hit-location" x="284" y="158" href=""/>
-        <use id="cargo-3-player-hit-location" class="opacity-cube" name="cargo-3-player-hit-location" x="296" y="158" href=""/>
-        <use id="cargo-4-player-hit-location" class="opacity-cube" name="cargo-4-player-hit-location" x="309" y="158" href=""/>
-        <use id="cargo-5-player-hit-location" class="opacity-cube" name="cargo-5-player-hit-location" x="321" y="158" href=""/>
-        <use id="cargo-6-player-hit-location" class="opacity-cube" name="cargo-6-player-hit-location" x="334" y="158" href=""/>
-        <use id="cargo-7-player-hit-location" class="opacity-cube" name="cargo-7-player-hit-location" x="345" y="158" href=""/>
+        <use id="cargo-1-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-1-player-hit-location" x="271" y="158" href=""/>
+        <use id="cargo-2-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-2-player-hit-location" x="284" y="158" href=""/>
+        <use id="cargo-3-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-3-player-hit-location" x="296" y="158" href=""/>
+        <use id="cargo-4-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-4-player-hit-location" x="309" y="158" href=""/>
+        <use id="cargo-5-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-5-player-hit-location" x="321" y="158" href=""/>
+        <use id="cargo-6-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-6-player-hit-location" x="334" y="158" href=""/>
+        <use id="cargo-7-player-hit-location" class="opacity-cube player-board-hit-location" name="cargo-7-player-hit-location" x="345" y="158" href=""/>
 
-        <use id="masts-1-player-hit-location" class="opacity-cube" name="masts-1-player-hit-location" x="271" y="174" href=""/>
-        <use id="masts-2-player-hit-location" class="opacity-cube" name="masts-2-player-hit-location" x="284" y="174" href=""/>
-        <use id="masts-3-player-hit-location" class="opacity-cube" name="masts-3-player-hit-location" x="296" y="174" href=""/>
-        <use id="masts-4-player-hit-location" class="opacity-cube" name="masts-4-player-hit-location" x="309" y="174" href=""/>
-        <use id="masts-5-player-hit-location" class="opacity-cube" name="masts-5-player-hit-location" x="321" y="174" href=""/>
-        <use id="masts-6-player-hit-location" class="opacity-cube" name="masts-6-player-hit-location" x="334" y="174" href=""/>
-        <use id="masts-7-player-hit-location" class="opacity-cube" name="masts-7-player-hit-location" x="345" y="174" href=""/>
+        <use id="masts-1-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-1-player-hit-location" x="271" y="174" href=""/>
+        <use id="masts-2-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-2-player-hit-location" x="284" y="174" href=""/>
+        <use id="masts-3-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-3-player-hit-location" x="296" y="174" href=""/>
+        <use id="masts-4-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-4-player-hit-location" x="309" y="174" href=""/>
+        <use id="masts-5-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-5-player-hit-location" x="321" y="174" href=""/>
+        <use id="masts-6-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-6-player-hit-location" x="334" y="174" href=""/>
+        <use id="masts-7-player-hit-location" class="opacity-cube player-board-hit-location" name="masts-7-player-hit-location" x="345" y="174" href=""/>
 
-        <use id="crew-1-player-hit-location" class="opacity-cube" name="crew-1-player-it-location" x="271" y="190" href=""/>
-        <use id="crew-2-player-hit-location" class="opacity-cube" name="crew-2-player-it-location" x="284" y="190" href=""/>
-        <use id="crew-3-player-hit-location" class="opacity-cube" name="crew-3-player-it-location" x="296" y="190" href=""/>
-        <use id="crew-4-player-hit-location" class="opacity-cube" name="crew-4-player-it-location" x="309" y="190" href=""/>
-        <use id="crew-5-player-hit-location" class="opacity-cube" name="crew-5-player-it-location" x="321" y="190" href=""/>
-        <use id="crew-6-player-hit-location" class="opacity-cube" name="crew-6-player-it-location" x="334" y="190" href=""/>
-        <use id="crew-7-player-hit-location" class="opacity-cube" name="crew-7-player-it-location" x="345" y="190" href=""/>
+        <use id="crew-1-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-1-player-it-location" x="271" y="190" href=""/>
+        <use id="crew-2-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-2-player-it-location" x="284" y="190" href=""/>
+        <use id="crew-3-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-3-player-it-location" x="296" y="190" href=""/>
+        <use id="crew-4-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-4-player-it-location" x="309" y="190" href=""/>
+        <use id="crew-5-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-5-player-it-location" x="321" y="190" href=""/>
+        <use id="crew-6-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-6-player-it-location" x="334" y="190" href=""/>
+        <use id="crew-7-player-hit-location" class="opacity-cube player-board-hit-location" name="crew-7-player-it-location" x="345" y="190" href=""/>
 
-        <use id="cannons-1-player-hit-location" class="opacity-cube" name="cannons-player-1-hit-location" x="271" y="207" href=""/>
-        <use id="cannons-2-player-hit-location" class="opacity-cube" name="cannons-player-2-hit-location" x="284" y="207" href=""/>
-        <use id="cannons-3-player-hit-location" class="opacity-cube" name="cannons-player-3-hit-location" x="296" y="207" href=""/>
-        <use id="cannons-4-player-hit-location" class="opacity-cube" name="cannons-player-4-hit-location" x="309" y="207" href=""/>
-        <use id="cannons-5-player-hit-location" class="opacity-cube" name="cannons-player-5-hit-location" x="321" y="207" href=""/>
-        <use id="cannons-6-player-hit-location" class="opacity-cube" name="cannons-player-6-hit-location" x="334" y="207" href=""/>
-        <use id="cannons-7-player-hit-location" class="opacity-cube" name="cannons-player-7-hit-location" x="345" y="207" href=""/>
+        <use id="cannons-1-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-1-hit-location" x="271" y="207" href=""/>
+        <use id="cannons-2-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-2-hit-location" x="284" y="207" href=""/>
+        <use id="cannons-3-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-3-hit-location" x="296" y="207" href=""/>
+        <use id="cannons-4-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-4-hit-location" x="309" y="207" href=""/>
+        <use id="cannons-5-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-5-hit-location" x="321" y="207" href=""/>
+        <use id="cannons-6-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-6-hit-location" x="334" y="207" href=""/>
+        <use id="cannons-7-player-hit-location" class="opacity-cube player-board-hit-location" name="cannons-player-7-hit-location" x="345" y="207" href=""/>
 
 
         <!-- SPECIAL WEAPONs -->
@@ -250,11 +247,12 @@
 
         <!-- PLAYER GOLDs -->
         <defs>
-            <clipPath id="coin-clipPath"><circle cx="25" cy="25" r="25"/></clipPath>
-            <image id="coin-image" width="50" height="50" href="" clip-path="url(#coin-clipPath)"/>
+            <g id="coin">
+                <image id="coin-image" width="50" href=""/>
+                <text id="player-coin-amount" x="25" y="33" style="font-size: 24px" text-anchor="middle"></text>
+            </g>
         </defs>
-        <use id="player-coins" name="player-coins" x="422" y="200" href="#coin-image"/>
-        <text id="player-coin-amount" x="445" y="228" font-weight="bold" font-size="24" stroke-width="0.5" stroke="" fill="white" text-anchor="middle" dominant-baseline="middle"></text>
+        <use id="player-board-coins" x="422" y="200" href="#coin"/>
 
 
         <!-- CAPTAIN ACTIONs -->
@@ -341,6 +339,14 @@
             <tspan class="tspan-player-board"></tspan>
             <tspan class="tspan-player-board"></tspan>
         </text>
+
+        <!-- ENLARGE on player board INDICATED HELPER -->
+        <defs id="player-board-enlarge-indicated">
+            <textPath id="player-board-enlarge-indicated-textPath"></textPath>
+            <image id="player-board-enlarge-indicated-image" width="300" height="200" href=""/>
+            <text id="player-board-enlarge-indicated-text" clip-path="url(#player-board-enlarge-indicated-textPath)" fill="white" style="font: bold 20px cursive;"></text>
+        </defs>
+        <use id="player-board-enlarge-indicated-use" x="500" y="500" style="display: none;"/>
 
     </svg><br>
 </div>

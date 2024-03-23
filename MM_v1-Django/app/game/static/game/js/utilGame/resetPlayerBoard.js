@@ -1,7 +1,7 @@
 function resetPlayerBoard() {
 
     // reste FAVORs TRACK
-    document.getElementById("cube-favour-image").setAttribute('href', '');
+    document.getElementById("player-board-cube-favour-image").setAttribute('href', '');
     document.getElementById("0-favour-track").setAttribute('href', '');
     document.getElementById("1-favour-track").setAttribute('href', '');
     document.getElementById("2-favour-track").setAttribute('href', '');

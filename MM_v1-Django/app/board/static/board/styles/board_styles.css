@@ -42,3 +42,12 @@ use:hover,
     fill: white;
     font-weight: bold;
 }
+
+.opacity-cube {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.opacity-cube:hover {
+    opacity: 0.5;
+}

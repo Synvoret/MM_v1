@@ -1,4 +1,4 @@
-#player-active-board-container {
+#player-board-active-container {
     /* position: fixed;
     bottom: 30px; */
     /* right: 0; */
@@ -6,7 +6,7 @@
     width: 600px;
 }
 
-#player-active-board-svg {
+#player-board-active-svg {
     width: 600px;
     height: 350px;
 }

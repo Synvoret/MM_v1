@@ -13,16 +13,33 @@ class TrackPlayerSpecialWeapons(models.Model):
             field.player_green = list()
             field.player_red = list()
             field.player_yellow = list()
-            # field.player_yellow.append("Chain Shot")
+            field.player_yellow.append("Chain Shot")
             # field.player_yellow.append("Grapeshot")
             # field.player_yellow.append("Grappling Hooks")
-            # field.player_yellow.append("Double Shot")
+            field.player_yellow.append("Double Shot")
             # field.player_yellow.append("Caltrops")
             # field.player_yellow.append("Heated Shot")
-            # field.player_yellow.append("Grenade")
+            field.player_yellow.append("Grenade")
             # field.player_yellow.append("Premium Rum")
             # field.player_yellow.append("Explosive Shell")
             field.save()
+
+    def add_weapon(self, player: str, weapon: str):
+        player_list = list(getattr(self, player))
+        if weapon in player_list:
+            return
+        else:
+            player_list.append(weapon)
+            setattr(self, player, player_list)
+        self.save()
+
+    def remove_weapon(self, player: str, weapon: str):
+        player_list = list(getattr(self, player))
+        if weapon in player_list:
+            player_list.remove(weapon)
+            setattr(self, player, player_list)
+        self.save()
+
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
 

@@ -5,7 +5,7 @@ function playerBoard(colour) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
             document.getElementById('player-board').setAttribute('href', response.playerBoardImage);
-            document.getElementById("player-active-board-container").style.display = '';
+            document.getElementById("player-board-active-container").style.display = '';
 
             // let colour = response.playerColour;
             resetPlayerBoard();

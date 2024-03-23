@@ -39,7 +39,7 @@ urlpatterns = [
 
     # player ACTIONs paths
     path('startRound', views.startRound, name='startRound'),
-    path('startPlayerActions', views.startPlayerActions, name='startPlayerActions'),
+    path('startPlayerTurn', views.startPlayerTurn, name='startPlayerTurn'),
     path('endCurrentAction', views.endCurrentAction, name='endCurrentAction'),
     path('fishingAction', views.fishingAction, name='fishingAction'),
     path('moveAction', views.moveAction, name='moveAction'),
