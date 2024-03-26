@@ -20,3 +20,5 @@ from .shipModificationsAdmin import ShipModificationsAdmin
 from .signAdmin import SignAdmin
 from .specialWeaponAdmin import SpecialWeaponAdmin
 from .tilesAdmin import TileAdmin
+from .commandBoatAdmin import CommandBoatCardAdmin
+from .supportBoatAdmin import SupportBoatCardAdmin

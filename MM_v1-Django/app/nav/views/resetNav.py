@@ -17,7 +17,7 @@ def resetNav(request):
     game = Game.objects.get(number=100)
     player_colour = request.session['playerColourActive']
     player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
-    ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    ship_localisations = ShipsLocalisations.objects.get(game_number=game)
     player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
 
@@ -38,16 +38,16 @@ def resetNav(request):
         for ship in SHIPSLOCALIZATIONS: # for scout action
             if ship == 'merchants_ship':
                 continue
-            if getattr(ship_localisation_instance, ship):
-                # print(getattr(ship_localisation_instance, ship), ship_localisation_instance)
+            if getattr(ship_localisations, ship):
+                # print(getattr(ship_localisations, ship), ship_localisations)
                 pass
 
-    if getattr(ship_localisation_instance, f"{player_colour}_in_port"):
+    if getattr(ship_localisations, f"{player_colour}_in_port"):
         request.session['playerInPort'] = True
     else:
         request.session['playerInPort'] = False
 
-    if getattr(ship_localisation_instance, f"{player_colour}_ship") == 'The Caribbean Sea':
+    if getattr(ship_localisations, f"{player_colour}_ship") == 'The Caribbean Sea':
         data['isInTheCaribbeanSea'] = True
 
     data['playerInPort'] = request.session['playerInPort']

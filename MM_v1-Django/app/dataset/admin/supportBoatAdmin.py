@@ -1,13 +1,13 @@
 from django.contrib import admin
-from dataset.models import ShipCard
+from dataset.models import SupportBoatCard
 
 
-@admin.register(ShipCard)
-class ShipCardAdmin(admin.ModelAdmin):
+@admin.register(SupportBoatCard)
+class SupportBoatCardAdmin(admin.ModelAdmin):
     list_display = [
         'deck',
-        'ship',
-        'ship_type',
+        'boat',
+        'boat_type',
         'expansion',
         'awers',
         'toughness',
@@ -16,7 +16,8 @@ class ShipCardAdmin(admin.ModelAdmin):
         'cannons',
         'maneuverability',
         'speed',
-        'boats',
+        'seamanship',
+        'leadership',
         'buy_cost',
         'sell_cost',
         'notes',

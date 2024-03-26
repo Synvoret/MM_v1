@@ -15,7 +15,7 @@ def navLocationActions(request):
     # missions_stack = StackMissionsCards.objects.get(game_number=game)
     # player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
     # player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
-    # ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    # ship_localisations = ShipsLocalisations.objects.get(game_number=game)
 
     # # startPlayerTurn
     # if request.GET.get('when') == 'startPlayerTurn':
@@ -25,21 +25,21 @@ def navLocationActions(request):
     #             data['playerHaveDestroyedHitLocation'] = True
     #             break
 
-    #     if getattr(ship_localisation_instance, f"{player_colour}_in_port"):
+    #     if getattr(ship_localisations, f"{player_colour}_in_port"):
     #         request.session['playerInPort'] = True
     #     else:
     #         request.session['playerInPort'] = False
 
-    #     if getattr(ship_localisation_instance, f"{player_colour}_ship") == 'The Caribbean Sea':
+    #     if getattr(ship_localisations, f"{player_colour}_ship") == 'The Caribbean Sea':
     #         data['isInTheCaribbeanSea'] = True
 
 
     # # port
     # if request.GET.get('when') == 'port':        
     #     for mission_card in ['mission_1_card', 'mission_2_card', 'mission_3_card']:
-    #         if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisation_instance, f"{player_colour}_ship"):
+    #         if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisations, f"{player_colour}_ship"):
     #             data['missionInPort'] = True
-    #     if player_captain_instance.home_port == getattr(ship_localisation_instance, f"{player_colour}_ship"): 
+    #     if player_captain_instance.home_port == getattr(ship_localisations, f"{player_colour}_ship"): 
     #         data['playerHomePort'] = True
 
 

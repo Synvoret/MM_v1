@@ -24,9 +24,9 @@ class StackPlayerCargoCards(models.Model):
             #     field.cargo_card_1 = random.choice(cargo_cards)
             #     field.cargo_card_2 = random.choice(cargo_cards)
             #     field.cargo_card_3 = random.choice(cargo_cards)
-            if field.player_colour == 'yellow':
-                field.cargo_card_1 = random.choice(cargo_cards)
-                field.cargo_card_2 = random.choice(cargo_cards)
+            # if field.player_colour == 'yellow':
+                # field.cargo_card_1 = random.choice(cargo_cards)
+                # field.cargo_card_2 = random.choice(cargo_cards)
                 # field.cargo_card_3 = random.choice(cargo_cards)
                 # field.cargo_card_4 = random.choice(cargo_cards)
                 # field.cargo_card_5 = random.choice(cargo_cards)

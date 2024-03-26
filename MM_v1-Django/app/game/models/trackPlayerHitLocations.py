@@ -65,6 +65,13 @@ class TrackPlayerHitLocations(models.Model):
         self.save()
         return True
 
+    def amount_damages(self, player: str) -> int:
+        """Method return the total value of current damage to the ship."""
+        amount = 0
+        for location in HIT_LOCATIONS:
+            amount += self.max_value_location(player, location) - getattr(self, location)
+        return amount
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=PLAYER_COLOURS)
 

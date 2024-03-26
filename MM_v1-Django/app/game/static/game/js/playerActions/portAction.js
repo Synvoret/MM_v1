@@ -305,6 +305,93 @@ function portAction(type_request, id=null) {
         navPortActions(type_request);
     };
 
+
+    if (type_request === 'ship') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                let colour = response.playerColour;
+
+                console.log(response)
+
+                // disabled buttons (nav)
+                navPortActions(type_request);
+                document.getElementById('port-visit-shipyard-ship-action-use').style.display = '';
+                // stroke colour on g tag element
+                document.getElementById("port-visit-shipyard-ship-action").style.stroke = colour;
+                // remove all frames
+                document.querySelectorAll('.frame').forEach(function(element) {
+                    element.remove();
+                });
+
+                // setting golds
+                document.getElementById('player-coin-amount').innerHTML = response[`playerGolds`];
+
+            };
+        };
+        xhr.open('GET', 'portAction?type_request=' + type_request, true);
+        xhr.send();
+    };
+
+    if (type_request === 'ship sell buy') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                let colour = response.playerColour;
+
+                console.log(response);
+
+                document.getElementById(`player-ship-sell-buy`).style.display = '';
+
+                document.getElementById(`port-visit-shipyard-player-ship-sell`).setAttribute('href', response.playerShipImageUrl);
+
+                let imageBuyShip = document.getElementById(id).getAttribute('href');
+                document.getElementById(`port-visit-shipyard-player-ship-buy`).setAttribute('href', imageBuyShip);
+                document.getElementById(`ship-buy-cost`).innerHTML = response.unitBuyCost;
+                document.getElementById(`summary-buy-cost`).innerHTML = response.unitBuyCost;
+                document.getElementById(`ship-sell-profit`).innerHTML = response.unitSellCost;
+                document.getElementById(`damages-sell-profit`).innerHTML = response.damagesPlayerUnit;
+                document.getElementById(`modifications-sell-profit`).innerHTML = response.modificationsPlayerUnit;
+                let summary = parseInt(document.getElementById(`ship-sell-profit`).innerHTML) - parseInt(document.getElementById(`damages-sell-profit`).innerHTML) + parseInt(document.getElementById(`modifications-sell-profit`).innerHTML);
+                document.getElementById(`summary-sell-profit`).innerHTML = summary;
+
+                document.getElementById(`port-visit-shipyard-player-ship-sell-ship-unit-text`).innerHTML = response.unitSellShip;
+                document.getElementById(`port-visit-shipyard-player-ship-buy-ship-unit-text`).innerHTML = response.unitBuyShip;
+
+            };
+        };
+        xhr.open('GET', 'portAction?type_request=' + type_request + '&unitID=' + id, true);
+        xhr.send();
+    };
+
+    if (type_request === 'ship sell buy accept' ) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+
+                document.getElementById(`player-ship-sell-buy`).style.display = 'none';
+
+                updatePlayerGolds(response.playerColour);
+                updatePlayerShipModifications(response.playerColour);
+                drawPlayerShipCard(response.playerColour);
+
+            };
+        };
+        let newUnit = document.getElementById(`port-visit-shipyard-player-ship-buy-ship-unit-text`).innerHTML;
+        let profitForSell = parseInt(document.getElementById(`summary-sell-profit`).innerHTML);
+        let costForBuy = parseInt(document.getElementById(`summary-buy-cost`).innerHTML);
+        xhr.open('POST', 'portAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        data += '&newUnit=' + encodeURIComponent(newUnit);
+        data += '&profitForSell=' + encodeURIComponent(profitForSell);
+        data += '&costForBuy=' + encodeURIComponent(costForBuy);
+        xhr.send(data);
+    };
+
     if (type_request === 'special weapon') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -572,58 +659,72 @@ function portAction(type_request, id=null) {
                 // setting golds
                 document.getElementById('player-coin-amount').innerHTML = response[`playerGolds`];
 
+                // for BUY
+                if (response.forBuy !== undefined) {
+                    document.getElementById('port-visit-shipyard-modifications').setAttribute('href', response['forBuy']);
+                    document.getElementById('port-visit-shipyard-modifications').setAttribute('name', response['portModification']);
+                    document.getElementById(`port-visit-shipyard-modifications`).setAttribute('onclick', "portAction('modification buy', this.getAttribute('name')); portAction('modifications')");
+                    // flip token on port
+                    document.getElementById(`ship-modification-${response.tokenFlip}-image`).setAttribute('href', response.forBuy);
+                } else {
+                    document.getElementById('port-visit-shipyard-modifications').setAttribute('href', '');
+                    document.getElementById('port-visit-shipyard-modifications').removeAttribute('name');
+                    document.getElementById(`port-visit-shipyard-modifications`).removeAttribute('onclick');
+                    document.getElementById(`ship-modification-${response.tokenFlip}-image`).setAttribute('href', '');
+                };
 
-                // Tworzenie elementu <image>
-                var imageElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
-                imageElement.setAttribute("id", `port-visit-shipyard-player-modifications-`);
-                imageElement.setAttribute("name", ``);
-                imageElement.setAttribute("class", "port-visit-shipyard-modifications sell-modifications");
-                imageElement.setAttribute("x", "20");
-                imageElement.setAttribute("y", "462");
-                imageElement.setAttribute("width", "100");
-                imageElement.setAttribute("href", `media/shipModifications/longGuns.png`);
-                // Pobranie tagu <g> o id "player-modifications-for-sale"
-                var gElement = document.getElementById("player-modifications-for-sale");
-                // Dodanie elementu <image> do tagu <g>
-                gElement.appendChild(imageElement);
-
-
-
-
-
-
-
-
-
-                // show cube and cube max
-                // max value
-                // document.getElementById(`port-visit-shipyard-repair-hull-${response.playerHullMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
-                // document.getElementById(`port-visit-shipyard-repair-cargo-${response.playerCargoMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
-                // document.getElementById(`port-visit-shipyard-repair-masts-${response.playerMastsMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
-                // document.getElementById(`port-visit-shipyard-repair-crew-${response.playerCrewMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
-                // document.getElementById(`port-visit-shipyard-repair-cannons-${response.playerCannonsMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
-                // // value
-                // if (response.playerHullValue !== 0) {
-                //     document.getElementById(`port-visit-shipyard-repair-hull-${response.playerHullValue}`).setAttribute('href', response['playerCubeImageUrl']);
-                // };
-                // if (response.playerCargoValue !== 0) {
-                //     document.getElementById(`port-visit-shipyard-repair-cargo-${response.playerCargoValue}`).setAttribute('href', response['playerCubeImageUrl']);
-                // };
-                // if (response.playerMastsValue !== 0) {
-                //     document.getElementById(`port-visit-shipyard-repair-masts-${response.playerMastsValue}`).setAttribute('href', response['playerCubeImageUrl']);
-                // };
-                // if (response.playerCrewValue !== 0) {
-                //     document.getElementById(`port-visit-shipyard-repair-crew-${response.playerCrewValue}`).setAttribute('href', response['playerCubeImageUrl']);
-                // };
-                // if (response.playerCannonsValue !== 0) {
-                //     document.getElementById(`port-visit-shipyard-repair-cannons-${response.playerCannonsValue}`).setAttribute('href', response['playerCubeImageUrl']);
-                // };
+                // cleanning FOR SALE
+                document.querySelectorAll('.sell-modifications').forEach(function(element) {
+                    element.remove();
+                });
+                let i = 0;
+                for (let key in response) {
+                    let x = 20;
+                    let y = 460;
+                    if (key.startsWith('forSell')) {
+                        let name = key.replace(/forSell/, '');
+                        // create element <image>
+                        var imageElement = document.createElementNS("http://www.w3.org/2000/svg", "image");
+                        // imageElement.setAttribute("id", `port-visit-shipyard-player-modifications-${}`);
+                        imageElement.setAttribute("name", name);
+                        imageElement.setAttribute("class", "port-visit-shipyard-modifications sell-modifications");
+                        imageElement.setAttribute("x", x + i * 100);
+                        imageElement.setAttribute("y", y);
+                        imageElement.setAttribute("width", "100");
+                        imageElement.setAttribute("href", response[key]);
+                        imageElement.setAttribute('onclick', "portAction('modification sell', this.getAttribute('name')); portAction('modifications')");
+                        // gain tag <g> about id "player-modifications-for-sale"
+                        var gElement = document.getElementById("player-modifications-for-sale");
+                        // add element <image> to tag <g>
+                        gElement.appendChild(imageElement);
+                        i++;
+                    };
+                };
 
             };
         };
         xhr.open('GET', 'portAction?type_request=' + type_request, true);
         xhr.send();
-    }
+    };
+
+
+    if (type_request === 'modification buy' || type_request === 'modification sell') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+
+                updatePlayerShipModifications(response.playerColour);
+                updatePlayerGolds(response.playerColour);
+
+            };
+        };
+        xhr.open('POST', 'portAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        data += '&modification=' + encodeURIComponent(id);
+        xhr.send(data);
+    };
 
 
     if (type_request === 'stash gold') {
@@ -697,6 +798,8 @@ function portAction(type_request, id=null) {
         document.getElementById('port-visit-shipyard-special-weapons-action-use').style.display = 'none';
         document.getElementById('port-visit-shipyard-repair-action-use').style.display = 'none';
         document.getElementById('port-visit-shipyard-modifications-action-use').style.display = 'none';
+        document.getElementById('port-visit-shipyard-ship-action-use').style.display = 'none';
+        document.getElementById(`player-ship-sell-buy`).style.display = 'none';
     };
 
     if (type_request === 'back to port') {

@@ -28,7 +28,7 @@ def navPortActions(request):
     player_golds = TrackPlayerGolds.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
     player_cargo_cards_instance = StackPlayerCargoCards.objects.get(player_colour=player_colour)
-    ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    ship_localisations = ShipsLocalisations.objects.get(game_number=game)
     favours = TrackFavors.objects.get(game_number=game)
     loyality = TrackLoyality.objects.get(game_number=game)
     nav_bar = NavBarGame.objects.get(game_number=game)
@@ -46,9 +46,9 @@ def navPortActions(request):
             else:
                 nav_bar.player_nav(player_colour, 'sellGoods')
             for mission_card in ['mission_1_card', 'mission_2_card', 'mission_3_card']:
-                if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisation_instance, f"{player_colour}_ship"):
+                if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisations, f"{player_colour}_ship"):
                     data['missionInPort'] = True
-            if player_captain_instance.home_port == getattr(ship_localisation_instance, f"{player_colour}_ship"): 
+            if player_captain_instance.home_port == getattr(ship_localisations, f"{player_colour}_ship"): 
                 data['captainHomePort'] = True
             if getattr(player_golds, f"player_{player_colour}") < 2 or getattr(favours, f"player_{player_colour}") == 5 or 'getFavour' in player_nav_bar:
                 data['cantGetFavour'] = True

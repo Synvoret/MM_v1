@@ -20,3 +20,5 @@ from .specialWeapons import SpecialWeapon
 from .merchantTokens import MerchantTokens
 from .locationTokens import LocationTokens
 from .tiles import Tile
+from .supportBoat import SupportBoatCard
+from .commandBoat import CommandBoatCard

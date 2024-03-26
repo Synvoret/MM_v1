@@ -19,6 +19,21 @@ ALLOWEDDESTINATIONS= [
     'Trinidad',
 ]
 
+COMMANDBOATS = [
+    ('Cutter', 'Cutter'),
+    ('Felucca', 'Felucca'),
+    ('Periagua', 'Periagua'),
+    ('Pinnace', 'Pinnace'),
+    ('Shallop', 'Shallop'),
+]
+
+SUPPORTBOATS = [
+    ('Barge', 'Barge'),
+    ("Captain's Gig", "Captain's Gig"),
+    ('Gunboat', 'Gunboat'),
+    ('Longboat', 'Longboat'),
+]
+
 BOUNTIES = [
     'Dutch',
     'English',
@@ -199,6 +214,17 @@ SHIPS = [
     ('Galleon', 'Galleon'),
     ('Man-o-War', 'Man-o-War'),
     ('Sloop', 'Sloop'),
+]
+
+UNITS = [
+    'Command Boat',
+    'Support Boat',
+    'Brig',
+    'Flute',
+    'Frigate',
+    'Galleon',
+    'Man-o-War',
+    'Sloop',
 ]
 
 SHIPSLOCALIZATIONS = [

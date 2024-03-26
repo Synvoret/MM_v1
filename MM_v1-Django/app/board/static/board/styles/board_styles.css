@@ -51,3 +51,33 @@ use:hover,
 .opacity-cube:hover {
     opacity: 0.5;
 }
+
+#new-player-main-rect,
+#fishing-action-main-rect,
+#merchant-raid-action-main-rect,
+#merchant-trade-action-main-rect,
+#merchant-escort-action-main-rect,
+#port-sell-goods-action-main-rect,
+#port-buy-goods-action-main-rect,
+#port-visit-shipyard-ship-action-main-rect,
+#port-visit-shipyard-special-weapons-action-main-rect,
+#port-visit-shipyard-repair-action-main-rect,
+#port-visit-shipyard-modifications-action-main-rect {
+    fill: gray;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#new-player-main-rect:hover,
+#fishing-action-main-rect:hover,
+#merchant-raid-action-main-rect:hover,
+#merchant-trade-action-main-rect:hover,
+#merchant-escort-action-main-rect:hover,
+#port-sell-goods-action-main-rect:hover,
+#port-buy-goods-action-main-rect:hover,
+#port-visit-shipyard-ship-action-main-rect:hover,
+#port-visit-shipyard-special-weapons-action-main-rect:hover,
+#port-visit-shipyard-repair-action-main-rect:hover,
+#port-visit-shipyard-modifications-action-main-rect:hover {
+    opacity: 0.5;
+}

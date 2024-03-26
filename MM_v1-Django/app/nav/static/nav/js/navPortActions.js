@@ -106,7 +106,7 @@ function navPortActions(when) {
 
 
     // visit shipyard
-    if (when === 'special weapon' || when === 'repair' || when === 'modifications') {
+    if (when === 'ship' || when === 'special weapon' || when === 'repair' || when === 'modifications') {
         document.querySelector('.nav-button.nav-button-buy-sell-ship').disabled = true;
         document.querySelector('.nav-button.nav-button-buy-sell-special-weapon').disabled = true;
         document.querySelector('.nav-button.nav-button-repair').disabled = true;

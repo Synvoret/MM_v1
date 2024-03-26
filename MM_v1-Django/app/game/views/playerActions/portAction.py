@@ -2,13 +2,19 @@ import random
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from dataset.utils.dataset.decorators.choices import COLOUR, HIT_LOCATIONS, LOYALITY, PLAYER_COLOURS, SPECIALWEAPONS
+from dataset.utils.dataset.decorators.choices import COLOUR, HIT_LOCATIONS, LOYALITY, PLAYER_COLOURS, SPECIALWEAPONS, UNITS
 from dataset.models import CargoCard
+from dataset.models import ShipCard
+from dataset.models import CommandBoatCard
+from dataset.models import SupportBoatCard
 from dataset.models import Cube
+from dataset.models import ShipModifications
 from dataset.models import SpecialWeapon
 from game.models import Game
 from game.models import GameDemandTokens
+from game.models import GameShipModifications
 from game.models import PlayersCaptainsCards
+from game.models import PlayersShipsCards
 from game.models import ShipsLocalisations
 from game.models import StackMissionsCards
 from game.models import StackPlayerCargoCards
@@ -18,6 +24,7 @@ from game.models import TrackLoyality
 from game.models import TrackPlayerGolds
 from game.models import TrackPlayerHitLocations
 from game.models import TrackPlayerSpecialWeapons
+from game.models import TrackPlayersShipModifications
 from game.serializers import CargoCardSerializer
 from nav.models import NavBarGame
 
@@ -33,10 +40,13 @@ def portAction(request):
     missions_stack = StackMissionsCards.objects.get(game_number=game)
     player_golds = TrackPlayerGolds.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
+    player_ship = PlayersShipsCards.objects.get(game_number=game)
     player_cargo_cards_instance = StackPlayerCargoCards.objects.get(player_colour=player_colour)
     player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
-    ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    ship_localisations = ShipsLocalisations.objects.get(game_number=game)
     player_special_weapons = TrackPlayerSpecialWeapons.objects.get(game_number=game)
+    player_modifications = TrackPlayersShipModifications.objects.get(game_number=game)
+    port_modifications = GameShipModifications.objects.get(game_number=game)
     favours = TrackFavors.objects.get(game_number=game)
     loyality = TrackLoyality.objects.get(game_number=game)
     nav_bar = NavBarGame.objects.get(game_number=game)
@@ -46,7 +56,9 @@ def portAction(request):
     # GET method
     if request.method == 'GET':
 
+
         # port
+
 
         # sell goods (always as first, only one time in turn)
         if request.GET.get('type_request') == 'sell goods':
@@ -57,14 +69,15 @@ def portAction(request):
                     data[f"playerCargoCard{i}ImageUrl"] = card.awers.url
                 else: 
                     break
-            port_name = str(getattr(ship_localisation_instance, f"{player_colour}_ship")).lower().replace(' ', '_')
+            port_name = str(getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ', '_')
             demand_token_in_port = getattr(demand_tokens, port_name)
             data['demanTokenInPort'] = demand_token_in_port.cargo
             data['demanTokenInPortImageUrl'] = demand_token_in_port.awers.url
 
+
         if request.GET.get('type_request') == 'buy goods':
             cargo_cards = CargoCard.objects.all() # drawing 6 cards in standard
-            port_name = str(getattr(ship_localisation_instance, f"{player_colour}_ship")).lower().replace(' ', '_')
+            port_name = str(getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ', '_')
             demand_token_in_port = getattr(demand_tokens, port_name)
             data['playerGolds'] = getattr(player_golds, f"player_{player_colour}")
             amount_cargo = 6
@@ -91,6 +104,35 @@ def portAction(request):
                     break
             data['freeSpaceInShipHold'] = ship_hold
 
+
+        if request.GET.get('type_request') == 'ship':
+            data['playerGolds'] = player_golds.golds_amount(player_colour)
+
+
+        if request.GET.get('type_request') == 'ship sell buy':
+            player = getattr(player_ship, f"player_{player_colour}")
+            for unit in UNITS:
+                if unit.lower().replace(' ', '-') in request.GET.get('unitID'):
+                    if unit == 'Command Boat':
+                        data['unitBuy'] = 5
+                        data['unitSell'] = 2
+                    elif unit == 'Support Boat':
+                        data['unitBuy'] = 3
+                        data['unitSell'] = 1
+                    else:
+                        ship = ShipCard.objects.get(ship=unit, ship_type=3)
+                        data['unitBuyCost'] = ship.buy_cost
+                        data['unitSellCost'] = player.sell_cost
+                        data['unitBuyShip'] = ship.ship
+                        data['unitSellShip'] = player.ship
+                        amount_dameges = player_hit_locations.amount_damages(f"player_{player_colour}")
+                        data['damagesPlayerUnit'] = amount_dameges
+                        amount_modifications = player_modifications.amount_modifications(player_colour)
+                        data['modificationsPlayerUnit'] = amount_modifications
+
+            data[f"playerShipImageUrl"] = player.awers.url
+
+
         # visit shipyard special weapon
         if request.GET.get('type_request') == 'special weapon':
             data['playerGolds'] = player_golds.golds_amount(player_colour)
@@ -103,6 +145,7 @@ def portAction(request):
                 else:
                     data[f"forBuy{special_weapon.replace(' ', '')}"] = (SpecialWeapon.objects.get(name=special_weapon)).image.url
 
+
         # visit shipyard Repair ship's locations
         if request.GET.get('type_request') == 'repair':
             data['playerGolds'] = player_golds.golds_amount(player_colour)
@@ -113,15 +156,32 @@ def portAction(request):
             data['playerCubeImageUrl'] = Cube.player_cube(player_colour)
             data['playerCubeMaxImageUrl'] = Cube.player_cube_max(player_colour)
 
+
         if request.GET.get('type_request') == 'modifications':
             data['playerGolds'] = player_golds.golds_amount(player_colour)
+            player_modifications = getattr(player_modifications, f"player_{player_colour}")
+            # modification to buy in port
+            port = (getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ', '_').replace('-', '_')
+            port_modification = getattr(port_modifications, port)
+            try: 
+                data['forBuy'] = ShipModifications.objects.get(name=port_modification).awers.url
+                data['portModification'] = port_modification
+            except: 
+                pass
+            finally:
+                data['tokenFlip'] = port.replace('_', '-')
+            # player modifications
+            for index, player_modification in enumerate(player_modifications):
+                data[f"forSell{player_modification}"] = (ShipModifications.objects.get(name=player_modification)).awers.url
+
 
     # POST method
     if request.method == 'POST':
 
+
         # accept sold goods
         if request.POST.get('type_request') == 'sell goods accept':
-            port = str(getattr(ship_localisation_instance, f"{request.session['playerColourActive']}_ship"))
+            port = str(getattr(ship_localisations, f"{request.session['playerColourActive']}_ship"))
             data['port'] = port.lower().replace(' ', '-')
             list_numbers = list(json.loads(request.POST.get('numbers'))) # sold goods
 
@@ -179,6 +239,13 @@ def portAction(request):
             print(dict(request.session))
 
 
+        if request.POST.get('type_request') == 'ship sell buy accept':
+            print(request.POST.get('newUnit'), type(request.POST.get('newUnit')))
+            print(request.POST.get('profitForSell'), type(request.POST.get('profitForSell')))
+            print(request.POST.get('costForBuy'), type(request.POST.get('costForBuy')))
+            print('zapisuje zakupy statku')
+
+
         if request.POST.get('type_request') == 'special weapon buy' or request.POST.get('type_request') == 'special weapon sell':
             selected_weapon = str(request.POST.get('weapon')).replace('-', ' ').title()
             if request.POST.get('type_request') == 'special weapon sell':
@@ -194,6 +261,18 @@ def portAction(request):
                 loaction = (str(request.POST.get('type_request')).split(' '))[-1]
                 if player_hit_locations.repair_location(f"player_{player_colour}", loaction):
                     player_golds.decrease_golds(f"player_{player_colour}", 2)
+
+
+        if request.POST.get('type_request') == 'modification buy' or request.POST.get('type_request') == 'modification sell':
+            bought_modification = request.POST.get('modification')
+            if request.POST.get('type_request') == 'modification buy':
+                if player_modifications.add_modification(player_colour, bought_modification) and player_golds.decrease_golds(f"player_{player_colour}", 3):
+                    setattr(port_modifications, (getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ','_'), None)
+                    port_modifications.save()
+            if request.POST.get('type_request') == 'modification sell':
+                player_modifications.remove_modification(player_colour, bought_modification)
+                player_golds.increase_golds(f"player_{player_colour}", 1)
+
 
         # stash gold
         if request.POST.get('type_request') == 'stash gold':
@@ -241,6 +320,7 @@ def portAction(request):
                 nav_bar.player_nav(player_colour, 'getFavour')
                 player_golds.decrease_golds(f"player_{player_colour}", 2)
                 favours.increase_favour_point(f"player_{player_colour}")
+
 
     data['playerColour'] = player_colour
     return JsonResponse(data)

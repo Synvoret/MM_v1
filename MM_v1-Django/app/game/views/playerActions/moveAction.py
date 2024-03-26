@@ -14,7 +14,7 @@ def moveAction(request):
 
     player_colour = request.session['playerColourActive']
     game = Game.objects.get(number=100)
-    player_ship_localisation_instance = ShipsLocalisations.objects.get(game_number=game)
+    player_ship_localisations = ShipsLocalisations.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
 
     data = {}
@@ -23,22 +23,22 @@ def moveAction(request):
     if request.method == 'POST':
         player_ship_unit_instance = getattr(PlayersShipsCards.objects.get(game_number=game), f"player_{player_colour}")
         player_ship_unit = player_ship_unit_instance.ship
-        player_ship_position = getattr(player_ship_localisation_instance, player_colour + '_ship')
+        player_ship_position = getattr(player_ship_localisations, player_colour + '_ship')
 
         if request.POST.get('type_request') == 'to port':
-            setattr(player_ship_localisation_instance, f"{player_colour}_in_port", True)
+            setattr(player_ship_localisations, f"{player_colour}_in_port", True)
 
         if request.POST.get('type_request') == 'from port':
-            setattr(player_ship_localisation_instance, f"{player_colour}_in_port", False)
+            setattr(player_ship_localisations, f"{player_colour}_in_port", False)
             request.session['playerInPort'] = False
 
         if request.POST.get('type_request') in ALLOWEDDESTINATIONS:
-            setattr(player_ship_localisation_instance, player_colour + '_ship', request.POST.get('type_request'))
-            player_ship_position = getattr(player_ship_localisation_instance, player_colour + '_ship')
+            setattr(player_ship_localisations, player_colour + '_ship', request.POST.get('type_request'))
+            player_ship_position = getattr(player_ship_localisations, player_colour + '_ship')
             if request.session['amountActions'] == 1:
                 data['lastAction'] = True
 
-        player_ship_localisation_instance.save()
+        player_ship_localisations.save()
         data['playerShipUnit'] = player_ship_unit.lower()
         data['playerDestination'] = player_ship_position.lower().replace(' ', '-')
         data['playerColour'] = player_colour
