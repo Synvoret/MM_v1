@@ -7,22 +7,15 @@ from game.models import PlayersShipsCards
 def playerShipCard(request):
     """Endpoint gives a player ship card."""
 
-    colour = request.GET.get('colour', None)
-    player_ship = PlayersShipsCards.objects.get(pk=1)
+    data = []
 
-    if colour == 'blue':
-        player_ship = player_ship.player_blue
-    if colour == 'green':
-        player_ship = player_ship.player_green
-    if colour == 'red':
-        player_ship = player_ship.player_red
-    if colour == 'yellow':
-        player_ship = player_ship.player_yellow
-
-    ship = ShipCard.objects.get(ship=player_ship.ship)
+    colour = request.GET.get('colour')
+    game = Game.objects.get(number=100)
+    player_ship = PlayersShipsCards.objects.get(game_number=game)
+    player_ship_instance = getattr(player_ship, f"player_{colour}")
 
     data = {
-        "shipCardImage": ship.awers.url,
+        "shipCardImage": player_ship_instance.awers.url,
     }
 
     return JsonResponse(data)

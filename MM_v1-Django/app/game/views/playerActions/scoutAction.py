@@ -34,12 +34,14 @@ def scoutAction(request):
     data['playerColour'] = player_colour
     player_localisation = getattr(ships_in_zone, f"{player_colour}_ship")
     merchants_track = TrackMerchantTokens.objects.get(game_number=game)
-    player_captain_card = getattr(PlayersCaptainsCards, f"player_{player_colour}")
+    game_captains = PlayersCaptainsCards.objects.get(game_number=game)
+    game_ships = PlayersShipsCards.objects.get(game_number=game)
+    player_captain_card = getattr(game_captains, f"player_{player_colour}")
     player_golds = TrackPlayerGolds.objects.get(game_number=game)
     player_bounties_instance = TrackPlayerBounties.objects.get(game_number=game)
     player_special_weapons_instance = TrackPlayerSpecialWeapons.objects.get(game_number=game)
     player_hits_locations_instance = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
-    player_ship = getattr(PlayersShipsCards, f"player_{player_colour}")
+    player_ship = getattr(game_ships, f"player_{player_colour}")
     player_cargo_cards = StackPlayerCargoCards.objects.get(player_colour=player_colour)
 
     if request.POST.get('type_request') == 'merchant raid':

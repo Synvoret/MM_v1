@@ -39,7 +39,8 @@ class NavBarGame(models.Model):
         game = Game.objects.get(number=100) # game instance
         bounties = TrackPlayerBounties.objects.get(game_number=game) # bounties instance
         missions = StackMissionsCards.objects.get(game_number=game) # missions instance
-        captain = getattr(PlayersCaptainsCards, f"player_{colour}") # player Captain
+        game_captains = PlayersCaptainsCards.objects.get(game_number=game)
+        captain = getattr(game_captains, f"player_{colour}") # player Captain
         player_hits_locations = TrackPlayerHitLocations.objects.get(player_colour=colour) # hit locations on player board
         ship_localisations = ShipsLocalisations.objects.get(game_number=game) # ship localisations instance
         player_localisation = getattr(ship_localisations, f"{colour}_ship") # actual player localisation (name Sea Zone)
@@ -111,6 +112,7 @@ class NavBarGame(models.Model):
 
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
+
     player_blue = models.JSONField(default=list, null=True, blank=True)
     player_green = models.JSONField(default=list, null=True, blank=True)
     player_red = models.JSONField(default=list, null=True, blank=True)

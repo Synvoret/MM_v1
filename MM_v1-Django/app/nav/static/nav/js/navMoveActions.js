@@ -18,7 +18,11 @@ function navMoveActions(when) {
                     if (response.isInTheCaribbeanSea) {
                         document.querySelector(".nav-button.nav-button-to-port").disabled = true;
                     } else {
-                        document.querySelector(".nav-button.nav-button-to-port").disabled = false;
+                        if (response.bountyPortNationality) {
+                            document.querySelector(".nav-button.nav-button-to-port").disabled = true;
+                        } else {
+                            document.querySelector(".nav-button.nav-button-to-port").disabled = false;
+                        };
                     };
                     document.querySelector(".nav-button.nav-button-from-port").disabled = true;
                     document.querySelector(".nav-button.nav-button-to-sea-zone").disabled = false;

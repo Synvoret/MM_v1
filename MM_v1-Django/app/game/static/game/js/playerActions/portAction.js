@@ -376,7 +376,11 @@ function portAction(type_request, id=null) {
 
                 updatePlayerGolds(response.playerColour);
                 updatePlayerShipModifications(response.playerColour);
+                updatePlayerHitLocation(response.playerColour);
+                maxValues(response.playerColour);
                 drawPlayerShipCard(response.playerColour);
+
+                putShipPlastic(response.newShip, response.playerColour, response.localisation, true);
 
             };
         };

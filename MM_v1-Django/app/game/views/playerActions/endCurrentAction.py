@@ -11,6 +11,7 @@ def endCurrentAction(request):
 
     data = {}
     game = Game.objects.get(number=100)
+    game_ships = PlayersShipsCards.objects.get(game_number=game)
     nav_bar = NavBarGame.objects.get(game_number=game)
     nav_bar.player_nav(colour)
 
@@ -18,7 +19,7 @@ def endCurrentAction(request):
     colour_cube_image = colour_cube.image.url
 
     if 'amountActions' not in request.session:
-        player_ship = getattr(PlayersShipsCards, 'player_' + colour)
+        player_ship = getattr(game_ships, 'player_' + colour)
         amount_actions = player_ship.speed
         request.session['amountActions'] = amount_actions
         request.session['currentAction'] = 0

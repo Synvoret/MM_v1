@@ -9,11 +9,18 @@ class PlayersCaptainsCards(models.Model):
     @classmethod
     def set_default_values(cls):
         """Setting defaults values for all fields in model "Player Captain"."""
+        fields = cls.objects.all()
+        for field in fields:
+            field.player_blue = None
+            field.player_green = None
+            field.player_red = None
+            field.player_yellow = None
+            field.save()
 
-        cls.player_blue = None
-        cls.player_green = None
-        cls.player_red = None
-        cls.player_yellow = None
+    def change_captain(self, colour: str, captain: str):
+        new_captain = CaptainCard.objects.get(captain=captain)
+        setattr(self, f"player_{colour}", new_captain)
+        self.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
 

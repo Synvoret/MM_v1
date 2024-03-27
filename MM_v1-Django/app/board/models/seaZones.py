@@ -1,5 +1,5 @@
 from django.db import models
-from dataset.utils.dataset.decorators.choices import SEAZONES
+from dataset.utils.dataset.decorators.choices import NATIONALITY, SEAZONES
 from .board import Board
 
 
@@ -12,6 +12,7 @@ class SeaZone(models.Model):
     # board = models.ForeignKey(Board, on_delete=models.CASCADE, default=1)
     sea_zone_name = models.CharField(max_length=50)
     sea_zone_coordinates = models.CharField(max_length=500)
+    port_nationality = models.CharField(max_length=50, null=True, blank=True, choices=NATIONALITY)
     n_direction = models.CharField(max_length=50, null=True, blank=True, choices=SEAZONES)
     ne_direction = models.CharField(max_length=50, null=True, blank=True, choices=SEAZONES)
     e_direction = models.CharField(max_length=50, null=True, blank=True, choices=SEAZONES)

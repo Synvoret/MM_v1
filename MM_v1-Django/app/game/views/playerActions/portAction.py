@@ -240,10 +240,20 @@ def portAction(request):
 
 
         if request.POST.get('type_request') == 'ship sell buy accept':
-            print(request.POST.get('newUnit'), type(request.POST.get('newUnit')))
-            print(request.POST.get('profitForSell'), type(request.POST.get('profitForSell')))
-            print(request.POST.get('costForBuy'), type(request.POST.get('costForBuy')))
-            print('zapisuje zakupy statku')
+            new_unit = request.POST.get('newUnit')
+            profit_for_sell = int(request.POST.get('profitForSell'))
+            cost_for_buy = int(request.POST.get('costForBuy'))
+            if player_golds.golds_amount(player_colour) + profit_for_sell - cost_for_buy >= 0:
+                print('MASZ KASĘ')
+                player_golds.increase_golds(f"player_{player_colour}", profit_for_sell)
+                player_golds.decrease_golds(f"player_{player_colour}", cost_for_buy)
+                player_ship.change_ship_unit(player_colour, new_unit)
+                for location in HIT_LOCATIONS:
+                    player_hit_locations.set_location_value(player_colour, location)
+                data['localisation'] = getattr(ship_localisations, f"{player_colour}_ship")
+                data['newShip'] = (getattr(player_ship, f"player_{player_colour}")).ship.lower()
+            else:
+                print('JESTES BIEDNY')
 
 
         if request.POST.get('type_request') == 'special weapon buy' or request.POST.get('type_request') == 'special weapon sell':

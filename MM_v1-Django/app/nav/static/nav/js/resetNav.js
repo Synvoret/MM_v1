@@ -14,6 +14,7 @@ function resetNav(when) {
                 document.querySelector(".nav-directions-buttons").style.display = 'none';
                 document.querySelector(".nav-scouting-buttons").style.display = 'none';
                 document.querySelector(".nav-port-buttons").style.display = 'none';
+                document.querySelector(".nav-location-buttons").style.display = 'none';
 
                 document.querySelector(".nav-button.nav-button-move-ship").disabled = true;
                 document.querySelector(".nav-button.nav-button-scout").disabled = true;
@@ -46,6 +47,8 @@ function resetNav(when) {
                 document.querySelector(".nav-scouting-buttons").style.display = 'none';
                 document.querySelector(".nav-port-buttons").style.display = 'none';
                 document.querySelector(".nav-shipyard-buttons").style.display = 'none';
+                document.querySelector(".nav-location-buttons").style.display = 'none';
+
 
                 // Scout button
                 // Port button

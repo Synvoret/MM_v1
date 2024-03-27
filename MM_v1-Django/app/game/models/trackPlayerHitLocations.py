@@ -18,20 +18,21 @@ class TrackPlayerHitLocations(models.Model):
             field.cannons = 1
             field.save()
 
-    def max_value_location(self, player: str, location: str) -> int:
+    def max_value_location(self, player: str, location: str, game=Game.objects.get(number=100)) -> int:
         """Method returns maximum possible value for selected location, with all modifications, features, ship, etc."""
         location = location.lower()
         max_value = 0
-        ship = getattr(PlayersShipsCards, player)
+        game_ships = PlayersShipsCards.objects.get(game_number=game)
+        player_ship = getattr(game_ships, player)
 
         if location == 'hull' or location == 'masts':
-            max_value += ship.toughness
+            max_value += player_ship.toughness
         elif location == 'cargo':
-            max_value += ship.cargo
+            max_value += player_ship.cargo
         elif location == 'crew':
-            max_value += ship.crew
+            max_value += player_ship.crew
         elif location == 'cannons':
-            max_value += ship.cannons
+            max_value += player_ship.cannons
 
         return int(max_value)
 
@@ -71,6 +72,11 @@ class TrackPlayerHitLocations(models.Model):
         for location in HIT_LOCATIONS:
             amount += self.max_value_location(player, location) - getattr(self, location)
         return amount
+
+    def set_location_value(self, colour: str, location: str):
+        set_value = self.max_value_location(f"player_{colour}", location)
+        setattr(self, location, set_value)
+        self.save()
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=PLAYER_COLOURS)

@@ -360,6 +360,7 @@ function scoutAction(type_request) {
                 updatePlayerGolds(colour);
                 updatePlayerHitLocation(colour);
                 endCurrentAction(colour);
+
             };
         };
         let getGold = parseInt(document.getElementById('merchant-raid-value-result').textContent);

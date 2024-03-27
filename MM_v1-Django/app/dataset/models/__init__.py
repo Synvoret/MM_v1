@@ -4,6 +4,7 @@ from .backs import Back
 from .cubes import Cube
 from .dices import Dice
 from .flags import Flag
+from .portCard import PortCard
 from .signs import Sign
 from .ships import Ship
 from .captainCard import CaptainCard

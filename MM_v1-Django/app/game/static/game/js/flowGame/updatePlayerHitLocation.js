@@ -4,6 +4,7 @@ function updatePlayerHitLocation(colour) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
+            // console.log(response)
             document.getElementById('player-hit-location-image').setAttribute('href', response.cubeImage);
             let hull = response.hullHit;
             let cargo = response.cargoHit;
@@ -17,11 +18,22 @@ function updatePlayerHitLocation(colour) {
             });
 
             maxValues(colour);
-            document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('cargo-' + cargo + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('masts-' + masts + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('crew-' + crew + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
-            document.getElementById('cannons-' + cannons + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+
+            if (hull !== 0) {
+                document.getElementById('hull-' + hull + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            };
+            if (cargo !== 0) {
+                document.getElementById('cargo-' + cargo + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            };
+            if (masts !== 0) {
+                document.getElementById('masts-' + masts + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            };
+            if (crew !== 0) {
+                document.getElementById('crew-' + crew + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            };
+            if (cannons !== 0) {
+                document.getElementById('cannons-' + cannons + '-player-hit-location').setAttribute('href', '#player-hit-location-image');
+            };
 
         };
     };

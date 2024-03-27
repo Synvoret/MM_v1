@@ -19,21 +19,6 @@ ALLOWEDDESTINATIONS= [
     'Trinidad',
 ]
 
-COMMANDBOATS = [
-    ('Cutter', 'Cutter'),
-    ('Felucca', 'Felucca'),
-    ('Periagua', 'Periagua'),
-    ('Pinnace', 'Pinnace'),
-    ('Shallop', 'Shallop'),
-]
-
-SUPPORTBOATS = [
-    ('Barge', 'Barge'),
-    ("Captain's Gig", "Captain's Gig"),
-    ('Gunboat', 'Gunboat'),
-    ('Longboat', 'Longboat'),
-]
-
 BOUNTIES = [
     'Dutch',
     'English',
@@ -41,6 +26,14 @@ BOUNTIES = [
     'Spanish',
     'Small Pirate',
     'Large Pirate',
+]
+
+COMMANDBOATS = [
+    ('Cutter', 'Cutter'),
+    ('Felucca', 'Felucca'),
+    ('Periagua', 'Periagua'),
+    ('Pinnace', 'Pinnace'),
+    ('Shallop', 'Shallop'),
 ]
 
 CARGO = [
@@ -109,6 +102,11 @@ DISPOSABLE_ACTIONS = [
     'getFavour', # after get favour in port, always as last action in port
 ]
 
+EXPANSION = [
+    ('Seas of Glory', 'Seas of Glory'),
+    ('Colors of War', 'Colors of War'),
+]
+
 HITS = [
     ('Hull', 'Hull'),
     ('Cargo', 'Cargo'),
@@ -124,11 +122,6 @@ HIT_LOCATIONS = [
     'masts', 
     'crew',
     'cannons',
-]
-
-EXPANSION = [
-    ('Seas of Glory', 'Seas of Glory'),
-    ('Colors of War', 'Colors of War'),
 ]
 
 LOYALITY = [
@@ -214,6 +207,13 @@ SHIPS = [
     ('Galleon', 'Galleon'),
     ('Man-o-War', 'Man-o-War'),
     ('Sloop', 'Sloop'),
+]
+
+SUPPORTBOATS = [
+    ('Barge', 'Barge'),
+    ("Captain's Gig", "Captain's Gig"),
+    ('Gunboat', 'Gunboat'),
+    ('Longboat', 'Longboat'),
 ]
 
 UNITS = [

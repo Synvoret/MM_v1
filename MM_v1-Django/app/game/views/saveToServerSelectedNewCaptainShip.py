@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from dataset.utils.dataset.decorators.choices import HIT_LOCATIONS
 from dataset.models import CaptainCard
 from dataset.models import ShipCard
 from game.models import Game
@@ -22,59 +23,48 @@ def saveToServerSelectedNewCaptainShip(request):
         selected_ship = (request.POST.get('selectedShip')).title()
 
         captain_card = CaptainCard.objects.get(captain=selected_captain)
-        ship_card = ShipCard.objects.get(ship=selected_ship)
         home_port = (captain_card.home_port).title()
         starting_location = ShipsLocalisations.objects.get(game_number=game)
+        player_captain = PlayersCaptainsCards.objects.get(game_number=game)
+        player_ship = PlayersShipsCards.objects.get(game_number=game)
+        player_hit_locations = TrackPlayerHitLocations.objects.get(game_number=game, player_colour=player_colour.lower())
         # update player hit locations track in db
-        player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
 
         if player_colour == 'blue':
-            PlayersCaptainsCards.player_blue = captain_card
-            starting_location.blue_ship = home_port
-            starting_location.blue_in_port = True
-            starting_location.save()
-            PlayersShipsCards.player_blue = ship_card
+            player_captain.change_captain(player_colour, selected_captain)
+            player_ship.change_ship_unit(player_colour, selected_ship)
             if not game.player_blue_play:
                 game.player_blue_play = True
                 game.amount_players += 1
                 game.save()
         if player_colour == 'green':
-            PlayersCaptainsCards.player_green = captain_card
-            starting_location.green_ship = home_port
-            starting_location.green_in_port = True
-            starting_location.save()
-            PlayersShipsCards.player_green = ship_card
+            player_captain.change_captain(player_colour, selected_captain)
+            player_ship.change_ship_unit(player_colour, selected_ship)
             if not game.player_green_play:
                 game.player_green_play = True
                 game.amount_players += 1
                 game.save()
         if player_colour == 'red':
-            PlayersCaptainsCards.player_red = captain_card
-            starting_location.red_ship = home_port
-            starting_location.red_in_port = True
-            starting_location.save()
-            PlayersShipsCards.player_red = ship_card
+            player_captain.change_captain(player_colour, selected_captain)
+            player_ship.change_ship_unit(player_colour, selected_ship)
             if not game.player_red_play:
                 game.player_red_play = True
                 game.amount_players += 1
                 game.save()
         if player_colour == 'yellow':
-            PlayersCaptainsCards.player_yellow = captain_card
-            starting_location.yellow_ship = home_port
-            starting_location.yellow_in_port = True
-            starting_location.save()
-            PlayersShipsCards.player_yellow = ship_card
+            player_captain.change_captain(player_colour, selected_captain)
+            player_ship.change_ship_unit(player_colour, selected_ship)
             if not game.player_yellow_play:
                 game.player_yellow_play = True
                 game.amount_players += 1
                 game.save()
 
-        player_hit_locations.hull = ship_card.toughness
-        player_hit_locations.cargo = ship_card.cargo
-        player_hit_locations.masts = ship_card.toughness
-        player_hit_locations.crew = ship_card.crew
-        player_hit_locations.cannons = ship_card.cannons
-        player_hit_locations.save()
+        setattr(starting_location, f"{player_colour}_ship", home_port)
+        setattr(starting_location, f"{player_colour}_in_port", True)
+        starting_location.save()
+
+        for location in HIT_LOCATIONS:
+            player_hit_locations.set_location_value(player_colour, location)
 
     data['amountPlayers'] = game.amount_players
 

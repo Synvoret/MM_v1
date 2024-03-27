@@ -3,7 +3,7 @@ from dataset.utils.dataset.decorators.choices import EXPANSION, SHIPS
 from .deck import Deck
 
 
-class ShipCard(models.Model):    
+class ShipCard(models.Model):
     """Description Ship Card."""
 
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE)

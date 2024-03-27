@@ -1,5 +1,6 @@
 from .gameAdmin import GameAdmin
 from .gameDemandTokensAdmin import GameDemandTokensAdmin
+from .gamePortsAdmin import GamePortsAdmin
 from .gameShipModificationsAdmin import GameShipModificationsAdmin
 from .playerCaptainsCardsAdmin import PlayersCaptainsCardsAdmin
 from .playersGloryCardsAdmin import PlayersGloryCardsAdmin

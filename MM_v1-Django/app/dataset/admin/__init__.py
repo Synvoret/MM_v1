@@ -13,6 +13,7 @@ from .gloryCardAdmin import GloryCardAdmin
 from .locationTokensAdmin import LocationTokensAdmin
 from .merchantTokensAdmin import MerchantTokensAdmin
 from .missionCardAdmin import MissionCardAdmin
+from .portCardAdmin import PortCardAdmin
 from .rumorCardAdmin import RumorCardAdmin
 from .shipAdmin import ShipAdmin
 from .shipCardAdmin import ShipCardAdmin
