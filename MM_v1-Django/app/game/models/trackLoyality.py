@@ -38,6 +38,10 @@ class TrackLoyality(models.Model):
             setattr(self, player, LOYALITIES[index + 1])
             self.save()
 
+    def loyality_influence(self) -> dict:
+        """Method return loaylity influence for game."""
+        pass
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
 
     player_blue = models.CharField(max_length=20, default='Content', choices=LOYALITY)

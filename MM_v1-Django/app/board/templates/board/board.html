@@ -1086,6 +1086,67 @@
     <use id="port-visit-shipyard-modifications-action-use" x="50" y="10" href="#port-visit-shipyard-modifications-action" style="display: none;"/>
 
 
+    <!-- PORT - recruit -->
+    <defs>
+        <g id="port-recruit-action">
+            <rect id="port-recruit-action-main-rect" width="800" height="650" rx="4" ry="4" style="stroke-width: 2;"/>
+
+            <use id="recruit-coins" x="20" y="50" href="#coin" transform="scale(2)"/>
+
+            <image id="port-recruit-hit-locatioins-image" x="20" y="200" width="400" height="400" href="media\tiles\hit_locations.png"/>
+            <image id="port-recruit-hull-1" class="opacity-cube recruit-location" x="93" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-2" class="opacity-cube recruit-location" x="133" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-3" class="opacity-cube recruit-location" x="173" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-4" class="opacity-cube recruit-location" x="213" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-5" class="opacity-cube recruit-location" x="253" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-6" class="opacity-cube recruit-location" x="293" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-hull-7" class="opacity-cube recruit-location" x="333" y="262" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-1" class="opacity-cube recruit-location" x="93" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-2" class="opacity-cube recruit-location" x="133" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-3" class="opacity-cube recruit-location" x="173" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-4" class="opacity-cube recruit-location" x="213" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-5" class="opacity-cube recruit-location" x="253" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-6" class="opacity-cube recruit-location" x="293" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-cargo-7" class="opacity-cube recruit-location" x="333" y="316" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-1" class="opacity-cube recruit-location" x="93" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-2" class="opacity-cube recruit-location" x="133" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-3" class="opacity-cube recruit-location" x="173" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-4" class="opacity-cube recruit-location" x="213" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-5" class="opacity-cube recruit-location" x="253" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-6" class="opacity-cube recruit-location" x="293" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-masts-7" class="opacity-cube recruit-location" x="333" y="370" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-1" class="opacity-cube recruit-location" x="93" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-2" class="opacity-cube recruit-location" x="133" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-3" class="opacity-cube recruit-location" x="173" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-4" class="opacity-cube recruit-location" x="213" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-5" class="opacity-cube recruit-location" x="253" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-6" class="opacity-cube recruit-location" x="293" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-crew-7" class="opacity-cube recruit-location" x="333" y="420" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-1" class="opacity-cube recruit-location" x="93" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-2" class="opacity-cube recruit-location" x="133" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-3" class="opacity-cube recruit-location" x="173" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-4" class="opacity-cube recruit-location" x="213" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-5" class="opacity-cube recruit-location" x="253" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-6" class="opacity-cube recruit-location" x="293" y="470" width="30" height="30" href=""/>
+            <image id="port-recruit-cannons-7" class="opacity-cube recruit-location" x="333" y="470" width="30" height="30" href=""/>
+
+            <text class="recruit-text" x="450" y="285">Repair in Shipyard.</text>
+            <text class="recruit-text" x="450" y="335">Repair in Shipyard.</text>
+            <text class="recruit-text" x="450" y="390">Repair in Shipyard.</text>
+
+            <text class="recruit-text" x="450" y="430">Leadership: <tspan id="recruit-amount-success">0</tspan> success.</text>
+            <text class="recruit-text" x="450" y="450">or Cost 2 per 1 if no success: </text>
+            <text class="recruit-text" x="670" y="450" style="font-size: 20px" onclick="portAction('recruit crew'); portAction('recruit')">Recruit</text>
+            <!-- <text class="recruit-text" x="450" y="465" onclick="portAction('recruit crew'); portAction('recruit')">Recruit <tspan id="recruit-cost">for 2</tspan></text> -->
+
+            <text class="recruit-text" x="450" y="490">Repair in Shipyard.</text>
+
+            <text id="port-recruit-action-ok-text" class="recruit-text" x="400" y="600" onclick="portAction('recruit done'); portAction('back to port');">RECRUIT Done?</text>
+        </g>
+    </defs>
+    <use id="port-recruit-action-use" x="50" y="10" href="#port-recruit-action" style="display: none;"/>
+
+
     <!-- ENLARGE on board INDICATED HELPER -->
     <defs id="board-enlarge-indicated">
         <image id="board-enlarge-indicated-image" width="300" height="200" href=""/>

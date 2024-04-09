@@ -14,7 +14,8 @@ function navScoutActions(when) {
                 document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = 'none';
                 document.querySelector(".step.nav-player-actions").innerHTML = 'Scouting';
                 document.querySelector(".nav-button.nav-button-back").disabled = false;
-                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "scoutAction('back')")
+                document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "scoutAction('back')");
+                document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
 
                 if (response.merchantToken) {
                     document.querySelector(".nav-button.nav-button-scout-merchant").style.display = '';
@@ -88,13 +89,25 @@ function navScoutActions(when) {
         xhr.send();
     };
 
-    // merchant
+    // merchant scouting
+    if (when === 'scouting merchant') {
+        document.querySelector('.nav-scouting-buttons').style.display = 'none';
+
+        document.querySelector(".nav-button.nav-button-back").disabled = true;
+        document.querySelector(".nav-button.nav-button-back").setAttribute('onclick', "navScoutActions('back to scout')");
+        document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
+    };
+
+
+    // if scouting is success -> merchant
     if (when === 'merchant') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
-                response.playerHaveDestroyedHitLocation
+                // response.playerHaveDestroyedHitLocation
+
+                document.querySelector('.nav-scouting-buttons').style.display = '';
 
                 document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
 
@@ -164,6 +177,12 @@ function navScoutActions(when) {
         document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
     };
 
+    // back to scout units on current sea zone
+    if (when === 'back to scout') {
+        scoutAction('scout');
+        rollDices('destroy');
+    };
+
     // back
     if (when === 'back') {
         document.querySelector(".nav-button.nav-button-scout-merchant").style.display = 'none';
@@ -172,8 +191,10 @@ function navScoutActions(when) {
         document.querySelector(".nav-button.nav-button-scout-merchant-escort").style.display = 'none';
         document.querySelector(".nav-actions-buttons").style.display = '';
         document.querySelector(".nav-scouting-buttons").style.display = 'none';
-        document.querySelector(".step.nav-player-actions").innerHTML = 'Player Actions'
+        document.querySelector(".step.nav-player-actions").innerHTML = 'Player Actions';
+
         document.querySelector(".nav-button.nav-button-back").disabled = true;
         document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
+        rollDices('destroy');
     };
 };

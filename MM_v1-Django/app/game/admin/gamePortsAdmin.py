@@ -6,4 +6,5 @@ from game.models import GamePorts
 class GamePortsAdmin(admin.ModelAdmin):
     list_display = (
         'game_number',
+        'port_data',
         )

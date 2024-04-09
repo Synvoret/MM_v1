@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from dataset.utils.dataset.decorators.choices import COLOUR, LOYALITY, PLAYER_COLOURS
+from dataset.utils.dataset.decorators.game_instance import game_instance
 from game.models import Game
 from game.models import GameDemandTokens
 from game.models import PlayersCaptainsCards
@@ -17,11 +18,11 @@ from nav.models import NavBarGame
 
 
 @csrf_exempt
-def navPortActions(request):
+@game_instance
+def navPortActions(request, game):
     """Function is responsible for Port Actions."""
 
     data = {}
-    game = Game.objects.get(number=100)
     player_colour = request.session['playerColourActive']
     demand_tokens = GameDemandTokens.objects.get(game_number=game)
     missions_stack = StackMissionsCards.objects.get(game_number=game)
@@ -46,6 +47,8 @@ def navPortActions(request):
                 data['sellGoods'] = True
             else:
                 nav_bar.player_nav(player_colour, 'sellGoods')
+            if 'buyGoods' in player_nav_bar:
+                data['buyGoods'] = True
             for mission_card in ['mission_1_card', 'mission_2_card', 'mission_3_card']:
                 if getattr(missions_stack, mission_card) and (getattr(missions_stack, mission_card)).port == getattr(ship_localisations, f"{player_colour}_ship"):
                     data['missionInPort'] = True
@@ -70,6 +73,8 @@ def navPortActions(request):
 
         if request.GET.get('when') == 'back to port':
             data['sellGoods'] = True
+            if 'buyGoods' in player_nav_bar:
+                data['buyGoods'] = True
 
     # POST method
     if request.method == 'POST':

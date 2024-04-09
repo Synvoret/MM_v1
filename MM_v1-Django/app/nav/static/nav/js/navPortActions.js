@@ -20,7 +20,11 @@ function navPortActions(when) {
                     document.querySelector(".nav-button.nav-button-sell-goods").disabled = false;
                 };
                 document.querySelector(".nav-button.nav-button-buy-goods").style.display = '';
-                document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
+                if (response.buyGoods) {
+                    document.querySelector(".nav-button.nav-button-buy-goods").disabled = true;
+                } else {
+                    document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
+                };
                 document.querySelector(".nav-button.nav-button-visit-shipyard").style.display = '';
                 document.querySelector(".nav-button.nav-button-visit-shipyard").disabled = false;
                 document.querySelector(".nav-button.nav-button-recruit").style.display = '';
@@ -114,7 +118,23 @@ function navPortActions(when) {
 
         document.querySelector('.nav-button.nav-button-back').disabled = true;
         document.querySelector('.nav-button.nav-button-end-turn').disabled = true;
-    }
+    };
+
+
+    if (when === 'recruit') {
+        document.querySelector(`.nav-button.nav-button-sell-goods`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-buy-goods`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-visit-shipyard`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-recruit`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-acquire-rumor`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-claim-mission`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-stash-gold`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-raise-loyality`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-get-favour`).disabled = true;
+
+        document.querySelector(`.nav-button.nav-button-back`).disabled = true;
+        document.querySelector(`.nav-button.nav-button-end-turn`).disabled = true;
+    };
 
     // raise loyality
     if (when === 'raise loyality') {
@@ -185,7 +205,11 @@ function navPortActions(when) {
                 } else {
                     document.querySelector(".nav-button.nav-button-sell-goods").disabled = false;
                 };
-                document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
+                if (response.buyGoods) {
+                    document.querySelector(".nav-button.nav-button-buy-goods").disabled = true;
+                } else {
+                    document.querySelector(".nav-button.nav-button-buy-goods").disabled = false;
+                };
                 document.querySelector(".nav-button.nav-button-visit-shipyard").disabled = false;
                 document.querySelector(".nav-button.nav-button-recruit").disabled = false;
                 document.querySelector(".nav-button.nav-button-acquire-rumor").disabled = false;

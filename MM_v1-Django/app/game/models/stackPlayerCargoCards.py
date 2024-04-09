@@ -60,6 +60,7 @@ class StackPlayerCargoCards(models.Model):
 
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
     player_colour = models.CharField(max_length=20, null=True, blank=True, choices=PLAYER_COLOURS)
+
     cargo_card_1 = models.ForeignKey(CargoCard, on_delete=models.CASCADE, null=True, blank=True, related_name='cargo_card_1')
     cargo_card_2 = models.ForeignKey(CargoCard, on_delete=models.CASCADE, null=True, blank=True, related_name='cargo_card_2')
     cargo_card_3 = models.ForeignKey(CargoCard, on_delete=models.CASCADE, null=True, blank=True, related_name='cargo_card_3')

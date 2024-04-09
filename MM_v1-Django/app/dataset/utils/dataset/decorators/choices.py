@@ -97,8 +97,9 @@ DIRECTION = [
 
 DISPOSABLE_ACTIONS = [
     'sellGoods', # after sell goods in port, always as first action in port
-    'buyGoods', # after buy goods in port
+    'buyGoods', # after buy goods in port, only one time in current round, in any order
     'raiseLoyality', # after raise loyality track
+    'recruitCrew', # after recruit done in port action
     'getFavour', # after get favour in port, always as last action in port
 ]
 

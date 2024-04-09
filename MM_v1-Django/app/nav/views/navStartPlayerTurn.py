@@ -1,16 +1,19 @@
 from django.http import JsonResponse
 from dataset.utils.dataset.decorators.choices import HIT_LOCATIONS, SHIPSLOCALIZATIONS
-from game.models import Game
+from dataset.utils.dataset.decorators.game_instance import game_instance
 from game.models import TrackPlayerHitLocations
 from game.models import PlayersCaptainsCards
 from game.models import ShipsLocalisations
 from game.models import StackMissionsCards
+from nav.models import NavBarGame
 
 
-def navStartPlayerTurn(request):
+@game_instance
+def navStartPlayerTurn(request, game):
 
     data = {}
-    game = Game.objects.get(number=100)
+
+    # game = Game.objects.get(number=100)
     player_colour = request.session['playerColourActive']
     missions_stack = StackMissionsCards.objects.get(game_number=game)
     player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
@@ -19,7 +22,7 @@ def navStartPlayerTurn(request):
 
     # startPlayerTurn
     if request.GET.get('when') == 'startPlayerTurn':
-        # if any location is destroyed you cannot interact with merchant
+    # if any location is destroyed you cannot interact with merchant
         for hit_localisation in HIT_LOCATIONS:
             if getattr(player_hits_locations_instance, hit_localisation) == 0:
                 data['playerHaveDestroyedHitLocation'] = True

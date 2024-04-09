@@ -62,8 +62,11 @@ use:hover,
 #port-visit-shipyard-ship-action-main-rect,
 #port-visit-shipyard-special-weapons-action-main-rect,
 #port-visit-shipyard-repair-action-main-rect,
-#port-visit-shipyard-modifications-action-main-rect {
-    fill: gray;
+#port-visit-shipyard-modifications-action-main-rect,
+#port-recruit-action-main-rect,
+#dicesFrame {
+    /* fill: gray; */
+    fill: rgb(100, 100, 100);
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
@@ -78,6 +81,8 @@ use:hover,
 #port-visit-shipyard-ship-action-main-rect:hover,
 #port-visit-shipyard-special-weapons-action-main-rect:hover,
 #port-visit-shipyard-repair-action-main-rect:hover,
-#port-visit-shipyard-modifications-action-main-rect:hover {
-    opacity: 0.5;
+#port-visit-shipyard-modifications-action-main-rect:hover,
+#port-recruit-action-main-rect:hover,
+#dicesFrame:hover {
+    opacity: 0.3;
 }

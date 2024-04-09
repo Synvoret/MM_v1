@@ -5,7 +5,7 @@ function startPlayerTurn() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             let response = JSON.parse(xhr.responseText);
             let colour = response.playerColour
-            navStartPlayerTurn();
+            navStartPlayerTurn('startPlayerTurn');
             playerBoard(colour);
         };
         

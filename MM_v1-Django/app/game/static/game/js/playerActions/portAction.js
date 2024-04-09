@@ -1,5 +1,6 @@
 function portAction(type_request, id=null) {
 
+
     if (type_request === 'port') {
         navPortActions(type_request);
     };
@@ -135,7 +136,7 @@ function portAction(type_request, id=null) {
                 updateGloryTrack(colour);
 
                 if (document.getElementById('port-sell-goods-demand-token-in-port').getAttribute('name') === null) {
-                    drawDemandToken(response.port) // draw demand token if player sold demand good for 6 gold
+                    drawDemandToken(response.port); // draw demand token if player sold demand good for 6 gold
                 };
 
             };
@@ -162,7 +163,7 @@ function portAction(type_request, id=null) {
     };
 
 
-    let amount_cargo = 6 // for buy goods
+    let amount_cargo = 6; // for buy goods
     if (type_request ==='buy goods') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -334,6 +335,7 @@ function portAction(type_request, id=null) {
         xhr.send();
     };
 
+
     if (type_request === 'ship sell buy') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -366,6 +368,7 @@ function portAction(type_request, id=null) {
         xhr.send();
     };
 
+
     if (type_request === 'ship sell buy accept' ) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -395,6 +398,7 @@ function portAction(type_request, id=null) {
         data += '&costForBuy=' + encodeURIComponent(costForBuy);
         xhr.send(data);
     };
+
 
     if (type_request === 'special weapon') {
         let xhr = new XMLHttpRequest();
@@ -731,6 +735,124 @@ function portAction(type_request, id=null) {
     };
 
 
+    if (type_request === 'recruit') {
+
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                let colour = response.playerColour;
+
+                console.log(response);
+
+                // disabled buttons (nav)
+                navPortActions(type_request);
+
+                document.getElementById('port-recruit-action-use').style.display = '';
+
+                // stroke colour
+                document.getElementById("port-recruit-action-main-rect").style.stroke = colour;
+
+                // cleanning cubes
+                document.querySelectorAll('.recruit-location').forEach(function(element) {
+                    element.setAttribute('href', '');
+                });
+
+                // setting colour on texts
+                document.querySelectorAll('.recruit-text').forEach(function(element) {
+                    element.style.stroke = colour;
+                });
+
+                // setting golds
+                document.getElementById('player-coin-amount').innerHTML = response[`playerGolds`];
+
+                // show cube and cube max
+                // max value
+                document.getElementById(`port-recruit-hull-${response.playerHullMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                document.getElementById(`port-recruit-cargo-${response.playerCargoMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                document.getElementById(`port-recruit-masts-${response.playerMastsMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                document.getElementById(`port-recruit-crew-${response.playerCrewMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                document.getElementById(`port-recruit-cannons-${response.playerCannonsMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                // value
+                if (response.playerHullValue !== 0) {
+                    document.getElementById(`port-recruit-hull-${response.playerHullValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+                if (response.playerCargoValue !== 0) {
+                    document.getElementById(`port-recruit-cargo-${response.playerCargoValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+                if (response.playerMastsValue !== 0) {
+                    document.getElementById(`port-recruit-masts-${response.playerMastsValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+                if (response.playerCrewValue !== 0) {
+                    document.getElementById(`port-recruit-crew-${response.playerCrewValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+                if (response.playerCannonsValue !== 0) {
+                    document.getElementById(`port-recruit-cannons-${response.playerCannonsValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+
+                if (response.recruitCrew) {
+                    // console.log('NIE TWORZĘ ROLL DICE');
+                } else {
+                    // restart amount success
+                    document.getElementById('recruit-amount-success').innerHTML = 0;
+                    // DICES
+                    rollDices(
+                        type ='create', 
+                        amountDices = response.playerCaptainLeadershipValue, 
+                        // amountDices = 2, 
+                        storageValuesID = 'recruit-amount-success',
+                        parentID = "port-recruit-action", 
+                        x = 640, 
+                        y = 415, 
+                        colour = colour, 
+                        );
+                };
+
+            };
+        };
+        xhr.open('GET', 'portAction?type_request=' + type_request, true);
+        xhr.send();
+    };
+
+
+    if (type_request === 'recruit crew') {
+
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                updatePlayerGolds(response.playerColour);
+                updatePlayerHitLocation(response.playerColour);
+            };
+        };
+
+        xhr.open('POST', 'portAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        let leadershipSuccess = document.getElementById('recruit-amount-success').innerHTML;
+        data += '&leadershipSuccess=' + encodeURIComponent(leadershipSuccess);
+        xhr.send(data);
+    };
+
+
+    if (type_request === 'recruit done') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                
+                document.getElementById('port-recruit-action-use').style.display = 'none';
+                rollDices('destroy');
+
+            };
+        };
+        xhr.open('POST', 'portAction', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        let data = 'type_request=' + encodeURIComponent(type_request);
+        xhr.send(data);
+    };
+
+
     if (type_request === 'stash gold') {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
@@ -797,6 +919,8 @@ function portAction(type_request, id=null) {
     };
 
 
+
+
     if (type_request === 'back to shipyard') {
         navPortActions(type_request);
         document.getElementById('port-visit-shipyard-special-weapons-action-use').style.display = 'none';
@@ -805,6 +929,7 @@ function portAction(type_request, id=null) {
         document.getElementById('port-visit-shipyard-ship-action-use').style.display = 'none';
         document.getElementById(`player-ship-sell-buy`).style.display = 'none';
     };
+
 
     if (type_request === 'back to port') {
         // back after sell goods

@@ -57,7 +57,7 @@ class TrackPlayerHitLocations(models.Model):
         self.save()
 
     def repair_location(self, player: str, location: str) -> bool:
-        """Method update location when it repair."""
+        """Method update location when it repair/recruit."""
         location = location.lower()
         if self.value_location(location) >= self.max_value_location(player, location):
             return False

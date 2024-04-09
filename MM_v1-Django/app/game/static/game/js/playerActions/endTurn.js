@@ -16,7 +16,6 @@ function endTurn() {
                 startPlayerTurn();
             };
 
-            
             localStorage.clear();
         };
     };

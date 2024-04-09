@@ -22,6 +22,21 @@ class PlayersCaptainsCards(models.Model):
         setattr(self, f"player_{colour}", new_captain)
         self.save()
 
+    def skill_value(self, player_colour: str, skill: str) -> int:
+        """
+        Method returns current int value for the selected captain's skill, 
+        taking into account damage, modifications and other game situations.
+
+        Args:
+            player_colour: need only colour as 'yellow', 'red' or other,
+            skill: need skill name as for example 'scouting'.
+        """
+
+        captain_card = getattr(self, f"player_{player_colour}")
+        captain_skill_value = getattr(captain_card, skill)
+
+        return captain_skill_value
+
     game_number = models.ForeignKey(Game, on_delete=models.CASCADE, default=100, null=True, blank=True)
 
     player_blue = models.ForeignKey(CaptainCard, on_delete=models.CASCADE, null=True, blank=True, related_name='player_blue_captain_card', default=None)

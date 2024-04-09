@@ -39,7 +39,9 @@ def portAction(request):
     demand_tokens = GameDemandTokens.objects.get(game_number=game)
     missions_stack = StackMissionsCards.objects.get(game_number=game)
     player_golds = TrackPlayerGolds.objects.get(game_number=game)
-    player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
+    # player_captain_instance = getattr(PlayersCaptainsCards, f"player_{player_colour}")
+    game_captains = PlayersCaptainsCards.objects.get(game_number=game)
+    player_captain_card = getattr(game_captains, f"player_{player_colour}")
     player_ship = PlayersShipsCards.objects.get(game_number=game)
     player_cargo_cards_instance = StackPlayerCargoCards.objects.get(player_colour=player_colour)
     player_hit_locations = TrackPlayerHitLocations.objects.get(player_colour=player_colour)
@@ -69,7 +71,7 @@ def portAction(request):
                     data[f"playerCargoCard{i}ImageUrl"] = card.awers.url
                 else: 
                     break
-            port_name = str(getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ', '_')
+            port_name = str(getattr(ship_localisations, f"{player_colour}_ship")).lower().replace(' ', '_').replace('-', '_')
             demand_token_in_port = getattr(demand_tokens, port_name)
             data['demanTokenInPort'] = demand_token_in_port.cargo
             data['demanTokenInPortImageUrl'] = demand_token_in_port.awers.url
@@ -175,6 +177,19 @@ def portAction(request):
                 data[f"forSell{player_modification}"] = (ShipModifications.objects.get(name=player_modification)).awers.url
 
 
+        if request.GET.get('type_request') == 'recruit':
+            data['playerGolds'] = player_golds.golds_amount(player_colour)
+            for hit_location in HIT_LOCATIONS:
+                data[f"player{hit_location.capitalize()}Value"] = player_hit_locations.value_location(hit_location)
+                data[f"player{hit_location.capitalize()}MaxValue"] = player_hit_locations.max_value_location(f"player_{player_colour}", hit_location)
+
+            if 'recruitCrew' in player_nav_bar:
+                data['recruitCrew'] = True
+            else:
+                data['playerCaptainLeadershipValue'] = player_captain_card.leadership
+            data['playerCubeImageUrl'] = Cube.player_cube(player_colour)
+            data['playerCubeMaxImageUrl'] = Cube.player_cube_max(player_colour)
+
     # POST method
     if request.method == 'POST':
 
@@ -236,7 +251,6 @@ def portAction(request):
 
             # update navBarGame
             nav_bar.player_nav(player_colour, 'buyGoods')
-            print(dict(request.session))
 
 
         if request.POST.get('type_request') == 'ship sell buy accept':
@@ -282,6 +296,19 @@ def portAction(request):
             if request.POST.get('type_request') == 'modification sell':
                 player_modifications.remove_modification(player_colour, bought_modification)
                 player_golds.increase_golds(f"player_{player_colour}", 1)
+
+
+        if request.POST.get('type_request') == 'recruit crew':
+            # if player roll leadership success
+            if int(request.POST.get('leadershipSuccess')) > 0:
+                player_hit_locations.repair_location(f"player_{player_colour}", 'crew')
+            # if player no rolled leadership success and have gold
+            elif player_golds.golds_amount(player_colour) >= 2:
+                if player_hit_locations.repair_location(f"player_{player_colour}", 'crew'):
+                    player_golds.decrease_golds(f"player_{player_colour}", 2)
+
+        if request.POST.get('type_request') == 'recruit done':
+            nav_bar.player_nav(player_colour, 'recruitCrew')
 
 
         # stash gold

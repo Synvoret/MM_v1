@@ -7,9 +7,45 @@ function scoutAction(type_request) {
     };
 
 
-    if (type_request === 'merchant') {
-        navScoutActions(type_request);
+    if (type_request === 'scouting merchant') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                navScoutActions(type_request);
+                rollDices(
+                    type='create',
+                    amountDices=response['skillValue'],
+                    storageValuesID='single',
+                    parentID='board-svg',
+                    x=500,
+                    y=500,
+                    colour=response['playerColour'],
+                    skill=response['skillName'],
+                    success=`scoutAction('merchant')`,
+                    afterTest=true,
+                );
+            };
+        };
+        xhr.open('GET', 'scoutAction?type_request=' + type_request, true);
+        xhr.send();
     };
+
+
+    if (type_request === 'merchant') {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                console.log(response);
+                navScoutActions(type_request);
+                document.getElementById(`merchant-token-${response['merchantLocalisation']}-image`).setAttribute('href', response[`merchantTokenAwersImageUrl`]);
+            };
+        };
+        xhr.open('GET', 'scoutAction?type_request=' + type_request, true);
+        xhr.send();
+    };
+
 
     // RAID RAID RAID RAID RAID RAID 
     // RAID RAID RAID RAID RAID RAID 
@@ -359,7 +395,7 @@ function scoutAction(type_request) {
                 updateGloryTrack(colour)
                 updatePlayerGolds(colour);
                 updatePlayerHitLocation(colour);
-                endCurrentAction(colour);
+                // endCurrentAction(colour);
 
             };
         };
@@ -394,6 +430,7 @@ function scoutAction(type_request) {
         rollDices('destroy');
 
     };
+
 
     // TRADE TRADE TRADE TRADE TRADE TRADE 
     // TRADE TRADE TRADE TRADE TRADE TRADE 
@@ -551,7 +588,7 @@ function scoutAction(type_request) {
                 let colour = response.playerColour;
 
                 updatePlayerCargoCards(colour);
-                endCurrentAction(colour);
+                // endCurrentAction(colour);
             };
         };
         xhr.open('POST', 'scoutAction', true);
@@ -829,11 +866,10 @@ function scoutAction(type_request) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
-
                 updateGloryTrack(colour)
                 updatePlayerGolds(colour);
                 updatePlayerHitLocation(colour);
-                endCurrentAction(colour);
+                // endCurrentAction(colour);
             };
         };
         let getGold = parseInt(document.getElementById('merchant-escort-value-result').textContent);

@@ -50,6 +50,8 @@ class Game(models.Model):
     rounds = models.IntegerField(unique=True)
     amount_players = models.IntegerField(default=0)
     player_blue_play = models.BooleanField(default=False)
+    # player_blue_actions = models.IntegerField(null=True, blank=True)
+    # player_blue_current_action = models.IntegerField(null=True, blank=True)
     player_blue_done = models.BooleanField(default=False)
     player_green_play = models.BooleanField(default=False)
     player_green_done = models.BooleanField(default=False)

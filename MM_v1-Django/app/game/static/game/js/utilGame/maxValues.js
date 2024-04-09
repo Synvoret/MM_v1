@@ -36,10 +36,18 @@ function maxValues(colour) {
             };
 
             // max actions
-            for (let i = 1; i <= 5; i++) {
-                document.getElementById(`captain-actions-${i}`).setAttribute('href', '');
-            };
             document.getElementById('captain-max-value-actions-image').setAttribute('href', response.playerCubeMaxImage);
+
+            // for (let i = 1; i <= 5; i++) {
+            //     if (document.getElementById(`captain-actions-${i}`).getAttribute('href') !== "#captain-max-value-actions-image") {
+            //         if (document.getElementById(`captain-actions-${i}`).getAttribute('href') === "#captain-max-value-actions-image")
+            //         document.getElementById(`captain-actions-${i}`).setAttribute('href', '');
+            //         if (i === response.playerMaxAmountActions) {
+            //             document.getElementById(`captain-actions-${i}`).setAttribute('href', "#captain-max-value-actions-image");
+            //         }
+            //     };
+            // };
+
             if (document.getElementById(`captain-actions-${response.playerMaxAmountActions}`).getAttribute('href') === "") {
                 document.getElementById(`captain-actions-${response.playerMaxAmountActions}`).setAttribute('href', '#captain-max-value-actions-image');
             };
