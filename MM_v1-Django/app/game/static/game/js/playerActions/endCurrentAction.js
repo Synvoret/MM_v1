@@ -11,14 +11,13 @@ function endCurrentAction(colour, afterTest=false) {
             } else if (response.amountActions === undefined && afterTest === true) {
                 document.getElementById(`captain-actions-${response.currentAction}`).setAttribute('href', '#captain-actions-image');
                 let okText = document.getElementById("ok-text").getAttribute('onclick');
-                okText = okText.replace("navRollDices('testOk');", "navRollDices('testOk', amountActions=true);")
-                console.log(okText)
+                okText = okText.replace("navRollDices('testOk');", "navRollDices('testOk', amountActions=true);");
                 document.getElementById("ok-text").setAttribute('onclick', okText);
-                document.getElementById("cancel-text").setAttribute('onclick', `navRollDices(when='testCancel', amountActions=true); rollDices(type='destroy')`)
+                document.getElementById("cancel-text").setAttribute('onclick', `navRollDices(when='testCancel', amountActions=true); rollDices(type='destroy')`);
                 document.querySelector('.nav-button.nav-button-back').disabled = true;
                 document.querySelector(".nav-button.nav-button-end-turn").disabled = true;
             };
-            
+
             if (response.nextPlayer && afterTest === false) { // NEXT PLAYER AFTER END TURN CLICK
                 resetNav('after all actions');
                 document.getElementById(`captain-actions-${response.currentAction}`).setAttribute('href', '#captain-actions-image');

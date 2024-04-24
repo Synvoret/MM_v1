@@ -23,4 +23,5 @@ def rollDices(request):
             data[f"dice{i}Value"] = random_dice.value
 
     data['playerColour'] = request.session['playerColourActive']
+
     return JsonResponse(data)
