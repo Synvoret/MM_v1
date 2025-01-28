@@ -2,14 +2,18 @@
 {% load static %}
 
 {% block title %}Welcome Pirates!!!{% endblock title %}
-{% block styles %}<link rel="stylesheet" href="{% static 'index/styles/index_styles.css' %}">{% endblock styles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'index/styles/index_styles.css' %}">
+{% endblock styles %}
 
 {% block content %}
 
-    <h1>Merchants and Marauders v1 - Django</h1>
+    <h1>Merchants & Marauders</h1>
+    <h6>v1 - Django</h6>
     <hr>
-    <a href="{% url 'game:game' %}"><button>New Game</button></a><br>
-    <!-- <a href=""><button>Settings</button></a><br> -->
+    <a href="{% url 'game:game' %}"><button>Merchants & Marauders</button></a><br>
+    <hr>
+    <a href="{% url 'battle_app:battle_app' %}"><button onclick="battleAppShowMainList()">Battles</button></a><br>
     <!-- <a href=""><button>Rulebooks</button></a><br> -->
     <!-- <a href=""><button>Highlights</button></a><br> -->
     <hr>

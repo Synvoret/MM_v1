@@ -8,6 +8,7 @@ from game.models import ShipsLocalisations
 def drawMerchantToken(request):
     """Function return new randomly Merchant Token fo Sea Zone."""
 
+    data = {}
     all_tokens = MerchantTokens.objects.all()
     random_token = random.choice(all_tokens)
 
@@ -28,9 +29,7 @@ def drawMerchantToken(request):
     awers_image = random_token.awers.url
     rewers_image = str(random_token.rewers)
 
-    data = {
-        "merchantTokenAwersImage": awers_image,
-        "merchantTokenRewersImage": rewers_image,
-    }
+    data['merchantTokenAwersImage'] = awers_image
+    data['merchantTokenRewersImage'] = rewers_image
 
     return JsonResponse(data)

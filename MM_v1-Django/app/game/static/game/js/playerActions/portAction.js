@@ -742,9 +742,6 @@ function portAction(type_request, id=null) {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 let colour = response.playerColour;
-
-                console.log(response);
-
                 // disabled buttons (nav)
                 navPortActions(type_request);
 
@@ -821,6 +818,15 @@ function portAction(type_request, id=null) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
+
+                // update after successfull recruit crew
+                // max value
+                document.getElementById(`port-recruit-crew-${response.playerCrewMaxValue}`).setAttribute('href', response['playerCubeMaxImageUrl']);
+                // actual value
+                if (response.playerCrewValue !== 0) {
+                    document.getElementById(`port-recruit-crew-${response.playerCrewValue}`).setAttribute('href', response['playerCubeImageUrl']);
+                };
+
                 updatePlayerGolds(response.playerColour);
                 updatePlayerHitLocation(response.playerColour);
             };

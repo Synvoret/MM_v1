@@ -195,6 +195,6 @@ function navScoutActions(when) {
 
         document.querySelector(".nav-button.nav-button-back").disabled = true;
         document.querySelector(".nav-button.nav-button-end-turn").disabled = false;
-        rollDices('destroy');
+        // rollDices('destroy');
     };
 };

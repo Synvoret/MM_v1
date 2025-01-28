@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Batte Application{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'battle_app/styles/battle_app.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+
+    <h1>Combat Flow</h1>
+    <h6>v1 - Battle App</h6>
+    <div id="battle-app-main-list">
+        <button onclick="playerAttackNPC()">Player attack NPC</button><br>
+        <!-- <a href=""><button>NPC attack Player</button></a><br>
+        <a href=""><button>Player attack Merchant</button></a><br>
+        <a href=""><button>Player attack Player</button></a><br>
+        <a href=""><button>Player attack Location</button></a><br>
+        <a href=""><button>Player attack Fort</button></a><br> -->
+        <button onclick="combatFlowDiagram()">Combat Flow Diagram</button><br>
+    </div>
+
+    <div id="battle-logs">
+    </div>
+
+    <button id="back-to-main-list-button" style="color: red" class="battle-app-hidden" onclick="battleAppShowMainList()"><- Back to Battle List</button>
+
+    <hr>
+    <a href="{% url 'index:index' %}"><button class="back"><- BACK to INDEX</button></a>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'battle_app/js/constans.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils.js' %}"></script>
+
+    <script src="{% static 'battle_app/js/mainList.js' %}"></script>
+
+    <script src="{% static 'battle_app/js/playerAttackNPC.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlowDiagram.js' %}"></script>
+
+{% endblock scripts %}

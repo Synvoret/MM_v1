@@ -306,6 +306,17 @@ def portAction(request):
             elif player_golds.golds_amount(player_colour) >= 2:
                 if player_hit_locations.repair_location(f"player_{player_colour}", 'crew'):
                     player_golds.decrease_golds(f"player_{player_colour}", 2)
+            # update data after successfull recruit crew
+            data['playerGolds'] = player_golds.golds_amount(player_colour) # player gold
+            for hit_location in HIT_LOCATIONS:
+                data[f"player{hit_location.capitalize()}Value"] = player_hit_locations.value_location(hit_location)
+                data[f"player{hit_location.capitalize()}MaxValue"] = player_hit_locations.max_value_location(f"player_{player_colour}", hit_location)
+
+            # if 'recruitCrew' in player_nav_bar:
+            #     data['recruitCrew'] = True
+            # else:
+            data['playerCubeImageUrl'] = Cube.player_cube(player_colour)
+            data['playerCubeMaxImageUrl'] = Cube.player_cube_max(player_colour)
 
         if request.POST.get('type_request') == 'recruit done':
             nav_bar.player_nav(player_colour, 'recruitCrew')

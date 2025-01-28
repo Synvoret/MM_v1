@@ -20,3 +20,7 @@ button {
 button.back {
     color: red;
 }
+
+button.back:hover {
+    font-style: italic;
+}

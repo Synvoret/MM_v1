@@ -1,0 +1,21 @@
+/* battleApp */
+.battle-app-hidden {
+    display: none;
+}
+
+/* .battle-app:hover {
+    display: none;
+} */
+
+#back-to-main-list-button:hover {
+    font-style: italic
+}
+
+
+
+
+
+/* playerAttackKN */
+.declaration {
+    text-align: left;
+}
