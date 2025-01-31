@@ -13,7 +13,7 @@
     <hr>
     <a href="{% url 'game:game' %}"><button>Merchants & Marauders</button></a><br>
     <hr>
-    <a href="{% url 'battle_app:battle_app' %}"><button onclick="battleAppShowMainList()">Battles</button></a><br>
+    <a href="{% url 'battle_app:battle_app' %}"><button>Battles</button></a><br>
     <!-- <a href=""><button>Rulebooks</button></a><br> -->
     <!-- <a href=""><button>Highlights</button></a><br> -->
     <hr>
@@ -21,7 +21,9 @@
     <a href="{% url 'user:login' %}"><button>Login</button></a>
     <a href="{% url 'user:register' %}"><button>Register</button></a><br>
     <span>Admin panel Django - u:admin p:admin</span><a href="/admin"><button>Admin</button></a><br>
-    
-    <script src="{% static 'index/js/index.js' %}"></script>
 
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'index/js/index.js' %}"></script>
+{% endblock scripts %}

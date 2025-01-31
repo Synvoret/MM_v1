@@ -8,6 +8,8 @@ __pycache__/
 
 # Distribution / packaging
 _ROBOCZE/
+.vscode/
+**/venv/
 **/venv_windows/
 **/venv_linux/
 licznik_kodu.py
