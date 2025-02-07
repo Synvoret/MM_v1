@@ -9,13 +9,14 @@ function playerAttackNPC() {
         battleLog = localStorage.getItem('battleLog');
     };
 
-    let player = battleLocalStorage(issue='get', key='player');
-    let npc = battleLocalStorage(issue='get', key='npc');
+    let player = battleLocalStorage(issue='get', key='Player');
+    let npc = battleLocalStorage(issue='get', key='NPC');
     let round = battleLocalStorage(issue='get', key='round');
     let declerations = battleLocalStorage(issue='get', key='declarations');
     let actions = battleLocalStorage(issue='get', key='actions');
 
     if (!declerations.player && !declerations.npc) {
+        roundSection(round);
         roundCounter(round);
     };
 
@@ -23,45 +24,39 @@ function playerAttackNPC() {
     // IF FIRST ROUND
     if (round === 1) {
 
-        battleLocalStorage(issue='update', key='round', value=round+1, side=null);
-        declarationSide('Player');
-        createP('Shoot');
-        battleLocalStorage(issue='update', key='declarations', value=true, side="player");
-        declarationSide('NPC');
-        createP('Shoot');
-        battleLocalStorage(issue='update', key='declarations', value=true, side="npc");
+        firstRound(round, 'Player', 'NPC');
 
-        // if (player.seamanship_result.length === 0) {
-        //     // console.log('brak wyników rzutów kostek dla agresora');
-        //     // createActionButton('Roll Seamanship', 'player');
-        // } else if (npc.seamanship_result.length === 0) {
-        //     // console.log('brak wyników rzutów kostek dla npca');
-        //     // createActionButton('Roll Seamanship', 'npc');
-        // } else {
-        if (nextRound()) {
-            playerAttackNPC()
-        };
+        // dices for Seamanship
+        createP(round, 'Roll Seamanship');
+        battleDiceRoll(round, 'seamanship', 'Player');
+        battleDiceRoll(round, 'seamanship', 'NPC');
+
+        // if (nextRound()) {
+        //     playerAttackNPC()
         // };
+
 
     // NEXT ROUNDS
     } else if (round > 1) {
 
-        if (!declerations.player) {
-            declarationSide('Player');
-            for (action of actions) {
-                createActionButton(action, "player");
-            };
-        } else if (!declerations.npc) {
-            declarationSide('NPC');
-            for (action of actions) {
-                createActionButton(action, "npc");
-            };
-        } else {
-            if (nextRound()) {
-                battleLocalStorage(issue='update', key='round', value=round+1, side=null);
-                playerAttackNPC();
-            };
-        };
+        console.log(`next rounds ${round}`);
+
+        // if (!declerations.player) {
+        //     declarationSide('Player');
+        //     for (action of actions) {
+        //         createActionButton(action, "Player");
+        //     };
+        // } else if (!declerations.npc) {
+        //     declarationSide('NPC');
+        //     for (action of actions) {
+        //         createActionButton(action, "NPC");
+        //     };
+        // } else {
+        //     if (nextRound()) {
+        //         battleLocalStorage(issue='update', key='round', value=round+1, side=null);
+        //         playerAttackNPC();
+        //     };
+        // };
 
     };
 

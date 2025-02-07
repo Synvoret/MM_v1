@@ -36,11 +36,24 @@
 
 {% block scripts %}
     <script src="{% static 'battle_app/js/constans.js' %}"></script>
-    <script src="{% static 'battle_app/js/domUtils.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/domUtils.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/battleRollDice.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/battleLocalStorage.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/createActionButton.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/createP.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/diceRollComparison.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/declarationSide.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/roundCounter.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/roundSection.js' %}"></script>
 
     <script src="{% static 'battle_app/js/mainList.js' %}"></script>
 
     <script src="{% static 'battle_app/js/playerAttackNPC.js' %}"></script>
+
+    <script src="{% static 'battle_app/js/firstRound.js' %}"></script>
+    <script src="{% static 'battle_app/js/nextRound.js' %}"></script>
+
+
     <script src="{% static 'battle_app/js/combatFlowDiagram.js' %}"></script>
 
 {% endblock scripts %}
