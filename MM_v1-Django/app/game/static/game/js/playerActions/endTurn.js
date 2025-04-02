@@ -9,7 +9,7 @@ function endTurn() {
             resetNav('during actions');
 
             // start player actions only player want or players used all actions
-            if (response.endRound) {
+            if (response.nextRound) {
                 startRound();
             } else {
                 navEndTurn(response.playerColourEndingTurn);

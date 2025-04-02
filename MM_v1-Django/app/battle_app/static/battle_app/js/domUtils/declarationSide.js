@@ -1,22 +1,21 @@
 // declaration description
-function declarationSide(roundNumber, side) {
+async function declarationSide(roundRecord, side) {
+
     const spanDeclaration = document.createElement('p');
     spanDeclaration.style.textAlign = 'left';
 
     const declaration = document.createElement('span');
     declaration.textContent = `Declaration: `;
-    declaration.style.textAlign = 'left';
     spanDeclaration.appendChild(declaration);
 
     const sideDeclaration = document.createElement('span');
-    sideDeclaration.style.textAlign = 'left';
     sideDeclaration.textContent = `${side}`;
     spanDeclaration.appendChild(sideDeclaration);
-    if (side === 'Player') {
+    if (side == 'aggressor' || side == 'Aggressor') {
         sideDeclaration.style.color = 'red';
-    } else if (side === 'NPC') {
+    } else if (side == 'defender' || side == 'Defender') {
         sideDeclaration.style.color = 'blue';
     };
 
-    document.getElementById(`round-section-${roundNumber}`).appendChild(spanDeclaration);
+    document.getElementById(`round-section-${roundRecord.round}`).appendChild(spanDeclaration);
 };

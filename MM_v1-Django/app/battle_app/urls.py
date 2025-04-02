@@ -5,7 +5,9 @@ app_name = 'battle_app'
 
 urlpatterns = [
     path('battleApp', views.battleApp, name='battle_app'),
+    path('combatFlow', views.combatFlow, name='combatFlow'),
     path('combatFlowDiagram', views.combatFlowDiagram, name='combatFlowDiagram'),
-    path('diceImage', views.diceImage, name='diceImage'),
-    path('playerAttackNPC', views.playerAttackNPC, name='playerAttackNPC'),
+    path('dices', views.dices, name='dices'),
+    path('round', views.round, name='round'),
+    path('seaBattle', views.seaBattle, name='seaBattle'),
 ]

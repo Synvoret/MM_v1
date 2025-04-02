@@ -19,6 +19,12 @@ ALLOWEDDESTINATIONS= [
     'Trinidad',
 ]
 
+BATTLEDECLARATIONS = [
+    ("shoot", "shoot"),
+    ("board", "board"),
+    ("flee", "flee"),
+]
+
 BOUNTIES = [
     'Dutch',
     'English',
@@ -208,6 +214,13 @@ SHIPS = [
     ('Galleon', 'Galleon'),
     ('Man-o-War', 'Man-o-War'),
     ('Sloop', 'Sloop'),
+]
+
+SITES = [
+    ("player", "player"),
+    ("npc", "npc"),
+    ("location", "location"),
+    ("fort", "fort")
 ]
 
 SUPPORTBOATS = [

@@ -42,7 +42,7 @@ def endTurn(request):
             if players[player][0] and players[player][1]:
                 request.session['whoEnded'] += 1
                 if request.session['whoEnded'] == game.amount_players:
-                    data['endRound'] = True
+                    data['nextRound'] = True
                     print('KONIEC RUNDY')
             else:
                 print('TOJESZCZE NIE KONIEC RUNDY')

@@ -1,21 +1,23 @@
 // function responsible for creating ACTION buttons in row
-function createActionButton(action, side) {
+async function createActionButton(roundRecord, action, side) {
+    // const actionButtons = document.getElementById('round-section-2');
     let actionButtons = document.querySelector('.actionButtons');
     if (!actionButtons) {
         actionButtons = document.createElement('span');
         actionButtons.className = 'actionButtons';
-        document.getElementById('battle-logs').appendChild(actionButtons);
+        document.getElementById(`round-section-${roundRecord.round}`).appendChild(actionButtons);
     };
     // create button
     const element = document.createElement('button');
     element.className = `Button${action}`;
     element.textContent = action;
 
-    element.addEventListener('click', function() {
+    element.addEventListener('click', async function() {
         this.parentElement.remove();
-        createP(action);
-        battleLocalStorage(issue='update', key='declarations', value=true, side=side);
-        playerAttackNPC();
+        await createP(roundRecord, action);
+        await combatFlow(request='POST', side=side, parameter='declaration', value=action, next_round=false);
+        // nextRound();
+        await seaBattle();
     });
 
     actionButtons.appendChild(element);

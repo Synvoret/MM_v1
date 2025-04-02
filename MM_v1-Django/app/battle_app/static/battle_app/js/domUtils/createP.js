@@ -1,7 +1,8 @@
 // function responsible for displaying content
-function createP(roundNumber, content) {
+async function createP(roundRecord, content) {
     const element = document.createElement('p');
+    // element.style.textAlign = 'left';
     element.className = `description`;
     element.textContent = content;
-    document.getElementById(`round-section-${roundNumber}`).appendChild(element);
+    document.getElementById(`round-section-${roundRecord.round}`).appendChild(element);
 };

@@ -12,10 +12,10 @@
 
 {% block content %}
 
-    <h1>Combat Flow</h1>
+    <h6>Combat Flow</h6>
     <h6>v1 - Battle App</h6>
     <div id="battle-app-main-list">
-        <button onclick="playerAttackNPC()">Player attack NPC</button><br>
+        <button onclick="seaBattle()">Sea Battle</button><br>
         <!-- <a href=""><button>NPC attack Player</button></a><br>
         <a href=""><button>Player attack Merchant</button></a><br>
         <a href=""><button>Player attack Player</button></a><br>
@@ -27,6 +27,7 @@
     <div id="battle-logs">
     </div>
 
+    <hr id="hr-line-before-back-to-list-button" class="battle-app-hidden">
     <button id="back-to-main-list-button" style="color: cyan" class="battle-app-hidden" onclick="battleAppShowMainList()"><- Back to Battle List</button>
 
     <hr>
@@ -35,24 +36,29 @@
 {% endblock content %}
 
 {% block scripts %}
-    <script src="{% static 'battle_app/js/constans.js' %}"></script>
+
+    <script src="{% static 'battle_app/js/combatFlow/actionFromDeclaration.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/boarding.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/declaration.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/flee.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/nextRound.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/seamanship.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/shooting.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow/startRound.js' %}"></script>
+
     <script src="{% static 'battle_app/js/domUtils/domUtils.js' %}"></script>
-    <script src="{% static 'battle_app/js/domUtils/battleRollDice.js' %}"></script>
-    <script src="{% static 'battle_app/js/domUtils/battleLocalStorage.js' %}"></script>
     <script src="{% static 'battle_app/js/domUtils/createActionButton.js' %}"></script>
     <script src="{% static 'battle_app/js/domUtils/createP.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/dices.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/dicesRoll.js' %}"></script>
     <script src="{% static 'battle_app/js/domUtils/diceRollComparison.js' %}"></script>
     <script src="{% static 'battle_app/js/domUtils/declarationSide.js' %}"></script>
-    <script src="{% static 'battle_app/js/domUtils/roundCounter.js' %}"></script>
     <script src="{% static 'battle_app/js/domUtils/roundSection.js' %}"></script>
+    <script src="{% static 'battle_app/js/domUtils/statBoard.js' %}"></script>
 
     <script src="{% static 'battle_app/js/mainList.js' %}"></script>
-
-    <script src="{% static 'battle_app/js/playerAttackNPC.js' %}"></script>
-
-    <script src="{% static 'battle_app/js/firstRound.js' %}"></script>
-    <script src="{% static 'battle_app/js/nextRound.js' %}"></script>
-
+    <script src="{% static 'battle_app/js/seaBattle.js' %}"></script>
+    <script src="{% static 'battle_app/js/combatFlow.js' %}"></script>
 
     <script src="{% static 'battle_app/js/combatFlowDiagram.js' %}"></script>
 
