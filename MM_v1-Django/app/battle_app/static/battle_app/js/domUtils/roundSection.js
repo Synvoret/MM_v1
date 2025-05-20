@@ -1,7 +1,5 @@
 async function roundSection(roundRecord) {
 
-    // const roundRecord = await combatFlow();
-
     // ROUND SECTION
     const roundSection = document.createElement('section');
     roundSection.id = `round-section-${roundRecord.round}`;
@@ -26,5 +24,7 @@ async function roundSection(roundRecord) {
     const roundCounter = document.createElement('h4');
     roundCounter.className = 'roundCounter';
     roundCounter.textContent = `Round: >> ${roundRecord.round} <<`;
+
     document.getElementById(`round-section-${roundRecord.round}`).appendChild(roundCounter);
+
 };

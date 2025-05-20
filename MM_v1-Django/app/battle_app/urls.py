@@ -7,7 +7,10 @@ urlpatterns = [
     path('battleApp', views.battleApp, name='battle_app'),
     path('combatFlow', views.combatFlow, name='combatFlow'),
     path('combatFlowDiagram', views.combatFlowDiagram, name='combatFlowDiagram'),
+    path('declaration', views.declaration, name='declaration'),
     path('dices', views.dices, name='dices'),
-    path('round', views.round, name='round'),
     path('seaBattle', views.seaBattle, name='seaBattle'),
+    path('seamanship', views.seamanship, name='seamanship'),
+    path('shooting', views.shooting, name='shooting'),
+    path('statBoard', views.statBoard, name='statBoard'),
 ]

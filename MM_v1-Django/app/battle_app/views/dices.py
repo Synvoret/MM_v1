@@ -10,38 +10,80 @@ def dices(request):
     """Endpoint return a dice image."""
 
     data = {}
+    combat_record = CombatFlow.objects.first()
+    # raw data
+    data['roundRecord'] = combat_record.combat[-1]
 
     name_dices = ['one', 'two', 'three', 'four', 'skull5', 'skull6']
+    hits = {'1': 'cargo', '2': 'masts', '3': 'crew', '4': 'cannons', 'skull': 'choice'}
 
-    if request.method == 'GET': # only show dice with 1
-        dice1 = Dice.objects.get(name='one')
-        data["dice1Image"] = dice1.image.url
+    if request.method == 'GET': # ONLY SHOW DICE WITH 1
+        data['roundRecord']["dice1Image"] = Dice.get_dice("one")[0].image.url
 
-    if request.method == 'POST': # dicesRoll.js
+    if request.method == 'POST': # WHEN the DICES WERE ROLLED (dicesRoll.js)
         request_data = json.loads(request.body)
-        # print(request_data)
         side = request_data['side']
         test = request_data['test']
-        amount = request_data['amountDices']
-        dices = Dice.objects.all()
-        combat_flow = CombatFlow.objects.first()
+        amount = request_data['amountDices'] # ????????????????????????????????????????, to wie z bazy
         for i in range(0, amount):
-
-            dice = dices.get(name=random.choice(name_dices))
-
-            if dice.name == 'skull5' or dice.name == 'skull6':
-                data[f"dice{i + 1}Image"] = dice.image.url
+            dice = Dice.get_dice(random.choice(name_dices))
+            if dice[0].name == 'skull5' or dice[0].name == 'skull6':
+                data['roundRecord'][f"dice{i + 1}Image"] = dice[0].image.url
             else:
-                data[f"dice{i + 1}Image"] = dice.image.url
+                data['roundRecord'][f"dice{i + 1}Image"] = dice[0].image.url
+            combat_record.update_round_record(side, test, dice[0].value)
 
-            combat_flow.update_round_record(side, test, dice.value)
+        # DICE ROLL COMPARISON
+        count_aggressor_results = combat_record.combat[-1]['aggressor'][f'{test}_roll_result']
+        count_defender_results = combat_record.combat[-1]['defender'][f'{test}_roll_result']
 
-        data['aggressorResults'] = combat_flow.combat[-1]['aggressor'][f'{test}_roll_result']
-        data['defenderResults'] = combat_flow.combat[-1]['defender'][f'{test}_roll_result']
-        data['aggressorDeclaration'] = combat_flow.combat[-1]['aggressor']['declaration']
-        data['defenderDeclaration'] = combat_flow.combat[-1]['defender']['declaration']
-        data['aggressor'] = combat_flow.combat[-1]['aggressor']
-        data['defender'] = combat_flow.combat[-1]['defender']
+        # for seamanship test, comparison results
+        if test == 'seamanship' and len(count_aggressor_results) > 0 and len(count_defender_results) > 0:
+            if Dice.dice_comparison(count_aggressor_results, count_defender_results) == 'no success':
+                combat_record.update_round_record('aggressor', 'seamanship_result', 'no success')
+                combat_record.update_round_record('defender', 'seamanship_result', 'no success')
+                data['roundRecord']['seamanshipResult'] = 'no success'
+                combat_record.next_round()
+            elif Dice.dice_comparison(count_aggressor_results, count_defender_results) == 'draw':
+                combat_record.update_round_record('aggressor', 'seamanship_result', 'draw')
+                combat_record.update_round_record('defender', 'seamanship_result', 'draw')
+                data['roundRecord']['seamanshipResult'] = 'draw'
+                combat_record.next_round()
+            elif Dice.dice_comparison(count_aggressor_results, count_defender_results) == 'winner':
+                combat_record.update_round_record('aggressor', 'seamanship_result', 'winner') # won
+                combat_record.update_round_record('defender', 'seamanship_result', 'loser')
+            elif Dice.dice_comparison(count_aggressor_results, count_defender_results) == 'loser':
+                combat_record.update_round_record('aggressor', 'seamanship_result', 'loser') 
+                combat_record.update_round_record('defender', 'seamanship_result', 'winner') # won
+
+        # for shot test
+        # if test == 'shot':
+        #     print('strzały')
+
+        #     if combat_record.combat[-1][side]['seamanship_result_comparison']:
+        #         for result in combat_record.combat[-1][side]["shot_roll_result"]:
+        #             print(result, hits[result])
+        #         # print(f' {side} seamanship wygrał i strzelił z dział, trafienia-> {hits[(combat_flow.combat[-1][side]["shot_roll_result"][0])]}')
+        #             combat_record.update_round_record(side, hits[result], 1)
+        #     elif combat_record.combat[-1][side]['seamanship_result_comparison'] == False:
+        #         for result in combat_record.combat[-1][side]["shot_roll_result"]:
+        #             print(result, hits[result])
+        #             combat_record.update_round_record(side, hits[result], 1)
+        #         print(f' {side} seamanship przegrał więc strzela za każdy sukces w seamnaship')
+        #     # comparison results
+        #     if len(count_aggressor_results) > 0 and len(count_defender_results) > 0:
+        #         print(side, test, amount, f'{test}_roll_result')
+        #         print('OBA STRZAŁY WYKONANE< BAZA ZAKTUALIZOWANA WIEC PRZECHODZEMY DO NASTEPNEJ RUNDY')
+        #         data['hits'] = hits
+        #         data['resultNextRound'] = True
 
 
-    return JsonResponse(data)
+    # if combat_record.combat[-1]['aggressor']['hull'] == 0 or combat_record.combat[-1]['defender']['hull'] == 0:
+    #     data['shipSunk'] = True
+
+    # data['round'] = combat_record.combat[-1]['round']
+    # data['aggressor'] = combat_record.combat[-1]['aggressor']
+    # data['defender'] = combat_record.combat[-1]['defender']
+
+
+    return JsonResponse(data, safe=False)

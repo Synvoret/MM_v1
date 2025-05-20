@@ -1,13 +1,13 @@
-function battleAppHiddenMainList() {
+async function battleAppHiddenMainList() {
 
-    document.getElementById('hr-line-before-back-to-list-button').className = '';
-    
+    document.getElementById('hr-line-before-back-to-list-button').className = '';    
     document.getElementById('battle-app-main-list').className = 'battle-app-hidden';
     document.getElementById('back-to-main-list-button').className = '';
+    localStorage.clear();
 };
 
 
-function battleAppShowMainList (){
+async function battleAppShowMainList (){
     const response = fetch ('battleApp', {method: "GET"})
         // .then(response => response.json())
         .then(data => {

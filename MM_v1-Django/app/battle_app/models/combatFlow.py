@@ -1,6 +1,7 @@
 from copy import deepcopy
 from django.db import models
 from dataset.utils.dataset.decorators.choices import BATTLEDECLARATIONS
+from dataset.models import Dice
 from dataset.models import ShipCard
 
 
@@ -11,10 +12,12 @@ class CombatFlow(models.Model):
 
     def first_round(self, defender_ship: str):
         self.__class__.objects.all().delete()
-        aggressor_ship_stat = ShipCard.objects.filter(ship='Sloop').first() # random ship for now
-        defender_ship_stat = ShipCard.objects.filter(ship=defender_ship).first()
+        aggressor_ship_stat = ShipCard.objects.filter(ship='Frigate').first() # random ship for now
+        # defender_ship_stat = ShipCard.objects.filter(ship=defender_ship).first()
+        defender_ship_stat = ShipCard.objects.filter(ship='Frigate').first()
         record = {
             "round": 1,
+            "dice1Image": Dice.objects.get(name='one').image.url,
             "aggressor": {
                 "ship": aggressor_ship_stat.ship,
                 "hull": aggressor_ship_stat.toughness,
@@ -23,11 +26,14 @@ class CombatFlow(models.Model):
                 "crew": aggressor_ship_stat.crew,
                 "cannons": aggressor_ship_stat.cannons,
                 "maneuverability": aggressor_ship_stat.maneuverability,
-                'seamanship': 8,
+                # 'seamanship': 8,
+                'seamanship': 1,
                 'leadership': 1,
                 'special_weapons': ['Hook'],
+                'ship_modifications': [],
                 'declaration': '',
                 'seamanship_roll_result': [],
+                'seamanship_result_comparison': None,
                 'shot_roll_result': [],
                 'board_roll_result': [],
                 "actions": [],
@@ -40,11 +46,14 @@ class CombatFlow(models.Model):
                 "crew": defender_ship_stat.crew,
                 "cannons": defender_ship_stat.cannons,
                 "maneuverability": defender_ship_stat.maneuverability,
-                'seamanship': 8,
+                # 'seamanship': 8,
+                'seamanship': 1,
                 'leadership': 1,
                 'special_weapons': ['Grape', 'Hook', 'Chains'],
+                'ship_modifications': [],
                 'declaration': '',
                 'seamanship_roll_result': [],
+                'seamanship_result_comparison': None,
                 'shot_roll_result': [],
                 'board_roll_result': [],
                 "actions": [],
@@ -57,8 +66,7 @@ class CombatFlow(models.Model):
 
     def update_round_record(self, side: str, parameter, value):
         # roll seamanship dices, parameter = 'seamanship'
-        parameters = ['shot', 'board', 'seamanship']
-        if parameter in parameters:
+        if parameter in ['shot', 'board', 'seamanship']:
             self.combat[-1][side][f'{parameter}_roll_result'].append(value)
         # after choosen declaration, parameter = 'declaration'
         if parameter == 'declaration':
@@ -66,7 +74,21 @@ class CombatFlow(models.Model):
         # after choosen actions, parameter = 'actions'
         if parameter == 'actions':
             self.combat[-1][side][parameter] = value
-        # always save after modification
+        if parameter == 'seamanship_result':
+            self.combat[-1][side]['seamanship_result_comparison'] = value
+        if parameter in ['hull', 'cargo', 'masts', 'crew', 'cannons']:
+            if side == 'aggressor':
+                side = 'defender'
+                print(f'MODYFIKUJĘ BAZĘ PO STRZALE Z DZIAŁ, aggresor strzela w {parameter} {side}a')
+            elif side == 'defender':
+                side = 'aggressor'
+                print(f'MODYFIKUJĘ BAZĘ PO STRZALE Z DZIAŁ, defender strzela w {parameter} {side}a')
+
+            if self.combat[-1][side][parameter] > 0:
+                self.combat[-1][side][parameter] -= 1
+            elif self.combat[-1][side][parameter] == 0:
+                self.combat[-1][side]['hull'] -= 1
+
         self.save()
 
     def next_round(self):
@@ -77,6 +99,8 @@ class CombatFlow(models.Model):
         new_round['defender']['declaration'] = ''
         new_round['aggressor']['seamanship_roll_result'] = []
         new_round['defender']['seamanship_roll_result'] = []
+        new_round['aggressor']['seamanship_result_comparison'] = None
+        new_round['defender']['seamanship_result_comparison'] = None
         new_round['aggressor']['shot_roll_result'] = []
         new_round['defender']['shot_roll_result'] = []
         new_round['aggressor']['board_roll_result'] = []

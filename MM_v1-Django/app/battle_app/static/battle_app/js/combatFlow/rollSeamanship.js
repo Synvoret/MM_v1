@@ -1,12 +1,12 @@
-async function dicesRoll(round, side, test) {
+async function rollSeamanship(round, side) {
 
     try {
-        const diceImages = document.getElementById(`round-section-${round}`).querySelectorAll(`img[class^="dice-"][class$="-${side + '-' + test}"]`); // array dices img to roll
+        const diceImages = document.getElementById(`round-section-${round}`).querySelectorAll(`img[class^="dice-"][class$="-${side + '-seamanship'}"]`); // array dices img to roll
         const amountDices = diceImages.length;
 
         const dataToSend = {
             'side': side,
-            'test': test,
+            'test': 'seamanship',
             'amountDices': amountDices,
         }
         const response = await fetch(`dices`, {
@@ -17,18 +17,13 @@ async function dicesRoll(round, side, test) {
         const data = await response.json();
         const dicesRoll = data.roundRecord;
 
-        diceImages.forEach((img, index) => {
-            img.src = dicesRoll[`dice${index + 1}Image`];
-        });
+        diceImages.forEach((img, index) => {img.src = dicesRoll[`dice${index + 1}Image`]});
     
         // WHEN BOTH SIDES AFTER TEST SEAMANSHIP
-        if (test === 'seamanship' && data.roundRecord['aggressor']['seamanship_result_comparison'] !== null && data.roundRecord['defender']['seamanship_result_comparison'] !== null) {
+        if (data.roundRecord['aggressor']['seamanship_result_comparison'] !== null && data.roundRecord['defender']['seamanship_result_comparison'] !== null) {
             await seamanship(phase='result');
         }
 
-        if (test === 'shot') {
-            console.log('rzut na strzelanie')
-        }
 
     } catch (error) {
         console.error("Error during catch data", error);
